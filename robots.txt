@@ -1,0 +1,27 @@
+# Allow crawling of all content
+User-agent: Baiduspider
+Disallow: /
+User-agent: Sosospider
+Disallow: /
+User-agent: sogou spider
+Disallow: /
+User-agent: YodaoBot
+Disallow: /
+User-agent: Teoma
+Disallow: /
+User-agent: ia_archiver
+Disallow: /
+User-agent: twiceler
+Disallow: /
+User-agent: Scrubby
+Disallow: /
+User-agent: Robozilla
+Disallow: /
+User-agent: Gigabot
+Disallow: /
+User-agent: *
+Disallow: .jpg$
+Disallow: .png$
+Disallow: .rar$
+Disallow: .zip$
+Disallow: .7z$
