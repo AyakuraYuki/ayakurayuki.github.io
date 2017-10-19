@@ -16,27 +16,19 @@ comments: false
 
 プロデューサー，IM@S驱使编程的状态
 
-半合格的Java程序员，是个后台，前端设计不敏感但是能写前端
-
-以上说的可能是假话也可能是真话
+合格的Java程序员，是个后台，前端设计研修中
 
 ## 现有项目
 
-* <a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">SimpleSpringBootCRUD——Spring Boot CRUD实例</a>
-
-* <a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator——SSM框架代码生成器</a>
-
-* <a href="https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list">IMAS-ML-event-ranking-list——Million Live活动排名查看器</a>
-
-* <a href="https://github.com/AyakuraYuki/CodErator">CodErator——轻量级代码生成工具</a>
+* [SimpleSpringBootCRUD——Spring Boot CRUD实例](https://github.com/AyakuraYuki/SimpleSpringBootCRUD)
+* [SSMGenerator——SSM框架代码生成器](https://github.com/AyakuraYuki/SSMGenerator)
+* [IMAS-ML-event-ranking-list——Million Live活动排名查看器](https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list)
+* [CodErator——轻量级代码生成工具](https://github.com/AyakuraYuki/CodErator)
+* [Content Storage App](https://github.com/AyakuraYuki/content-storage-app)
 
 ## 搞事中。。。
 
 * Spring 原理
-
 * Groovy
-
 * Spring + Struts + Hibernate 代码生成器
-
-* <a href="http://imaswiki.net/">imaswiki</a>
-
+* [IM@SWiki](http://imaswiki.net/)
