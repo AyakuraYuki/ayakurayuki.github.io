@@ -1,0 +1,87 @@
+---
+layout: post
+title: Create a full deck of cards in Swift
+date: 2018-01-22
+excerpt: "使用Swift Playground创建的一个程序，可以创建一套含52张的扑克牌，并按照花色和牌号排序。"
+tags: [post, guide, swift]
+comments: false
+---
+
+```swift
+// Build a full deck of cards.
+enum Rank: Int {
+    case ace = 1
+    case two, three, four, five, six, seven, eight, nine, ten
+    case jack, queen, king
+    func simpleDescription() -> String {
+        switch self {
+        case .ace:
+            return "ace"
+        case .jack:
+            return "jack"
+        case .queen:
+            return "queen"
+        case .king:
+            return "king"
+        default:
+            return String(self.rawValue)
+        }
+    }
+    func equals(compare: Rank) -> Bool {
+        return self.rawValue == compare.rawValue
+    }
+}
+
+enum Suit {
+    case spades, hearts, diamonds, clubs
+
+    func simpleDescription() -> String {
+        switch self {
+        case .spades:
+            return "spades"
+        case .hearts:
+            return "hearts"
+        case .diamonds:
+            return "diamonds"
+        case .clubs:
+            return "clubs"
+        }
+    }
+
+    func color() -> String {
+        switch self {
+        case .hearts, .diamonds:
+            return "red"
+        case .spades, .clubs:
+            return "black"
+        }
+    }
+}
+
+struct Poker {
+    var rank: Rank
+    var suit: Suit
+    func description() -> String {
+        return "This card is a \(suit.color()) \(suit.simpleDescription()) \(rank.simpleDescription())."
+    }
+}
+var poker = [Poker]()
+for i in 1...13 {
+    poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.spades))
+    poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.hearts))
+    poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.diamonds))
+    poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.clubs))
+}
+poker.sort(by: {l, r -> Bool in
+    if l.suit.simpleDescription() < r.suit.simpleDescription() {
+        return false
+    } else if l.suit.simpleDescription().elementsEqual(r.suit.simpleDescription()) {
+        return l.rank.rawValue < r.rank.rawValue
+    } else {
+        return true
+    }
+})
+poker.forEach { (item) in
+    print(item.description())
+}
+```
