@@ -6,9 +6,10 @@ excerpt: "使用Swift Playground创建的一个程序，可以创建一套含52�
 tags: [post, guide, swift]
 comments: false
 ---
+> 最近开始学习Swift编程，学到枚举和结构体，看到最后一个Experiment要实现创建一套扑克，结合了一下以前写过的"双条件"排序和官方GuidedTour，弄了下面的代码实现。
 
 ```swift
-// Build a full deck of cards.
+// Base card rank
 enum Rank: Int {
     case ace = 1
     case two, three, four, five, six, seven, eight, nine, ten
@@ -32,6 +33,7 @@ enum Rank: Int {
     }
 }
 
+// Card suit
 enum Suit {
     case spades, hearts, diamonds, clubs
 
@@ -58,6 +60,7 @@ enum Suit {
     }
 }
 
+// Poker struct with rank and suit.
 struct Poker {
     var rank: Rank
     var suit: Suit
@@ -65,13 +68,16 @@ struct Poker {
         return "This card is a \(suit.color()) \(suit.simpleDescription()) \(rank.simpleDescription())."
     }
 }
+
 var poker = [Poker]()
+// Add cards
 for i in 1...13 {
     poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.spades))
     poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.hearts))
     poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.diamonds))
     poker.append(Poker(rank: Rank(rawValue: i)!, suit: Suit.clubs))
 }
+// Order by suit, then rank
 poker.sort(by: {l, r -> Bool in
     if l.suit.simpleDescription() < r.suit.simpleDescription() {
         return false
@@ -81,6 +87,7 @@ poker.sort(by: {l, r -> Bool in
         return true
     }
 })
+// Display
 poker.forEach { (item) in
     print(item.description())
 }
