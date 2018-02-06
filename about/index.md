@@ -8,27 +8,41 @@ comments: false
 
 # Ayakura Yuki
 
-苦逼大学生，写代码会写到精神失常
+初入行业的程序员
 
-很懒Commit，但每次Commit大概都能完成一个或者几个完善的功能点
+经常Commit，每次Commit大概都能完成一个或者几个完善的功能点
 
 沉迷代码优化
 
-プロデューサー，IM@S驱使编程的状态
+プロデューサー，IM@S驱动编程的状态
 
-合格的Java程序员，是个后台，前端设计研修中
+合格的Java程序员，目前转移到使用Groovy开发，是个准全栈
 
 ## 现有项目
 
+#### Java & Groovy
+
 * [SimpleSpringBootCRUD——Spring Boot CRUD实例](https://github.com/AyakuraYuki/SimpleSpringBootCRUD)
-* [SSMGenerator——SSM框架代码生成器](https://github.com/AyakuraYuki/SSMGenerator)
 * [IMAS-ML-event-ranking-list——Million Live活动排名查看器](https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list)
-* [CodErator——轻量级代码生成工具](https://github.com/AyakuraYuki/CodErator)
 * [Content Storage App](https://github.com/AyakuraYuki/content-storage-app)
 
-## 搞事中。。。
+#### Kotlin
 
-* Spring 原理
-* Groovy
-* Spring + Struts + Hibernate 代码生成器
-* [IM@SWiki](http://imaswiki.net/)
+* [reminder for Android](https://github.com/AyakuraYuki/reminder)
+
+#### Python
+
+* [Producer-Cogs, a cog for Red-DiscordBot](https://github.com/8zu/Producer-Cogs)
+* [borderbot, a bot for Discord](https://github.com/AyakuraYuki/borderbot)
+
+#### C Sharp
+
+* [CodErator——轻量级代码生成工具](https://github.com/AyakuraYuki/CodErator)
+
+#### Swift
+
+* [URLDecoder_Swift for macOS](https://github.com/AyakuraYuki/URLDecoder_Swift)
+
+#### Template generator
+
+* [SSMGenerator——SSM框架代码生成器](https://github.com/AyakuraYuki/SSMGenerator)

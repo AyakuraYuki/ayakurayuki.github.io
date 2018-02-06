@@ -1,24 +1,40 @@
 # Ayakura Yuki
 
-苦逼大学生 | 写代码会写到精神失常 | 很懒Commit，经常不更新项目 | 沉迷代码优化 | プロデューサー | IM@S驱使编程的状态 | 半合格的Java程序员 | 是个后台，前端设计不敏感但是能写前端 | 以上说的可能是假话也可能是真话
+初入行业的程序员
+
+经常Commit，每次Commit大概都能完成一个或者几个完善的功能点
+
+沉迷代码优化
+
+プロデューサー，IM@S驱动编程的状态
+
+合格的Java程序员，目前转移到使用Groovy开发，是个准全栈
 
 ## 现有项目
 
-* <a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">SimpleSpringBootCRUD——Spring Boot CRUD实例</a>
+#### Java & Groovy
 
-* <a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator——SSM框架代码生成器</a>
+* [SimpleSpringBootCRUD——Spring Boot CRUD实例](https://github.com/AyakuraYuki/SimpleSpringBootCRUD)
+* [IMAS-ML-event-ranking-list——Million Live活动排名查看器](https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list)
+* [Content Storage App](https://github.com/AyakuraYuki/content-storage-app)
 
-* <a href="https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list">IMAS-ML-event-ranking-list——Million Live活动排名查看器</a>
+#### Kotlin
 
-* <a href="https://github.com/AyakuraYuki/CodErator">CodErator——轻量级代码生成工具</a>
+* [reminder for Android](https://github.com/AyakuraYuki/reminder)
 
-## 搞事中。。。
+#### Python
 
-* Spring 原理
+* [Producer-Cogs, a cog for Red-DiscordBot](https://github.com/8zu/Producer-Cogs)
+* [borderbot, a bot for Discord](https://github.com/AyakuraYuki/borderbot)
 
-* Groovy
+#### C Sharp
 
-* Spring + Struts + Hibernate 代码生成器
+* [CodErator——轻量级代码生成工具](https://github.com/AyakuraYuki/CodErator)
 
-* <a href="http://imaswiki.net/">imaswiki</a>
+#### Swift
 
+* [URLDecoder_Swift for macOS](https://github.com/AyakuraYuki/URLDecoder_Swift)
+
+#### Template generator
+
+* [SSMGenerator——SSM框架代码生成器](https://github.com/AyakuraYuki/SSMGenerator)
