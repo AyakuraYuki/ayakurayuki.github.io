@@ -1,10 +1,10 @@
 {
     "particles": {
         "number": {
-            "value": 80,
+            "value": 40,
             "density": {
                 "enable": true,
-                "value_area": 800
+                "value_area": 1000
             }
         },
         "color": {
@@ -13,11 +13,11 @@
         "shape": {
             "type": "circle",
             "stroke": {
-                "width": 2,
-                "color": "#d7385f"
+                "width": 0,
+                "color": "#000"
             },
             "polygon": {
-                "nb_sides": 5
+                "nb_sides": 6
             },
             "image": {
                 "src": "img/github.svg",
@@ -26,8 +26,8 @@
             }
         },
         "opacity": {
-            "value": 0.5,
-            "random": false,
+            "value": 0.1,
+            "random": true,
             "anim": {
                 "enable": false,
                 "speed": 1,
@@ -36,32 +36,32 @@
             }
         },
         "size": {
-            "value": 3,
+            "value": 14,
             "random": true,
             "anim": {
                 "enable": false,
-                "speed": 40,
-                "size_min": 0.1,
+                "speed": 9.59040959040959,
+                "size_min": 23.976023976023978,
                 "sync": false
             }
         },
         "line_linked": {
-            "enable": true,
-            "distance": 150,
-            "color": "#d7385f",
-            "opacity": 0.4,
-            "width": 1
+            "enable": false,
+            "distance": 200,
+            "color": "#ffffff",
+            "opacity": 0,
+            "width": 2
         },
         "move": {
             "enable": true,
-            "speed": 6,
-            "direction": "none",
+            "speed": 5,
+            "direction": "bottom",
             "random": false,
-            "straight": false,
+            "straight": true,
             "out_mode": "out",
             "bounce": false,
             "attract": {
-                "enable": false,
+                "enable": true,
                 "rotateX": 600,
                 "rotateY": 1200
             }
@@ -71,12 +71,12 @@
         "detect_on": "canvas",
         "events": {
             "onhover": {
-                "enable": true,
+                "enable": false,
                 "mode": "bubble"
             },
             "onclick": {
-                "enable": true,
-                "mode": "bubble"
+                "enable": false,
+                "mode": "push"
             },
             "resize": true
         },
@@ -106,5 +106,5 @@
             }
         }
     },
-    "retina_detect": false
+    "retina_detect": true
 }
