@@ -8,13 +8,13 @@
             }
         },
         "color": {
-            "value": "#ffffff"
+            "value": "#d7385f"
         },
         "shape": {
-            "type": "polygon",
+            "type": "circle",
             "stroke": {
-                "width": 0,
-                "color": "#000000"
+                "width": 2,
+                "color": "#d7385f"
             },
             "polygon": {
                 "nb_sides": 5
@@ -48,7 +48,7 @@
         "line_linked": {
             "enable": true,
             "distance": 150,
-            "color": "#ffffff",
+            "color": "#d7385f",
             "opacity": 0.4,
             "width": 1
         },
@@ -72,11 +72,11 @@
         "events": {
             "onhover": {
                 "enable": true,
-                "mode": "repulse"
+                "mode": "bubble"
             },
             "onclick": {
                 "enable": true,
-                "mode": "push"
+                "mode": "bubble"
             },
             "resize": true
         },
