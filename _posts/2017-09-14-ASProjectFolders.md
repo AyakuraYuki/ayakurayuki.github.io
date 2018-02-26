@@ -3,7 +3,7 @@ layout: post
 title: Android项目各文件夹含义说明
 date: 2017-09-14
 excerpt: "使用Android Studio 2.3版开发的Android项目文件结构说明"
-tags: [post, guide]
+tags: [post, android, guide]
 comments: false
 ---
 >AS版本：Android Studio 2.3.3 <br/>
