@@ -108,8 +108,8 @@ ProxyPassMatch：它一般和ProxyPass配合使用，该指令使Apache调整HTT
 
 ```yaml
 # Apache物理服务器配置的DocumentRoot与Directory指令
-DocumentRoot [Your images' local storage path]
-<Directory [same path as DocumentRoot]>
+DocumentRoot [Your image path]
+<Directory [same as DocumentRoot]>
     Options FollowSymLinks
     AllowOverride None
     Require all granted
@@ -117,16 +117,16 @@ DocumentRoot [Your images' local storage path]
 
 # Tomcat
 <VirtualHost *.80>
-ServerName www.mydomain.com
-ProxyPass / http://mydomain.com:8080/
-ProxyPassReverse / http://mydomain.com:8080/
+ServerName www.yourdomain.com
+ProxyPass / http://yourdomain.com:8080/
+ProxyPassReverse / http://yourdomain.com:8080/
 </VirtualHost>
 
 # Picture Server
 <VirtualHost *.80>
-ServerName pic.mydomain.com
-ProxyPass / http://mydomain.com:8180/
-ProxyPassReverse / http://mydomain.com:8180/
+ServerName pic.yourdomain.com
+ProxyPass / http://yourdomain.com:8180/
+ProxyPassReverse / http://yourdomain.com:8180/
 </VirtualHost>
 ```
 
@@ -135,22 +135,22 @@ ProxyPassReverse / http://mydomain.com:8180/
 ```yaml
 # Tomcat
 <VirtualHost *.80>
-ServerName www.mydomain.com
-ProxyPass / http://mydomain.com:8080/
-ProxyPassReverse / http://mydomain.com:8080/
+ServerName www.yourdomain.com
+ProxyPass / http://yourdomain.com:8080/
+ProxyPassReverse / http://yourdomain.com:8080/
 </VirtualHost>
 
 # Picture Server
 <VirtualHost *.80>
-ServerName pic.mydomain.com
-ProxyPass / http://mydomain.com:8180/
-ProxyPassReverse / http://mydomain.com:8180/
+ServerName pic.yourdomain.com
+ProxyPass / http://yourdomain.com:8180/
+ProxyPassReverse / http://yourdomain.com:8180/
 </VirtualHost>
 
 <VirtualHost *.8180>
-ServerName mydomain.com
-DocumentRoot [Your images' local storage path]
-<Directory [same path as DocumentRoot]>
+ServerName yourdomain.com
+DocumentRoot [Your image path]
+<Directory [same as DocumentRoot]>
     Options FollowSymLinks
     AllowOverride None
     Require all granted
