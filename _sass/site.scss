@@ -25,6 +25,10 @@ body {
     }
 }
 
+a {
+    z-index: 1001;
+}
+
 footer {
     @media #{$notsmall} {
         width: calc(100%);
