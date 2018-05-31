@@ -1,4 +1,14 @@
 /* particlesJS.load(@dom-id, @path-json, @callback (optional)); */
-particlesJS.load('particles-js', 'http://blog.ayakurayuki.cc/assets/js/particles.json', function() {
-    console.log('callback - particles.js config loaded');
-});
+var start = new Date().getTime();
+var path = 'http://blog.ayakurayuki.cc/assets/js/';
+var filename = 'particles.json';
+particlesJS.load(
+    'particles-js',
+    '' + path + filename,
+    function () {
+        var end = new Date().getTime();
+        console.log(
+            '[' + (end - start) + ' ms] Done! ' + filename + ' loaded.'
+        );
+    }
+);
