@@ -70,12 +70,12 @@ ServerName是一个比较关键的指令，它指定了每个<VirtualHost>对应
 ```yaml
 # 语法
 ProxyPass [path] !|url
-ProxyPassMatch [regex] url
+ProxyPassReverse [url] url
 ```
 
 ProxyPass：它主要是用作URL前缀匹配，配置的path是一个虚拟的路径，在反向代理到后端的url后，path是不会带过去的。该指令可以设置某些path不被转发。
 
-ProxyPassMatch：它一般和ProxyPass配合使用，该指令使Apache调整HTTP重定向应答中Location、Content-Location、URI头里的URL，这样可以避免在Apache作为反向代理使用时，后端服务器的HTTP重定向造成的绕过反向代理的问题。
+ProxyPassReverse：它一般和ProxyPass配合使用，该指令使Apache调整HTTP重定向应答中Location、Content-Location、URI头里的URL，这样可以避免在Apache作为反向代理使用时，后端服务器的HTTP重定向造成的绕过反向代理的问题。
 
 #### DocumentRoot
 
@@ -130,7 +130,7 @@ ProxyPassReverse / http://yourdomain.com:8180/
 </VirtualHost>
 ```
 
-#### 另一种配置，Apache本身不作为图片服务器，尚待查证
+#### 另一种配置，Apache本身也作为图片服务器，但多做了一层转发，尚待查证
 
 ```yaml
 # Tomcat
