@@ -18,7 +18,7 @@ function js_beautify(js_source_text, indent_size, indent_character, indent_level
         if (output[output.length - 1] !== "\n" || !ignore_repeated) {
             output.push("\n")
         }
-        for (var i = 0; i < indent_level; i++) {
+        for (let i = 0; i < indent_level; i++) {
             output.push(indent_string)
         }
     }
