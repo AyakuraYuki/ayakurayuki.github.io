@@ -29,9 +29,9 @@ To obtain the path to the currently executing `$JAVA_HOME`, use the `java.home` 
 
 ******************************************************
 
-可以看到，在使用macOS 10.5或更新版本的系统时，Apple已经推荐开发者使用`/usr/libexec/java_home`去设置JDK的版本了，并且由于`java_home`会动态查找到最新的JDK版本，并且支持通过大版本，即所谓的Java 1.7、Java 1.8、Java 10等来获取路径，所以很适合用来切换不同版本的JDK。
+可以看到，在使用macOS 10.5或更新版本的系统时，Apple已经推荐开发者使用`/usr/libexec/java_home`去设置JDK的版本了，并且由于`java_home`会动态查找到最新的JDK版本，并且支持通过发行版通称，即JDK1.7、JDK1.8、JDK11等来获取路径，所以很适合用来切换不同版本的JDK。
 
-让我们再来看一下接下来可能会用到的关键脚本。我们可以利用如`/usr/libexec/java_home -v 1.8`来查找当前本机存在的Java 1.8版本路径，在Terminal中执行该脚本会得到以下的返回值：
+让我们再来看一下接下来会用到的脚本。我们可以利用如`/usr/libexec/java_home -v 1.8`来查找当前本机存在的Java 1.8版本路径，在Terminal中执行该脚本会得到以下的返回值：
 
 ```bash
 *****-Pro:~ *****$ /usr/libexec/java_home -v 1.8
@@ -52,15 +52,15 @@ To obtain the path to the currently executing `$JAVA_HOME`, use the `java.home` 
 
 `export JAVA_HOME=<JAVA_HOME_PATH>`
 
-改写成
+改写成形如
 
-`export JAVA_<MAIN_VERSION_NAME>_HOME=$(/usr/libexec/lava_home -v <MAIN_VERSION>)`
+`export JAVA_<MAIN_VERSION>_HOME=$(/usr/libexec/lava_home -v<MAIN_VERSION_NUMBER>)`
 
 即可完成对某个版本的配置，最后再以下面的配置完成JDK版本选择：
 
-`export JAVA_HOME=${JAVA_<MAIN_VERSION_NAME>_HOME}`
+`export JAVA_HOME=${JAVA_<MAIN_VERSION>_HOME}`
 
-而为了快速切换版本，我们可以使用alias来制定别名执行相应的`export`操作。完整的脚本配置如下脚本所示：
+而为了快速切换版本，我们可以使用alias来绑定别名执行相应的`export`操作。完整的脚本配置如下脚本所示：
 
 ```bash
 # .bash_profile

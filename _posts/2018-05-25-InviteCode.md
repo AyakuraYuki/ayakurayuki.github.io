@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 小记一个邀请码设计bug引发的思考
+title: 小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考
 date: 2018-05-25
 excerpt: "有时候就缺了那么点感觉，就出了大事了"
 tags: [post, guide]
