@@ -9,7 +9,7 @@ comments: false
 ---
 # dd_monitor
 
-[Github Repo](https://github.com/AyakuraYuki/dd_monitor)
+> [Github Repo here](https://github.com/AyakuraYuki/dd_monitor)
 
 DD monitor, which means a monitor for DDs (DD means `誰でも大好き`), can let you watch multiple YouTube streams (if the stream is enabled to be embedded outside YouTube) in one screen at the same time.
 
