@@ -3,8 +3,7 @@ layout: post
 title: 简记修复Git提交时GPG签名失败的问题
 date: 2019-11-15
 excerpt: "管管你的GPG"
-project: true
-tags: [project, guide]
+tags: [post, guide]
 comments: false
 ---
 
