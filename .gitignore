@@ -1,5 +1,8 @@
 .idea
-
+*.iml
 _site/
 .sass-cache/
 Gemfile.lock
+node_modules/
+yarn.lock
+package-lock.json

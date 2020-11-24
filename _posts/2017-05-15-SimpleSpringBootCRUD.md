@@ -7,11 +7,11 @@ project: true
 tags: [project, spring boot, webapp]
 comments: false
 ---
+
 # SimpleSpringBootCRUD
 
-这是一个基础的CRUD系统，基于Spring Boot编写，整合了MyBatis和Thymeleaf。
+这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。
 
 [项目地址](https://github.com/AyakuraYuki/SimpleSpringBootCRUD)
 
-有兴趣的话也可以fork下来试着玩玩 : D
-
+有兴趣的话也可以 fork 下来试着玩玩 : D

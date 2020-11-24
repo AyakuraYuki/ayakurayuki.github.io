@@ -7,6 +7,7 @@ project: true
 tags: [project, python]
 comments: false
 ---
+
 # dd_monitor
 
 > [Github Repo here](https://github.com/AyakuraYuki/dd_monitor)
@@ -19,17 +20,17 @@ When I noticed that hey if I can use YouTube embed link, I can watch not only th
 
 So this is it, a simple but functionally DD monitor.
 
-DD监视器，你要来当监视房里的老大爷吗？这个工具可以让你同时观看多个（允许在YouTube外部播放的）油管直播。
+DD 监视器，你要来当监视房里的老大爷吗？这个工具可以让你同时观看多个（允许在 YouTube 外部播放的）油管直播。
 
-一开始的时候我打算看当时Hololive的Project Winter联动直播，但是一起8个视角，给浏览器分配空间太难了。所以我决定搞一个工具来把事情变得容易解决。
+一开始的时候我打算看当时 Hololive 的 Project Winter 联动直播，但是一起 8 个视角，给浏览器分配空间太难了。所以我决定搞一个工具来把事情变得容易解决。
 
-然而当我注意到，当我使用油管的外部嵌入链接时，我不但可以用来看Project Winter联动直播，还可以看任何支持在油管外播放的直播。
+然而当我注意到，当我使用油管的外部嵌入链接时，我不但可以用来看 Project Winter 联动直播，还可以看任何支持在油管外播放的直播。
 
-所以，这就是一个简单但很好用的DD监视器。
+所以，这就是一个简单但很好用的 DD 监视器。
 
 ## Environment
 
-- Python 3.7.4
-- Flask 1.1.1
-- sqlite3
-- Vue 3
+-   Python 3.7.4
+-   Flask 1.1.1
+-   sqlite3
+-   Vue 3

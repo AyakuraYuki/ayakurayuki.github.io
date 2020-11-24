@@ -6,7 +6,8 @@ excerpt: "使用Swift Playground创建的一个程序，可以创建一套含52�
 tags: [post, guide, swift]
 comments: false
 ---
-> 最近开始学习Swift编程，学到枚举和结构体，看到最后一个Experiment要实现创建一套扑克，结合了一下以前写过的"双条件"排序和官方GuidedTour，弄了下面的代码实现。
+
+> 最近开始学习 Swift 编程，学到枚举和结构体，看到最后一个 Experiment 要实现创建一套扑克，结合了一下以前写过的"双条件"排序和官方 GuidedTour，弄了下面的代码实现。
 
 ```swift
 // Base card rank

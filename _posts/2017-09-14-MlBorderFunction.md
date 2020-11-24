@@ -6,6 +6,7 @@ excerpt: "function code about 'mlborder'"
 tags: [post, guide]
 comments: false
 ---
+
 # Code
 
 ```python
@@ -26,7 +27,7 @@ async def mlborder(self, event_code: int = None):
 
         event_name = title[title.index('『') + 1:title.rindex('』')]
         event_info = document('.list-group-item').text()
-                   
+
         ending_time = event_info[event_info.index('〜') + 1:event_info.rindex(',')]
         ending_timestamp = time.mktime(time.strptime(ending_time, '%Y/%m/%d %H:%M'))
         current_timestamp = time.time()

@@ -6,13 +6,15 @@ excerpt: "简单记录了我学到的Python单例的内容"
 tags: [post, guide]
 comments: false
 ---
-> 本人一直都在用Python3，以下的内容都基于Python3来记录，Python2的这里就不放了
+
+> 本人一直都在用 Python3，以下的内容都基于 Python3 来记录，Python2 的这里就不放了
 
 ## 引入模块
 
 模块在第一次导入时，会生成`pyc`文件，当第二次导入时，就会直接加载`pyc`文件，避免再次执行模块代码产生新的对象。
 
 a.py
+
 ```python
 class Singleton:
     def foo(self):
@@ -23,11 +25,12 @@ singleton = Singleton()
 ```
 
 b.py
+
 ```python
 from a import singleton
 ```
 
-## 装饰器（我倒是喜欢理解成注解，谁叫我之前写Java的）
+## 装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）
 
 ```python
 def singleton(cls):
@@ -75,7 +78,7 @@ class Singleton:
 
 ### `__new__`实现
 
-`__new__`是Python生命周期中必经的步骤，即使我们没有显式声明`__new__`函数，解释器依旧帮我们执行了`object.__new__`。
+`__new__`是 Python 生命周期中必经的步骤，即使我们没有显式声明`__new__`函数，解释器依旧帮我们执行了`object.__new__`。
 
 所以我们可以将单例初始化的代码放入`__new__`函数中，让解释器来帮我们处理初始化的流程。
 
@@ -93,7 +96,7 @@ class Singleton:
         if not hasattr(Singleton, "_instance"):
             with Singleton._instance_lock:
                 if not hasattr(Singleton, "_instance"):
-                    Singleton._instance = object.__new__(cls)  
+                    Singleton._instance = object.__new__(cls)
         return Singleton._instance
 ```
 

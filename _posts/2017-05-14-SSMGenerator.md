@@ -7,11 +7,12 @@ project: true
 tags: [project, generator]
 comments: false
 ---
+
 # [SSMGenerator](https://github.com/AyakuraYuki/SSMGenerator)
 
-根据数据库生成对应的po、dao、service、mapping代码以及两个通用类
+根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类
 
-需要使用CodeSmith
+需要使用 CodeSmith
 
 ## 支持
 
@@ -23,10 +24,9 @@ comments: false
 
 ## Bugs
 
-暂时没有发现Bug，如果找到Bug请到issues留言，或者其他方式找到我并告诉我你遇到的问题。
+暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。
 
 ## 获取模板
 
 [唯一的下载入口](https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip)
-（因为不会有Release版本，注意随时会有修改）
-
+（因为不会有 Release 版本，注意随时会有修改）

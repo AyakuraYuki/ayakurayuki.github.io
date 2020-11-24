@@ -1,0 +1,14 @@
+{
+    "name": "ayakurayuki.github.io",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/AyakuraYuki/ayakurayuki.github.io.git",
+    "author": "Ayakura Yuki <AyakuraYuki@users.noreply.github.com>",
+    "license": "MIT",
+    "scripts": {
+        "docs:prettier": "yarn prettier --write ."
+    },
+    "devDependencies": {
+        "prettier": "^2.2.0"
+    }
+}

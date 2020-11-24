@@ -6,6 +6,7 @@ excerpt: "THE IDOLM@STER CINDERELLA GIRLS 5thLIVE TOUR Serendipity Parade!!! Liv
 tags: [post, life]
 comments: false
 ---
+
 ![A店收获之-1](/assets/img/postPictures/2017-11-02-CG5thSSAinHK/1.png)
 
 ![A店收获-2](/assets/img/postPictures/2017-11-02-CG5thSSAinHK/2.png)
