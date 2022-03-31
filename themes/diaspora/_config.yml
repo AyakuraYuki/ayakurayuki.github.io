@@ -25,9 +25,9 @@ welcome_cover: /img/welcome-cover.jpg
 
 # 默认文章封面图（随机调用,支持外链）
 cover:
-  - /img/welcome-cover.jpg
-  - /img/cover-nier-automata-1.jpg
-  - /img/cover-nier-automata-2.jpg
+  - https://oss.ayakurayuki.cc/_diaspora/img/welcome-cover.jpg
+  - https://oss.ayakurayuki.cc/_diaspora/img/cover-nier-automata-1.jpg
+  - https://oss.ayakurayuki.cc/_diaspora/img/cover-nier-automata-2.jpg
 
 # 链接(可选:facebook,twitter,github,wechat,email)
 links:
@@ -94,7 +94,7 @@ gitalk:
 google_analytics: G-WY5NF40F3Z
 
 # 网站ico
-favicon: /img/favicon.png
+favicon: https://oss.ayakurayuki.cc/_diaspora/img/favicon.png
 
 # rss文件
 rss: atom.xml
