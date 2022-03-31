@@ -14,7 +14,7 @@ timezone: 'Asia/Shanghai'
 ## 在这里设置你的网址。举个例子，如果你使用 Github Pages，设置 url 配置项的参数为 'https://username.github.io/project'
 url: https://blog.ayakurayuki.cc
 root: /
-permalink: :year/:month/:day/:post_title/
+permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # 是否在永久链接中保留尾部的 'index.html'，设置为 false 时去除
