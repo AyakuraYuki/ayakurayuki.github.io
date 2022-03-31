@@ -9,7 +9,7 @@ mp3:
 cover:
 ---
 
-> 使用Android Studio 2.3版开发的Android项目文件结构说明
+> 使用 Android Studio 2.3 版开发的 Android 项目文件结构说明
 
 > AS 版本：Android Studio 2.3.3 <br/>
 > 视图：Project <br/>

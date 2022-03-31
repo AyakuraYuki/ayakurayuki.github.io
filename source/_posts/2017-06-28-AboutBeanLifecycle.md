@@ -10,7 +10,7 @@ mp3:
 cover:
 ---
 
-> 记录有关Spring Bean生命周期的过程
+> 记录有关 Spring Bean 生命周期的过程
 
 ## 生命周期过程描述
 

@@ -9,7 +9,7 @@ mp3:
 cover:
 ---
 
-> 记录使用SwiftyJSON和HandyJSON在Swift 4中处理JSON文件的过程
+> 记录使用 SwiftyJSON 和 HandyJSON 在 Swift 4 中处理 JSON 文件的过程
 
 最近接了一个项目，这个项目用到了[中央天气预报 API](https://github.com/jokermonn/-Api/blob/master/CenterWeather.md)的接口，这个接口提供了其所用城市码的数据文件，我采用了 JSON 文件来处理数据信息。
 
