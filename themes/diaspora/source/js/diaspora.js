@@ -152,6 +152,10 @@ var Diaspora = {
         }
 
         p.on({
+            'play': function() {
+                // 声音渐增前的初始音量设为
+                p[0].volume = 0.01
+            },
             'timeupdate': function() {
                 var progress = p[0].currentTime / p[0].duration * 100;
                 $('.bar').css('width', progress + '%');
@@ -166,9 +170,6 @@ var Diaspora = {
             },
             'playing': function() {
                 $('.icon-play').removeClass('icon-play').addClass('icon-pause')
-            },
-            'play': function () {
-                p[0].volume = 0.01
             }
         })
     },
