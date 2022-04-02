@@ -17,13 +17,6 @@ var description = '';
         description += truncate(strip_html(page.content), {length: 100, omission: ','});
     }
 })();
-var _hmt = _hmt || [];
-(function() {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?849815d0f4e3e368be4f98681a16a5cd";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
 %>
 <!DOCTYPE html>
 <html lang="<%= config.language %>" class="loading">
