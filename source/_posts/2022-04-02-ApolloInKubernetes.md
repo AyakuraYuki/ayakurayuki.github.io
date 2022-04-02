@@ -30,8 +30,8 @@ cover:
 
 部署和操作 Kubernetes 所需要的命令行工具有`kubectl`和`helm`，这里我们主要会用到`helm`，它是 Kubernetes 的包管理工具，我们可以通过`helm`向自己的集群部署通用包应用。
 
--   [`kubectl`](https://kubernetes.io/docs/tasks/tools/)
--   [`helm`](https://helm.sh/)
+-   [`kubectl` Install Tools | Kubernetes](https://kubernetes.io/docs/tasks/tools/)
+-   [`helm` Helm](https://helm.sh/)
 
 ---
 
