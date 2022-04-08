@@ -3,6 +3,7 @@
     <span id="config-title" style="display:none"><%= config.title %></span>
     <div id="loader"></div>
     <%- body %>
+    <%- partial("_partial/baidu-tongji", {cache: true}) %>
 </body>
 <%- partial('_partial/scripts', null, {cache: true}) %>
 <%- partial('_partial/mathjax', null, {cache: true}) %>

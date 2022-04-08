@@ -456,6 +456,9 @@ gitalk:
 # 要使用google_analytics进行统计的话，这里需要配置ID
 google_analytics: G-WY5NF40F3Z
 
+# 百度统计
+baidu_tongji: 849815d0f4e3e368be4f98681a16a5cd
+
 # 网站ico
 favicon: /img/favicon.png
 
