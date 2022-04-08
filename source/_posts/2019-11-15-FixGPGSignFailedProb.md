@@ -7,7 +7,7 @@ tags:
     - Git
     - GPG
 mp3:
-cover:
+cover: /static/images/2019-11-15-FixGPGSignFailedProb/cover.png
 ---
 
 > 一直以来都很正常的 GPG 签名，唐突暴毙了？？？

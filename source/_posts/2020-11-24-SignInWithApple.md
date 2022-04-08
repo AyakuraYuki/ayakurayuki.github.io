@@ -6,7 +6,7 @@ categories:
 tags:
     - Apple
 mp3:
-cover:
+cover: /static/images/2020-11-24-SignInWithApple/cover.jpg
 ---
 
 ## 引
