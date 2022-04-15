@@ -1,0 +1,1739 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sign in with Apple? Back-end? - Ayakura Yuki 的小窝</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="AyakuraYuki,"> 
+    <meta name="description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,引一年前（注：本文撰写日期2020-11-24），Apple 对开发文档做了修改，自 iOS 13 之后，Apple 提供了一项名为Sign in with Apple的服务，旨在利用 Apple ,"> 
+    <meta name="author" content="Ayakura Yuki"> 
+    <link rel="alternative" href="atom.xml" title="Ayakura Yuki 的小窝" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="Sign in with Apple? Back-end? - Ayakura Yuki 的小窝"/>
+    <meta name="twitter:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,引一年前（注：本文撰写日期2020-11-24），Apple 对开发文档做了修改，自 iOS 13 之后，Apple 提供了一项名为Sign in with Apple的服务，旨在利用 Apple ,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="Ayakura Yuki 的小窝"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="Sign in with Apple? Back-end? - Ayakura Yuki 的小窝"/>
+    <meta property="og:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,引一年前（注：本文撰写日期2020-11-24），Apple 对开发文档做了修改，自 iOS 13 之后，Apple 提供了一项名为Sign in with Apple的服务，旨在利用 Apple ,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Ayakura Yuki 的小窝</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://blog.ayakurayuki.cc"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">Sign in with Apple? Back-end?</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">Sign in with Apple? Back-end?</h1>
+        <div class="stuff">
+            <span>十一月 24, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Apple/" rel="tag">Apple</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>一年前（注：本文撰写日期<code>2020-11-24</code>），Apple 对开发文档做了修改，自 iOS 13 之后，Apple 提供了一项名为<code>Sign in with Apple</code>的服务，旨在利用 Apple ID 服务，为第三方应用提供通过 iCloud 账号登录注册的入口。</p>
+<p>然而，这项服务随之而来的改动是，任何接入第三方应用登录入口的 APP，必须接入<code>Sign in with Apple</code>服务，否则将会被拒绝上架到 App Store。</p>
+<p>得知这个改动已经是撰写本文的时候了，其实我不知道该不该庆幸 App Store 审核人员没有因为我们没接这项服务而否掉我们的 APP，不过也是时候要把这个漏洞给补上了。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>也没啥背景，「一图流」走起：</p>
+<p><img src="/static/images/2020-11-24-SignInWithApple/01.jpeg" alt="反正好狠的规定"></p>
+<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>根据 Apple Developer Documentation 中对 <a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/sign_in_with_apple"><code>Sign in with Apple</code></a> 的说明，利用这项服务跟我们去接入微信服务号登录的流程是差不多的：</p>
+<ol>
+<li>向 Apple ID Server 申请登录，从那边获取一个叫<code>code</code>的东西。没错，这就是 OAuth 中的授权码，<code>Sign in with Apple</code>本质上还是一个 OAuth 授权认证的服务。</li>
+<li>那么我们都清楚了这是一个 OAuth 的授权码模式。APP 那边拿到了<code>code</code>之后，接着就是把这玩意儿扔给后端服务器，由后端服务器去通过<code>code</code>换取相应的用户信息。</li>
+<li>服务器换到用户信息，就可以继续完成后续的登录&#x2F;注册的事情。</li>
+</ol>
+<h2 id="动手？"><a href="#动手？" class="headerlink" title="动手？"></a>动手？</h2><p>那么，说的那么简单，实际上对于后段服务器需要做的事情，网上的文档还是比较少的，绝大多数接入<code>Sign in with Apple</code>的教程都是客户端方案。当然，我们要的是一个思路，这些方案里或多或少都点到了一些。</p>
+<p>实际施工的时候，后端需要关注的细节可以罗列为如下几点：</p>
+<ol>
+<li>从 Apple ID Server 获取公钥，取得的不是一个公钥，而是一组公钥，而这些公钥只是用来对<code>id_token</code>校验用的。这里提到的<code>id_token</code>会在后面解释。</li>
+<li>换取用户信息的操作，需要服务器走一次生成 JWT 的流程，这个流程依赖的一些参数可能不是你想象中的那么容易理解，因为<code>Sign in with Apple</code>提供给你的一些配置信息并不像其他的 OAuth 服务那样容易理解。</li>
+<li>苹果的这套服务有个好处，你可以本地调试。是的，本地调试，不一定需要提交到测试服务器，也不一定需要提交到生产环境，但是有可能本地调试通过了放到线上就会有一大批问题。（毕竟生产环境你永远都不知道会发生什么，对吧？）</li>
+<li>我上面第一条提到了<code>id_token</code>对吧，首先这个东西是一个”JWT”，那么你可以按照 JWT 的方式来对这个参数进行解析取值。但是，苹果在这个参数上用了一个叫 JWS 的概念，所以才会有第一条说到的”校验”。</li>
+</ol>
+<h2 id="好，可以动手了"><a href="#好，可以动手了" class="headerlink" title="好，可以动手了"></a>好，可以动手了</h2><p>首先我们需要一些来自苹果那边下发的”toolkit”，这些配置里包括<code>TeamID</code>、<code>KeyID</code>、<code>BundleID</code>，还有一个私钥文件。</p>
+<p>服务端需要按照下面的流程来完成授权认证的操作：</p>
+<ol>
+<li>请求和验证用户，即换取用户信息<br>a. 构造请求信息<br>b. 生成一个叫<code>client_secret</code>的东西</li>
+<li>检查返回值的有效性<br>a. 从 Apple ID Server 获取公钥组<br>b. 反解析<code>id_token</code>并进行必要的 JWS 检查<br>c. 检查有效性</li>
+</ol>
+<h3 id="请求和验证"><a href="#请求和验证" class="headerlink" title="请求和验证"></a>请求和验证</h3><p>构造请求信息需要携带的一些参数如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=CLIENT_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=CLIENT_SECRET&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27; \</span><br><span class="line">     -d &#x27;redirect_uri=REDIRECT_URI&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens">这里我贴出官方的接口文档，方便各位查看</a></p>
+<p>这些参数中，<code>client_id</code>、<code>client_secret</code>、<code>grant_type</code>是必须的，<code>redirect_uri</code>仅在需要网页登录时才携带，CS 模式不需要这个参数，<code>code</code>是从 APP 那里拿到的授权码。</p>
+<p>这里的信息不像微信服务号接入的那样，是<code>AppID + AppSecret</code>的模式，而是<code>BundleID + JWS</code>的模式。也就是说，苹果并不会给你我们平常看到的一组字符串，而是需要把 APP 的 BundleID 当作这里的<code>client_id</code>的参数，然后自己去生成一个 JWS 丢给<code>client_secret</code>。</p>
+<p>所以上面的 cURL，可以转换成下面的 cURL。这里我用的是 CS 模式，而不是 BS 模式，所以把<code>redirect_uri</code>去掉了。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=BUNDLE_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=TOKEN&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>生成<code>client_secret</code>的话，这里我还是直接丢代码吧，代码里会有详细的说明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">    String teamId;</span><br><span class="line">    String keyId;</span><br><span class="line">    String clientId;</span><br><span class="line">    String keyPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">// 读取私钥</span></span><br><span class="line">    <span class="type">byte</span>[] readKeyFile(AppConfig appConfig) &#123;</span><br><span class="line">        <span class="comment">// 获取配置的私钥文件路径</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">keyPath</span> <span class="operator">=</span> appConfig.keyPath;</span><br><span class="line">        String base64;</span><br><span class="line">        <span class="comment">// 创建字符读取流</span></span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> getClass().classLoader.getResourceAsStream(keyPath);</span><br><span class="line">            <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(Objects.requireNonNull(is)))</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="comment">// 这里我们只需要私钥文件中排除头部和尾部的中间部分，也就是私钥正文部分</span></span><br><span class="line">            base64 = reader.lines().collect(Collectors.joining());</span><br><span class="line">            base64 = base64.replace(<span class="string">&quot;-----BEGIN PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">                .replace(<span class="string">&quot;-----END PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;读取私钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 最后获得私钥的bytes</span></span><br><span class="line">        <span class="keyword">return</span> Base64.decodeBase64(base64);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成client_secret</span></span><br><span class="line">    String <span class="title function_">generateClientSecret</span><span class="params">(AppConfig appConfig)</span> &#123;</span><br><span class="line">        Map&lt;String, Object&gt; header = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定加密的算法是ES256</span></span><br><span class="line">        header.put(<span class="string">&quot;alg&quot;</span>, <span class="string">&quot;ES256&quot;</span>);</span><br><span class="line">        <span class="comment">// 并且苹果下发给我们的toolkit里，用&quot;KeyID&quot;作为header.kid</span></span><br><span class="line">        header.put(<span class="string">&quot;kid&quot;</span>, appConfig.keyId);</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">iat</span> <span class="operator">=</span> System.currentTimeMillis() / <span class="number">1000</span>;</span><br><span class="line">        Map&lt;String, Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定开发者生成JWS所用的issuer是TeamID</span></span><br><span class="line">        claims.put(<span class="string">&quot;iss&quot;</span>, appConfig.teamId);</span><br><span class="line">        <span class="comment">// iat和exp的参数是UNIX时间戳，秒级单位</span></span><br><span class="line">        claims.put(<span class="string">&quot;iat&quot;</span>, iat);</span><br><span class="line">        <span class="comment">// 这里的过期时间有限制，不能大于iat的六个月之后的时间</span></span><br><span class="line">        claims.put(<span class="string">&quot;exp&quot;</span>, iat + <span class="number">3</span> * <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>);</span><br><span class="line">        <span class="comment">// aud是一个固定参数，也是苹果规定的</span></span><br><span class="line">        claims.put(<span class="string">&quot;aud&quot;</span>, <span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// subject则是开发者手上的APP的BundleID</span></span><br><span class="line">        claims.put(<span class="string">&quot;sub&quot;</span>, appConfig.clientId);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">PKCS8EncodedKeySpec</span> <span class="variable">pkcs8EncodedKeySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PKCS8EncodedKeySpec</span>(readAppleAuthPrivateKey(appConfig));</span><br><span class="line">            <span class="type">KeyFactory</span> <span class="variable">keyFactory</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;EC&quot;</span>);</span><br><span class="line">            <span class="type">PrivateKey</span> <span class="variable">privateKey</span> <span class="operator">=</span> keyFactory.generatePrivate(pkcs8EncodedKeySpec);</span><br><span class="line">            <span class="keyword">return</span> Jwts.builder()</span><br><span class="line">                .setHeader(header)</span><br><span class="line">                .setClaims(claims)</span><br><span class="line">                .signWith(SignatureAlgorithm.ES256, privateKey)</span><br><span class="line">                .compact();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;创建ClientSecret失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查返回值的有效性"><a href="#检查返回值的有效性" class="headerlink" title="检查返回值的有效性"></a>检查返回值的有效性</h3><p>上面的请求如果没有错误，我们会获得 Apple ID Server 下发的 TokenResponse：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    access_token: &quot;一个token，但是没什么用，因为苹果没有开其他的服务接口&quot;,</span><br><span class="line">    token_type: &quot;Bearer，固定值&quot;,</span><br><span class="line">    expires_in: 3600,</span><br><span class="line">    refresh_token: &quot;一个用来刷新token的token&quot;,</span><br><span class="line">    id_token: &quot;identityToken，结果是JWT，这个是核心&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就像上面的 JSON 里写到的，<code>id_token</code>是我们整个流程的核心，它包括了必要的<code>sub</code>，也就是我们常说的微信开放平台 UnionID 的概念。</p>
+<p>你可能会好奇为什么我提到了 UnionID。Apple ID Server 没有开放平台和公众平台的说法，理论上一个 Team 下的所有 APP 获取到的都是同一个 UserID，当然也有可能这个就是整个 Apple ID Server 给用户分配的全局 UserID，苹果用这样的 ID 统一了第三方登录的体系，你可以通过这个 UserID，在你的开发者账号下所有的 APP 中打通账户信息。</p>
+<p>接下来，我们可以选择直接信任 Apple ID Server 返回给我们的数据，直接解析 <code>id_token</code> 的 payload 拿到<code>sub</code>，但是我还是建议走一遍公钥校验以验证回传数据的可靠性。</p>
+<p>获取公钥很简单，苹果的公钥接口是开放的，不需要任何校验，任何人都可以调用，方法也很简单：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -G https://appleid.apple.com/auth/keys</span><br></pre></td></tr></table></figure>
+
+<p>这个接口会返回不止一个公钥，而是一组公钥列表，例如：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;keys&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;86D88Kf&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iGaLqP6y-SJCCBq5Hv6pGDbG_SQ11MNjH7rWHcCFYz4hGwHC4lcSurTlV8u3avoVNM8jXevG1Iu1SY11qInqUvjJur--hghr1b56OPJu6H1iKulSxGjEIyDP6c5BdE1uwprYyr4IO9th8fOwCPygjLFrh44XEGbDIFeImwvBAGOhmMB2AD1n1KviyNsH0bEB7phQtiLk-ILjv1bORSRl8AK677-1T8isGfHKXGZ_ZGtStDe7Lu0Ihp8zoUt59kx2o9uWpROkzF56ypresiIl4WprClRCjz8x6cPZXU2qNWhu71TQvUFwvIvbkE1oYaJMb0jcOTmBRZA2QuYw-zHLwQ&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eXaunmL&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4dGQ7bQK8LgILOdLsYzfZjkEAoQeVC_aqyc8GC6RX7dq_KvRAQAWPvkam8VQv4GK5T4ogklEKEvj5ISBamdDNq1n52TpxQwI2EqxSk7I9fKPKhRt4F8-2yETlYvye-2s6NeWJim0KBtOVrk0gWvEDgd6WOqJl_yt5WBISvILNyVg1qAAM8JeX6dRPosahRVDjA52G2X-Tip84wqwyRpUlq2ybzcLh3zyhCitBOebiRWDQfG26EH9lTlJhll-p_Dg8vAXxJLIJ4SNLcqgFeZe4OfHLgdzMvxXZJnPp_VgmkcpUdRotazKZumj6dBPcXI_XID4Z4Z3OM1KrZPJNdUhxw&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>是不是有点意外，苹果并不想让你直接知道该用哪个公钥去检查返回值，而是需要通过<code>KeyID</code>获取正确的公钥来验证返回值。这个<code>KeyID</code>也很好拿，就在<code>id_token</code>的 header 里，反解析 JWT 就能拿到。下面我把我自己的代码贴一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从Apple服务器获取验证Token签名的公钥（服务器缓存3600秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> JWKSet <span class="title function_">requestApplePublicKey</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// JWKSet，其结构如上面的 API 返回值</span></span><br><span class="line">        JWKSet obj;</span><br><span class="line">        <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redis.get(KEY_APPLE_PUBLIC_KEY_LIST);</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotEmpty(value)) &#123;</span><br><span class="line">            <span class="comment">// 服务器可以做一次短时缓存，从缓存读取公钥列表</span></span><br><span class="line">            obj = JSON.parseObject(value, JWKSet.class);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 第一次访问/缓存未命中，向 Apple ID Server 请求公钥组</span></span><br><span class="line">            <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">            <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> restTemplate.getForObject(API_APPLE_AUTH_KEY, String.class);</span><br><span class="line">            <span class="keyword">if</span> (StringUtil.isEmpty(content)) &#123;</span><br><span class="line">                <span class="comment">// 考虑到有可能会请求失败，这里我做了判空</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            obj = JSON.parseObject(content, JWKSet.class);</span><br><span class="line">            <span class="comment">// 写入短时缓存</span></span><br><span class="line">            redis.setex(KEY_APPLE_PUBLIC_KEY_LIST, content, <span class="number">3600</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 返回获取到的公钥对象</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取匹配identityToken.kid的公钥</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> kid 从 id_token 解析出来的 KeyID</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> PublicKey <span class="title function_">getApplePublicKey</span><span class="params">(String kid)</span> &#123;</span><br><span class="line">        <span class="type">JWKSet</span> <span class="variable">jwkSet</span> <span class="operator">=</span> requestApplePublicKey();</span><br><span class="line">        <span class="keyword">if</span> (jwkSet == <span class="literal">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (JWKSet.Keys key : jwkSet.getKeys()) &#123;</span><br><span class="line">            <span class="comment">// 在这里，我们把从 id_token 反解到的 kid 拿来查询公钥，如果找到了，则通过关键的两个参数 n 和 e 构造公钥对象，这个公钥会被用来验证 id_token 的有效性。</span></span><br><span class="line">            <span class="keyword">if</span> (kid.equals(key.getKid())) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> key.getN();</span><br><span class="line">                    <span class="type">String</span> <span class="variable">e</span> <span class="operator">=</span> key.getE();</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">modulus</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(n));</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">publicExponent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(e));</span><br><span class="line">                    <span class="type">RSAPublicKeySpec</span> <span class="variable">spec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RSAPublicKeySpec</span>(modulus, publicExponent);</span><br><span class="line">                    <span class="type">KeyFactory</span> <span class="variable">kf</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;RSA&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span> kf.generatePublic(spec);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    log.error(<span class="string">&quot;解析获取公钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检查identityToken是否合法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">verifyAppleIdentityToken</span><span class="params">(String identityToken)</span> &#123;</span><br><span class="line">        <span class="type">DecodedJWT</span> <span class="variable">jwt</span> <span class="operator">=</span> JWT.decode(identityToken);</span><br><span class="line">        <span class="type">String</span> <span class="variable">keyId</span> <span class="operator">=</span> jwt.getKeyId();</span><br><span class="line">        <span class="type">String</span> <span class="variable">audience</span> <span class="operator">=</span> jwt.getAudience().get(<span class="number">0</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">subject</span> <span class="operator">=</span> jwt.getSubject();</span><br><span class="line"></span><br><span class="line">        <span class="type">PublicKey</span> <span class="variable">publicKey</span> <span class="operator">=</span> getApplePublicKey(keyId);</span><br><span class="line">        <span class="type">JwtParser</span> <span class="variable">jwtParser</span> <span class="operator">=</span> Jwts.parser().setSigningKey(publicKey);</span><br><span class="line">        <span class="comment">// 官方文档说明描述到，由 Apple ID Server 签发的 token 信息，其 iss 是固定值 https://appleid.apple.com</span></span><br><span class="line">        jwtParser.requireIssuer(<span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// 这里检查 aud 是来自指定 App 发起的授权</span></span><br><span class="line">        jwtParser.requireAudience(audience);</span><br><span class="line">        <span class="comment">// 这个检查一般来说会使用客户端传来的 user 做 sub 的检查依据，但我自己的实现就没考虑这么多了。</span></span><br><span class="line">        <span class="comment">// 建议在 APP 向后端服务器发起登录调用时，安全起见，除开 code 授权码之外，也把 user 传来，因为客户端收到的 user 一定是 Apple ID Server 回传的合法值。</span></span><br><span class="line">        jwtParser.requireSubject(subject);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Jws&lt;Claims&gt; jws = jwtParser.parseClaimsJws(identityToken);</span><br><span class="line">            <span class="comment">// 检查 JWS 里是否存在 auth_time ，理由嘛我不知道，但我看大多数文档里大家都是这么检查的 :(</span></span><br><span class="line">            <span class="keyword">return</span> jws != <span class="literal">null</span> &amp;&amp; jws.getBody().containsKey(<span class="string">&quot;auth_time&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要我们对<code>id_token</code>的检查通过，整个授权流程基本就算完成了，后端服务器就能正确获取到 user 信息，从而进行我们自己的第三方登录&#x2F;注册流程。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="https://link.hhtjim.com/163/1834129483.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="https://link.hhtjim.com/163/1917045512.mp3"></li>
+                        
+                    
+                        
+                            <li title="2" data-url="https://link.hhtjim.com/163/1921647147.mp3"></li>
+                        
+                    
+                        
+                            <li title="3" data-url="https://link.hhtjim.com/163/1824358789.mp3"></li>
+                        
+                    
+                        
+                            <li title="4" data-url="https://link.hhtjim.com/163/33861454.mp3"></li>
+                        
+                    
+                        
+                            <li title="5" data-url="https://link.hhtjim.com/163/1892822514.mp3"></li>
+                        
+                    
+                        
+                            <li title="6" data-url="https://link.hhtjim.com/163/1886749619.mp3"></li>
+                        
+                    
+                        
+                            <li title="7" data-url="https://link.hhtjim.com/163/1893377827.mp3"></li>
+                        
+                    
+                        
+                            <li title="8" data-url="https://link.hhtjim.com/163/1837711414.mp3"></li>
+                        
+                    
+                        
+                            <li title="9" data-url="https://link.hhtjim.com/163/1902821823.mp3"></li>
+                        
+                    
+                        
+                            <li title="10" data-url="https://link.hhtjim.com/163/1905000143.mp3"></li>
+                        
+                    
+                        
+                            <li title="11" data-url="https://link.hhtjim.com/163/1886751583.mp3"></li>
+                        
+                    
+                        
+                            <li title="12" data-url="https://link.hhtjim.com/163/1887056113.mp3"></li>
+                        
+                    
+                        
+                            <li title="13" data-url="https://link.hhtjim.com/163/1847255990.mp3"></li>
+                        
+                    
+                        
+                            <li title="14" data-url="https://link.hhtjim.com/163/1893308333.mp3"></li>
+                        
+                    
+                        
+                            <li title="15" data-url="https://link.hhtjim.com/163/557579321.mp3"></li>
+                        
+                    
+                        
+                            <li title="16" data-url="https://link.hhtjim.com/163/738427.mp3"></li>
+                        
+                    
+                        
+                            <li title="17" data-url="https://link.hhtjim.com/163/1374221428.mp3"></li>
+                        
+                    
+                        
+                            <li title="18" data-url="https://link.hhtjim.com/163/40729292.mp3"></li>
+                        
+                    
+                        
+                            <li title="19" data-url="https://link.hhtjim.com/163/1892668318.mp3"></li>
+                        
+                    
+                        
+                            <li title="20" data-url="https://link.hhtjim.com/163/646913.mp3"></li>
+                        
+                    
+                        
+                            <li title="21" data-url="https://link.hhtjim.com/163/1892470945.mp3"></li>
+                        
+                    
+                        
+                            <li title="22" data-url="https://link.hhtjim.com/163/1192812.mp3"></li>
+                        
+                    
+                        
+                            <li title="23" data-url="https://link.hhtjim.com/163/1323977125.mp3"></li>
+                        
+                    
+                        
+                            <li title="24" data-url="https://link.hhtjim.com/163/4937720.mp3"></li>
+                        
+                    
+                        
+                            <li title="25" data-url="https://link.hhtjim.com/163/32737684.mp3"></li>
+                        
+                    
+                        
+                            <li title="26" data-url="https://link.hhtjim.com/163/26107975.mp3"></li>
+                        
+                    
+                        
+                            <li title="27" data-url="https://link.hhtjim.com/163/744932.mp3"></li>
+                        
+                    
+                        
+                            <li title="28" data-url="https://link.hhtjim.com/163/5105677.mp3"></li>
+                        
+                    
+                        
+                            <li title="29" data-url="https://link.hhtjim.com/163/461433535.mp3"></li>
+                        
+                    
+                        
+                            <li title="30" data-url="https://link.hhtjim.com/163/744960.mp3"></li>
+                        
+                    
+                        
+                            <li title="31" data-url="https://link.hhtjim.com/163/32803111.mp3"></li>
+                        
+                    
+                        
+                            <li title="32" data-url="https://link.hhtjim.com/163/437802377.mp3"></li>
+                        
+                    
+                        
+                            <li title="33" data-url="https://link.hhtjim.com/163/850502.mp3"></li>
+                        
+                    
+                        
+                            <li title="34" data-url="https://link.hhtjim.com/163/32235280.mp3"></li>
+                        
+                    
+                        
+                            <li title="35" data-url="https://link.hhtjim.com/163/459717323.mp3"></li>
+                        
+                    
+                        
+                            <li title="36" data-url="https://link.hhtjim.com/163/1862479259.mp3"></li>
+                        
+                    
+                        
+                            <li title="37" data-url="https://link.hhtjim.com/163/28941658.mp3"></li>
+                        
+                    
+                        
+                            <li title="38" data-url="https://link.hhtjim.com/163/28178210.mp3"></li>
+                        
+                    
+                        
+                            <li title="39" data-url="https://link.hhtjim.com/163/850775.mp3"></li>
+                        
+                    
+                        
+                            <li title="40" data-url="https://link.hhtjim.com/163/28178209.mp3"></li>
+                        
+                    
+                        
+                            <li title="41" data-url="https://link.hhtjim.com/163/40729723.mp3"></li>
+                        
+                    
+                        
+                            <li title="42" data-url="https://link.hhtjim.com/163/833066.mp3"></li>
+                        
+                    
+                        
+                            <li title="43" data-url="https://link.hhtjim.com/163/450222749.mp3"></li>
+                        
+                    
+                        
+                            <li title="44" data-url="https://link.hhtjim.com/163/22785073.mp3"></li>
+                        
+                    
+                        
+                            <li title="45" data-url="https://link.hhtjim.com/163/849603.mp3"></li>
+                        
+                    
+                        
+                            <li title="46" data-url="https://link.hhtjim.com/163/1301674241.mp3"></li>
+                        
+                    
+                        
+                            <li title="47" data-url="https://link.hhtjim.com/163/865025.mp3"></li>
+                        
+                    
+                        
+                            <li title="48" data-url="https://link.hhtjim.com/163/22750771.mp3"></li>
+                        
+                    
+                        
+                            <li title="49" data-url="https://link.hhtjim.com/163/1306498257.mp3"></li>
+                        
+                    
+                        
+                            <li title="50" data-url="https://link.hhtjim.com/163/36190037.mp3"></li>
+                        
+                    
+                        
+                            <li title="51" data-url="https://link.hhtjim.com/163/785200.mp3"></li>
+                        
+                    
+                        
+                            <li title="52" data-url="https://link.hhtjim.com/163/732209.mp3"></li>
+                        
+                    
+                        
+                            <li title="53" data-url="https://link.hhtjim.com/163/1833625379.mp3"></li>
+                        
+                    
+                        
+                            <li title="54" data-url="https://link.hhtjim.com/163/526468582.mp3"></li>
+                        
+                    
+                        
+                            <li title="55" data-url="https://link.hhtjim.com/163/369265.mp3"></li>
+                        
+                    
+                        
+                            <li title="56" data-url="https://link.hhtjim.com/163/2923186.mp3"></li>
+                        
+                    
+                        
+                            <li title="57" data-url="https://link.hhtjim.com/163/22733413.mp3"></li>
+                        
+                    
+                        
+                            <li title="58" data-url="https://link.hhtjim.com/163/730727.mp3"></li>
+                        
+                    
+                        
+                            <li title="59" data-url="https://link.hhtjim.com/163/27709044.mp3"></li>
+                        
+                    
+                        
+                            <li title="60" data-url="https://link.hhtjim.com/163/1836078157.mp3"></li>
+                        
+                    
+                        
+                            <li title="61" data-url="https://link.hhtjim.com/163/1401248183.mp3"></li>
+                        
+                    
+                        
+                            <li title="62" data-url="https://link.hhtjim.com/163/1396561141.mp3"></li>
+                        
+                    
+                        
+                            <li title="63" data-url="https://link.hhtjim.com/163/41672757.mp3"></li>
+                        
+                    
+                        
+                            <li title="64" data-url="https://link.hhtjim.com/163/1810067388.mp3"></li>
+                        
+                    
+                        
+                            <li title="65" data-url="https://link.hhtjim.com/163/412327427.mp3"></li>
+                        
+                    
+                        
+                            <li title="66" data-url="https://link.hhtjim.com/163/593621.mp3"></li>
+                        
+                    
+                        
+                            <li title="67" data-url="https://link.hhtjim.com/163/26135815.mp3"></li>
+                        
+                    
+                        
+                            <li title="68" data-url="https://link.hhtjim.com/163/443291336.mp3"></li>
+                        
+                    
+                        
+                            <li title="69" data-url="https://link.hhtjim.com/163/1399441026.mp3"></li>
+                        
+                    
+                        
+                            <li title="70" data-url="https://link.hhtjim.com/163/1356537558.mp3"></li>
+                        
+                    
+                        
+                            <li title="71" data-url="https://link.hhtjim.com/163/1398575490.mp3"></li>
+                        
+                    
+                        
+                            <li title="72" data-url="https://link.hhtjim.com/163/1298504813.mp3"></li>
+                        
+                    
+                        
+                            <li title="73" data-url="https://link.hhtjim.com/163/1321848058.mp3"></li>
+                        
+                    
+                        
+                            <li title="74" data-url="https://link.hhtjim.com/163/1301573948.mp3"></li>
+                        
+                    
+                        
+                            <li title="75" data-url="https://link.hhtjim.com/163/1356119838.mp3"></li>
+                        
+                    
+                        
+                            <li title="76" data-url="https://link.hhtjim.com/163/1401040013.mp3"></li>
+                        
+                    
+                        
+                            <li title="77" data-url="https://link.hhtjim.com/163/1404469236.mp3"></li>
+                        
+                    
+                        
+                            <li title="78" data-url="https://link.hhtjim.com/163/1813827678.mp3"></li>
+                        
+                    
+                        
+                            <li title="79" data-url="https://link.hhtjim.com/163/22753344.mp3"></li>
+                        
+                    
+                        
+                            <li title="80" data-url="https://link.hhtjim.com/163/1440867211.mp3"></li>
+                        
+                    
+                        
+                            <li title="81" data-url="https://link.hhtjim.com/163/1382794922.mp3"></li>
+                        
+                    
+                        
+                            <li title="82" data-url="https://link.hhtjim.com/163/1390640629.mp3"></li>
+                        
+                    
+                        
+                            <li title="83" data-url="https://link.hhtjim.com/163/1301573950.mp3"></li>
+                        
+                    
+                        
+                            <li title="84" data-url="https://link.hhtjim.com/163/1342949573.mp3"></li>
+                        
+                    
+                        
+                            <li title="85" data-url="https://link.hhtjim.com/163/450400215.mp3"></li>
+                        
+                    
+                        
+                            <li title="86" data-url="https://link.hhtjim.com/163/1433315250.mp3"></li>
+                        
+                    
+                        
+                            <li title="87" data-url="https://link.hhtjim.com/163/1407566490.mp3"></li>
+                        
+                    
+                        
+                            <li title="88" data-url="https://link.hhtjim.com/163/1813516900.mp3"></li>
+                        
+                    
+                        
+                            <li title="89" data-url="https://link.hhtjim.com/163/1446245131.mp3"></li>
+                        
+                    
+                        
+                            <li title="90" data-url="https://link.hhtjim.com/163/1317407941.mp3"></li>
+                        
+                    
+                        
+                            <li title="91" data-url="https://link.hhtjim.com/163/1468875966.mp3"></li>
+                        
+                    
+                        
+                            <li title="92" data-url="https://link.hhtjim.com/163/477854260.mp3"></li>
+                        
+                    
+                        
+                            <li title="93" data-url="https://link.hhtjim.com/163/1351240456.mp3"></li>
+                        
+                    
+                        
+                            <li title="94" data-url="https://link.hhtjim.com/163/1395338963.mp3"></li>
+                        
+                    
+                        
+                            <li title="95" data-url="https://link.hhtjim.com/163/1432169641.mp3"></li>
+                        
+                    
+                        
+                            <li title="96" data-url="https://link.hhtjim.com/163/1466303986.mp3"></li>
+                        
+                    
+                        
+                            <li title="97" data-url="https://link.hhtjim.com/163/1299557936.mp3"></li>
+                        
+                    
+                        
+                            <li title="98" data-url="https://link.hhtjim.com/163/1350129460.mp3"></li>
+                        
+                    
+                        
+                            <li title="99" data-url="https://link.hhtjim.com/163/1379821181.mp3"></li>
+                        
+                    
+                        
+                            <li title="100" data-url="https://link.hhtjim.com/163/1469826888.mp3"></li>
+                        
+                    
+                        
+                            <li title="101" data-url="https://link.hhtjim.com/163/428203072.mp3"></li>
+                        
+                    
+                        
+                            <li title="102" data-url="https://link.hhtjim.com/163/34367059.mp3"></li>
+                        
+                    
+                        
+                            <li title="103" data-url="https://link.hhtjim.com/163/1371721171.mp3"></li>
+                        
+                    
+                        
+                            <li title="104" data-url="https://link.hhtjim.com/163/22765951.mp3"></li>
+                        
+                    
+                        
+                            <li title="105" data-url="https://link.hhtjim.com/163/525122032.mp3"></li>
+                        
+                    
+                        
+                            <li title="106" data-url="https://link.hhtjim.com/163/474739761.mp3"></li>
+                        
+                    
+                        
+                            <li title="107" data-url="https://link.hhtjim.com/163/1458087676.mp3"></li>
+                        
+                    
+                        
+                            <li title="108" data-url="https://link.hhtjim.com/163/33291727.mp3"></li>
+                        
+                    
+                        
+                            <li title="109" data-url="https://link.hhtjim.com/163/28360849.mp3"></li>
+                        
+                    
+                        
+                            <li title="110" data-url="https://link.hhtjim.com/163/640068.mp3"></li>
+                        
+                    
+                        
+                            <li title="111" data-url="https://link.hhtjim.com/163/442589034.mp3"></li>
+                        
+                    
+                        
+                            <li title="112" data-url="https://link.hhtjim.com/163/1347630432.mp3"></li>
+                        
+                    
+                        
+                            <li title="113" data-url="https://link.hhtjim.com/163/775653.mp3"></li>
+                        
+                    
+                        
+                            <li title="114" data-url="https://link.hhtjim.com/163/22651636.mp3"></li>
+                        
+                    
+                        
+                            <li title="115" data-url="https://link.hhtjim.com/163/498880661.mp3"></li>
+                        
+                    
+                        
+                            <li title="116" data-url="https://link.hhtjim.com/163/817723.mp3"></li>
+                        
+                    
+                        
+                            <li title="117" data-url="https://link.hhtjim.com/163/1365933510.mp3"></li>
+                        
+                    
+                        
+                            <li title="118" data-url="https://link.hhtjim.com/163/640866.mp3"></li>
+                        
+                    
+                        
+                            <li title="119" data-url="https://link.hhtjim.com/163/1342954499.mp3"></li>
+                        
+                    
+                        
+                            <li title="120" data-url="https://link.hhtjim.com/163/34179228.mp3"></li>
+                        
+                    
+                        
+                            <li title="121" data-url="https://link.hhtjim.com/163/471554811.mp3"></li>
+                        
+                    
+                        
+                            <li title="122" data-url="https://link.hhtjim.com/163/1342949564.mp3"></li>
+                        
+                    
+                        
+                            <li title="123" data-url="https://link.hhtjim.com/163/28445602.mp3"></li>
+                        
+                    
+                        
+                            <li title="124" data-url="https://link.hhtjim.com/163/425684779.mp3"></li>
+                        
+                    
+                        
+                            <li title="125" data-url="https://link.hhtjim.com/163/1352840033.mp3"></li>
+                        
+                    
+                        
+                            <li title="126" data-url="https://link.hhtjim.com/163/803048.mp3"></li>
+                        
+                    
+                        
+                            <li title="127" data-url="https://link.hhtjim.com/163/22805112.mp3"></li>
+                        
+                    
+                        
+                            <li title="128" data-url="https://link.hhtjim.com/163/640545.mp3"></li>
+                        
+                    
+                        
+                            <li title="129" data-url="https://link.hhtjim.com/163/4899152.mp3"></li>
+                        
+                    
+                        
+                            <li title="130" data-url="https://link.hhtjim.com/163/478384.mp3"></li>
+                        
+                    
+                        
+                            <li title="131" data-url="https://link.hhtjim.com/163/857176.mp3"></li>
+                        
+                    
+                        
+                            <li title="132" data-url="https://link.hhtjim.com/163/29713218.mp3"></li>
+                        
+                    
+                        
+                            <li title="133" data-url="https://link.hhtjim.com/163/448316041.mp3"></li>
+                        
+                    
+                        
+                            <li title="134" data-url="https://link.hhtjim.com/163/32803294.mp3"></li>
+                        
+                    
+                        
+                            <li title="135" data-url="https://link.hhtjim.com/163/1368324900.mp3"></li>
+                        
+                    
+                        
+                            <li title="136" data-url="https://link.hhtjim.com/163/571073131.mp3"></li>
+                        
+                    
+                        
+                            <li title="137" data-url="https://link.hhtjim.com/163/40729223.mp3"></li>
+                        
+                    
+                        
+                            <li title="138" data-url="https://link.hhtjim.com/163/28684025.mp3"></li>
+                        
+                    
+                        
+                            <li title="139" data-url="https://link.hhtjim.com/163/34509272.mp3"></li>
+                        
+                    
+                        
+                            <li title="140" data-url="https://link.hhtjim.com/163/565890090.mp3"></li>
+                        
+                    
+                        
+                            <li title="141" data-url="https://link.hhtjim.com/163/1306163092.mp3"></li>
+                        
+                    
+                        
+                            <li title="142" data-url="https://link.hhtjim.com/163/499018.mp3"></li>
+                        
+                    
+                        
+                            <li title="143" data-url="https://link.hhtjim.com/163/4898497.mp3"></li>
+                        
+                    
+                        
+                            <li title="144" data-url="https://link.hhtjim.com/163/525063503.mp3"></li>
+                        
+                    
+                        
+                            <li title="145" data-url="https://link.hhtjim.com/163/611868.mp3"></li>
+                        
+                    
+                        
+                            <li title="146" data-url="https://link.hhtjim.com/163/543988578.mp3"></li>
+                        
+                    
+                        
+                            <li title="147" data-url="https://link.hhtjim.com/163/487527980.mp3"></li>
+                        
+                    
+                        
+                            <li title="148" data-url="https://link.hhtjim.com/163/1361188105.mp3"></li>
+                        
+                    
+                        
+                            <li title="149" data-url="https://link.hhtjim.com/163/4939764.mp3"></li>
+                        
+                    
+                        
+                            <li title="150" data-url="https://link.hhtjim.com/163/479441420.mp3"></li>
+                        
+                    
+                        
+                            <li title="151" data-url="https://link.hhtjim.com/163/25806118.mp3"></li>
+                        
+                    
+                        
+                            <li title="152" data-url="https://link.hhtjim.com/163/407862870.mp3"></li>
+                        
+                    
+                        
+                            <li title="153" data-url="https://link.hhtjim.com/163/477332351.mp3"></li>
+                        
+                    
+                        
+                            <li title="154" data-url="https://link.hhtjim.com/163/463268158.mp3"></li>
+                        
+                    
+                        
+                            <li title="155" data-url="https://link.hhtjim.com/163/1341138517.mp3"></li>
+                        
+                    
+                        
+                            <li title="156" data-url="https://link.hhtjim.com/163/32046764.mp3"></li>
+                        
+                    
+                        
+                            <li title="157" data-url="https://link.hhtjim.com/163/1306507053.mp3"></li>
+                        
+                    
+                        
+                            <li title="158" data-url="https://link.hhtjim.com/163/557584114.mp3"></li>
+                        
+                    
+                        
+                            <li title="159" data-url="https://link.hhtjim.com/163/624670.mp3"></li>
+                        
+                    
+                        
+                            <li title="160" data-url="https://link.hhtjim.com/163/536623501.mp3"></li>
+                        
+                    
+                        
+                            <li title="161" data-url="https://link.hhtjim.com/163/577438.mp3"></li>
+                        
+                    
+                        
+                            <li title="162" data-url="https://link.hhtjim.com/163/411500258.mp3"></li>
+                        
+                    
+                        
+                            <li title="163" data-url="https://link.hhtjim.com/163/28193400.mp3"></li>
+                        
+                    
+                        
+                            <li title="164" data-url="https://link.hhtjim.com/163/406846048.mp3"></li>
+                        
+                    
+                        
+                            <li title="165" data-url="https://link.hhtjim.com/163/547973475.mp3"></li>
+                        
+                    
+                        
+                            <li title="166" data-url="https://link.hhtjim.com/163/1306507269.mp3"></li>
+                        
+                    
+                        
+                            <li title="167" data-url="https://link.hhtjim.com/163/1320097223.mp3"></li>
+                        
+                    
+                        
+                            <li title="168" data-url="https://link.hhtjim.com/163/419596411.mp3"></li>
+                        
+                    
+                        
+                            <li title="169" data-url="https://link.hhtjim.com/163/658318.mp3"></li>
+                        
+                    
+                        
+                            <li title="170" data-url="https://link.hhtjim.com/163/441835870.mp3"></li>
+                        
+                    
+                        
+                            <li title="171" data-url="https://link.hhtjim.com/163/400876507.mp3"></li>
+                        
+                    
+                        
+                            <li title="172" data-url="https://link.hhtjim.com/163/484249882.mp3"></li>
+                        
+                    
+                        
+                            <li title="173" data-url="https://link.hhtjim.com/163/27785995.mp3"></li>
+                        
+                    
+                        
+                            <li title="174" data-url="https://link.hhtjim.com/163/27785952.mp3"></li>
+                        
+                    
+                        
+                            <li title="175" data-url="https://link.hhtjim.com/163/27901184.mp3"></li>
+                        
+                    
+                        
+                            <li title="176" data-url="https://link.hhtjim.com/163/582005.mp3"></li>
+                        
+                    
+                        
+                            <li title="177" data-url="https://link.hhtjim.com/163/1351607470.mp3"></li>
+                        
+                    
+                        
+                            <li title="178" data-url="https://link.hhtjim.com/163/29307195.mp3"></li>
+                        
+                    
+                        
+                            <li title="179" data-url="https://link.hhtjim.com/163/454231899.mp3"></li>
+                        
+                    
+                        
+                            <li title="180" data-url="https://link.hhtjim.com/163/610061.mp3"></li>
+                        
+                    
+                        
+                            <li title="181" data-url="https://link.hhtjim.com/163/505665802.mp3"></li>
+                        
+                    
+                        
+                            <li title="182" data-url="https://link.hhtjim.com/163/1335390116.mp3"></li>
+                        
+                    
+                        
+                            <li title="183" data-url="https://link.hhtjim.com/163/1315821092.mp3"></li>
+                        
+                    
+                        
+                            <li title="184" data-url="https://link.hhtjim.com/163/399552336.mp3"></li>
+                        
+                    
+                        
+                            <li title="185" data-url="https://link.hhtjim.com/163/776782.mp3"></li>
+                        
+                    
+                        
+                            <li title="186" data-url="https://link.hhtjim.com/163/488388942.mp3"></li>
+                        
+                    
+                        
+                            <li title="187" data-url="https://link.hhtjim.com/163/511634603.mp3"></li>
+                        
+                    
+                        
+                            <li title="188" data-url="https://link.hhtjim.com/163/676568.mp3"></li>
+                        
+                    
+                        
+                            <li title="189" data-url="https://link.hhtjim.com/163/549484811.mp3"></li>
+                        
+                    
+                        
+                            <li title="190" data-url="https://link.hhtjim.com/163/428375160.mp3"></li>
+                        
+                    
+                        
+                            <li title="191" data-url="https://link.hhtjim.com/163/3939265.mp3"></li>
+                        
+                    
+                        
+                            <li title="192" data-url="https://link.hhtjim.com/163/4344553.mp3"></li>
+                        
+                    
+                        
+                            <li title="193" data-url="https://link.hhtjim.com/163/3939119.mp3"></li>
+                        
+                    
+                        
+                            <li title="194" data-url="https://link.hhtjim.com/163/514543705.mp3"></li>
+                        
+                    
+                        
+                            <li title="195" data-url="https://link.hhtjim.com/163/668526.mp3"></li>
+                        
+                    
+                        
+                            <li title="196" data-url="https://link.hhtjim.com/163/461858804.mp3"></li>
+                        
+                    
+                        
+                            <li title="197" data-url="https://link.hhtjim.com/163/432509390.mp3"></li>
+                        
+                    
+                        
+                            <li title="198" data-url="https://link.hhtjim.com/163/480409956.mp3"></li>
+                        
+                    
+                        
+                            <li title="199" data-url="https://link.hhtjim.com/163/1349262474.mp3"></li>
+                        
+                    
+                        
+                            <li title="200" data-url="https://link.hhtjim.com/163/34696849.mp3"></li>
+                        
+                    
+                        
+                            <li title="201" data-url="https://link.hhtjim.com/163/30841216.mp3"></li>
+                        
+                    
+                        
+                            <li title="202" data-url="https://link.hhtjim.com/163/1302953068.mp3"></li>
+                        
+                    
+                        
+                            <li title="203" data-url="https://link.hhtjim.com/163/432486474.mp3"></li>
+                        
+                    
+                        
+                            <li title="204" data-url="https://link.hhtjim.com/163/522529482.mp3"></li>
+                        
+                    
+                        
+                            <li title="205" data-url="https://link.hhtjim.com/163/423058145.mp3"></li>
+                        
+                    
+                        
+                            <li title="206" data-url="https://link.hhtjim.com/163/471799.mp3"></li>
+                        
+                    
+                        
+                            <li title="207" data-url="https://link.hhtjim.com/163/450222764.mp3"></li>
+                        
+                    
+                        
+                            <li title="208" data-url="https://link.hhtjim.com/163/413831435.mp3"></li>
+                        
+                    
+                        
+                            <li title="209" data-url="https://link.hhtjim.com/163/26260384.mp3"></li>
+                        
+                    
+                        
+                            <li title="210" data-url="https://link.hhtjim.com/163/33715610.mp3"></li>
+                        
+                    
+                        
+                            <li title="211" data-url="https://link.hhtjim.com/163/560144.mp3"></li>
+                        
+                    
+                        
+                            <li title="212" data-url="https://link.hhtjim.com/163/28378006.mp3"></li>
+                        
+                    
+                        
+                            <li title="213" data-url="https://link.hhtjim.com/163/587211.mp3"></li>
+                        
+                    
+                        
+                            <li title="214" data-url="https://link.hhtjim.com/163/812531.mp3"></li>
+                        
+                    
+                        
+                            <li title="215" data-url="https://link.hhtjim.com/163/28445574.mp3"></li>
+                        
+                    
+                        
+                            <li title="216" data-url="https://link.hhtjim.com/163/820665.mp3"></li>
+                        
+                    
+                        
+                            <li title="217" data-url="https://link.hhtjim.com/163/27580227.mp3"></li>
+                        
+                    
+                        
+                            <li title="218" data-url="https://link.hhtjim.com/163/435166264.mp3"></li>
+                        
+                    
+                        
+                            <li title="219" data-url="https://link.hhtjim.com/163/421203775.mp3"></li>
+                        
+                    
+                        
+                            <li title="220" data-url="https://link.hhtjim.com/163/32803290.mp3"></li>
+                        
+                    
+                        
+                            <li title="221" data-url="https://link.hhtjim.com/163/33378324.mp3"></li>
+                        
+                    
+                        
+                            <li title="222" data-url="https://link.hhtjim.com/163/812673.mp3"></li>
+                        
+                    
+                        
+                            <li title="223" data-url="https://link.hhtjim.com/163/28445546.mp3"></li>
+                        
+                    
+                        
+                            <li title="224" data-url="https://link.hhtjim.com/163/26116002.mp3"></li>
+                        
+                    
+                        
+                            <li title="225" data-url="https://link.hhtjim.com/163/574919996.mp3"></li>
+                        
+                    
+                        
+                            <li title="226" data-url="https://link.hhtjim.com/163/26116001.mp3"></li>
+                        
+                    
+                        
+                            <li title="227" data-url="https://link.hhtjim.com/163/28875033.mp3"></li>
+                        
+                    
+                        
+                            <li title="228" data-url="https://link.hhtjim.com/163/550483.mp3"></li>
+                        
+                    
+                        
+                            <li title="229" data-url="https://link.hhtjim.com/163/469073339.mp3"></li>
+                        
+                    
+                        
+                            <li title="230" data-url="https://link.hhtjim.com/163/541499348.mp3"></li>
+                        
+                    
+                        
+                            <li title="231" data-url="https://link.hhtjim.com/163/536098169.mp3"></li>
+                        
+                    
+                        
+                            <li title="232" data-url="https://link.hhtjim.com/163/499009.mp3"></li>
+                        
+                    
+                        
+                            <li title="233" data-url="https://link.hhtjim.com/163/1309901145.mp3"></li>
+                        
+                    
+                        
+                            <li title="234" data-url="https://link.hhtjim.com/163/30431360.mp3"></li>
+                        
+                    
+                        
+                            <li title="235" data-url="https://link.hhtjim.com/163/28178158.mp3"></li>
+                        
+                    
+                        
+                            <li title="236" data-url="https://link.hhtjim.com/163/1321424521.mp3"></li>
+                        
+                    
+                        
+                            <li title="237" data-url="https://link.hhtjim.com/163/36493000.mp3"></li>
+                        
+                    
+                        
+                            <li title="238" data-url="https://link.hhtjim.com/163/496617538.mp3"></li>
+                        
+                    
+                        
+                            <li title="239" data-url="https://link.hhtjim.com/163/411236802.mp3"></li>
+                        
+                    
+                        
+                            <li title="240" data-url="https://link.hhtjim.com/163/26092656.mp3"></li>
+                        
+                    
+                        
+                            <li title="241" data-url="https://link.hhtjim.com/163/460839654.mp3"></li>
+                        
+                    
+                        
+                            <li title="242" data-url="https://link.hhtjim.com/163/407000247.mp3"></li>
+                        
+                    
+                        
+                            <li title="243" data-url="https://link.hhtjim.com/163/29897558.mp3"></li>
+                        
+                    
+                        
+                            <li title="244" data-url="https://link.hhtjim.com/163/550138130.mp3"></li>
+                        
+                    
+                        
+                            <li title="245" data-url="https://link.hhtjim.com/163/417613605.mp3"></li>
+                        
+                    
+                        
+                            <li title="246" data-url="https://link.hhtjim.com/163/699893.mp3"></li>
+                        
+                    
+                        
+                            <li title="247" data-url="https://link.hhtjim.com/163/501291909.mp3"></li>
+                        
+                    
+                        
+                            <li title="248" data-url="https://link.hhtjim.com/163/4931484.mp3"></li>
+                        
+                    
+                        
+                            <li title="249" data-url="https://link.hhtjim.com/163/31967337.mp3"></li>
+                        
+                    
+                        
+                            <li title="250" data-url="https://link.hhtjim.com/163/611923.mp3"></li>
+                        
+                    
+                        
+                            <li title="251" data-url="https://link.hhtjim.com/163/1317457906.mp3"></li>
+                        
+                    
+                        
+                            <li title="252" data-url="https://link.hhtjim.com/163/22730168.mp3"></li>
+                        
+                    
+                        
+                            <li title="253" data-url="https://link.hhtjim.com/163/666122.mp3"></li>
+                        
+                    
+                        
+                            <li title="254" data-url="https://link.hhtjim.com/163/838303.mp3"></li>
+                        
+                    
+                        
+                            <li title="255" data-url="https://link.hhtjim.com/163/536098015.mp3"></li>
+                        
+                    
+                        
+                            <li title="256" data-url="https://link.hhtjim.com/163/1316563356.mp3"></li>
+                        
+                    
+                        
+                            <li title="257" data-url="https://link.hhtjim.com/163/566435442.mp3"></li>
+                        
+                    
+                        
+                            <li title="258" data-url="https://link.hhtjim.com/163/610149.mp3"></li>
+                        
+                    
+                        
+                            <li title="259" data-url="https://link.hhtjim.com/163/455345170.mp3"></li>
+                        
+                    
+                        
+                            <li title="260" data-url="https://link.hhtjim.com/163/419238092.mp3"></li>
+                        
+                    
+                        
+                            <li title="261" data-url="https://link.hhtjim.com/163/503127102.mp3"></li>
+                        
+                    
+                        
+                            <li title="262" data-url="https://link.hhtjim.com/163/530986958.mp3"></li>
+                        
+                    
+                        
+                            <li title="263" data-url="https://link.hhtjim.com/163/618325.mp3"></li>
+                        
+                    
+                        
+                            <li title="264" data-url="https://link.hhtjim.com/163/22645576.mp3"></li>
+                        
+                    
+                        
+                            <li title="265" data-url="https://link.hhtjim.com/163/419254423.mp3"></li>
+                        
+                    
+                        
+                            <li title="266" data-url="https://link.hhtjim.com/163/426026778.mp3"></li>
+                        
+                    
+                        
+                            <li title="267" data-url="https://link.hhtjim.com/163/578090.mp3"></li>
+                        
+                    
+                        
+                            <li title="268" data-url="https://link.hhtjim.com/163/562594166.mp3"></li>
+                        
+                    
+                        
+                            <li title="269" data-url="https://link.hhtjim.com/163/542792596.mp3"></li>
+                        
+                    
+                        
+                            <li title="270" data-url="https://link.hhtjim.com/163/22675918.mp3"></li>
+                        
+                    
+                        
+                            <li title="271" data-url="https://link.hhtjim.com/163/489970645.mp3"></li>
+                        
+                    
+                        
+                            <li title="272" data-url="https://link.hhtjim.com/163/20789751.mp3"></li>
+                        
+                    
+                        
+                            <li title="273" data-url="https://link.hhtjim.com/163/561094746.mp3"></li>
+                        
+                    
+                        
+                            <li title="274" data-url="https://link.hhtjim.com/163/667076.mp3"></li>
+                        
+                    
+                        
+                            <li title="275" data-url="https://link.hhtjim.com/163/36496419.mp3"></li>
+                        
+                    
+                        
+                            <li title="276" data-url="https://link.hhtjim.com/163/29785407.mp3"></li>
+                        
+                    
+                        
+                            <li title="277" data-url="https://link.hhtjim.com/163/32450268.mp3"></li>
+                        
+                    
+                        
+                            <li title="278" data-url="https://link.hhtjim.com/163/26217033.mp3"></li>
+                        
+                    
+                        
+                            <li title="279" data-url="https://link.hhtjim.com/163/769950.mp3"></li>
+                        
+                    
+                        
+                            <li title="280" data-url="https://link.hhtjim.com/163/425280305.mp3"></li>
+                        
+                    
+                        
+                            <li title="281" data-url="https://link.hhtjim.com/163/418602555.mp3"></li>
+                        
+                    
+                        
+                            <li title="282" data-url="https://link.hhtjim.com/163/476323636.mp3"></li>
+                        
+                    
+                        
+                            <li title="283" data-url="https://link.hhtjim.com/163/477839693.mp3"></li>
+                        
+                    
+                        
+                            <li title="284" data-url="https://link.hhtjim.com/163/26103161.mp3"></li>
+                        
+                    
+                        
+                            <li title="285" data-url="https://link.hhtjim.com/163/760037.mp3"></li>
+                        
+                    
+                        
+                            <li title="286" data-url="https://link.hhtjim.com/163/469272730.mp3"></li>
+                        
+                    
+                        
+                            <li title="287" data-url="https://link.hhtjim.com/163/467952146.mp3"></li>
+                        
+                    
+                        
+                            <li title="288" data-url="https://link.hhtjim.com/163/4940455.mp3"></li>
+                        
+                    
+                        
+                            <li title="289" data-url="https://link.hhtjim.com/163/28977795.mp3"></li>
+                        
+                    
+                        
+                            <li title="290" data-url="https://link.hhtjim.com/163/417833623.mp3"></li>
+                        
+                    
+                        
+                            <li title="291" data-url="https://link.hhtjim.com/163/424262056.mp3"></li>
+                        
+                    
+                        
+                            <li title="292" data-url="https://link.hhtjim.com/163/40915404.mp3"></li>
+                        
+                    
+                        
+                            <li title="293" data-url="https://link.hhtjim.com/163/40915405.mp3"></li>
+                        
+                    
+                        
+                            <li title="294" data-url="https://link.hhtjim.com/163/666443.mp3"></li>
+                        
+                    
+                        
+                            <li title="295" data-url="https://link.hhtjim.com/163/35090707.mp3"></li>
+                        
+                    
+                        
+                            <li title="296" data-url="https://link.hhtjim.com/163/27538415.mp3"></li>
+                        
+                    
+                        
+                            <li title="297" data-url="https://link.hhtjim.com/163/22703777.mp3"></li>
+                        
+                    
+                        
+                            <li title="298" data-url="https://link.hhtjim.com/163/441835219.mp3"></li>
+                        
+                    
+                        
+                            <li title="299" data-url="https://link.hhtjim.com/163/28828613.mp3"></li>
+                        
+                    
+                        
+                            <li title="300" data-url="https://link.hhtjim.com/163/460319.mp3"></li>
+                        
+                    
+                        
+                            <li title="301" data-url="https://link.hhtjim.com/163/29758025.mp3"></li>
+                        
+                    
+                        
+                            <li title="302" data-url="https://link.hhtjim.com/163/28660405.mp3"></li>
+                        
+                    
+                        
+                            <li title="303" data-url="https://link.hhtjim.com/163/449578849.mp3"></li>
+                        
+                    
+                        
+                            <li title="304" data-url="https://link.hhtjim.com/163/811721.mp3"></li>
+                        
+                    
+                        
+                            <li title="305" data-url="https://link.hhtjim.com/163/38358219.mp3"></li>
+                        
+                    
+                        
+                            <li title="306" data-url="https://link.hhtjim.com/163/514774419.mp3"></li>
+                        
+                    
+                        
+                            <li title="307" data-url="https://link.hhtjim.com/163/537854163.mp3"></li>
+                        
+                    
+                        
+                            <li title="308" data-url="https://link.hhtjim.com/163/537854242.mp3"></li>
+                        
+                    
+                        
+                            <li title="309" data-url="https://link.hhtjim.com/163/537854209.mp3"></li>
+                        
+                    
+                        
+                            <li title="310" data-url="https://link.hhtjim.com/163/528338969.mp3"></li>
+                        
+                    
+                        
+                            <li title="311" data-url="https://link.hhtjim.com/163/38689090.mp3"></li>
+                        
+                    
+                        
+                            <li title="312" data-url="https://link.hhtjim.com/163/406355.mp3"></li>
+                        
+                    
+                        
+                            <li title="313" data-url="https://link.hhtjim.com/163/550573.mp3"></li>
+                        
+                    
+                        
+                            <li title="314" data-url="https://link.hhtjim.com/163/666395.mp3"></li>
+                        
+                    
+                        
+                            <li title="315" data-url="https://link.hhtjim.com/163/453749183.mp3"></li>
+                        
+                    
+                        
+                            <li title="316" data-url="https://link.hhtjim.com/163/26259014.mp3"></li>
+                        
+                    
+                        
+                            <li title="317" data-url="https://link.hhtjim.com/163/29593225.mp3"></li>
+                        
+                    
+                        
+                            <li title="318" data-url="https://link.hhtjim.com/163/476081899.mp3"></li>
+                        
+                    
+                        
+                            <li title="319" data-url="https://link.hhtjim.com/163/476638472.mp3"></li>
+                        
+                    
+                        
+                            <li title="320" data-url="https://link.hhtjim.com/163/529824966.mp3"></li>
+                        
+                    
+                        
+                            <li title="321" data-url="https://link.hhtjim.com/163/496869422.mp3"></li>
+                        
+                    
+                        
+                            <li title="322" data-url="https://link.hhtjim.com/163/525241744.mp3"></li>
+                        
+                    
+                        
+                            <li title="323" data-url="https://link.hhtjim.com/163/525240742.mp3"></li>
+                        
+                    
+                        
+                            <li title="324" data-url="https://link.hhtjim.com/163/402073800.mp3"></li>
+                        
+                    
+                        
+                            <li title="325" data-url="https://link.hhtjim.com/163/419254422.mp3"></li>
+                        
+                    
+                        
+                            <li title="326" data-url="https://link.hhtjim.com/163/28863070.mp3"></li>
+                        
+                    
+                        
+                            <li title="327" data-url="https://link.hhtjim.com/163/26101820.mp3"></li>
+                        
+                    
+                        
+                            <li title="328" data-url="https://link.hhtjim.com/163/19394361.mp3"></li>
+                        
+                    
+                        
+                            <li title="329" data-url="https://link.hhtjim.com/163/650501.mp3"></li>
+                        
+                    
+                        
+                            <li title="330" data-url="https://link.hhtjim.com/163/650499.mp3"></li>
+                        
+                    
+                        
+                            <li title="331" data-url="https://link.hhtjim.com/163/614089.mp3"></li>
+                        
+                    
+                        
+                            <li title="332" data-url="https://link.hhtjim.com/163/614083.mp3"></li>
+                        
+                    
+                        
+                            <li title="333" data-url="https://link.hhtjim.com/163/29043459.mp3"></li>
+                        
+                    
+                        
+                            <li title="334" data-url="https://link.hhtjim.com/163/27901843.mp3"></li>
+                        
+                    
+                        
+                            <li title="335" data-url="https://link.hhtjim.com/163/23666762.mp3"></li>
+                        
+                    
+                        
+                            <li title="336" data-url="https://link.hhtjim.com/163/26339871.mp3"></li>
+                        
+                    
+                        
+                            <li title="337" data-url="https://link.hhtjim.com/163/25773411.mp3"></li>
+                        
+                    
+                        
+                            <li title="338" data-url="https://link.hhtjim.com/163/31134451.mp3"></li>
+                        
+                    
+                        
+                            <li title="339" data-url="https://link.hhtjim.com/163/30621778.mp3"></li>
+                        
+                    
+                        
+                            <li title="340" data-url="https://link.hhtjim.com/163/30621781.mp3"></li>
+                        
+                    
+                        
+                            <li title="341" data-url="https://link.hhtjim.com/163/16686600.mp3"></li>
+                        
+                    
+                        
+                            <li title="342" data-url="https://link.hhtjim.com/163/30841187.mp3"></li>
+                        
+                    
+                        
+                            <li title="343" data-url="https://link.hhtjim.com/163/30590965.mp3"></li>
+                        
+                    
+                        
+                            <li title="344" data-url="https://link.hhtjim.com/163/30621776.mp3"></li>
+                        
+                    
+                        
+                            <li title="345" data-url="https://link.hhtjim.com/163/22757115.mp3"></li>
+                        
+                    
+                        
+                            <li title="346" data-url="https://link.hhtjim.com/163/29379272.mp3"></li>
+                        
+                    
+                        
+                            <li title="347" data-url="https://link.hhtjim.com/163/558173.mp3"></li>
+                        
+                    
+                        
+                            <li title="348" data-url="https://link.hhtjim.com/163/830019.mp3"></li>
+                        
+                    
+                        
+                            <li title="349" data-url="https://link.hhtjim.com/163/28258450.mp3"></li>
+                        
+                    
+                        
+                            <li title="350" data-url="https://link.hhtjim.com/163/22645035.mp3"></li>
+                        
+                    
+                        
+                            <li title="351" data-url="https://link.hhtjim.com/163/4975665.mp3"></li>
+                        
+                    
+                        
+                            <li title="352" data-url="https://link.hhtjim.com/163/296955.mp3"></li>
+                        
+                    
+                        
+                            <li title="353" data-url="https://link.hhtjim.com/163/26115345.mp3"></li>
+                        
+                    
+                        
+                            <li title="354" data-url="https://link.hhtjim.com/163/860372.mp3"></li>
+                        
+                    
+                        
+                            <li title="355" data-url="https://link.hhtjim.com/163/832975.mp3"></li>
+                        
+                    
+                        
+                            <li title="356" data-url="https://link.hhtjim.com/163/832978.mp3"></li>
+                        
+                    
+                        
+                            <li title="357" data-url="https://link.hhtjim.com/163/832982.mp3"></li>
+                        
+                    
+                        
+                            <li title="358" data-url="https://link.hhtjim.com/163/832988.mp3"></li>
+                        
+                    
+                        
+                            <li title="359" data-url="https://link.hhtjim.com/163/832991.mp3"></li>
+                        
+                    
+                        
+                            <li title="360" data-url="https://link.hhtjim.com/163/832994.mp3"></li>
+                        
+                    
+                        
+                            <li title="361" data-url="https://link.hhtjim.com/163/832997.mp3"></li>
+                        
+                    
+                        
+                            <li title="362" data-url="https://link.hhtjim.com/163/833000.mp3"></li>
+                        
+                    
+                        
+                            <li title="363" data-url="https://link.hhtjim.com/163/833002.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="content markdown">
+            <h5>友情链接</h5>
+            <p><a target="_blank" rel="noopener" href="https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=dqnzm5fj">阿里云 - 云服务器 精选特惠</a></p>
+            <p><a target="_blank" rel="noopener" href="https://www.aliyun.com/activity/new?userCode=dqnzm5fj">阿里云 - 新人福利</a></p>
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+    
+<script async>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?849815d0f4e3e368be4f98681a16a5cd';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?849815d0f4e3e368be4f98681a16a5cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WY5NF40F3Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WY5NF40F3Z');
+</script>
+<!-- End Google Analytics -->
+
+
+</html>

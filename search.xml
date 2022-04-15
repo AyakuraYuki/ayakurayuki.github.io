@@ -1,0 +1,1239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Million Live Event Ranking Viewer</title>
+    <url>/2017/05/15/2017-05-15-MLEventRankingViewer/</url>
+    <content><![CDATA[<h1 id="Million-Live-Event-Ranking-Viewer"><a href="#Million-Live-Event-Ranking-Viewer" class="headerlink" title="Million Live Event Ranking Viewer"></a>Million Live Event Ranking Viewer</h1><blockquote>
+<p>卡牌游戏偶像大师百万现场活动排名查看器，简单查看各个分数线的分数。</p>
+</blockquote>
+<p>这是一个用于查看 Million Live 活动排名的小工具，可以方便查看各分数线的分数。</p>
+<h2 id="开发工具及项目环境"><a href="#开发工具及项目环境" class="headerlink" title="开发工具及项目环境"></a>开发工具及项目环境</h2><p>1.Intellij Idea</p>
+<p>2.使用 Maven 构建项目</p>
+<p>3.JavaSE 1.8</p>
+<h2 id="使用技术"><a href="#使用技术" class="headerlink" title="使用技术"></a>使用技术</h2><p>1.Httpclient ——Ver4.5.2</p>
+<p>2.Jsoup ——Ver1.10.2</p>
+<p>3.log4j ——Ver1.2.17</p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>配置文件里可以设置当前活动的活动编号，这个编号可以从 URL 中提取，例如当期「夢の国！？ショコラティエの大冒険」的编号是 348。</p>
+<h2 id="参与测试？"><a href="#参与测试？" class="headerlink" title="参与测试？"></a>参与测试？</h2><p>可以在 <a href="https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list/releases">这里</a> 下载最新版，包括测试版本和发布版。</p>
+<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><ul>
+<li><p>需要配合使用 Chrome 调试、Firebug、Fiddler 等软件抓取请求头，获得 Cookie 之后设置配置文件 config.properties</p>
+</li>
+<li><p>异常错误转储为日志尚未完成</p>
+</li>
+<li><p>Cookie 失效的情况，刷新排名之后界面不刷新任何数据，也不会有异常错误提示</p>
+</li>
+<li><p>由于是单线程加 Swing 编程，点击刷新按钮后界面会卡住“假死”，但不是真正的程序崩溃，也由此导致获取的数据会有相对较大的延迟。</p>
+</li>
+</ul>
+<p>根据上述问题，该软件可能需要重写，所以暂时就没什么更新了。</p>
+<h2 id="关于-config-properties-的说明："><a href="#关于-config-properties-的说明：" class="headerlink" title="关于 config.properties 的说明："></a>关于 config.properties 的说明：</h2><ul>
+<li><p>第 1-10 行属于 HTTP 请求配置，这个配置暂时需要用户自行提取请求头内容。推荐的获取方式是使用 Chrome 的 F12 调试界面，选择 Network，然后重新载入 mypage 页面，获取 mypage 的 Request Header 中的 User-Agent 和 Cookie，将这两项复制到 config.properties 对应的两项中即可。需要注意的是，Cookie 需要复制的内容是从”PHPSESSID”开始到”utmcsr&#x3D;”的”u”前面的”.”，中间的这一段。</p>
+</li>
+<li><p>第 12 行是活动编号，活动的「ランキング」页面的 URL 中，“event&#x2F;”后面的数字即是活动编号</p>
+</li>
+<li><p>第 13-15 行是软件表格的背景色设置，分别代表 R、G、B 颜色数值</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Swing</tag>
+        <tag>IM@S</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSM codes Generator</title>
+    <url>/2017/05/14/2017-05-14-SSMGenerator/</url>
+    <content><![CDATA[<h1 id="SSMGenerator"><a href="#SSMGenerator" class="headerlink" title="SSMGenerator"></a><a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a></h1><blockquote>
+<p>Spring &amp; SpringMVC &amp; MyBatis 项目代码生成模板</p>
+</blockquote>
+<p>根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类</p>
+<p>需要使用 CodeSmith</p>
+<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><p>1.自定义作者名</p>
+<p>2.自定义输出路径</p>
+<p>3.自定义基础包名</p>
+<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。</p>
+<h2 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h2><p><a href="https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip">唯一的下载入口</a><br>（因为不会有 Release 版本，注意随时会有修改）</p>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot CRUD</title>
+    <url>/2017/05/15/2017-05-15-SimpleSpringBootCRUD/</url>
+    <content><![CDATA[<h1 id="SimpleSpringBootCRUD"><a href="#SimpleSpringBootCRUD" class="headerlink" title="SimpleSpringBootCRUD"></a>SimpleSpringBootCRUD</h1><p>这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。</p>
+<p><a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">项目地址</a></p>
+<p>有兴趣的话也可以 fork 下来试着玩玩 : D</p>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CodErator开发笔记</title>
+    <url>/2017/06/03/2017-06-03-CodEratorDevelopNote/</url>
+    <content><![CDATA[<blockquote>
+<p>CodErator 取自 Code Generator，这么一结合，既有代码生成器的含义，又有代码操作者的意味，亦或是更多的含义。既然定位在轻量级代码生成工具，只要能完成任务，就是最好的了。</p>
+</blockquote>
+<h2 id="关于项目的启发"><a href="#关于项目的启发" class="headerlink" title="关于项目的启发"></a>关于项目的启发</h2><p>这个项目在建立之前，我有一段时间用过 CodeSmith 试用版，也写了两个使用 CodeSmith 生成 JavaEE 主流框架代码的模板（参见<a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a>，另一个尚未发布）。但众所周知，CodeSmith 可不是个亲近的家伙，收费，且新版（ver.7.1）不能使用 Visual Studio 编写模板（它自建了一个 Template Editor），所以 CodeSmith 使用成本就这么摆在这里了。</p>
+<p>既然我想完成一个简单的代码生成工作，又不想专门为你出这个钱，而且你又把部分 DLL 的代码公布了，那我不如自己写一个轻便的生成工具，只要能完成工作就好了呗。就是这样的想法，促成了这个项目的产生。</p>
+<h2 id="开发设计"><a href="#开发设计" class="headerlink" title="开发设计"></a>开发设计</h2><p>老实说，这个项目因为还有另一个目的，就是课程设计，花在这个项目初始版本上的时间就显得比较紧，所以并没有什么设计。</p>
+<p>稍微对我过去开发的情况做了个估计，这个项目姑且算是利用 Build and Fix Model 完成开发，仅有一个思想驱使项目进程的发展：</p>
+<blockquote>
+<p>我需要读到元数据，然后利用元数据封装成对象，通过模板引擎传送到模板文件最后生成目标代码。</p>
+</blockquote>
+<h3 id="然而。。。"><a href="#然而。。。" class="headerlink" title="然而。。。"></a>然而。。。</h3><p>最后却转变成了，通过对生成代码的操作流程去编写功能，而在此基础上对每一个流程可能会出现的误操作做出相应的限制动作，使得流程变得线性化，间接体现出易用性。</p>
+<h3 id="所以！"><a href="#所以！" class="headerlink" title="所以！"></a>所以！</h3><p>通过对流程的分析，可以知道使用者需要做的事情能够拆分成如下的动作：</p>
+<ol>
+<li><p>连接到数据库，获取库下的 table 列表</p>
+</li>
+<li><p>使用者可以点击单个 table 列表项查看该表将要被生成的字段内容，此举是为了解决 CodeSmith 的某些“缺陷”，即你能看到 schemas 和 tables，但你看不到 columns</p>
+</li>
+<li><p>使用者在 table 列表中选择想要生成的一或多张表</p>
+</li>
+<li><p>使用者选择生成目标代码的语言和想要生成的层面</p>
+</li>
+<li><p>选择输出位置，开始生成</p>
+</li>
+</ol>
+<h2 id="设计中出现的需求"><a href="#设计中出现的需求" class="headerlink" title="设计中出现的需求"></a>设计中出现的需求</h2><p>既然提取出了“生成代码”用例的概要动作，那么就要对这些动作需要哪些技术、功能等进行分析：</p>
+<ol>
+<li><p>连接到任意的数据库，收集连接数据（但不允许持久化这些连接数据）</p>
+</li>
+<li><p>获取 tables 和相应 table 的 columns</p>
+</li>
+<li><p>收集生成选项</p>
+</li>
+<li><p>封装查找到的 Table 和 Columns</p>
+</li>
+<li><p>使用模板文件去生成代码而不是硬编码到源代码中去生成</p>
+</li>
+</ol>
+<h2 id="对于上述设计和需求，我采用了以下支持"><a href="#对于上述设计和需求，我采用了以下支持" class="headerlink" title="对于上述设计和需求，我采用了以下支持"></a>对于上述设计和需求，我采用了以下支持</h2><ul>
+<li><p>既然是连接到数据库，那么我就加入 MySQL 和 SQL Server 的支持吧，反正使用 Oracle 的程序猿不一定会用轻量级代码生成器的吧</p>
+</li>
+<li><p>模板，就你了，Razor Engine</p>
+</li>
+<li><p>界面？WinForm 咯，今后再移植 WPF 吧</p>
+</li>
+<li><p>其他的？那还真没有什么技术可言了，就只是普通 C#而已</p>
+</li>
+</ul>
+<p>单独拿模板出来说一下事。我在考虑模板使用的时候，考虑过以下四种模板：</p>
+<ol>
+<li><p>CodeSmith 的 cst</p>
+</li>
+<li><p>T4 文本模板（Text Template Transformation Toolkit）</p>
+</li>
+<li><p>NVelocity（Velocity 的.Net 版）</p>
+</li>
+<li><p>Razor Engine</p>
+</li>
+</ol>
+<p>cst 自然不用说，结合 CodeSmith 的 SchemaExplorer，可以省略复杂的客户端操作，直接在模板内声明几个参数然后在客户端给参数赋值，就可以完成生成。问题来了，CodeSmith 本身是收费软件，调用他们的 DLL 很容易，可是会给你跳出个他们家的产品注册窗口，这就很哭笑不得了。</p>
+<p>T4 文本模板，是微软自家的代码生成文本模板，原本在我看来是个比较好的模板，而且写起来跟写 cst 没什么差别，但问题是，T4 文本模板本身就是一个可运行的“class”，这就显得代码不可控了，用户侧可能就会出现各种各样的问题。</p>
+<p>NVelocity，其实就是 Velocity，只不过有人把它.Net 化了。不过这个扩展据我查找的资料，大多文章的发布年是在 2011 年和 2013 年，而该项目本身停留在了 0.4.2 版，发布日期还是 2003 年 10 月。想想现在 Velocity 都什么版本了，天差地别了吧。</p>
+<p>Razor Engine，直到 2016 年还在维护的.Net 模板引擎。它的工作方式更像我所熟知的 Java Controller 传递对象到 jsp 等模板的方式，而且它是非侵入式的模板引擎，想用即可，几乎不需要任何配置，而且测试方便。</p>
+<p>Razor Engine 的基本工作方式可以描述为如下的流程。首先，程序从文本读取到 cshtml 模板文件的内容，将这些内容保存到 string 类型的变量中，然后只需要通过：</p>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">Engine.Razor.RunCompile(template, unique_name, [modelType], model)</span><br></pre></td></tr></table></figure>
+
+<p>这个方法，让引擎获取模板内容和 model 数据，自动替换模板内容内占位符对应的 model 信息，最后返回结果字符串。</p>
+<h2 id="程序使用过程中可能会出现的搞事操作与处理办法"><a href="#程序使用过程中可能会出现的搞事操作与处理办法" class="headerlink" title="程序使用过程中可能会出现的搞事操作与处理办法"></a>程序使用过程中可能会出现的搞事操作与处理办法</h2><ol>
+<li><p>没有连接数据库就执行生成：检测到连接数据不完善，立即终止操作并弹出提示。</p>
+</li>
+<li><p>没有选择表：很少会出现的错误吧，真的出现的话就终止操作并提醒一下。</p>
+</li>
+<li><p>没有选择语言就选择层面，或者反过来没有选择层面只选择语言：一样终止操作，并提示缺少了什么没有选。</p>
+</li>
+<li><p>没有选择输出目录：终止操作，弹出消息框提醒。</p>
+</li>
+<li><p>数据库连接异常：故意输入错误的连接信息对吧？吃我个连接时异常信息提醒！（当然是友好的消息框啦）</p>
+</li>
+<li><p>模板文件异常：很遗憾的是，我没办法检测你的模板到底出了什么错，至少现在是没办法的，只能给你丢一个友善的提醒了。</p>
+</li>
+</ol>
+<h2 id="对于数据的处理"><a href="#对于数据的处理" class="headerlink" title="对于数据的处理"></a>对于数据的处理</h2><p>上面提到了“获取 tables 和相应 table 的 columns”，加之 Razor 需要提供一个 model 来传递参数（当然，RunCompile 还能接受更多对象），那么肯定会想到封装了。然而我稍微了解了一下 System.Data 下的类，事情好像并不是那么容易，比如我需要一个 DataTable 去读取一个 table 下的字段元数据，但我却拿不到表名（不能更方便地拿到表名，需要写一长串调用关系，而事实上是可以的）。</p>
+<p>于是，为了使封装后的数据调用起来更懒人化，我创建了两个 Model：</p>
+<ol>
+<li><p>Table</p>
+</li>
+<li><p>Column</p>
+</li>
+</ol>
+<p>这就显得比较“粗暴”了，获取了表名交给 Table，获取了这个表的所有字段元数据，分别封装成 Column 交给 Table 里的 list。</p>
+<p>这样一来，最后在模板内的调用就可以直接用属性去拿到信息了。</p>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>generator</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot学习之基本配置</title>
+    <url>/2017/05/16/2017-05-16-SpringBootConfig/</url>
+    <content><![CDATA[<blockquote>
+<p>Spring Boot 其实可以不需要配置就能运行，但实际的实现过程中，我们还是需要给它写一些配置，准确的说，是给包含第三方依赖的环境编写配置。</p>
+</blockquote>
+<h2 id="Maven-pom-xml"><a href="#Maven-pom-xml" class="headerlink" title="Maven - pom.xml"></a>Maven - pom.xml</h2><p>根据相关文档说明，构建 Spring Boot 项目建议使用 Gradle，但不排斥 Maven 创建项目。</p>
+<p>在我的演示项目中，我使用了 Spring Boot + MyBatis + Thymeleaf 的环境。</p>
+<p>以下是使用 Maven 创建 Spring Boot 项目所用的 pom.xml 文件配置内容。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring Boot基础依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot JDBC 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring-MyBatis 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Thymeleaf 模板引擎支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- MySQL 连接器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot 测试单元支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Restful 文档 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.restdocs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-restdocs-mockmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot 开发工具包 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Groovy 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.groovy<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>groovy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            使用Maven package时，如果指定了这个插件，打包会生成JAR文件，而不是WAR文件</span></span><br><span class="line"><span class="comment">            启动Spring Boot是通过指定的BootApplication.main()来启动，所以使用JAR包直接运行</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Environment-application-yml"><a href="#Environment-application-yml" class="headerlink" title="Environment - application.yml"></a>Environment - application.yml</h2><p><a href="http://www.yaml.org/">YAML</a> (YAML Ain’t Markup Language)，即“YAML 不是一种置标语言”，是所有编程语言的人性化数据序列化标准。</p>
+<p>YAML 是 JSON 的一个超集，也是一种方便的定义层次配置数据的格式。只要将 SnakeYAML 库放到 classpath 下，SpringApplication 就会自动支持 YAML，以作为 properties 的替换。</p>
+<p>简单来说，YAML 不像 xml 那样需要配置繁琐的标签和属性以及文档验证，也不像 properties 那样只有普通的 key&#x2F;value。YAML 使用大纲的缩进表现形式，让配置项有明显的结构表示。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># System configuration</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">display-name:</span> <span class="string">CRUD</span> <span class="comment"># 定义服务器的显示名称</span></span><br><span class="line">    <span class="attr">port:</span></span><br><span class="line">        <span class="number">8888</span> <span class="comment"># 定义可访问的端口，默认访问端口是8080</span></span><br><span class="line">        <span class="comment"># 由于Spring Boot是内建Tomcat，所以没有了Tomcat的配置，取而代之的是在这里配置访问端口</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Datasource &amp; Thymeleaf configuration</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">datasource:</span></span><br><span class="line">        <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span> <span class="comment"># 定义数据源使用的驱动类</span></span><br><span class="line">        <span class="attr">username:</span> <span class="string">root</span> <span class="comment"># 数据库用户</span></span><br><span class="line">        <span class="attr">password:</span> <span class="string">root</span> <span class="comment"># 数据库密码</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">jdbc:mysql://[server_address]:[port]/[schema_name]</span> <span class="comment"># 连接URL</span></span><br><span class="line">    <span class="attr">thymeleaf:</span> <span class="comment"># 配置模板引擎</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment"># 开启模板引擎，默认true，这里配置其实可以不写这句</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="string">HTML5</span> <span class="comment"># 定义模板类型</span></span><br><span class="line">        <span class="attr">encoding:</span> <span class="string">utf-8</span> <span class="comment"># 编码，不用多说了</span></span><br><span class="line">        <span class="attr">content-type:</span> <span class="string">text/html</span> <span class="comment"># 报文类型</span></span><br><span class="line">        <span class="attr">cache:</span></span><br><span class="line">            <span class="literal">false</span> <span class="comment"># 是否开启缓存，这里跟修改模板文件后自动部署有关</span></span><br><span class="line">            <span class="comment"># 关闭之后如果对模板文件有修改，就会更新服务器上的文件</span></span><br><span class="line">        <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span> <span class="comment"># 访问前缀，默认是/template文件夹</span></span><br><span class="line">        <span class="attr">suffix:</span> <span class="string">.html</span> <span class="comment"># 访问后缀，可以改为其他的名称，默认就是.html</span></span><br><span class="line">    <span class="attr">resources:</span> <span class="comment"># 资源文件绑定</span></span><br><span class="line">        <span class="attr">static-locations:</span> <span class="string">classpath:/static</span> <span class="comment"># 这里的配置可以使模板像调用本地文件一样调用到样式资源</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="MyBatis-bean-amp-mapping-xml"><a href="#MyBatis-bean-amp-mapping-xml" class="headerlink" title="MyBatis - bean &amp; mapping xml"></a>MyBatis - bean &amp; mapping xml</h2><p>MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以对配置和原生 Map 使用简单的 XML 或注解，将接口和 POJO 映射成数据库中的记录。</p>
+<p>MyBatis 相比 Hibernate，其可控性几乎是完全的，程序员可以通过 mapping 配置，使程序不用回炉重造就能支持多个数据库的连接，并且有效控制对数据的操作。</p>
+<p>本演示项目没有使用如 Druid、DBCP 等的数据库连接池工具，而是使用 Tomcat 数据库连接池，使用 Tomcat 连接池的配置相对简单，适合初学者入门（但为了数据库连接信息安全，更推荐使用 Druid）。对于使用数据库连接池的配置，会在今后撰文介绍。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;me.yuki.dao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BootApplication</span> &#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="meta">@ConfigurationProperties(&quot;spring.datasource&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> DataSource <span class="title function_">getDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.tomcat.jdbc.pool.DataSource();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionFactory <span class="title function_">getSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    	<span class="type">SqlSessionFactoryBean</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">    	sqlSessionFactory.setDataSource(getDataSource());</span><br><span class="line">    	<span class="type">PathMatchingResourcePatternResolver</span> <span class="variable">resolver</span></span><br><span class="line">    	                        <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>();</span><br><span class="line">    	sqlSessionFactory.setMapperLocations(resolver.getResources(<span class="string">&quot;/mapper/*.xml&quot;</span>));</span><br><span class="line">    	<span class="keyword">return</span> sqlSessionFactory.getObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> PlatformTransactionManager <span class="title function_">getTransactionManager</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(getDataSource());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		SpringApplication.run(BootApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据源配置-代码分析"><a href="#数据源配置-代码分析" class="headerlink" title="数据源配置 - 代码分析"></a>数据源配置 - 代码分析</h3><h4 id="类注解"><a href="#类注解" class="headerlink" title="类注解"></a>类注解</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span> <span class="comment">// 标记该类是Spring Boot启动类</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;me.yuki.dao&quot;)</span> <span class="comment">// 配置mapper扫描器扫描的包位置</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="getDataSource"><a href="#getDataSource" class="headerlink" title="getDataSource()"></a>getDataSource()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为DataSource Bean</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(&quot;spring.datasource&quot;)</span> <span class="comment">// 从yml取得节点spring.datasource下的配置</span></span><br><span class="line"><span class="keyword">public</span> DataSource <span class="title function_">getDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.tomcat.jdbc.pool.DataSource(); <span class="comment">// 从Tomcat获取DataSource</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对应的 SpringFramework 配置如下（可能会有不同，参考的 xml 采用了 DBCP 配置数据源）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.apache.commons.dbcp.BasicDataSource&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;close&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.driver-class-name&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.username&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.password&#125;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="getSqlSessionFactory"><a href="#getSqlSessionFactory" class="headerlink" title="getSqlSessionFactory()"></a>getSqlSessionFactory()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为SqlSessionFactory Bean</span></span><br><span class="line"><span class="keyword">public</span> SqlSessionFactory <span class="title function_">getSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">// &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span></span><br><span class="line">    <span class="type">SqlSessionFactoryBean</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">    <span class="comment">// &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span></span><br><span class="line">    sqlSessionFactory.setDataSource(getDataSource());</span><br><span class="line">    <span class="type">PathMatchingResourcePatternResolver</span> <span class="variable">resolver</span></span><br><span class="line">                            <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>();</span><br><span class="line">    <span class="comment">// &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath*:/mapper/*.xml&quot; /&gt;</span></span><br><span class="line">    sqlSessionFactory.setMapperLocations(resolver.getResources(<span class="string">&quot;/mapper/*.xml&quot;</span>));</span><br><span class="line">    <span class="keyword">return</span> sqlSessionFactory.getObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="getTransactionManager"><a href="#getTransactionManager" class="headerlink" title="getTransactionManager()"></a>getTransactionManager()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为PlatformTransactionManager Bean</span></span><br><span class="line"><span class="keyword">public</span> PlatformTransactionManager <span class="title function_">getTransactionManager</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    &lt;bean id=&quot;transactionManager&quot;</span></span><br><span class="line"><span class="comment">            class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span></span><br><span class="line"><span class="comment">       	&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span></span><br><span class="line"><span class="comment">    &lt;/bean&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(getDataSource());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mapping-xml"><a href="#Mapping-xml" class="headerlink" title="Mapping.xml"></a>Mapping.xml</h3><p>MyBatis mapping 文件的配置与 SSM 的配置完全一样，只要把文件放到在 getSqlSessionFactory()中配置的 MapperLocation 文件夹之下，对应文件名匹配格式即可。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CodErator</title>
+    <url>/2017/06/03/2017-06-03-CodErator/</url>
+    <content><![CDATA[<h1 id="CodErator"><a href="#CodErator" class="headerlink" title="CodErator"></a><a href="https://github.com/AyakuraYuki/CodErator">CodErator</a></h1><blockquote>
+<p>轻量级代码生成工具</p>
+</blockquote>
+<p>查询元数据，暴力封装元数据信息，暴力生成源码，能生成就是好工具，反正都要按需求改！</p>
+<h2 id="环境与依赖"><a href="#环境与依赖" class="headerlink" title="环境与依赖"></a>环境与依赖</h2><ul>
+<li><p>项目创建于 Visual Studio 2017</p>
+</li>
+<li><p>.Net Framework 4.5.2</p>
+</li>
+<li><p>WinForm</p>
+</li>
+<li><p>“难用”的要死的<a href="https://github.com/Antaris/RazorEngine">Razor Engine 3.9.3</a></p>
+</li>
+<li><p>MySQL Connector.Net 6.9</p>
+</li>
+</ul>
+<h2 id="使用目标"><a href="#使用目标" class="headerlink" title="使用目标"></a>使用目标</h2><h3 id="JavaEE"><a href="#JavaEE" class="headerlink" title="JavaEE"></a>JavaEE</h3><ul>
+<li><p>SSM 框架代码生成</p>
+</li>
+<li><p>可自由选择需要生成的层面</p>
+</li>
+</ul>
+<h3 id="CSharp"><a href="#CSharp" class="headerlink" title="CSharp"></a>CSharp</h3><ul>
+<li>生成 Entity</li>
+</ul>
+<h2 id="支持功能"><a href="#支持功能" class="headerlink" title="支持功能"></a>支持功能</h2><ul>
+<li><p>连接到指定 schema，尚未支持不指定 schema 的连接</p>
+</li>
+<li><p>表字段内容获取</p>
+</li>
+<li><p>列表多选即可选择需要生成的表</p>
+</li>
+<li><p>指定输出位置</p>
+</li>
+</ul>
+<h2 id="开发路线"><a href="#开发路线" class="headerlink" title="开发路线"></a>开发路线</h2><ul>
+<li><p>项目初始版本属于 XP 模型产物，根据开发过程遇到的问题，可能需要在代码框架、逻辑设计上重新进行分析。</p>
+</li>
+<li><p>初始版本对模板的支持比较严格，不建议用户修改模板文件。然而这不是废话吗？并不，我鼓励各位根据自己的需求或者代码风格去修改模板文件，只要遵守现有的文件名以及 Razor Engine 语法即可。</p>
+</li>
+<li><p>未来考虑对模板支持进行大的修改，做到支持程序猿自己定义的模板。这个修改只要确保程序猿们遵守了 Razor Engine 语法，就可以生成代码，不受模板文件名的影响。</p>
+</li>
+<li><p>上述开发路线说明或许会因为懒癌发作延期，作为开源项目，如果各位愿意的话，倒不是不可以去修改。欢迎 fork，不求 star。</p>
+</li>
+</ul>
+<h2 id="现存问题"><a href="#现存问题" class="headerlink" title="现存问题"></a>现存问题</h2><ul>
+<li><p>模板文件是定死的，包括文件名（前缀后缀）、文件数量</p>
+</li>
+<li><p>仅支持三层生成（Entity、Dao、Service）</p>
+</li>
+<li><p>C#暂时只支持 Entity，其余两层因为本人没有接触过 ASP.Net MVC 所以不太能下手</p>
+</li>
+<li><p>一些藏得比较深的 bug</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>C#</tag>
+        <tag>generator</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小记Apache端口转发——万网解析初步</title>
+    <url>/2017/08/17/2017-08-17-ApacheRedirect/</url>
+    <content><![CDATA[<blockquote>
+<p>记录自己对万网解析和 Apache 端口转发的理解</p>
+</blockquote>
+<p>最近在做部署平台的事情，第一次从域名到 ECS 到解析，这么一走流程，倒是了解了些许有关解析配置的事情。</p>
+<h2 id="域名配置浅记"><a href="#域名配置浅记" class="headerlink" title="域名配置浅记"></a>域名配置浅记</h2><p>阿里云的域名解析，主要使用的是 A 记录、CNAME 两种，前者直接解析到 IP 地址，后者则可以使域名直接解析到另一个域名（关于解析到另一个域名的授权方面的合法性在这里暂且不提）。</p>
+<p>值得注意的是，A 记录一般情况下不携带端口号，而是从@记录或 www 记录的地址，访问时携带端口号进行对应端口访问。</p>
+<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>万网域名解析配置由于不建议携带端口号配置 A 记录，可以视为所有二级域名配置均被指向同一个 IP 的 80 端口。对于这样的应用情况，我们可以配置 Apache 的 VirtualHost 来将指定的二级域名地址从 80 端转发到本地其他端口上的服务器。</p>
+<p>在我的应用环境中，包含如下两个配置：</p>
+<ul>
+<li><p>8080 端 Tomcat 应用服务器</p>
+</li>
+<li><p>8180 端 Apache 图片服务器</p>
+</li>
+</ul>
+<h3 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h3><p>首先需要配置的是 Apache 的端口监听，以 Apache2.4 为例，需要找到 httpd.conf 的如下位置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Listen: Allows you to bind Apache to specific IP addresses and/or</span></span><br><span class="line"><span class="comment"># ports, instead of the default. See also the &lt;VirtualHost&gt;</span></span><br><span class="line"><span class="comment"># directive.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Change this to Listen on specific IP addresses as shown below to</span></span><br><span class="line"><span class="comment"># prevent Apache from glomming onto all bound IP addresses.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Listen 12.34.56.78:80</span></span><br></pre></td></tr></table></figure>
+
+<p>并在此后添加：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Listen</span> <span class="number">80</span></span><br><span class="line"><span class="string">Listen</span> <span class="number">8180</span></span><br></pre></td></tr></table></figure>
+
+<p>为了打开端口转发，我们需要找到配置文件中的如下两行，取消它们的注释：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#LoadModule proxy_module modules/mod_proxy.so</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#LoadModule proxy_http_module modules/mod_proxy_http.so</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 Apache 处于运行状态，重新启动 Apache 服务器即可使新配置生效。</p>
+<h3 id="配置虚拟服务器转发前的准备"><a href="#配置虚拟服务器转发前的准备" class="headerlink" title="配置虚拟服务器转发前的准备"></a>配置虚拟服务器转发前的准备</h3><p>在配置虚拟服务器之前，我们需要关注几个指令</p>
+<h4 id="ServerName"><a href="#ServerName" class="headerlink" title="ServerName"></a>ServerName</h4><p>ServerName 是一个比较关键的指令，它指定了每个<VirtualHost>对应的主域名或二级域名，该指令的值需要与万网解析配置的 A 记录完全一致，否则会出现 Apache 无法获取访问请求的问题。</p>
+<h4 id="ProxyPass-与-ProxyPassReverse"><a href="#ProxyPass-与-ProxyPassReverse" class="headerlink" title="ProxyPass 与 ProxyPassReverse"></a>ProxyPass 与 ProxyPassReverse</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">ProxyPass</span> [<span class="string">path</span>] <span class="string">!|url</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> [<span class="string">url</span>] <span class="string">url</span></span><br></pre></td></tr></table></figure>
+
+<p>ProxyPass：它主要是用作 URL 前缀匹配，配置的 path 是一个虚拟的路径，在反向代理到后端的 url 后，path 是不会带过去的。该指令可以设置某些 path 不被转发。</p>
+<p>ProxyPassReverse：它一般和 ProxyPass 配合使用，该指令使 Apache 调整 HTTP 重定向应答中 Location、Content-Location、URI 头里的 URL，这样可以避免在 Apache 作为反向代理使用时，后端服务器的 HTTP 重定向造成的绕过反向代理的问题。</p>
+<h4 id="DocumentRoot"><a href="#DocumentRoot" class="headerlink" title="DocumentRoot"></a>DocumentRoot</h4><p>该指令配置了访问本地的根路径</p>
+<h4 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">&lt;Directory</span> <span class="string">path&gt;</span></span><br><span class="line">[<span class="string">options</span>]</span><br><span class="line"><span class="string">&lt;/Directory&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个 XML 标签形式的指令，紧跟 DocumentRoot，配置该本地路径相关的访问选项，其中可以包含：</p>
+<ul>
+<li>Options</li>
+<li>AllowOverride</li>
+<li>Order</li>
+<li>Allow</li>
+<li>Deny</li>
+</ul>
+<p>具体则不在本文详细解释。</p>
+<h3 id="配置转发"><a href="#配置转发" class="headerlink" title="配置转发"></a>配置转发</h3><p>这里就直接把相关的配置放在下面了</p>
+<h4 id="将-Apache-本身配置为图片服务器的场景"><a href="#将-Apache-本身配置为图片服务器的场景" class="headerlink" title="将 Apache 本身配置为图片服务器的场景"></a>将 Apache 本身配置为图片服务器的场景</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Apache物理服务器配置的DocumentRoot与Directory指令</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证"><a href="#另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证" class="headerlink" title="另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证"></a>另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.8180&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">yourdomain.com</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Red-bot function mlborder</title>
+    <url>/2017/09/14/2017-09-14-MlBorderFunction/</url>
+    <content><![CDATA[<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mlborder</span>(<span class="params">self, event_code: <span class="built_in">int</span> = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># Catch current ranking points. Need event code.</span></span><br><span class="line">    <span class="keyword">if</span> event_code <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        url = <span class="string">&quot;http://mlborder.com/events/&#123;&#125;/&quot;</span>.<span class="built_in">format</span>(event_code)</span><br><span class="line">        document = pq(url)</span><br><span class="line">        title = document(<span class="string">&#x27;title&#x27;</span>).text()</span><br><span class="line">        body = document(<span class="string">&#x27;body&#x27;</span>)</span><br><span class="line">        border_div = pq(body(<span class="string">&#x27;.tab-pane&#x27;</span>)[<span class="number">0</span>])(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        data_react_props = border_div.html()</span><br><span class="line"></span><br><span class="line">        original_data = data_react_props[data_react_props.index(<span class="string">&#x27;&#123;&#x27;</span>):data_react_props.rindex(<span class="string">&#x27;&#125;&#x27;</span>) + <span class="number">1</span>]</span><br><span class="line">        prepare_json = original_data.replace(<span class="string">&#x27;&amp;quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">        json_data = json.loads(prepare_json)</span><br><span class="line"></span><br><span class="line">        event_name = title[title.index(<span class="string">&#x27;『&#x27;</span>) + <span class="number">1</span>:title.rindex(<span class="string">&#x27;』&#x27;</span>)]</span><br><span class="line">        event_info = document(<span class="string">&#x27;.list-group-item&#x27;</span>).text()</span><br><span class="line"></span><br><span class="line">        ending_time = event_info[event_info.index(<span class="string">&#x27;〜&#x27;</span>) + <span class="number">1</span>:event_info.rindex(<span class="string">&#x27;,&#x27;</span>)]</span><br><span class="line">        ending_timestamp = time.mktime(time.strptime(ending_time, <span class="string">&#x27;%Y/%m/%d %H:%M&#x27;</span>))</span><br><span class="line">        current_timestamp = time.time()</span><br><span class="line">        left_or_passed_time = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> current_timestamp &lt; ending_timestamp:</span><br><span class="line">            left_timestamp = ending_timestamp - current_timestamp</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;あと　&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass_timestamp = current_timestamp - ending_timestamp</span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;　過ごしだ&#x27;</span></span><br><span class="line">        border_summary = json_data[<span class="string">&#x27;border_summary&#x27;</span>]</span><br><span class="line">        now = (datetime.datetime.fromtimestamp(current_timestamp) + datetime.timedelta(hours=<span class="number">1</span>)).strftime(<span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line">        borders = border_summary[<span class="string">&#x27;borders&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        msg = <span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;event_name&#125;</span>\n<span class="subst">&#123;event_info&#125;</span>\n<span class="subst">&#123;left_or_passed_time&#125;</span>\n\n<span class="subst">&#123;now&#125;</span>&#x27;</span>,</span><br><span class="line">                         <span class="string">f&quot;1位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;10位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;10&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;100位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;100&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;500位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;500&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1200位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1200&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1300位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1300&#x27;</span>]:,&#125;</span>&quot;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> self.bot.say(msg)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">await</span> self.bot.say(<span class="string">&quot;mlborder need an event code.&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Discord</tag>
+        <tag>Discord Bot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bean的生命周期</title>
+    <url>/2017/06/28/2017-06-28-AboutBeanLifecycle/</url>
+    <content><![CDATA[<blockquote>
+<p>记录有关 Spring Bean 生命周期的过程</p>
+</blockquote>
+<h2 id="生命周期过程描述"><a href="#生命周期过程描述" class="headerlink" title="生命周期过程描述"></a>生命周期过程描述</h2><p>大致的 Bean 生命周期可以描述为如下过程：</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><ol>
+<li><p>实例化</p>
+</li>
+<li><p>设置属性值</p>
+</li>
+<li><p>调用 BeanPostProcessor 的预初始化方法</p>
+</li>
+<li><p>调用 InitializingBean 的 afterPropertiesSet()方法</p>
+</li>
+<li><p>调用定制的初始化方法</p>
+</li>
+<li><p>调用 BeanPostProcessor 的后初始化方法</p>
+</li>
+<li><p>完成实例化，Bean 可以使用</p>
+</li>
+</ol>
+<h4 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h4><ol start="8">
+<li><p>调用 DisposableBean 的 destroy()方法</p>
+</li>
+<li><p>调用定制的销毁方法</p>
+</li>
+</ol>
+<h2 id="相关内容"><a href="#相关内容" class="headerlink" title="相关内容"></a>相关内容</h2><h3 id="Bean-实例化和生命周期行为控制"><a href="#Bean-实例化和生命周期行为控制" class="headerlink" title="Bean 实例化和生命周期行为控制"></a>Bean 实例化和生命周期行为控制</h3><p>Bean 实例化可以通过构造器、静态工厂、实例工厂三种方式进行实例化。</p>
+<p>有三种方式可以控制 Bean 生命周期行为：</p>
+<ul>
+<li><p>InitializingBean &amp; DisposableBean</p>
+</li>
+<li><p>init() &amp; destroy()</p>
+</li>
+<li><p>@PostConstruct &amp; @PreDestroy</p>
+</li>
+</ul>
+<h3 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h3><p>如果我们需要在 Spring 容器完成 Bean 的实例化、配置和其他的初始化前后添加一些自己的逻辑处理，我们就可以定义一个或者多个 BeanPostProcessor 接口的实现，然后注册到容器中。</p>
+<p>在 BeanPostProcessor 中，我们可以通过实现</p>
+<ul>
+<li>public Object postProcessAfterInitialization(Object bean, String arg) throws BeansException</li>
+</ul>
+<p>和</p>
+<ul>
+<li>public Object postProcessBeforeInitialization(Object bean, String arg1) throws BeansException</li>
+</ul>
+<p>来执行 Bean 创建前后的动作</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android项目各文件夹含义说明</title>
+    <url>/2017/09/14/2017-09-14-ASProjectFolders/</url>
+    <content><![CDATA[<blockquote>
+<p>使用 Android Studio 2.3 版开发的 Android 项目文件结构说明</p>
+</blockquote>
+<blockquote>
+<p>AS 版本：Android Studio 2.3.3 <br/><br>视图：Project <br/><br>注：本文部分说明可以通过“视图：Android”查看该文件&#x2F;文件夹影响或相关的部分</p>
+</blockquote>
+<p>初次创建了一个 Basic Activity 例程之后，我们会获得如下图的文件结构</p>
+<p><img src="/static/images/2017-09-14-ASProjectFolders/1.png"></p>
+<h1 id="x2F-Demo"><a href="#x2F-Demo" class="headerlink" title="&#x2F;Demo"></a>&#x2F;Demo</h1><p>这个文件夹是整个项目的根目录，包含了项目的主要资源文件，以及构建所需的 Gradle 配置和脚本。</p>
+<h3 id="x2F-gradle"><a href="#x2F-gradle" class="headerlink" title="&#x2F;gradle"></a>&#x2F;gradle</h3><p>该文件夹主要包含了 gradle wrapper 有关的文件，无须我们关心。</p>
+<h3 id="x2F-idea-amp-Demo-iml"><a href="#x2F-idea-amp-Demo-iml" class="headerlink" title="&#x2F;.idea &amp; Demo.iml"></a>&#x2F;.idea &amp; Demo.iml</h3><p>这两个文件放在一起说，主要是它们和项目完全无关。由于 AS 2.x 之后使用了 JetBrains 的 IDE 系列，所以必然会创建它们，用来让 IDE 识别项目，并自动配置 IDE 相关环境。</p>
+<h3 id="x2F-gradle-1"><a href="#x2F-gradle-1" class="headerlink" title="&#x2F;.gradle"></a>&#x2F;.gradle</h3><p>该文件夹是 AS 自动生成的，表示该项目是一个由 gradle 管理和构建的项目，效果与上面的两项相同。</p>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>这是用来存放需要忽略，不提交到 git 版本控制项目中的文件&#x2F;文件夹的名称。通过这个文件，就可以在 commit&#x2F;push 到 git 时自动忽略列表中的文件&#x2F;文件夹。</p>
+<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>这个文件在项目中一共有两个，位于&#x2F;Demo 下的该文件配置了项目构建相关的配置信息，一般不需要修改。</p>
+<p>在本人的项目中，由于我使用了 Groovy 进行 Android 开发，所以我会对本文件进行修改。</p>
+<h3 id="settings-gradle"><a href="#settings-gradle" class="headerlink" title="settings.gradle"></a>settings.gradle</h3><p>这个文件在例程 Demo 中，由于我们只有一个&#x2F;app，所以只会包含一句：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">include</span> <span class="string">&#x27;:app&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>它的作用是，指定 Project 中所引入的 module。通常该文件由 IDE 自动完成注入，不需要开发者自行填写。</p>
+<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><p>Gradle 全局配置，包括代理设置、编译所需 JVM 内存等。一般不建议修改，或使用 IDE 提供的工具进行影响较小的修改。</p>
+<h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><p>这个文件不是用来配置本地化默认国家语言编码的，而是用来指定本机 Android SKD 的路径。根据文件注释说明，该文件不能上传到版本控制项目中，以免出现协同开发错误。</p>
+<h3 id="gradlew-amp-gradlew-bat"><a href="#gradlew-amp-gradlew-bat" class="headerlink" title="gradlew &amp; gradlew.bat"></a>gradlew &amp; gradlew.bat</h3><p>这两个文件，前者运行于 Unix&#x2F;Linux 系统，后者运行于 Windows 系统，它们是用于命令行执行 Gradle 脚本的批处理脚本，一般不允许修改。</p>
+<h1 id="x2F-app"><a href="#x2F-app" class="headerlink" title="&#x2F;app"></a>&#x2F;app</h1><p>主要的开发目录，项目的几乎所有的资源都存放在如下目录中。该文件夹内构成如图</p>
+<p><img src="/static/images/2017-09-14-ASProjectFolders/2.png"></p>
+<h3 id="x2F-build"><a href="#x2F-build" class="headerlink" title="&#x2F;build"></a>&#x2F;build</h3><p>该文件夹也是作为构建输出文件夹，但相对于&#x2F;Demo&#x2F;build，该文件夹用于存放具体编译构建的资源，其内容更复杂。</p>
+<h3 id="x2F-libs"><a href="#x2F-libs" class="headerlink" title="&#x2F;libs"></a>&#x2F;libs</h3><p>如果项目使用了第三方依赖包，这些依赖包会被存放到该文件夹中，并由 IDE 自动注入。</p>
+<h3 id="gitignore-1"><a href="#gitignore-1" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>同理，该文件夹管理根目录为&#x2F;app 的目录下，不提交到 git 的文件&#x2F;文件夹列表</p>
+<h3 id="app-iml"><a href="#app-iml" class="headerlink" title="app.iml"></a>app.iml</h3><p>该文件用于让 AS 识别项目，但不建议直接从此处打开，否则会缺失全局 gradle 配置信息，导致编译构建失败。</p>
+<h3 id="build-gradle-1"><a href="#build-gradle-1" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>此处的 build.gradle 直接管理项目引入的依赖包、编译器版本等配置信息，比&#x2F;Demo&#x2F;build.gradle 更复杂，一般开发不需要修改。</p>
+<p>同理，我使用了 Groovy 开发，所以我需要在这个文件夹添加相关的依赖和 compile 信息。</p>
+<h3 id="proguard-rules-pro"><a href="#proguard-rules-pro" class="headerlink" title="proguard-rules.pro"></a>proguard-rules.pro</h3><p>进行大型 Java 项目开发的开发者应该都清楚该文件的作用。该文件是由开发者指定代码混淆保护的混淆规则，显式指定忽略哪些包、类，或者混淆哪些包、类。</p>
+<p>对代码混淆不熟悉的开发者一般不会修改这个文件。</p>
+<h2 id="x2F-app-x2F-src（或称-x2F-src）"><a href="#x2F-app-x2F-src（或称-x2F-src）" class="headerlink" title="&#x2F;app&#x2F;src（或称&#x2F;src）"></a>&#x2F;app&#x2F;src（或称&#x2F;src）</h2><p>该文件夹无疑是我们开发的重心，所有的源代码和资源文件都在这个文件夹下。</p>
+<p>该文件夹的构成如下图：</p>
+<p><img src="/static/images/2017-09-14-ASProjectFolders/3.png"></p>
+<h3 id="x2F-androidTest"><a href="#x2F-androidTest" class="headerlink" title="&#x2F;androidTest"></a>&#x2F;androidTest</h3><p>此处用来编写 Android Test 测试用例，可以对项目进行测试。</p>
+<h3 id="x2F-test"><a href="#x2F-test" class="headerlink" title="&#x2F;test"></a>&#x2F;test</h3><p>相对的此处则是编写单元测试代码，可以对一些独立模块进行功能性测试。</p>
+<h3 id="x2F-main"><a href="#x2F-main" class="headerlink" title="&#x2F;main"></a>&#x2F;main</h3><p>该文件夹包含了我们接触最多的开发资源，具体如下</p>
+<h3 id="x2F-java"><a href="#x2F-java" class="headerlink" title="&#x2F;java"></a>&#x2F;java</h3><p>顾名思义，这个包下面包含了程序主要的逻辑代码（Java 代码），所有的 Java 包&#x2F;类，都在这个包下面存放。</p>
+<h3 id="x2F-res"><a href="#x2F-res" class="headerlink" title="&#x2F;res"></a>&#x2F;res</h3><p>全称“resources”，即资源文件。这个文件夹下存放了一个 APK 所需的如 ICON、颜色配置、layout 设计、界面元素等等文件。</p>
+<p>该文件夹内的结构比较规范，一般不用担心资源该放在哪里。</p>
+<h4 id="x2F-drawable"><a href="#x2F-drawable" class="headerlink" title="&#x2F;drawable"></a>&#x2F;drawable</h4><p>该文件夹用来存放图片</p>
+<h4 id="x2F-mipmap"><a href="#x2F-mipmap" class="headerlink" title="&#x2F;mipmap"></a>&#x2F;mipmap</h4><p>该文件夹用来存放 ICON</p>
+<h4 id="x2F-values"><a href="#x2F-values" class="headerlink" title="&#x2F;values"></a>&#x2F;values</h4><p>该文件夹用来存放样式、颜色配置</p>
+<h4 id="x2F-layout"><a href="#x2F-layout" class="headerlink" title="&#x2F;layout"></a>&#x2F;layout</h4><p>该文件夹存放 application 的布局配置文件</p>
+<h3 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>该文件管理了整个 application 的配置，包括定义的组件、application 所需的权限，都在这个文件里定义。</p>
+<h1 id="核心文件"><a href="#核心文件" class="headerlink" title="核心文件"></a>核心文件</h1><h3 id="AndroidManifest-xml-1"><a href="#AndroidManifest-xml-1" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>一个 Android Application 的所有样式配置、activities、使用到的权限，都会被引入到这个文件中，在安装、运行时被调用。这个文件相当于 Android Application 的中枢。</p>
+<h3 id="layout-x2F-activity-main-xml"><a href="#layout-x2F-activity-main-xml" class="headerlink" title="layout&#x2F;activity_main.xml"></a>layout&#x2F;activity_main.xml</h3><p>这个文件是整个 Android Application 的基础界面设计配置文件，几乎所有的前台显示的界面的设计配置文件都会由这个文件引用。</p>
+<h3 id="cc-ayakurayuki-demo-MainActivity"><a href="#cc-ayakurayuki-demo-MainActivity" class="headerlink" title="cc.ayakurayuki.demo.MainActivity"></a>cc.ayakurayuki.demo.MainActivity</h3><blockquote>
+<p>（路径：cc&#x2F;ayakurayuki&#x2F;demo&#x2F;MainActivity.groovy）</p>
+</blockquote>
+<p>这个文件即逻辑代码，创建的 Basic Activity 会生成。它管理了 application 中按钮、菜单等元素交互的逻辑。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Content Storage App</title>
+    <url>/2017/10/19/2017-10-19-ContentStorageApp/</url>
+    <content><![CDATA[<h1 id="content-storage-app"><a href="#content-storage-app" class="headerlink" title="content-storage-app"></a>content-storage-app</h1><blockquote>
+<p>泛用型个人内容存储，采用两步验证来验证用户</p>
+</blockquote>
+<h2 id="环境-x2F-Environment"><a href="#环境-x2F-Environment" class="headerlink" title="环境 &#x2F; Environment"></a>环境 &#x2F; Environment</h2><ul>
+<li>Spring Boot <code>ver 2.0.2.RELEASE</code></li>
+<li>MyBatis <code>ver 3.4.6</code></li>
+<li>SQLite JDBC <code>ver 3.23.1</code></li>
+<li>Groovy <code>ver 2.5.0</code></li>
+<li>JDK 1.8 <code>ver 1.8.0_181</code></li>
+</ul>
+<h2 id="特性-x2F-Feature"><a href="#特性-x2F-Feature" class="headerlink" title="特性 &#x2F; Feature"></a>特性 &#x2F; Feature</h2><ul>
+<li>JSON 化存储内容</li>
+<li>使用 Google Authenticator 两步验证</li>
+<li>单机使用</li>
+<li>数据加密后持久化</li>
+<li>DB 文件级唯一的 DES Key</li>
+</ul>
+<h2 id="使用：用户"><a href="#使用：用户" class="headerlink" title="使用：用户"></a>使用：用户</h2><p>如果您是普通用户，建议您从<a href="https://github.com/AyakuraYuki/content-storage-app/releases">Release</a>下载</p>
+<p>Linux&#x2F;macOS 使用<code>startup.sh</code>，Windows 使用<code>startup.bat</code>启动</p>
+<p>浏览器访问地址：<code>http://localhost:8888/</code></p>
+<h2 id="使用：开发者"><a href="#使用：开发者" class="headerlink" title="使用：开发者"></a>使用：开发者</h2><p>如果您是开发者，并且有兴趣进行客制化开发和生成，您可以根据下面的说明来使用</p>
+<h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/AyakuraYuki/content-storage-app.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
+<p>推荐使用 IntelliJ IDEA</p>
+</blockquote>
+<p>选择导入 maven 项目即可</p>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>将配置文件中的 MySQL 连接信息修改为您的 SQLite 连接信息，可修改属性如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:sqlite:&lt;</span> <span class="string">_your_db_file_path_</span> <span class="string">||</span> <span class="string">data/storage.db</span> <span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(java -jar content-storage-app-&lt;version&gt;.jar &amp;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Special-Thanks-to"><a href="#Special-Thanks-to" class="headerlink" title="Special Thanks to"></a>Special Thanks to</h2><div>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/variant-2_logos/jetbrains-variant-2.png" alt="JetBrains" width="300px"/>
+</div>
+
+<ul>
+<li><a href="https://www.jetbrains.com/?from=content-storage-app">JetBrains: Developer Tools for Professionals and Teams</a></li>
+</ul>
+<h3 id="Built-by"><a href="#Built-by" class="headerlink" title="Built by"></a>Built by</h3><div>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/intellij-idea_logos/logo.png" alt="JetBrains" width="120px"/>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/webstorm_logos/logo.png" alt="JetBrains" width="120px"/>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/datagrip_logos/logo.png" alt="JetBrains" width="120px"/>
+</div>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Create a full deck of cards in Swift</title>
+    <url>/2018/01/22/2018-01-22-PokerBySwift/</url>
+    <content><![CDATA[<blockquote>
+<p>使用 Swift Playground 创建的一个程序，可以创建一套含 52 张的扑克牌，并按照花色和牌号排序。</p>
+</blockquote>
+<p>最近开始学习 Swift 编程，学到枚举和结构体，看到最后一个 Experiment 要实现创建一套扑克，结合了一下以前写过的”双条件”排序和官方 GuidedTour，弄了下面的代码实现。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Base card rank</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Rank</span>: <span class="title class_">Int</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> ace <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">    <span class="keyword">case</span> jack, queen, king</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .ace:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;ace&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .jack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;jack&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .queen:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;queen&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .king:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;king&quot;</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">String</span>(<span class="keyword">self</span>.rawValue)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">equals</span>(<span class="params">compare</span>: <span class="type">Rank</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.rawValue <span class="operator">==</span> compare.rawValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Card suit</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Suit</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> spades, hearts, diamonds, clubs</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .spades:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;spades&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .hearts:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;hearts&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;diamonds&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;clubs&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">color</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .hearts, .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;red&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .spades, .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;black&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Poker struct with rank and suit.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Poker</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> rank: <span class="type">Rank</span></span><br><span class="line">    <span class="keyword">var</span> suit: <span class="type">Suit</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">description</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This card is a <span class="subst">\(suit.color())</span> <span class="subst">\(suit.simpleDescription())</span> <span class="subst">\(rank.simpleDescription())</span>.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> poker <span class="operator">=</span> [<span class="type">Poker</span>]()</span><br><span class="line"><span class="comment">// Add cards</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">13</span> &#123;</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.spades))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.hearts))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.diamonds))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.clubs))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order by suit, then rank</span></span><br><span class="line">poker.sort(by: &#123;l, r -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> l.suit.simpleDescription() <span class="operator">&lt;</span> r.suit.simpleDescription() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> l.suit.simpleDescription().elementsEqual(r.suit.simpleDescription()) &#123;</span><br><span class="line">        <span class="keyword">return</span> l.rank.rawValue <span class="operator">&lt;</span> r.rank.rawValue</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// Display</span></span><br><span class="line">poker.forEach &#123; (item) <span class="keyword">in</span></span><br><span class="line">    <span class="built_in">print</span>(item.description())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CG5th SSA in Hong Kong</title>
+    <url>/2017/11/02/2017-11-02-CG5thSSAinHK/</url>
+    <content><![CDATA[<blockquote>
+<p>THE IDOLM@STER CINDERELLA GIRLS 5thLIVE TOUR Serendipity Parade!!! Live viewing in Hong Kong</p>
+</blockquote>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/1.png" alt="A店收获之-1"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/2.png" alt="A店收获-2"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/3.png" alt="入场券"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/4.png" alt="港P派送的物品"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/5.png" alt="自制call本部分内容——出演名单"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/6.png" alt="开场留影，地藏位"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/7.png" alt="过期了的抽选券"></p>
+]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>IM@S</tag>
+        <tag>CinderellaGirls</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>RegEx</title>
+    <url>/2018/02/26/2018-02-26-RegEx/</url>
+    <content><![CDATA[<blockquote>
+<p>这篇博文，旨在记录一些我个人开发时使用过的一些正则表达式<br>我会给出几种格式来方便各位使用</p>
+</blockquote>
+<blockquote>
+<p>更新时间：2018-02-26</p>
+</blockquote>
+<h2 id="手机号码"><a href="#手机号码" class="headerlink" title="手机号码"></a>手机号码</h2><h3 id="第一种"><a href="#第一种" class="headerlink" title="第一种"></a>第一种</h3><ul>
+<li>Javascript</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/^(([+])?(86)(-)?)?1[3|4|5|7|8]\d&#123;9&#125;$/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Groovy</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> regex = <span class="regexp">/(([+])?(86)(-)?)?1[3|4|5|7|8]\d&#123;9&#125;/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">regex</span> <span class="operator">=</span> <span class="string">&quot;(([+])?(86)(-)?)?1[3|4|5|7|8]\\d&#123;9&#125;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/static/images/2018-02-26-RegEx/1.png"></p>
+<h3 id="第二种"><a href="#第二种" class="headerlink" title="第二种"></a>第二种</h3><ul>
+<li>Javascript</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/^((86)|(\+86))?(\-)?1[3|4|5|7|8]\d&#123;9&#125;$/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Groovy</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> regex = <span class="regexp">/((86)|(\+86))?(\-)?1[3|4|5|7|8]\d&#123;9&#125;/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">regex</span> <span class="operator">=</span> <span class="string">&quot;((86)|(\\+86))?(\\-)?1[3|4|5|7|8]\\d&#123;9&#125;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/static/images/2018-02-26-RegEx/2.png"></p>
+<h2 id="MAC-地址"><a href="#MAC-地址" class="headerlink" title="MAC 地址"></a>MAC 地址</h2><ul>
+<li>Javascript</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/^([A-Fa-f0-9]&#123;2&#125;[:-])&#123;5&#125;[A-Fa-f0-9]&#123;2&#125;$/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Groovy</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> regex = <span class="regexp">/([A-Fa-f0-9]&#123;2&#125;[:-])&#123;5&#125;[A-Fa-f0-9]&#123;2&#125;/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">regex</span> <span class="operator">=</span> <span class="string">&quot;([A-Fa-f0-9]&#123;2&#125;[:-])&#123;5&#125;[A-Fa-f0-9]&#123;2&#125;&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/static/images/2018-02-26-RegEx/3.png"></p>
+<h2 id="密码强度"><a href="#密码强度" class="headerlink" title="密码强度"></a>密码强度</h2><p>密码需要满足：</p>
+<ul>
+<li>至少一个大写字母</li>
+<li>至少一个小写字母</li>
+<li>至少一个数字</li>
+<li>至少一个特殊符号，支持<code>-_,.:;!?@#$%^&amp;*+=~/|()&lt;&gt;&#123;&#125;[]\&quot;&#39;</code></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[-_,.:;!?@#$%^&amp;*+=~/|()&lt;&gt;&#123;&#125;[\]\\&quot;&#x27;]).&#123;8,&#125;$</span><br></pre></td></tr></table></figure>
+
+<h2 id="URL-的域名解析"><a href="#URL-的域名解析" class="headerlink" title="URL 的域名解析"></a>URL 的域名解析</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">^(http[s]?):\/\/([a-zA-Z0-9][-a-zA-Z0-9]&#123;0,62&#125;\.)?(([a-zA-z0-9][-a-zA-z0-9]&#123;0,62&#125;)((\.[a-zA-Z]&#123;2,3&#125;)+))(:[0-9]&#123;1,5&#125;)?[-a-zA-Z0-9()@:%_\\\+\.~#?&amp;\/=]*$</span><br></pre></td></tr></table></figure>
+
+<h2 id="媒体文件后缀判断"><a href="#媒体文件后缀判断" class="headerlink" title="媒体文件后缀判断"></a>媒体文件后缀判断</h2><p>允许添加任意想要支持的格式在该正则判断中</p>
+<ul>
+<li>Javascript</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> regex = <span class="regexp">/^[\s\S]*\.(png|jpg|bmp|gif|mp4|flv|mkv)$/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Groovy</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> regex = <span class="regexp">/[\s\S]*\.(png|jpg|bmp|gif|mp4|flv|mkv)/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">regex</span> <span class="operator">=</span> <span class="string">&quot;[\\s\\S]*\\.(png|jpg|bmp|gif|mp4|flv|mkv)&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/static/images/2018-02-26-RegEx/4.png"></p>
+<h2 id="Python-logging-in-Ideolog-plugin"><a href="#Python-logging-in-Ideolog-plugin" class="headerlink" title="Python logging in Ideolog plugin"></a>Python logging in Ideolog plugin</h2><p>这里假定有如下的 logging 输出格式</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">formatters:</span></span><br><span class="line">    <span class="attr">default_format:</span></span><br><span class="line">        <span class="attr">format:</span> <span class="string">&quot;%(asctime)s [%(name)s] [%(levelname)s] %(message)s&quot;</span></span><br><span class="line">        <span class="attr">datefmt:</span> <span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>用来匹配这个格式的日志的正则</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">^(\d&#123;4&#125;-\d&#123;2&#125;-\d&#123;2&#125;\s\d&#123;2&#125;:\d&#123;2&#125;:\d&#123;2&#125;)\s\[(.*)]\s\[(.*)]\s(.*)$</span><br></pre></td></tr></table></figure>
+
+<p>日志开头的正则</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">^\d</span><br></pre></td></tr></table></figure>
+
+<p>时间格式</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">yyyy-MM-dd HH:mm:ss</span><br></pre></td></tr></table></figure>
+
+<p>其他配置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">Time capture group:</span> <span class="number">1</span></span><br><span class="line"><span class="attr">Severity capture group:</span> <span class="number">3</span></span><br><span class="line"><span class="attr">Category capture group:</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>regex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
+    <url>/2018/05/25/2018-05-25-InviteCode/</url>
+    <content><![CDATA[<blockquote>
+<p>偶然查库检查用户邀请码使用情况的时候，发现居然有重复的邀请码。。。</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>2018&#x2F;05&#x2F;25，这是个很正常的一天，除了京东白条出账催债这个很恼人的事情，大体也就没什么大事缠身的样子。</p>
+<p>同事在检查用户邀请码使用情况的时候，突然叫道我，说了句很严重很致命的话：”怎么邀请码有重复的？”</p>
+<p>咩话？！点解？！我记得邀请码设计是讨论之后敲定的方案，怎么会有重复的邀请码出现？？？</p>
+<p>问题来了，当然还得确认确认是个什么毛病才行。。。</p>
+<h2 id="述"><a href="#述" class="headerlink" title="述"></a>述</h2><p>在本文进行下去之前，让我来说明一下当时的设计是个什么样的方案。</p>
+<p>首先在邀请码的需求上，我们采用的是<code>6</code>位字符串，邀请码生成组合中有<code>4</code>位是字母，另外<code>2</code>位是数字。而在字母组合上，我们去除了邀请码中可能输入错误的字母<code>O</code>和<code>L</code>，并将剩余的 24 个字母打乱组合成四个基础字母组。</p>
+<p>随后遍历四组基础字母和数字，生成无重复的邀请码生成组合。</p>
+<p>文字说明比较生硬，但经过上述处理后，产生的邀请码生成组合没有重复，可以看下面给出的范例：（注意观察，结合后面的内容思考这里埋的坑）</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;huax54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;huac54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>这只是第一步，因为全部组合的可能性只有 1118 个，完全不可能当作邀请码来使用（根本不够嘛），所以我们更激进的，直接用每个组合进行遍历生成一批邀请码。</p>
+<h2 id="验"><a href="#验" class="headerlink" title="验"></a>验</h2><p>明眼人应该还没看到这里就能想到上面的设计方案存在什么问题了，我先走个过程，来验证一下代码中是否存在问题。</p>
+<p>在判断重复的时候，我们采用 Redis Set 的特性来排除重复。Redis Set 这一数据结构内部不允许出现重复，并且是无序的，所以能满足下面两点需求：</p>
+<ol>
+<li>添加到 Set 内的数据不会有重复</li>
+<li>随机取出邀请码并移出 Set</li>
+</ol>
+<p>在实现的时候，我将上面产生的邀请码生成组合落库，通过状态字段过滤已用组合，实际产生的邀请码存入 Redis Set 中，每当 Set 的集合个数少于 10000 条，就生成新的邀请码丢入 Set。（埋坑）</p>
+<p>在取邀请码的时候，用到 spop 取出，表示这个邀请码已用过，不再可用。（埋了个大坑！）</p>
+<p>那么看到这里，我就来说一下上面的实现存在了什么问题：</p>
+<p>首先，组合中有相互存在的字母，你有<code>h</code>我也有<code>h</code>，你有<code>5</code>我也有<code>5</code>，并没有保证生成组合两两间的完全去重。</p>
+<p>其次，生成的条件只有一个，只要满足 6 位字符就是个合理的邀请码，这样一来就有可能出现多组都是<code>hahhhh</code>，或者<code>555e55</code>之类的邀请码。</p>
+<h2 id="研"><a href="#研" class="headerlink" title="研"></a>研</h2><p>上面提到的三个埋坑点，其实很大的原因是<code>Redis Set内部元素一定唯一</code>这一特性，使得我在开发过程中过度依赖了 Redis 特性，忽视了邀请码 pop 后的场景会产生的问题，以及没有注意到邀请码生成组合本身存在的缺陷。</p>
+<p>埋坑点 1 虽然不是影响最严重的因素，但由于设置的阈值过低，很有可能已经使用过的邀请码早就被 pop 出 Set 了，没有元素重复判断的参照。</p>
+<p>埋坑点 2 则是随机取出邀请码，这里用到了 spop，spop 做的事情是，返回一个随机的元素，并且将这个元素从 Set 中移除。由于元素移除后，Set 中不存在这个元素，从而会导致相同的元素能够成功进入 Set 中。这样的情景其实只是保证了 Redis Set 内的唯一性，但没有保证整个邀请码系统的邀请码唯一性。</p>
+<p>然而上面的埋坑点都不是根源，要知道这些邀请码都是由数据库中的邀请码生成组合产生的，追根揭底还是要检查邀请码组合的构成。</p>
+<p>最终我发现，如果邀请码生成组合内如果两两间存在相同的字符，在现有的生成方法中必定会出现像上面提到的<code>hahhhh</code>的情况。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 邀请码生成写入Redis的为代码</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c1 : chars) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">char</span> c2 : chars) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c3 : chars) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> c4 : chars) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c5 : chars) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> c6 : chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c1 == c4 &amp;&amp; c1 == c5 &amp;&amp; c1 == c6) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            redis.sadd(INVITE_CODE_SET, <span class="string">&quot;&quot;</span> + c1 + c2 + c3 + c4 + c5 + c6);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看邀请码生成组合的生成方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; letters.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; letters.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span>; k &lt; letters.length - <span class="number">1</span>; k++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">3</span>; l &lt; letters.length; l++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; numbers.length - <span class="number">1</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">1</span>; y &lt; numbers.length; y++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (letters[i] == letters[j] || letters[i] == letters[k]</span><br><span class="line">                || letters[i] == letters[l]</span><br><span class="line">                || letters[j] == letters[k] || letters[j] == letters[l]</span><br><span class="line">                || letters[k] == letters[l]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (numbers[x] == numbers[y]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">InviteCodeGenerateGroup</span> <span class="variable">group</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InviteCodeGenerateGroup</span>();</span><br><span class="line">            group.setCharacters(<span class="string">&quot;&quot;</span> + letters[i] + letters[j] + letters[k] + letters[l]);</span><br><span class="line">            group.setNumbers(<span class="string">&quot;&quot;</span> + numbers[x] + numbers[y]);</span><br><span class="line">            group.setStatus(NORMAL);</span><br><span class="line">            db.insert(group);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的生成方式存在的缺陷已经很明显了，通过遍历数组的方式，仅在最里层遍历做去重，并不能做到有一个组合是<code>hatc12</code>，其他组合不能有这个组合中的任何字母的情况。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>在新版的macOS上切换不同版本的JDK</title>
+    <url>/2018/05/31/2018-05-31-SwitchDifferentJDK/</url>
+    <content><![CDATA[<blockquote>
+<p>新版 macOS 的 JDK 切换似乎有些，不那么直接？这就仁者见仁了。</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>为了开发（或者说玩耍）的需要，我们或多或少都会在本机上安装多个版本的 JDK。在 Windows 上，我们可以很自然的，通过定义<code>JAVA_HOME</code>的路径，来修改我们要使用的 JDK 版本。在 Linux 系统中，我们也可以通过直接定义 JDK 的路径，去配置要使用的 JDK 版本。</p>
+<p>对于 Windows 和 Linux 开发者来说，修改 JDK 使用的版本可以说是非常舒适了，简单配置一下路径，就能实现目标。然而反观 macOS，它在 JDK 版本切换上，有些人会说它方便，有些人则会说它恼人，从 macOS 10.5+版本开始，Apple 为 macOS 加的一个新东西，可以说是让那些习惯了配置路径修改 JDK 版本的开发者感到很不习惯。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>让我们先来看看来自<code>Apple Developer - Guides and Sample Code</code>中<a href="https://developer.apple.com/library/content/qa/qa1170/_index.html">Technical Q&amp;A QA1170 Important Java Directories on Mac OS X</a>的文档说明。</p>
+<hr>
+<h4 id="Java-Home"><a href="#Java-Home" class="headerlink" title="Java Home"></a>Java Home</h4><p>Many Java applications need to know the location of a <code>$JAVA_HOME</code> directory. The <code>$JAVA_HOME</code> on Mac OS X should be found using the <code>/usr/libexec/java_home</code> command line tool on Mac OS X 10.5 or later. On older Mac OS X versions where the tool does not exist, use the fixed path “<code>/Library/Java/Home</code>“. The <code>/usr/libexec/java_home</code> tool dynamically finds the top Java version specified in Java Preferences for the current user. This path allows access to the <code>bin</code> subdirectory where command line tools such as <code>java</code>, <code>javac</code>, etc. exist as on other platforms. The tool <code>/usr/libexec/java_home</code> allows you to specify a particular CPU architecture and Java platform version when locating a <code>$JAVA_HOME</code>.</p>
+<p>Another advantage of dynamically finding this path, as opposed to hardcoding the fixed endpoint, is that it is updated when a new version of Java is downloaded via Software Update or installed with a newer version of Mac OS X. For this reason, it is important that developers do not install files in the JDKs inside of <code>/System</code>, since the changes will be lost with subsequent updates by newer versions of Java.</p>
+<p>To obtain the path to the currently executing <code>$JAVA_HOME</code>, use the <code>java.home</code> System property.</p>
+<hr>
+<p>可以看到，在使用 macOS 10.5 或更新版本的系统时，Apple 已经推荐开发者使用<code>/usr/libexec/java_home</code>去设置 JDK 的版本了，并且由于<code>java_home</code>会动态查找到最新的 JDK 版本，并且支持通过发行版通称，即 JDK1.7、JDK1.8、JDK11 等来获取路径，所以很适合用来切换不同版本的 JDK。</p>
+<p>让我们再来看一下接下来会用到的脚本。我们可以利用如<code>/usr/libexec/java_home -v 1.8</code>来查找当前本机存在的 Java 1.8 版本路径，在 Terminal 中执行该脚本会得到以下的返回值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ /usr/libexec/java_home -v 1.8</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+
+<p>而输入参数为<code>-v 10</code>时，则会有下面的返回：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ /usr/libexec/java_home -v 10</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+
+<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>根据官方文档的说明，在新版本 macOS 中，我们只需要将以往的</p>
+<p><code>export JAVA_HOME=&lt;JAVA_HOME_PATH&gt;</code></p>
+<p>改写成形如</p>
+<p><code>export JAVA_&lt;MAIN_VERSION&gt;_HOME=$(/usr/libexec/lava_home -v&lt;MAIN_VERSION_NUMBER&gt;)</code></p>
+<p>即可完成对某个版本的配置，最后再以下面的配置完成 JDK 版本选择：</p>
+<p><code>export JAVA_HOME=$&#123;JAVA_&lt;MAIN_VERSION&gt;_HOME&#125;</code></p>
+<p>而为了快速切换版本，我们可以使用 alias 来绑定别名执行相应的<code>export</code>操作。完整的脚本配置如下脚本所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># .bash_profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Java</span></span><br><span class="line"><span class="built_in">export</span> JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)</span><br><span class="line"><span class="built_in">export</span> JAVA_X_HOME=$(/usr/libexec/java_home -v10)</span><br><span class="line"><span class="built_in">alias</span> jdk8=<span class="string">&#x27;export JAVA_HOME=$&#123;JAVA_8_HOME&#125;&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> jdkX=<span class="string">&#x27;export JAVA_HOME=$&#123;JAVA_X_HOME&#125;&#x27;</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=<span class="variable">$&#123;JAVA_8_HOME&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行结果直接上 Bash 输出吧</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br><span class="line">*****-Pro:~ *****$ jdkX</span><br><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;10.0.1&quot; 2018-04-17</span><br><span class="line">Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)</span><br><span class="line">*****-Pro:~ *****$ jdk8</span><br><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>macOS</tag>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【重要】コンテンツ更新終了のお知らせ</title>
+    <url>/2017/10/30/2017-10-30-ContentUpdateOverNotification/</url>
+    <content><![CDATA[<h1 id="グリマスコンテンツ更新終了のお知らせ"><a href="#グリマスコンテンツ更新終了のお知らせ" class="headerlink" title="グリマスコンテンツ更新終了のお知らせ"></a>グリマスコンテンツ更新終了のお知らせ</h1><p>「アイドルマスター ミリオンライブ！」をご利用いただき、誠にありがとうございます。<br><br><br><br>サービス開始以来、4 年以上にわたり多くの皆様にご愛顧頂きました「アイドルマスター ミリオンライブ！」は、<br><br>この度、2017 年 11 月中旬開催予定のイベント「Thank You! ミリオンシアターライブ Final Party!」をもちまして、最終公演とさせていただくこととなりました。<br><br><br><br>これに伴い、近い将来のサービス終了に向けて「<span style="color:#bbbbff">各種コンテンツの終了・更新停止および仕様の一部変更</span>」を 2017 年 12 月より順次行います。<br><br><br><br>プロデューサーの皆様には、深くお詫びを申し上げますと共に、これまでの長きにわたるご支援、ご愛顧に心より感謝し、厚く御礼申し上げます。<br><br><br><br>本サービスの終了後も、アイドルたちは、仲間たちと手を取りあって元気にトップアイドルを目指す日々を送っていきますので、引き続き応援していただけますと幸いです。<br><br><br><br>サービスの終了時期については、具体的な日程が決まりましたら、あらためて本告知にてお伝えいたします。<br><br><br><br>また、明日 31 日 12:00 より、フィナーレに向けたキャンペーン「<span style="color:#ffff33">TH@NK YOU FOREVER!!</span>」を開催いたします。<br><br>キャンペーンの内容につきましては専用ページにてご確認ください。<br><br><br><br>10 月 30 日現在、すでに決定している内容につきましては下記をご確認ください。<br><br><br></p>
+<hr>
+<span style="color:#ff3333">▼▼▼終了となるコンテンツ▼▼▼</span><br>
+<span style="color:#ffcc33">■プラチナガシャ（有償ガシャ）</span><br>
+<span style="color:#ffff77">2017/12/1 9:59にて終了</span><br>
+11月下旬開始のプラチナガシャ「Happy Days!ミリオンシアターライブ Day15」を上記時刻まで販売いたします。<br>
+また、同日12:00よりミリオンジュエル及び各種チケットにてご利用いただける無償ガシャを開始いたします。<br>
+※プラチナガシャに付属していたバザーチケットは、以降も劇場のポイント交換にて引き続き獲得可能です<br>
+※補填等で配布している「サービスチケット」の使用期限は11/13 13:59（11月月初ガシャの終了日時）までとなりますのでご注意ください<br>
+<br>
+<span style="color:#ffcc33">■イベント</span><br>
+<span style="color:#ffff77">2017/11/30 23:59にて終了</span><br>
+11月中旬開始のイベント「Thank You! ミリオンシアターライブ Final Party!」が最後のランキング対象イベントとなります。<br>
+<br>
+<span style="color:#ffcc33">■ショップでの限定セット販売</span><br>
+<span style="color:#ffff77">2017/11/30 23:59にて終了</span><br>
+イベント期間限定セット、キャンペーン記念セット、HappyBirthday iDOLセットの販売は上記時刻までとなります。<br>
+以降ショップにて販売される有償アイテムは「スパークドリンク」「バトルキャンディ」の2種類のみとなります。<br>
+<br>
+<span style="color:#ffcc33">■カムバックメール送信キャンペーン</span><br>
+<span style="color:#ffff77">2017/11/30 23:59にて終了</span><br>
+「カムバックリクエストメール」の送信、「カムバック成功報酬」の獲得期限は上記時刻までとなります。<br>
+<br>
+<span style="color:#ffcc33">■招待キャンペーン</span><br>
+<span style="color:#ffff77">2017/12/1 9:59にて終了</span><br>
+「招待メール」の送信、「招待くじ券」「招待pt」「HR確定ガシャチケット(招待pt)」の獲得および使用期限は上記時刻までとなります。<br>
+<br>
+<span style="color:#ffcc33">■社長ミッション</span><br>
+<span style="color:#ffff77">2017/12/1 9:59にて終了</span><br>
+ミッション達成および達成報酬獲得期限は上記時刻までとなります。<br>
+<br>
+<hr>
+<span style="color:#ff5533">▼▼▼更新停止となるコンテンツ▼▼▼</span><br>
+<span style="color:#ffcc33">■オーディオルーム</span><br>
+<span style="color:#ffff77">2017/11/30 23:59にて更新停止</span><br>
+CD試聴音源、ライブセットリスト音源の追加・更新は上記時刻までとなります。<br>
+※すでに公開済みの音源は引き続きご試聴いただけます<br>
+<br>
+<span style="color:#ffcc33">■電撃マオウ連載コミック試し読み</span><br>
+<span style="color:#ffff77">2017/11/30 23:59にて更新停止</span><br>
+11月発売号の試し読みを最後に、以降の更新を停止いたします。<br>
+※すでに公開済みの試し読みは引き続きお楽しみいただけます<br>
+<br>
+<span style="color:#ffcc33">■誕生日のお祝い</span><br>
+<span style="color:#ffff77">2017/12/29 23:59にて更新停止</span><br>
+12/29に予定されている高山紗代子の誕生日を最後に、以降の更新を停止いたします。<br>
+※GREEカレンダーによる誕生日通知（登録者のみ）も停止いたします<br>
+<br>
+<span style="color:#ffcc33">■ボイス</span><br>
+下記の項目につきましては、10/30現時点での収録済みボイスの最終追加を11月中旬頃に予定しております。<br>
+（※上記最終追加以降は、未収録分の追加予定はございません）<br>
+◎スキル発動ボイス（数量未定）<br>
+◎SRカードボイス（数量未定）<br>
+<br>
+下記の項目につきましては、現在未実装分すべてをサービス終了までに順次追加予定です。<br>
+（※ただし、「田中琴葉」分を除きます）<br>
+◎ネクストプロローグ編アイドルストーリー（Lv.2～Lv.6）<br>
+◎親愛度達成ボイス（Lv.8～Lv.10）<br>
+<br>
+<span style="color:#ffcc33">■その他</span><br>
+下記の項目につきましては、今後の追加・更新予定はありません。<br>
+◎営業エリア（「横浜2」まで）<br>
+◎アイドルLv上限（Lv.150まで）<br>
+◎SPスキル（「Vo/Da/Vi属性の特大ｱﾋﾟｰﾙで敵HPﾀﾞｳﾝ」まで）<br>
+◎親愛Lv上限（Lv.10まで）<br>
+<br>
+下記の項目につきましては、今後も更新を予定しております。<br>
+◎劇場Lv上限（最終更新11月上旬頃予定）<br>
+<br>
+<hr>
+<span style="color:#ff8833">▼▼▼一部変更となる仕様▼▼▼</span><br>
+<span style="color:#ffcc33">■ライブバトルシアターくじ報酬の一部変更</span><br>
+<span style="color:#ffff77">2017/12/1 12:00以降</span><br>
+HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
+<br>
+<span style="color:#ffcc33">■お仕事完了報酬の一部変更</span><br>
+<span style="color:#ffff77">2017/12/1 0:00以降</span><br>
+イベント専用ドリンクおよびキャンディ　→　ミリオンジュエルに変更<br>
+<br>
+<span style="color:#ffcc33">■ログインボーナス変更</span><br>
+<span style="color:#ffff77">2017/10/31 12:00以降</span><br>
+ミリオンジュエル10～100個　→　毎日ミリオンジュエル300個＋ファンからの手紙30個＋ファンからのプレゼント30個に変更<br>
+※10/31 9:59までのマイページアクセスで変更前の報酬が獲得できるのに加え、さらに同日メンテナンス終了後の12:00以降のアクセスで変更後の報酬も重ねて獲得可能となります<br>
+※ただし「新人プロデューサー応援連続ログインボーナス」および「お帰りなさいプロデューサーさん連続ログインボーナス」が継続中のお客様につきましては、<br>
+連続ログイン期間（最大5日間）終了の翌日より、変更後のログインボーナスが開始いたします<br>
+<br>
+<hr>
+<br>
+<span style="color:#ff3333">なお、すでにご購入頂いた有償アイテム（スパークドリンク、バトルキャンディ等）につきましては<br>
+「GREEコイン」および「ミリオンコイン（iOS/Androidアプリ版専用通貨）」への返還を承ることはできません。</span><br>
+ご理解ご了承くださいますようお願い申し上げます。<br>  
+<br>
+ご不明点につきましては、ゲーム内ページ最下部の「お問い合わせ」よりお問い合わせください。<br>
+<br>
+今後とも「アイドルマスター ミリオンライブ！」をよろしくお願いいたします。<br><br>
+]]></content>
+      <categories>
+        <category>notification</category>
+      </categories>
+      <tags>
+        <tag>IM@S</tag>
+        <tag>MillionLive</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简记Python里的单例化实现办法</title>
+    <url>/2019/08/01/2019-08-01-PythonMetaclassSingleton/</url>
+    <content><![CDATA[<blockquote>
+<p>简单记录了我学到的 Python 单例的内容</p>
+<p>本人一直都在用 Python3，以下的内容都基于 Python3 来记录，Python2 的这里就不放了</p>
+</blockquote>
+<h2 id="引入模块"><a href="#引入模块" class="headerlink" title="引入模块"></a>引入模块</h2><p>模块在第一次导入时，会生成<code>pyc</code>文件，当第二次导入时，就会直接加载<code>pyc</code>文件，避免再次执行模块代码产生新的对象。</p>
+<p>a.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">singleton = Singleton()</span><br></pre></td></tr></table></figure>
+
+<p>b.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> singleton</span><br></pre></td></tr></table></figure>
+
+<h2 id="装饰器（我倒是喜欢理解成注解，谁叫我之前写-Java-的）"><a href="#装饰器（我倒是喜欢理解成注解，谁叫我之前写-Java-的）" class="headerlink" title="装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）"></a>装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">singleton</span>(<span class="params">cls</span>):</span><br><span class="line">    __instances = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_singleton</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> __instances:</span><br><span class="line">            __instances[cls] = cls(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> __instances[cls]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> _singleton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@singleton</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x=<span class="number">0</span></span>):</span><br><span class="line">        self.x = x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a1 = A(<span class="number">2</span>)</span><br><span class="line">a2 = A(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="线程锁实现线程安全的单例"><a href="#线程锁实现线程安全的单例" class="headerlink" title="线程锁实现线程安全的单例"></a>线程锁实现线程安全的单例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance_lock = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">instance</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">            <span class="keyword">with</span> Singleton._instance_lock:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">                    Singleton._instance = Singleton(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> Singleton._instance</span><br></pre></td></tr></table></figure>
+
+<h3 id="new-实现"><a href="#new-实现" class="headerlink" title="__new__实现"></a><code>__new__</code>实现</h3><p><code>__new__</code>是 Python 生命周期中必经的步骤，即使我们没有显式声明<code>__new__</code>函数，解释器依旧帮我们执行了<code>object.__new__</code>。</p>
+<p>所以我们可以将单例初始化的代码放入<code>__new__</code>函数中，让解释器来帮我们处理初始化的流程。</p>
+<p>用<code>__new__</code>的方式实现单例是最方便的，并且同样可以实现线程安全的单例。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance_lock = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">            <span class="keyword">with</span> Singleton._instance_lock:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">                    Singleton._instance = <span class="built_in">object</span>.__new__(cls)</span><br><span class="line">        <span class="keyword">return</span> Singleton._instance</span><br></pre></td></tr></table></figure>
+
+<h3 id="metaclass元类"><a href="#metaclass元类" class="headerlink" title="metaclass元类"></a><code>metaclass</code>元类</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>(<span class="title class_ inherited__">type</span>):</span><br><span class="line">    _instances = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> cls._instances:</span><br><span class="line">            cls._instances[cls] = <span class="built_in">super</span>(Singleton, cls).__call__(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> cls._instances[cls]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(metaclass=constant.Singleton):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>design pattern</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DD Monitor</title>
+    <url>/2019/08/27/2019-08-27-DDMonitor/</url>
+    <content><![CDATA[<h1 id="dd-monitor"><a href="#dd-monitor" class="headerlink" title="dd_monitor"></a>dd_monitor</h1><blockquote>
+<p>誰でも大好き</p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/AyakuraYuki/dd_monitor">Github Repo here</a></p>
+</blockquote>
+<p>DD monitor, which means a monitor for DDs (DD means <code>誰でも大好き</code>), can let you watch multiple YouTube streams (if the stream is enabled to be embedded outside YouTube) in one screen at the same time.</p>
+<p>In the beginning, I was planning to see the multi-view of Hololive’s Project Winter collab streams, but it is very difficult to allocate space for browsers. So I decide to build this program to make things easier.</p>
+<p>When I noticed that hey if I can use YouTube embed link, I can watch not only the Project Winter streams but also every stream which supports to play outside YouTube.</p>
+<p>So this is it, a simple but functionally DD monitor.</p>
+<p>DD 监视器，你要来当监视房里的老大爷吗？这个工具可以让你同时观看多个（允许在 YouTube 外部播放的）油管直播。</p>
+<p>一开始的时候我打算看当时 Hololive 的 Project Winter 联动直播，但是一起 8 个视角，给浏览器分配空间太难了。所以我决定搞一个工具来把事情变得容易解决。</p>
+<p>然而当我注意到，当我使用油管的外部嵌入链接时，我不但可以用来看 Project Winter 联动直播，还可以看任何支持在油管外播放的直播。</p>
+<p>所以，这就是一个简单但很好用的 DD 监视器。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><ul>
+<li>Python 3.7.4</li>
+<li>Flask 1.1.1</li>
+<li>sqlite3</li>
+<li>Vue 3</li>
+</ul>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简记修复Git提交时GPG签名失败的问题</title>
+    <url>/2019/11/15/2019-11-15-FixGPGSignFailedProb/</url>
+    <content><![CDATA[<blockquote>
+<p>一直以来都很正常的 GPG 签名，唐突暴毙了？？？</p>
+</blockquote>
+<p>最近在 IDEA 提交代码的时候，因为 GPG 签名失败的问题，一直没有提交成功。</p>
+<p>起初是直接走的 IDEA 的 VCS 提交，一开始还觉得是没有触发输入证书密码的界面导致的，但回想了一下之前都可以提交，那应该跟证书密码没什么关系才对。</p>
+<p>于是我尝试去终端走命令的方式提交了下，老样子还是失败了。。。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: gpg failed to sign the data</span><br><span class="line">fatal: failed to write commit object</span><br></pre></td></tr></table></figure>
+
+<p>上 stack overflow 搜搜问题，偶然发现有一条答案挺有用的，先贴原文地址</p>
+<p><a href="https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data">Git error - gpg failed to sign data</a></p>
+<p>具体步骤嘛，首先检查 Git 全局配置的签名程序配置对了没，正确的配置应该是<code>gpg.program=gpg2</code></p>
+<p>那么我本机的话，gpg2 是定位到了<code>/usr/local/bin/gpg2</code>，可以直接跑下面的命令修复配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global gpg.program /usr/local/bin/gpg2</span><br></pre></td></tr></table></figure>
+
+<p>接着用下面的命令检查 GPG 签名时是不是正常工作的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | gpg2 --clearsign</span><br></pre></td></tr></table></figure>
+
+<p>顺带一提如果没有输入证书密码的界面，或许需要安装<code>pinentry</code>，以 macOS 举例，可以用<code>brew install pinentry</code>装一下就完事了</p>
+<p>之后再尝试<code>git commit</code>，没报错的话就到此为止了，问题定位在没有正确配置签名程序（以及有可能是缺少<code>pinentry</code>）</p>
+<p>尝试提交还是失败的话，这时候就要把一个叫<code>gpg-agent</code>的家伙干掉了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> gpg-agent</span><br></pre></td></tr></table></figure>
+
+<p>一般到此为止，重新提交就可以正常签名。要是缺少<code>gpgconf</code>或者<code>--kill</code>选项丢失，重新装一下<code>gnupg</code>或许是个好选择。</p>
+<p>那么这里我顺带吐槽一下，国内各个博客，不是教你怎么关闭提交签名，就是让你检查提交时的<code>user.name</code>和<code>user.email</code>，其实那些都不是主要问题，别人就是要用 GPG 对提交签名，你们却教别人关闭签名，意义何在？</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>GPG</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON in Swift4</title>
+    <url>/2018/01/31/2018-01-31-JSONinSwift/</url>
+    <content><![CDATA[<blockquote>
+<p>记录使用 SwiftyJSON 和 HandyJSON 在 Swift 4 中处理 JSON 文件的过程</p>
+</blockquote>
+<p>最近接了一个项目，这个项目用到了<a href="https://github.com/jokermonn/-Api/blob/master/CenterWeather.md">中央天气预报 API</a>的接口，这个接口提供了其所用城市码的数据文件，我采用了 JSON 文件来处理数据信息。</p>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>在进行 Swift 的 JSON 文件处理时，我查阅了大量资料，大多数的博客均采用了以下的类来读取 JSON 文件并转换为<code>Array</code></p>
+<ul>
+<li><code>NSBundle</code></li>
+<li><code>NSData</code></li>
+<li><code>NSJSONSerialization</code></li>
+</ul>
+<h2 id="存在了问题"><a href="#存在了问题" class="headerlink" title="存在了问题"></a>存在了问题</h2><p>参考他人博客的处理方式，我在自己的平台上测试时，发现会出现以下的”神秘”异常</p>
+<p><img src="/static/images/2018-01-31-JSONinSwift/1.png"></p>
+<p>嗯，嗯？<code>NSBundle</code>呢？？上下翻看发现<code>NSBundle</code>并没有出现在匹配列表中。</p>
+<p>这个情况我不考虑引入问题，而是考虑 Swift 3 到 Swift 4 的差异，于是我查找了 Xcode 中的 Develop Documentation</p>
+<p><img src="/static/images/2018-01-31-JSONinSwift/2.png"></p>
+<p>哈！果然没有第一个出现，说明这个类现在已经被改成别的名称了（顺势吐槽不是说好的 NS 公司的产物吗居然改名？？）</p>
+<p>然后把 NS 去掉，看看结果……</p>
+<p><img src="/static/images/2018-01-31-JSONinSwift/3.png"></p>
+<p>Foundation？？<code>Bundle</code>？？右边有个链接查看 Objective-C 的，点一下</p>
+<p><img src="/static/images/2018-01-31-JSONinSwift/4.gif"></p>
+<p>绝了，还真是 Swift 和 Objective-C 两个版本不同名的</p>
+<h2 id="找到问题，出个解法"><a href="#找到问题，出个解法" class="headerlink" title="找到问题，出个解法"></a>找到问题，出个解法</h2><p>既然改名叫了<code>Bundle</code>，那其他的两个应该也没差了吧，果断写出下面的代码来试试</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// JSON文件名: CityCode.json</span></span><br><span class="line"><span class="keyword">let</span> path: <span class="type">String</span>! <span class="operator">=</span> <span class="type">Bundle</span>.main.path(forResource: <span class="string">&quot;CityCode&quot;</span>, ofType: <span class="string">&quot;json&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> nsData: <span class="type">NSData</span>! <span class="operator">=</span> <span class="type">NSData</span>(contentsOfFile: path)</span><br><span class="line"><span class="keyword">let</span> data: <span class="type">Data</span>! <span class="operator">=</span> <span class="type">Data</span>(referencing: nsData<span class="operator">!</span>)</span><br><span class="line"><span class="keyword">let</span> json <span class="operator">=</span> <span class="keyword">try?</span> <span class="type">JSON</span>(data: data)</span><br></pre></td></tr></table></figure>
+
+<p>这里为什么不直接用<code>Data(contentsOf: URL)</code>，别问为什么，有一个更容易看懂的<code>NSData(contentsOfFile: String)</code>和一个<code>Data(referencing: NSData)</code>，懒得用<code>NSURL</code>了</p>
+<p>好吧好吧还是给一个 URL 版的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> path: <span class="type">String</span>! <span class="operator">=</span> <span class="type">Bundle</span>.main.path(forResource: <span class="string">&quot;CityCode&quot;</span>, ofType: <span class="string">&quot;json&quot;</span>)</span><br><span class="line"><span class="keyword">let</span> url: <span class="type">URL</span>! <span class="operator">=</span> <span class="type">NSURL</span>.fileURL(withPath: path)</span><br><span class="line"><span class="keyword">let</span> data: <span class="type">Data</span>! <span class="operator">=</span> <span class="keyword">try?</span> <span class="type">Data</span>(contentsOf: url)</span><br><span class="line"><span class="keyword">let</span> json <span class="operator">=</span> <span class="keyword">try?</span> <span class="type">JSON</span>(data: data)</span><br></pre></td></tr></table></figure>
+
+<h2 id="SwiftyJSON-和-HandyJSON"><a href="#SwiftyJSON-和-HandyJSON" class="headerlink" title="SwiftyJSON 和 HandyJSON"></a>SwiftyJSON 和 HandyJSON</h2><p>细心的话你会注意到其中的<code>JSON(data: data)</code>和<code>class City: HandyJSON</code></p>
+<h4 id="JSON-data-data"><a href="#JSON-data-data" class="headerlink" title="JSON(data: data)"></a><code>JSON(data: data)</code></h4><p>这是 SwiftyJSON 创建 JSON 对象的方法，使用由<code>Data</code>类解析 JSON 文件获得的数据</p>
+<h4 id="class-City-HandyJSON"><a href="#class-City-HandyJSON" class="headerlink" title="class City: HandyJSON"></a><code>class City: HandyJSON</code></h4><p>这是使<code>City</code>类能够支持 JSON to Model 的方式，通过使用 HandyJSON 框架，为<code>City</code>类提供反序列化能力，并通过下面的代码将 JSON 文件转化成<code>Array</code></p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line">cityArray.append(<span class="type">JSONDeserializer</span>&lt;<span class="type">City</span>&gt;.deserializeFrom(json: value.rawString())<span class="operator">!</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="应用范例"><a href="#应用范例" class="headerlink" title="应用范例"></a>应用范例</h2><p>这里给出中央天气接口城市数据的 JSON 部分内容，以及我个人封装的城市对象 Model，和完整的 CityUtils 代码</p>
+<h4 id="CityCode-json"><a href="#CityCode-json" class="headerlink" title="CityCode.json"></a>CityCode.json</h4><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;ID&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;cityName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;北京&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;cityEN&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Beijing&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;townID&quot;</span><span class="punctuation">:</span> <span class="string">&quot;CHBJ000000&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;townName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;北京&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;townEN&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Beijing&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;ID&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;cityName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;北京&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;cityEN&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Beijing&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;townID&quot;</span><span class="punctuation">:</span> <span class="string">&quot;CHBJ000100&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;townName&quot;</span><span class="punctuation">:</span> <span class="string">&quot;海淀&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;townEN&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Haidian&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Weather-swift"><a href="#Weather-swift" class="headerlink" title="Weather.swift"></a>Weather.swift</h4><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">/// 天气API的基础类, 继承HandyJSON</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">City</span>: <span class="title class_">HandyJSON</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> <span class="type">ID</span>: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> cityName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> cityEN: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> townID: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> townName: <span class="type">String</span></span><br><span class="line">    <span class="keyword">var</span> townEN: <span class="type">String</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">required</span> <span class="keyword">convenience</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="keyword">init</span>(ID: <span class="string">&quot;&quot;</span>, cityName: <span class="string">&quot;&quot;</span>, cityEN: <span class="string">&quot;&quot;</span>, townID: <span class="string">&quot;&quot;</span>, townName: <span class="string">&quot;&quot;</span>, townEN: <span class="string">&quot;&quot;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">init</span>(<span class="params">ID</span>: <span class="type">String</span>, <span class="params">cityName</span>: <span class="type">String</span>, <span class="params">cityEN</span>: <span class="type">String</span>, <span class="params">townID</span>: <span class="type">String</span>, <span class="params">townName</span>: <span class="type">String</span>, <span class="params">townEN</span>: <span class="type">String</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.<span class="type">ID</span> <span class="operator">=</span> <span class="type">ID</span></span><br><span class="line">        <span class="keyword">self</span>.cityName <span class="operator">=</span> cityName</span><br><span class="line">        <span class="keyword">self</span>.cityEN <span class="operator">=</span> cityEN</span><br><span class="line">        <span class="keyword">self</span>.townID <span class="operator">=</span> townID</span><br><span class="line">        <span class="keyword">self</span>.townName <span class="operator">=</span> townName</span><br><span class="line">        <span class="keyword">self</span>.townEN <span class="operator">=</span> townEN</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> description: <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.toJSONString() <span class="operator">??</span> <span class="string">&quot;[]&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/// 城市工具类</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// 城市信息通过CityCode.json获取</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CityUtils</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 城市工具的单例</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">let</span> instance <span class="operator">=</span> <span class="type">CityUtils</span>()</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 从JSON数据库文件获取的城市列表</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> cityArray: [<span class="type">City</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 访问城市列表</span></span><br><span class="line">    <span class="keyword">var</span> cities: [<span class="type">City</span>] &#123;</span><br><span class="line">        <span class="keyword">return</span> cityArray</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 私有的初始化方法</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">init</span>() &#123;</span><br><span class="line">        cityArray <span class="operator">=</span> []</span><br><span class="line">        <span class="comment">// NSData style</span></span><br><span class="line">        <span class="comment">// let path: String! = Bundle.main.path(forResource: &quot;CityCode&quot;, ofType: &quot;json&quot;)</span></span><br><span class="line">        <span class="comment">// let nsData: NSData! = NSData(contentsOfFile: path)</span></span><br><span class="line">        <span class="comment">// let data: Data! = Data(referencing: nsData!)</span></span><br><span class="line">        <span class="comment">// let json = try? JSON(data: data)</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">// URL style</span></span><br><span class="line">        <span class="keyword">let</span> path: <span class="type">String</span>! <span class="operator">=</span> <span class="type">Bundle</span>.main.path(forResource: <span class="string">&quot;CityCode&quot;</span>, ofType: <span class="string">&quot;json&quot;</span>)</span><br><span class="line">        <span class="keyword">let</span> url: <span class="type">URL</span>! <span class="operator">=</span> <span class="type">NSURL</span>.fileURL(withPath: path)</span><br><span class="line">        <span class="keyword">let</span> data: <span class="type">Data</span>! <span class="operator">=</span> <span class="keyword">try?</span> <span class="type">Data</span>(contentsOf: url)</span><br><span class="line">        <span class="keyword">let</span> json <span class="operator">=</span> <span class="keyword">try?</span> <span class="type">JSON</span>(data: data)</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">_</span>, value) <span class="keyword">in</span> json<span class="operator">!</span> &#123;</span><br><span class="line">            cityArray.append(<span class="type">JSONDeserializer</span>&lt;<span class="type">City</span>&gt;.deserializeFrom(json: value.rawString())<span class="operator">!</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 通过ID取得单个城市对象</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">get</span>(<span class="params">byID</span> <span class="params">id</span>: <span class="type">String</span>) -&gt; <span class="type">City</span>? &#123;</span><br><span class="line">        <span class="keyword">for</span> city <span class="keyword">in</span> cityArray &#123;</span><br><span class="line">            <span class="keyword">if</span> city.<span class="type">ID</span> <span class="operator">==</span> id &#123;</span><br><span class="line">                <span class="keyword">return</span> city</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 通过区域ID获取单个城市对象, 另外区域ID可以直接用于请求API</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">get</span>(<span class="params">byTownID</span> <span class="params">townID</span>: <span class="type">String</span>) -&gt; <span class="type">City</span>? &#123;</span><br><span class="line">        <span class="keyword">for</span> city <span class="keyword">in</span> cityArray &#123;</span><br><span class="line">            <span class="keyword">if</span> city.townID <span class="operator">==</span> townID &#123;</span><br><span class="line">                <span class="keyword">return</span> city</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 通过城市名称获取该城市下的区域列表</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">list</span>(<span class="params">byCityName</span> <span class="params">cityName</span>: <span class="type">String</span>) -&gt; [<span class="type">City</span>] &#123;</span><br><span class="line">        <span class="keyword">var</span> list: [<span class="type">City</span>] <span class="operator">=</span> []</span><br><span class="line">        <span class="keyword">for</span> city <span class="keyword">in</span> cityArray &#123;</span><br><span class="line">            <span class="keyword">if</span> city.cityName <span class="operator">==</span> cityName &#123;</span><br><span class="line">                list.append(city)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/// 通过城市英文名称获取该城市下的区域列表</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">list</span>(<span class="params">byCityEN</span> <span class="params">cityEN</span>: <span class="type">String</span>) -&gt; [<span class="type">City</span>] &#123;</span><br><span class="line">        <span class="keyword">var</span> list: [<span class="type">City</span>] <span class="operator">=</span> []</span><br><span class="line">        <span class="keyword">for</span> city <span class="keyword">in</span> cityArray &#123;</span><br><span class="line">            <span class="keyword">if</span> city.cityEN <span class="operator">==</span> cityEN &#123;</span><br><span class="line">                list.append(city)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sign in with Apple? Back-end?</title>
+    <url>/2020/11/24/2020-11-24-SignInWithApple/</url>
+    <content><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>一年前（注：本文撰写日期<code>2020-11-24</code>），Apple 对开发文档做了修改，自 iOS 13 之后，Apple 提供了一项名为<code>Sign in with Apple</code>的服务，旨在利用 Apple ID 服务，为第三方应用提供通过 iCloud 账号登录注册的入口。</p>
+<p>然而，这项服务随之而来的改动是，任何接入第三方应用登录入口的 APP，必须接入<code>Sign in with Apple</code>服务，否则将会被拒绝上架到 App Store。</p>
+<p>得知这个改动已经是撰写本文的时候了，其实我不知道该不该庆幸 App Store 审核人员没有因为我们没接这项服务而否掉我们的 APP，不过也是时候要把这个漏洞给补上了。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>也没啥背景，「一图流」走起：</p>
+<p><img src="/static/images/2020-11-24-SignInWithApple/01.jpeg" alt="反正好狠的规定"></p>
+<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>根据 Apple Developer Documentation 中对 <a href="https://developer.apple.com/documentation/sign_in_with_apple"><code>Sign in with Apple</code></a> 的说明，利用这项服务跟我们去接入微信服务号登录的流程是差不多的：</p>
+<ol>
+<li>向 Apple ID Server 申请登录，从那边获取一个叫<code>code</code>的东西。没错，这就是 OAuth 中的授权码，<code>Sign in with Apple</code>本质上还是一个 OAuth 授权认证的服务。</li>
+<li>那么我们都清楚了这是一个 OAuth 的授权码模式。APP 那边拿到了<code>code</code>之后，接着就是把这玩意儿扔给后端服务器，由后端服务器去通过<code>code</code>换取相应的用户信息。</li>
+<li>服务器换到用户信息，就可以继续完成后续的登录&#x2F;注册的事情。</li>
+</ol>
+<h2 id="动手？"><a href="#动手？" class="headerlink" title="动手？"></a>动手？</h2><p>那么，说的那么简单，实际上对于后段服务器需要做的事情，网上的文档还是比较少的，绝大多数接入<code>Sign in with Apple</code>的教程都是客户端方案。当然，我们要的是一个思路，这些方案里或多或少都点到了一些。</p>
+<p>实际施工的时候，后端需要关注的细节可以罗列为如下几点：</p>
+<ol>
+<li>从 Apple ID Server 获取公钥，取得的不是一个公钥，而是一组公钥，而这些公钥只是用来对<code>id_token</code>校验用的。这里提到的<code>id_token</code>会在后面解释。</li>
+<li>换取用户信息的操作，需要服务器走一次生成 JWT 的流程，这个流程依赖的一些参数可能不是你想象中的那么容易理解，因为<code>Sign in with Apple</code>提供给你的一些配置信息并不像其他的 OAuth 服务那样容易理解。</li>
+<li>苹果的这套服务有个好处，你可以本地调试。是的，本地调试，不一定需要提交到测试服务器，也不一定需要提交到生产环境，但是有可能本地调试通过了放到线上就会有一大批问题。（毕竟生产环境你永远都不知道会发生什么，对吧？）</li>
+<li>我上面第一条提到了<code>id_token</code>对吧，首先这个东西是一个”JWT”，那么你可以按照 JWT 的方式来对这个参数进行解析取值。但是，苹果在这个参数上用了一个叫 JWS 的概念，所以才会有第一条说到的”校验”。</li>
+</ol>
+<h2 id="好，可以动手了"><a href="#好，可以动手了" class="headerlink" title="好，可以动手了"></a>好，可以动手了</h2><p>首先我们需要一些来自苹果那边下发的”toolkit”，这些配置里包括<code>TeamID</code>、<code>KeyID</code>、<code>BundleID</code>，还有一个私钥文件。</p>
+<p>服务端需要按照下面的流程来完成授权认证的操作：</p>
+<ol>
+<li>请求和验证用户，即换取用户信息<br>a. 构造请求信息<br>b. 生成一个叫<code>client_secret</code>的东西</li>
+<li>检查返回值的有效性<br>a. 从 Apple ID Server 获取公钥组<br>b. 反解析<code>id_token</code>并进行必要的 JWS 检查<br>c. 检查有效性</li>
+</ol>
+<h3 id="请求和验证"><a href="#请求和验证" class="headerlink" title="请求和验证"></a>请求和验证</h3><p>构造请求信息需要携带的一些参数如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=CLIENT_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=CLIENT_SECRET&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27; \</span><br><span class="line">     -d &#x27;redirect_uri=REDIRECT_URI&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens">这里我贴出官方的接口文档，方便各位查看</a></p>
+<p>这些参数中，<code>client_id</code>、<code>client_secret</code>、<code>grant_type</code>是必须的，<code>redirect_uri</code>仅在需要网页登录时才携带，CS 模式不需要这个参数，<code>code</code>是从 APP 那里拿到的授权码。</p>
+<p>这里的信息不像微信服务号接入的那样，是<code>AppID + AppSecret</code>的模式，而是<code>BundleID + JWS</code>的模式。也就是说，苹果并不会给你我们平常看到的一组字符串，而是需要把 APP 的 BundleID 当作这里的<code>client_id</code>的参数，然后自己去生成一个 JWS 丢给<code>client_secret</code>。</p>
+<p>所以上面的 cURL，可以转换成下面的 cURL。这里我用的是 CS 模式，而不是 BS 模式，所以把<code>redirect_uri</code>去掉了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=BUNDLE_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=TOKEN&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>生成<code>client_secret</code>的话，这里我还是直接丢代码吧，代码里会有详细的说明：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">    String teamId;</span><br><span class="line">    String keyId;</span><br><span class="line">    String clientId;</span><br><span class="line">    String keyPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">// 读取私钥</span></span><br><span class="line">    <span class="type">byte</span>[] readKeyFile(AppConfig appConfig) &#123;</span><br><span class="line">        <span class="comment">// 获取配置的私钥文件路径</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">keyPath</span> <span class="operator">=</span> appConfig.keyPath;</span><br><span class="line">        String base64;</span><br><span class="line">        <span class="comment">// 创建字符读取流</span></span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> getClass().classLoader.getResourceAsStream(keyPath);</span><br><span class="line">            <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(Objects.requireNonNull(is)))</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="comment">// 这里我们只需要私钥文件中排除头部和尾部的中间部分，也就是私钥正文部分</span></span><br><span class="line">            base64 = reader.lines().collect(Collectors.joining());</span><br><span class="line">            base64 = base64.replace(<span class="string">&quot;-----BEGIN PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">                .replace(<span class="string">&quot;-----END PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;读取私钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 最后获得私钥的bytes</span></span><br><span class="line">        <span class="keyword">return</span> Base64.decodeBase64(base64);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成client_secret</span></span><br><span class="line">    String <span class="title function_">generateClientSecret</span><span class="params">(AppConfig appConfig)</span> &#123;</span><br><span class="line">        Map&lt;String, Object&gt; header = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定加密的算法是ES256</span></span><br><span class="line">        header.put(<span class="string">&quot;alg&quot;</span>, <span class="string">&quot;ES256&quot;</span>);</span><br><span class="line">        <span class="comment">// 并且苹果下发给我们的toolkit里，用&quot;KeyID&quot;作为header.kid</span></span><br><span class="line">        header.put(<span class="string">&quot;kid&quot;</span>, appConfig.keyId);</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">iat</span> <span class="operator">=</span> System.currentTimeMillis() / <span class="number">1000</span>;</span><br><span class="line">        Map&lt;String, Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定开发者生成JWS所用的issuer是TeamID</span></span><br><span class="line">        claims.put(<span class="string">&quot;iss&quot;</span>, appConfig.teamId);</span><br><span class="line">        <span class="comment">// iat和exp的参数是UNIX时间戳，秒级单位</span></span><br><span class="line">        claims.put(<span class="string">&quot;iat&quot;</span>, iat);</span><br><span class="line">        <span class="comment">// 这里的过期时间有限制，不能大于iat的六个月之后的时间</span></span><br><span class="line">        claims.put(<span class="string">&quot;exp&quot;</span>, iat + <span class="number">3</span> * <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>);</span><br><span class="line">        <span class="comment">// aud是一个固定参数，也是苹果规定的</span></span><br><span class="line">        claims.put(<span class="string">&quot;aud&quot;</span>, <span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// subject则是开发者手上的APP的BundleID</span></span><br><span class="line">        claims.put(<span class="string">&quot;sub&quot;</span>, appConfig.clientId);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">PKCS8EncodedKeySpec</span> <span class="variable">pkcs8EncodedKeySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PKCS8EncodedKeySpec</span>(readAppleAuthPrivateKey(appConfig));</span><br><span class="line">            <span class="type">KeyFactory</span> <span class="variable">keyFactory</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;EC&quot;</span>);</span><br><span class="line">            <span class="type">PrivateKey</span> <span class="variable">privateKey</span> <span class="operator">=</span> keyFactory.generatePrivate(pkcs8EncodedKeySpec);</span><br><span class="line">            <span class="keyword">return</span> Jwts.builder()</span><br><span class="line">                .setHeader(header)</span><br><span class="line">                .setClaims(claims)</span><br><span class="line">                .signWith(SignatureAlgorithm.ES256, privateKey)</span><br><span class="line">                .compact();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;创建ClientSecret失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查返回值的有效性"><a href="#检查返回值的有效性" class="headerlink" title="检查返回值的有效性"></a>检查返回值的有效性</h3><p>上面的请求如果没有错误，我们会获得 Apple ID Server 下发的 TokenResponse：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    access_token: &quot;一个token，但是没什么用，因为苹果没有开其他的服务接口&quot;,</span><br><span class="line">    token_type: &quot;Bearer，固定值&quot;,</span><br><span class="line">    expires_in: 3600,</span><br><span class="line">    refresh_token: &quot;一个用来刷新token的token&quot;,</span><br><span class="line">    id_token: &quot;identityToken，结果是JWT，这个是核心&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就像上面的 JSON 里写到的，<code>id_token</code>是我们整个流程的核心，它包括了必要的<code>sub</code>，也就是我们常说的微信开放平台 UnionID 的概念。</p>
+<p>你可能会好奇为什么我提到了 UnionID。Apple ID Server 没有开放平台和公众平台的说法，理论上一个 Team 下的所有 APP 获取到的都是同一个 UserID，当然也有可能这个就是整个 Apple ID Server 给用户分配的全局 UserID，苹果用这样的 ID 统一了第三方登录的体系，你可以通过这个 UserID，在你的开发者账号下所有的 APP 中打通账户信息。</p>
+<p>接下来，我们可以选择直接信任 Apple ID Server 返回给我们的数据，直接解析 <code>id_token</code> 的 payload 拿到<code>sub</code>，但是我还是建议走一遍公钥校验以验证回传数据的可靠性。</p>
+<p>获取公钥很简单，苹果的公钥接口是开放的，不需要任何校验，任何人都可以调用，方法也很简单：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -G https://appleid.apple.com/auth/keys</span><br></pre></td></tr></table></figure>
+
+<p>这个接口会返回不止一个公钥，而是一组公钥列表，例如：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;keys&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;86D88Kf&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iGaLqP6y-SJCCBq5Hv6pGDbG_SQ11MNjH7rWHcCFYz4hGwHC4lcSurTlV8u3avoVNM8jXevG1Iu1SY11qInqUvjJur--hghr1b56OPJu6H1iKulSxGjEIyDP6c5BdE1uwprYyr4IO9th8fOwCPygjLFrh44XEGbDIFeImwvBAGOhmMB2AD1n1KviyNsH0bEB7phQtiLk-ILjv1bORSRl8AK677-1T8isGfHKXGZ_ZGtStDe7Lu0Ihp8zoUt59kx2o9uWpROkzF56ypresiIl4WprClRCjz8x6cPZXU2qNWhu71TQvUFwvIvbkE1oYaJMb0jcOTmBRZA2QuYw-zHLwQ&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eXaunmL&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4dGQ7bQK8LgILOdLsYzfZjkEAoQeVC_aqyc8GC6RX7dq_KvRAQAWPvkam8VQv4GK5T4ogklEKEvj5ISBamdDNq1n52TpxQwI2EqxSk7I9fKPKhRt4F8-2yETlYvye-2s6NeWJim0KBtOVrk0gWvEDgd6WOqJl_yt5WBISvILNyVg1qAAM8JeX6dRPosahRVDjA52G2X-Tip84wqwyRpUlq2ybzcLh3zyhCitBOebiRWDQfG26EH9lTlJhll-p_Dg8vAXxJLIJ4SNLcqgFeZe4OfHLgdzMvxXZJnPp_VgmkcpUdRotazKZumj6dBPcXI_XID4Z4Z3OM1KrZPJNdUhxw&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>是不是有点意外，苹果并不想让你直接知道该用哪个公钥去检查返回值，而是需要通过<code>KeyID</code>获取正确的公钥来验证返回值。这个<code>KeyID</code>也很好拿，就在<code>id_token</code>的 header 里，反解析 JWT 就能拿到。下面我把我自己的代码贴一下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从Apple服务器获取验证Token签名的公钥（服务器缓存3600秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> JWKSet <span class="title function_">requestApplePublicKey</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// JWKSet，其结构如上面的 API 返回值</span></span><br><span class="line">        JWKSet obj;</span><br><span class="line">        <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redis.get(KEY_APPLE_PUBLIC_KEY_LIST);</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotEmpty(value)) &#123;</span><br><span class="line">            <span class="comment">// 服务器可以做一次短时缓存，从缓存读取公钥列表</span></span><br><span class="line">            obj = JSON.parseObject(value, JWKSet.class);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 第一次访问/缓存未命中，向 Apple ID Server 请求公钥组</span></span><br><span class="line">            <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">            <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> restTemplate.getForObject(API_APPLE_AUTH_KEY, String.class);</span><br><span class="line">            <span class="keyword">if</span> (StringUtil.isEmpty(content)) &#123;</span><br><span class="line">                <span class="comment">// 考虑到有可能会请求失败，这里我做了判空</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            obj = JSON.parseObject(content, JWKSet.class);</span><br><span class="line">            <span class="comment">// 写入短时缓存</span></span><br><span class="line">            redis.setex(KEY_APPLE_PUBLIC_KEY_LIST, content, <span class="number">3600</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 返回获取到的公钥对象</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取匹配identityToken.kid的公钥</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> kid 从 id_token 解析出来的 KeyID</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> PublicKey <span class="title function_">getApplePublicKey</span><span class="params">(String kid)</span> &#123;</span><br><span class="line">        <span class="type">JWKSet</span> <span class="variable">jwkSet</span> <span class="operator">=</span> requestApplePublicKey();</span><br><span class="line">        <span class="keyword">if</span> (jwkSet == <span class="literal">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (JWKSet.Keys key : jwkSet.getKeys()) &#123;</span><br><span class="line">            <span class="comment">// 在这里，我们把从 id_token 反解到的 kid 拿来查询公钥，如果找到了，则通过关键的两个参数 n 和 e 构造公钥对象，这个公钥会被用来验证 id_token 的有效性。</span></span><br><span class="line">            <span class="keyword">if</span> (kid.equals(key.getKid())) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> key.getN();</span><br><span class="line">                    <span class="type">String</span> <span class="variable">e</span> <span class="operator">=</span> key.getE();</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">modulus</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(n));</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">publicExponent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(e));</span><br><span class="line">                    <span class="type">RSAPublicKeySpec</span> <span class="variable">spec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RSAPublicKeySpec</span>(modulus, publicExponent);</span><br><span class="line">                    <span class="type">KeyFactory</span> <span class="variable">kf</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;RSA&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span> kf.generatePublic(spec);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    log.error(<span class="string">&quot;解析获取公钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检查identityToken是否合法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">verifyAppleIdentityToken</span><span class="params">(String identityToken)</span> &#123;</span><br><span class="line">        <span class="type">DecodedJWT</span> <span class="variable">jwt</span> <span class="operator">=</span> JWT.decode(identityToken);</span><br><span class="line">        <span class="type">String</span> <span class="variable">keyId</span> <span class="operator">=</span> jwt.getKeyId();</span><br><span class="line">        <span class="type">String</span> <span class="variable">audience</span> <span class="operator">=</span> jwt.getAudience().get(<span class="number">0</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">subject</span> <span class="operator">=</span> jwt.getSubject();</span><br><span class="line"></span><br><span class="line">        <span class="type">PublicKey</span> <span class="variable">publicKey</span> <span class="operator">=</span> getApplePublicKey(keyId);</span><br><span class="line">        <span class="type">JwtParser</span> <span class="variable">jwtParser</span> <span class="operator">=</span> Jwts.parser().setSigningKey(publicKey);</span><br><span class="line">        <span class="comment">// 官方文档说明描述到，由 Apple ID Server 签发的 token 信息，其 iss 是固定值 https://appleid.apple.com</span></span><br><span class="line">        jwtParser.requireIssuer(<span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// 这里检查 aud 是来自指定 App 发起的授权</span></span><br><span class="line">        jwtParser.requireAudience(audience);</span><br><span class="line">        <span class="comment">// 这个检查一般来说会使用客户端传来的 user 做 sub 的检查依据，但我自己的实现就没考虑这么多了。</span></span><br><span class="line">        <span class="comment">// 建议在 APP 向后端服务器发起登录调用时，安全起见，除开 code 授权码之外，也把 user 传来，因为客户端收到的 user 一定是 Apple ID Server 回传的合法值。</span></span><br><span class="line">        jwtParser.requireSubject(subject);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Jws&lt;Claims&gt; jws = jwtParser.parseClaimsJws(identityToken);</span><br><span class="line">            <span class="comment">// 检查 JWS 里是否存在 auth_time ，理由嘛我不知道，但我看大多数文档里大家都是这么检查的 :(</span></span><br><span class="line">            <span class="keyword">return</span> jws != <span class="literal">null</span> &amp;&amp; jws.getBody().containsKey(<span class="string">&quot;auth_time&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要我们对<code>id_token</code>的检查通过，整个授权流程基本就算完成了，后端服务器就能正确获取到 user 信息，从而进行我们自己的第三方登录&#x2F;注册流程。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Apple</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>粗分析Discord Bot OAuth认证过程</title>
+    <url>/2021/03/03/2021-03-03-AnalysisOfDiscordBotOAuth/</url>
+    <content><![CDATA[<blockquote>
+<p>稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近因为我需要设计一个开放 API 系统（虽然能不能达到<code>系统</code>这个高度我都保不准），我重新回顾了一下以前做<code>Discord Bots</code>的事情，也稍微花了点时间啃了<a href="https://discord.com/developers/docs/topics/oauth2#bots">Discord Dev Doc - OAuth - Bots</a>章节，<br>所以为了避免以后还要重新回去想一遍流程之类的细节，我想把我对整个 Bot 认证授权的理解粗略记录下来。</p>
+<h2 id="关于-Discord-Bot"><a href="#关于-Discord-Bot" class="headerlink" title="关于 Discord Bot"></a>关于 Discord Bot</h2><p><code>Discord Bots</code>（下简称<code>Bot</code>或<code>Bots（复数形式）</code>）是个比较巧妙的东西，因为透过 RESTFul API 和 Gateway，Discord 开放了几乎所有能对外使用的功能，这在 Discord 这个平台中给了开发者很大的发展空间。</p>
+<blockquote>
+<p>We support the authorization code grant, the implicit grant, client credentials, and some modified special-for-Discord flows for Bots and Webhooks</p>
+</blockquote>
+<p>Discord 开发团队为<code>Bots</code>设计的 OAuth 是一种定制化的 OAuth，有别于一般的客户端授权模式，它让 Bots 的接入变得十分简单。</p>
+<p>一个可用的<code>Bot</code>其本质是一个个开发者创建的<code>Application</code>（下简称<code>APP</code>）下属的一个特殊的用户，在 Discord 中，这样的用户被称为<code>Bot user</code>。</p>
+<p>在创建<code>APP</code>时，Discord 应用中心会为<code>APP</code>分配通常 OAuth 服务会下发的诸如<code>ClientID</code>、<code>ClientSecret</code>等参数，并且创建一个属于这个应用的<code>Bot user</code>，这个用户拥有自己独特的<code>Token</code>，可以理解为这是一个给<code>Bot user</code>用来当作登录的密码。</p>
+<blockquote>
+<p>这里说是<code>密码</code>其实是有原因的，在<a href="https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example">Extended Bot Authorization Access Token Example</a> 小节中，<br>官方给出了一个<code>Bot</code>授权后的返回值范例，其中的<code>access_token</code>是一个分发下来的参数。</p>
+<p>所以<code>Bot user</code>的<code>Token</code>并不是一个可以直接拿去请求 API 的<code>access_token</code></p>
+<p>然而这个范例是<a href="https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization">Advanced Bot Authorization</a>章节下的，所以这里也可能是我理解错了。</p>
+</blockquote>
+<h2 id="Bots是怎么运作的？"><a href="#Bots是怎么运作的？" class="headerlink" title="Bots是怎么运作的？"></a><code>Bots</code>是怎么运作的？</h2><p>当你创建了一个应用后，按照上面的说明，你还不能拿着 Discord 下发给你的东西直接去快乐调接口，因为这个时候你手上的<code>APP</code>还仅仅只是一个空壳，甚至<code>Bot</code>没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里<code>Bot</code>连加好友的能力都没有）。</p>
+<p>在<a href="https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow">Bot Authorization Flow</a>章节中，文档告诉了你授权<code>Bot</code>进入伺服器的流程。</p>
+<p><code>https://discord.com/api/oauth2/authorize?client_id=157730590492196864&amp;scope=bot&amp;permissions=1</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">client_id</td>
+<td align="left">your app’s client id</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">needs to include <code>bot</code> for the bot flow</td>
+</tr>
+<tr>
+<td align="left">permissions</td>
+<td align="left">the permissions you’re requesting</td>
+</tr>
+<tr>
+<td align="left">guild_id</td>
+<td align="left">pre-fills the dropdown picker with a guild for the user</td>
+</tr>
+<tr>
+<td align="left">disable_guild_select</td>
+<td align="left"><code>true</code> or <code>false</code> —disallows the user from changing the guild dropdown</td>
+</tr>
+</tbody></table>
+<p>这个链接会把你带到一个 Discord 官方提供的授权页面，在这个页面里，按我的理解，Discord 做了如下几件事情：</p>
+<ol>
+<li>验证用户登录状态</li>
+<li>用户选择需要加入的自己持有的伺服器</li>
+<li>等待用户通过授权</li>
+</ol>
+<p>从上面的流程上来看，一个<code>Bot</code>的授权，实际上是一个加入伺服器的申请，需要伺服器所有者通过<code>Bot</code>的加入申请（有可能是管理员？我在我加入过的所有伺服器都没有管理员的身份，所以管理员可否授权我就无从得知了）。</p>
+<p>所以明面上来看，<code>Bot</code>的授权流程其实还蛮简单的，把应用 ID 或者一个拼好的链接发送给伺服器所有者，然后等待对方通过授权（通过加入伺服器申请），之后这个<code>Bot</code>就可以在伺服器里快乐玩耍了。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续的工作，以我通常会用的<code>Discord.py</code>举例，只要把一些需要交给<code>Bot</code>去做的事情、指令等等，写好代码定义好，再把 Discord 下发的<code>Token</code>放到代码里跑起来，似乎就完成了一个简单的<code>APP</code>了。</p>
+<h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><p>到这里，该说的东西也不剩多少了。</p>
+<p><code>Bots</code>依赖<code>Application</code>，是<code>APP</code>下属的一个特殊用户，这个用户有一个全局唯一的<code>Token</code>，这个<code>Token</code>一方面用来辨别<code>Bot user</code>，一方面用来申请<code>Bot</code>用的<code>access_token</code>来调用开放的 API。</p>
+<p><code>Bot</code>能正常工作，通常需要让伺服器所有者通过授权，也就是通过加入申请，让<code>Bot user</code>加入到伺服器中。</p>
+<p>大概就点到这里为止。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Discord</tag>
+        <tag>Discord Bot</tag>
+        <tag>Discord API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用Helm在Kubernetes部署无状态的Apollo配置中心</title>
+    <url>/2022/04/02/2022-04-02-ApolloInKubernetes/</url>
+    <content><![CDATA[<blockquote>
+<p>采用 K8S 无状态模式部署 Apollo 配置中心，可以利用 Helm 安装，本文给出部署 Apollo 配置中心的步骤说明。</p>
+<p>截至发文日，我所使用的版本为<code>1.9.2</code>。</p>
+<p>如果你还不了解 Apollo 配置中心，建议在阅读本文前，查看<a href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>。</p>
+</blockquote>
+<p>要在 Kubernetes 部署 Apollo 配置中心，你需要做以下准备：</p>
+<ol>
+<li>安装<code>kubectl</code>和<code>helm</code>命令行工具；</li>
+<li>执行 Apollo 配置中心初始化数据库的 SQL 文件；</li>
+<li>准备几个部署时会用到的文件，具体文件个数，视你要部署的环境；</li>
+<li>以阿里云 ACK 为例子，你可以在 ACK 集群详情页面找到用于连接到 Kubernetes 的 <code>.kube/config</code> 描述文件。</li>
+</ol>
+<hr>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>部署和操作 Kubernetes 所需要的命令行工具有<code>kubectl</code>和<code>helm</code>，这里我们主要会用到<code>helm</code>，它是 Kubernetes 的包管理工具，我们可以通过<code>helm</code>向自己的集群部署通用包应用。</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/tools/"><code>kubectl</code> Install Tools | Kubernetes</a></li>
+<li><a href="https://helm.sh/"><code>helm</code> Helm</a></li>
+</ul>
+<hr>
+<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>初始化数据库的相关脚本，可以在<a href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>获取，这里不再给出具体链接。</p>
+<p>需要注意，初始化 Apollo 配置中心的数据库内容，需要执行一共两个脚本，分别是<code>ApolloPortalDB.sql</code>和<code>ApolloConfigDB.sql</code>。两个脚本缺一不可。</p>
+<p>本文举例给出两个文件执行后，对应的数据库库名：</p>
+<ul>
+<li><code>ApolloPortalDB.sql</code>对应数据库 schema：<code>ApolloPortalDB</code></li>
+<li><code>ApolloConfigDB.sql</code>对应数据库 schema：<code>ApolloConfigDB</code></li>
+</ul>
+<hr>
+<h3 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h3><p>这里我们举例部署 pro 环境和 fat 环境，那么我们需要准备的文件有如下四个。</p>
+<blockquote>
+<p>请注意，三个描述文件中连接数据库的参数，需要根据实际情况改变。</p>
+<p>如果部署环境允许，即 ACK 集群和数据库处在同一个 VPC 内，可以将<code>host</code>改成私网地址；公网地址理论上也是支持的，但我没有验证过，就不在本文下定论了。</p>
+</blockquote>
+<ul>
+<li>apollo 中心服务 pro 环境描述文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">configdb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloConfigDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>apollo 中心服务 fat 环境描述文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">configdb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloConfigDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>apollo 控制台描述文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">portaldb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloPortalDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br><span class="line"><span class="attr">config:</span></span><br><span class="line">    <span class="attr">envs:</span> <span class="string">test,prod</span></span><br><span class="line">    <span class="attr">metaServers:</span></span><br><span class="line">        <span class="comment"># 此处的域名，是依据 Kubernetes Pod 间通信域名来配置的，其名称需要在 helm 部署脚本里指定，请注意对比连接字符串与部署脚本的关系</span></span><br><span class="line">        <span class="attr">prod:</span> <span class="string">http://apollo-service-apollo-configservice.middleware.svc.cluster.local:8080</span></span><br><span class="line">        <span class="attr">test:</span> <span class="string">http://apollo-service-test-apollo-configservice.middleware.svc.cluster.local:8080</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>helm 部署脚本</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建命名空间</span></span><br><span class="line">kubectl create namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">向集群注册 Apollo Charts</span></span><br><span class="line">helm repo add apollo https://www.apolloconfig.com/charts</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 pro 环境</span></span><br><span class="line">helm install -f apollo_prod-config-values.yml apollo-service apollo/apollo-service --namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 fat 环境</span></span><br><span class="line">helm install -f apollo_test-config-values.yml apollo-service-test apollo/apollo-service --namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 控制台</span></span><br><span class="line">helm install -f apollo_portal-config-values.yml apollo-portal apollo/apollo-portal --namespace middleware</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>准备好上述文件，并配置好本机的命令行工具后，执行部署脚本。安装过程视网络情况而定，一般会需要一小段时间。</p>
+<p>执行成功后，前往阿里云 ACK 集群查看命名空间 middleware 的部署情况，可以在「无状态」页面和「服务」页面看到新部署的服务。</p>
+<p>现在部署好的服务暂时还不可用，你需要调整相关的路由配置和服务类型。</p>
+<p>首先，修改「服务」页面 <code>apollo-portal</code> 服务的类型为 <code>NodePort</code>（节点端口），然后前往「路由」页面，为这个服务创建域名解析，最后前往阿里云 DNS 控制台配置好 Apollo Portal 控制台的域名解析。</p>
+<p>其次，修改「服务」页面 <code>apollo-service-apollo-configservice</code> 服务和 <code>apollo-service-test-apollo-configservice</code> 服务的服务类型为 <code>LoadBalancer</code>（负载均衡），设为私网访问（因为配置中心不一定需要开放公网访问）。</p>
+<p>到此为止，Apollo 配置中心部署完毕。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Kubernetes</tag>
+        <tag>Apollo</tag>
+        <tag>Helm</tag>
+      </tags>
+  </entry>
+</search>
