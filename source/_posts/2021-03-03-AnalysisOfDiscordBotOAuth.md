@@ -15,31 +15,24 @@ cover: /static/images/2021-03-03-AnalysisOfDiscordBotOAuth/cover-discord-bot.png
 
 ## 引
 
-最近因为我需要设计一个开放 API 系统（虽然能不能达到`系统`这个高度我都保不准），我重新回顾了一下以前做`Discord Bots`的事情，也稍微花了点时间啃了[Discord Dev Doc - OAuth - Bots](https://discord.com/developers/docs/topics/oauth2#bots)章节，
+最近因为我需要设计一个开放 API 系统（虽然我可不保证能达到`系统`这个高度），我重新回顾了一下以前做`Discord Bots`的事情，也稍微花了点时间啃了[Discord Dev Doc - OAuth - Bots](https://discord.com/developers/docs/topics/oauth2#bots)章节，
 所以为了避免以后还要重新回去想一遍流程之类的细节，我想把我对整个 Bot 认证授权的理解粗略记录下来。
 
 ## 关于 Discord Bot
 
-`Discord Bots`（下简称`Bot`或`Bots（复数形式）`）是个比较巧妙的东西，因为透过 RESTFul API 和 Gateway，Discord 开放了几乎所有能对外使用的功能，这在 Discord 这个平台中给了开发者很大的发展空间。
+`Discord Bots`（下简称`Bot`或`Bots（复数形式）`）是个比较巧妙的东西，透过 RESTFul API 和 Gateway，Discord 开放了几乎所有能对外使用的功能，这在 Discord 这个平台中给了开发者很大的发展空间。
 
 > We support the authorization code grant, the implicit grant, client credentials, and some modified special-for-Discord flows for Bots and Webhooks
 
 Discord 开发团队为`Bots`设计的 OAuth 是一种定制化的 OAuth，有别于一般的客户端授权模式，它让 Bots 的接入变得十分简单。
 
-一个可用的`Bot`其本质是一个个开发者创建的`Application`（下简称`APP`）下属的一个特殊的用户，在 Discord 中，这样的用户被称为`Bot user`。
+一个可用的`Bot`其本质，是一个由开发者创建的`Application`（下简称`APP`）下属的一个特殊的用户，在 Discord 中，这样的用户被称为`Bot user`。
 
-在创建`APP`时，Discord 应用中心会为`APP`分配通常 OAuth 服务会下发的诸如`ClientID`、`ClientSecret`等参数，并且创建一个属于这个应用的`Bot user`，这个用户拥有自己独特的`Token`，可以理解为这是一个给`Bot user`用来当作登录的密码。
-
-> 这里说是`密码`其实是有原因的，在[Extended Bot Authorization Access Token Example](https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example) 小节中，
-> 官方给出了一个`Bot`授权后的返回值范例，其中的`access_token`是一个分发下来的参数。
->
-> 所以`Bot user`的`Token`并不是一个可以直接拿去请求 API 的`access_token`
->
-> 然而这个范例是[Advanced Bot Authorization](https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization)章节下的，所以这里也可能是我理解错了。
+在创建`APP`时，Discord 会为`APP`分配在一般的`OAuth`所需的诸如`ClientID`、`ClientSecret`等参数，并且创建一个属于这个应用的`Bot user`，分配一个专有的`Token`，可以理解`Token`是`Bot user`用来登录的密码。
 
 ## `Bots`是怎么运作的？
 
-当你创建了一个应用后，按照上面的说明，你还不能拿着 Discord 下发给你的东西直接去快乐调接口，因为这个时候你手上的`APP`还仅仅只是一个空壳，甚至`Bot`没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里`Bot`连加好友的能力都没有）。
+当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些API，但拿不到什么有用的数据），因为这个时候你手上的`APP`还仅仅只是一个空壳，甚至`Bot`没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里`Bot`连加好友的能力都没有）。
 
 在[Bot Authorization Flow](https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow)章节中，文档告诉了你授权`Bot`进入伺服器的流程。
 
