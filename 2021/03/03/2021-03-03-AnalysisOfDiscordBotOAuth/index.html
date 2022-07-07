@@ -13,7 +13,7 @@
     <meta name="description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
 稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解
 
-引最近因为我需要设计一个开放 API 系统（虽然能不能达到系统这个高度我都保不准），我重新回顾了一下以前做Disco,"> 
+引最近因为我需要设计一个开放 API 系统（虽然我可不保证能达到系统这个高度），我重新回顾了一下以前做Discord,"> 
     <meta name="author" content="Ayakura Yuki"> 
     <link rel="alternative" href="atom.xml" title="Ayakura Yuki 的小窝" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -25,7 +25,7 @@
     <meta name="twitter:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
 稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解
 
-引最近因为我需要设计一个开放 API 系统（虽然能不能达到系统这个高度我都保不准），我重新回顾了一下以前做Disco,"/>
+引最近因为我需要设计一个开放 API 系统（虽然我可不保证能达到系统这个高度），我重新回顾了一下以前做Discord,"/>
     
     
     
@@ -36,7 +36,7 @@
     <meta property="og:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
 稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解
 
-引最近因为我需要设计一个开放 API 系统（虽然能不能达到系统这个高度我都保不准），我重新回顾了一下以前做Disco,"/>
+引最近因为我需要设计一个开放 API 系统（虽然我可不保证能达到系统这个高度），我重新回顾了一下以前做Discord,"/>
     
 <link rel="stylesheet" href="/css/diaspora.css">
 
@@ -77,20 +77,15 @@
             <blockquote>
 <p>稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解</p>
 </blockquote>
-<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近因为我需要设计一个开放 API 系统（虽然能不能达到<code>系统</code>这个高度我都保不准），我重新回顾了一下以前做<code>Discord Bots</code>的事情，也稍微花了点时间啃了<a target="_blank" rel="noopener" href="https://discord.com/developers/docs/topics/oauth2#bots">Discord Dev Doc - OAuth - Bots</a>章节，<br>所以为了避免以后还要重新回去想一遍流程之类的细节，我想把我对整个 Bot 认证授权的理解粗略记录下来。</p>
-<h2 id="关于-Discord-Bot"><a href="#关于-Discord-Bot" class="headerlink" title="关于 Discord Bot"></a>关于 Discord Bot</h2><p><code>Discord Bots</code>（下简称<code>Bot</code>或<code>Bots（复数形式）</code>）是个比较巧妙的东西，因为透过 RESTFul API 和 Gateway，Discord 开放了几乎所有能对外使用的功能，这在 Discord 这个平台中给了开发者很大的发展空间。</p>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近因为我需要设计一个开放 API 系统（虽然我可不保证能达到<code>系统</code>这个高度），我重新回顾了一下以前做<code>Discord Bots</code>的事情，也稍微花了点时间啃了<a target="_blank" rel="noopener" href="https://discord.com/developers/docs/topics/oauth2#bots">Discord Dev Doc - OAuth - Bots</a>章节，<br>所以为了避免以后还要重新回去想一遍流程之类的细节，我想把我对整个 Bot 认证授权的理解粗略记录下来。</p>
+<h2 id="关于-Discord-Bot"><a href="#关于-Discord-Bot" class="headerlink" title="关于 Discord Bot"></a>关于 Discord Bot</h2><p><code>Discord Bots</code>（下简称<code>Bot</code>或<code>Bots（复数形式）</code>）是个比较巧妙的东西，透过 RESTFul API 和 Gateway，Discord 开放了几乎所有能对外使用的功能，这在 Discord 这个平台中给了开发者很大的发展空间。</p>
 <blockquote>
 <p>We support the authorization code grant, the implicit grant, client credentials, and some modified special-for-Discord flows for Bots and Webhooks</p>
 </blockquote>
 <p>Discord 开发团队为<code>Bots</code>设计的 OAuth 是一种定制化的 OAuth，有别于一般的客户端授权模式，它让 Bots 的接入变得十分简单。</p>
-<p>一个可用的<code>Bot</code>其本质是一个个开发者创建的<code>Application</code>（下简称<code>APP</code>）下属的一个特殊的用户，在 Discord 中，这样的用户被称为<code>Bot user</code>。</p>
-<p>在创建<code>APP</code>时，Discord 应用中心会为<code>APP</code>分配通常 OAuth 服务会下发的诸如<code>ClientID</code>、<code>ClientSecret</code>等参数，并且创建一个属于这个应用的<code>Bot user</code>，这个用户拥有自己独特的<code>Token</code>，可以理解为这是一个给<code>Bot user</code>用来当作登录的密码。</p>
-<blockquote>
-<p>这里说是<code>密码</code>其实是有原因的，在<a target="_blank" rel="noopener" href="https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization-extended-bot-authorization-access-token-example">Extended Bot Authorization Access Token Example</a> 小节中，<br>官方给出了一个<code>Bot</code>授权后的返回值范例，其中的<code>access_token</code>是一个分发下来的参数。</p>
-<p>所以<code>Bot user</code>的<code>Token</code>并不是一个可以直接拿去请求 API 的<code>access_token</code></p>
-<p>然而这个范例是<a target="_blank" rel="noopener" href="https://discord.com/developers/docs/topics/oauth2#advanced-bot-authorization">Advanced Bot Authorization</a>章节下的，所以这里也可能是我理解错了。</p>
-</blockquote>
-<h2 id="Bots是怎么运作的？"><a href="#Bots是怎么运作的？" class="headerlink" title="Bots是怎么运作的？"></a><code>Bots</code>是怎么运作的？</h2><p>当你创建了一个应用后，按照上面的说明，你还不能拿着 Discord 下发给你的东西直接去快乐调接口，因为这个时候你手上的<code>APP</code>还仅仅只是一个空壳，甚至<code>Bot</code>没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里<code>Bot</code>连加好友的能力都没有）。</p>
+<p>一个可用的<code>Bot</code>其本质，是一个由开发者创建的<code>Application</code>（下简称<code>APP</code>）下属的一个特殊的用户，在 Discord 中，这样的用户被称为<code>Bot user</code>。</p>
+<p>在创建<code>APP</code>时，Discord 会为<code>APP</code>分配在一般的<code>OAuth</code>所需的诸如<code>ClientID</code>、<code>ClientSecret</code>等参数，并且创建一个属于这个应用的<code>Bot user</code>，分配一个专有的<code>Token</code>，可以理解<code>Token</code>是<code>Bot user</code>用来登录的密码。</p>
+<h2 id="Bots是怎么运作的？"><a href="#Bots是怎么运作的？" class="headerlink" title="Bots是怎么运作的？"></a><code>Bots</code>是怎么运作的？</h2><p>当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些API，但拿不到什么有用的数据），因为这个时候你手上的<code>APP</code>还仅仅只是一个空壳，甚至<code>Bot</code>没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里<code>Bot</code>连加好友的能力都没有）。</p>
 <p>在<a target="_blank" rel="noopener" href="https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow">Bot Authorization Flow</a>章节中，文档告诉了你授权<code>Bot</code>进入伺服器的流程。</p>
 <p><code>https://discord.com/api/oauth2/authorize?client_id=157730590492196864&amp;scope=bot&amp;permissions=1</code></p>
 <table>
