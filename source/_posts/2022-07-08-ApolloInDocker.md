@@ -64,7 +64,7 @@ docker run --name mysql \
   --network-alias mysql \
   -p 3306:3306 \
   -p 33060:33060 \
-  -e MYSQL_ROOT_PASSWORD=root \
+  -e MYSQL_ROOT_PASSWORD=Shimokitazawa114514 \
   -v ~/.mysql/data:/var/lib/mysql \
   -d mysql:8.0.29
 ```
@@ -77,7 +77,7 @@ docker run --name mysql \
     2. `-p 33060:33060`将容器的`33060`端口映射到宿主机的`33060`端口；
     3. `--network docker-internal`指定了 MySQL 将会利用到`docker-internal`这个 Docker Network；
     4. `--network-alias mysql`指定了这个容器可以通过`mysql`来访问到，举例说明如果要在 Docker 内部用 JDBC URL 连接到这个容器，可以使用`jdbc:mysql://mysql:3306/`访问到；
-    5. `-e MYSQL_ROOT_PASSWORD=root`指定了 MySQL root 用户的密码，这里可以把`root`改成你想要的密码；
+    5. `-e MYSQL_ROOT_PASSWORD=root`指定了 MySQL root 用户的密码，这里可以把`Shimokitazawa114514`改成你想要的密码；
     6. `-v ~/.mysql/data:/var/lib/mysql`指定了 MySQL 可以持久化保存数据库文件资源到本地的`~/.mysql/data`目录，你可能需要手动创建这个目录，或者更换到其他的路径；理论上`-v`参数仅仅只是做了宿主机和容器的挂载行为，但 MySQL 会自动创建存储文件，所以可以在第一次启动容器时就指定这个挂载；
 
 ---
