@@ -32,7 +32,7 @@ Discord 开发团队为`Bots`设计的 OAuth 是一种定制化的 OAuth，有�
 
 ## `Bots`是怎么运作的？
 
-当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些API，但拿不到什么有用的数据），因为这个时候你手上的`APP`还仅仅只是一个空壳，甚至`Bot`没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里`Bot`连加好友的能力都没有）。
+当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些 API，但拿不到什么有用的数据），因为这个时候你手上的`APP`还仅仅只是一个空壳，甚至`Bot`没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里`Bot`连加好友的能力都没有）。
 
 在[Bot Authorization Flow](https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow)章节中，文档告诉了你授权`Bot`进入伺服器的流程。
 
