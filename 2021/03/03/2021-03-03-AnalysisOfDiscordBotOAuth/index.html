@@ -85,7 +85,7 @@
 <p>Discord 开发团队为<code>Bots</code>设计的 OAuth 是一种定制化的 OAuth，有别于一般的客户端授权模式，它让 Bots 的接入变得十分简单。</p>
 <p>一个可用的<code>Bot</code>其本质，是一个由开发者创建的<code>Application</code>（下简称<code>APP</code>）下属的一个特殊的用户，在 Discord 中，这样的用户被称为<code>Bot user</code>。</p>
 <p>在创建<code>APP</code>时，Discord 会为<code>APP</code>分配在一般的<code>OAuth</code>所需的诸如<code>ClientID</code>、<code>ClientSecret</code>等参数，并且创建一个属于这个应用的<code>Bot user</code>，分配一个专有的<code>Token</code>，可以理解<code>Token</code>是<code>Bot user</code>用来登录的密码。</p>
-<h2 id="Bots是怎么运作的？"><a href="#Bots是怎么运作的？" class="headerlink" title="Bots是怎么运作的？"></a><code>Bots</code>是怎么运作的？</h2><p>当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些API，但拿不到什么有用的数据），因为这个时候你手上的<code>APP</code>还仅仅只是一个空壳，甚至<code>Bot</code>没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里<code>Bot</code>连加好友的能力都没有）。</p>
+<h2 id="Bots是怎么运作的？"><a href="#Bots是怎么运作的？" class="headerlink" title="Bots是怎么运作的？"></a><code>Bots</code>是怎么运作的？</h2><p>当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些 API，但拿不到什么有用的数据），因为这个时候你手上的<code>APP</code>还仅仅只是一个空壳，甚至<code>Bot</code>没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里<code>Bot</code>连加好友的能力都没有）。</p>
 <p>在<a target="_blank" rel="noopener" href="https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow">Bot Authorization Flow</a>章节中，文档告诉了你授权<code>Bot</code>进入伺服器的流程。</p>
 <p><code>https://discord.com/api/oauth2/authorize?client_id=157730590492196864&amp;scope=bot&amp;permissions=1</code></p>
 <table>

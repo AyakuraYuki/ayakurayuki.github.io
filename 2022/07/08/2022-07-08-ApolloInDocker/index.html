@@ -1,0 +1,1812 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>在Docker部署Apollo的正确姿势 - Ayakura Yuki 的小窝</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="AyakuraYuki,"> 
+    <meta name="description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
+本文介绍了利用 Docker 部署 Apollo 配置中心的操作步骤。
+截至发文日，我所使用的版本为2.0.1，并且经历过1.9升级到2.0的迁移步骤。
+如果你还不了解 Apollo 配置中心，建,"> 
+    <meta name="author" content="Ayakura Yuki"> 
+    <link rel="alternative" href="atom.xml" title="Ayakura Yuki 的小窝" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+    
+    
+    <meta name="twitter:card" content="summary"/>
+    <meta name="twitter:title" content="在Docker部署Apollo的正确姿势 - Ayakura Yuki 的小窝"/>
+    <meta name="twitter:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
+本文介绍了利用 Docker 部署 Apollo 配置中心的操作步骤。
+截至发文日，我所使用的版本为2.0.1，并且经历过1.9升级到2.0的迁移步骤。
+如果你还不了解 Apollo 配置中心，建,"/>
+    
+    
+    
+    
+    <meta property="og:site_name" content="Ayakura Yuki 的小窝"/>
+    <meta property="og:type" content="object"/>
+    <meta property="og:title" content="在Docker部署Apollo的正确姿势 - Ayakura Yuki 的小窝"/>
+    <meta property="og:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
+本文介绍了利用 Docker 部署 Apollo 配置中心的操作步骤。
+截至发文日，我所使用的版本为2.0.1，并且经历过1.9升级到2.0的迁移步骤。
+如果你还不了解 Apollo 配置中心，建,"/>
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Ayakura Yuki 的小窝</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://blog.ayakurayuki.cc"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">在Docker部署Apollo的正确姿势</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">在Docker部署Apollo的正确姿势</h1>
+        <div class="stuff">
+            <span>七月 08, 2022</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Apollo/" rel="tag">Apollo</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <blockquote>
+<p>本文介绍了利用 Docker 部署 Apollo 配置中心的操作步骤。</p>
+<p>截至发文日，我所使用的版本为<code>2.0.1</code>，并且经历过<code>1.9</code>升级到<code>2.0</code>的迁移步骤。</p>
+<p>如果你还不了解 Apollo 配置中心，建议在阅读本文前，查看<a target="_blank" rel="noopener" href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>。</p>
+</blockquote>
+<p>要在 Docker 部署 Apollo 配置中心，你应该要做以下准备：</p>
+<ol>
+<li>安装 Docker；</li>
+<li>在 Docker 建立内部网络；</li>
+<li>在 Docker 内部署 MySQL，需要版本号大于等于 MySQL 5.6.5；</li>
+<li>执行 Apollo 配置中心初始化数据库的 SQL 文件；</li>
+<li>部署 Apollo 配置中心。</li>
+</ol>
+<blockquote>
+<p>以下内容，我将用<code>Apollo</code>指代<code>Apollo 配置中心</code></p>
+</blockquote>
+<hr>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>在这步，你只需要安装 Docker 就行了，安装的方式根据操作系统不同，会有不同的方式，具体请前往官网，按引导步骤，或者查看官方文档，来完成安装 Docker 的工作。</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.docker.com/">Home - Docker</a></li>
+</ul>
+<hr>
+<h3 id="建立内部网络"><a href="#建立内部网络" class="headerlink" title="建立内部网络"></a>建立内部网络</h3><p>利用 Docker 部署，我们需要在 Docker 里建立一个内部网络环境。这一步是可选的，但是为了可读性，我建议把 MySQL、Apollo 都部署到这个内网，并赋予别名来打通访问。</p>
+<p>在这一步，你只需要执行下面的命令就可以了：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create docker-internal</span><br></pre></td></tr></table></figure>
+
+<p>这里我们创建了一个名称是<code>docker-internal</code>的 Docker Network，在后面会用到。</p>
+<hr>
+<h3 id="部署-MySQl"><a href="#部署-MySQl" class="headerlink" title="部署 MySQl"></a>部署 MySQl</h3><p>在这一步，我们会用到 MySQL 8.0.29。按照 Apollo 官方要求，只要我们部署的 MySQL 版本号大于等于 5.6.5，就可以满足部署条件。</p>
+<p>可以使用下面的命令来部署 MySQL：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql:8.0.29</span><br><span class="line"></span><br><span class="line">docker run --name mysql \</span><br><span class="line">  --network docker-internal \</span><br><span class="line">  --network-alias mysql \</span><br><span class="line">  -p 3306:3306 \</span><br><span class="line">  -p 33060:33060 \</span><br><span class="line">  -e MYSQL_ROOT_PASSWORD=Shimokitazawa114514 \</span><br><span class="line">  -v ~/.mysql/data:/var/lib/mysql \</span><br><span class="line">  -d mysql:8.0.29</span><br></pre></td></tr></table></figure>
+
+<p>上面的命令做了这些事情：</p>
+<ol>
+<li>拉取 MySQL 8.0.29 的镜像；</li>
+<li>运行一个 MySQL 容器，并且指定了运行的环境<ol>
+<li><code>-p 3306:3306</code>将容器的<code>3306</code>端口映射到宿主机的<code>3306</code>端口；</li>
+<li><code>-p 33060:33060</code>将容器的<code>33060</code>端口映射到宿主机的<code>33060</code>端口；</li>
+<li><code>--network docker-internal</code>指定了 MySQL 将会利用到<code>docker-internal</code>这个 Docker Network；</li>
+<li><code>--network-alias mysql</code>指定了这个容器可以通过<code>mysql</code>来访问到，举例说明如果要在 Docker 内部用 JDBC URL 连接到这个容器，可以使用<code>jdbc:mysql://mysql:3306/</code>访问到；</li>
+<li><code>-e MYSQL_ROOT_PASSWORD=root</code>指定了 MySQL root 用户的密码，这里可以把<code>Shimokitazawa114514</code>改成你想要的密码；</li>
+<li><code>-v ~/.mysql/data:/var/lib/mysql</code>指定了 MySQL 可以持久化保存数据库文件资源到本地的<code>~/.mysql/data</code>目录，你可能需要手动创建这个目录，或者更换到其他的路径；理论上<code>-v</code>参数仅仅只是做了宿主机和容器的挂载行为，但 MySQL 会自动创建存储文件，所以可以在第一次启动容器时就指定这个挂载；</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h3 id="创建-Apollo-数据库"><a href="#创建-Apollo-数据库" class="headerlink" title="创建 Apollo 数据库"></a>创建 Apollo 数据库</h3><p>初始化数据库的相关脚本，可以在<a target="_blank" rel="noopener" href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>获取，这里不再给出具体链接。</p>
+<p>需要注意，初始化 Apollo 配置中心的数据库内容，需要执行一共两个脚本，分别是<code>ApolloPortalDB.sql</code>和<code>ApolloConfigDB.sql</code>。两个脚本缺一不可。</p>
+<p>本文举例给出两个文件执行后，对应的数据库库名：</p>
+<ul>
+<li><code>ApolloPortalDB.sql</code>对应数据库 schema：<code>ApolloPortalDB</code></li>
+<li><code>ApolloConfigDB.sql</code>对应数据库 schema：<code>ApolloConfigDB</code></li>
+</ul>
+<hr>
+<h3 id="部署-Apollo"><a href="#部署-Apollo" class="headerlink" title="部署 Apollo"></a>部署 Apollo</h3><p>到这一步，理论来说你已经准备好运行环境了，接下来只要按顺序执行下面的这些命令，去部署 Apollo：</p>
+<h4 id="apollo-configservice"><a href="#apollo-configservice" class="headerlink" title="apollo-configservice"></a>apollo-configservice</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env zsh</span></span><br><span class="line"></span><br><span class="line">version=2.0.1</span><br><span class="line">db_user=root</span><br><span class="line">db_pass=root # 这个数据库密码应该是你部署 MySQL 的时候设置的 root 用户的密码</span><br><span class="line">app_name=apollo-configservice</span><br><span class="line">ip=xxx.xxx.xxx.xxx # 这里需要改成你自己的宿主机的内网 IP ，一定是你可以用 ifconfig 查询到的那个 IP</span><br><span class="line"></span><br><span class="line">docker pull apolloconfig/$&#123;app_name&#125;:$&#123;version&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 apollo-configservice ，并且利用 docker-internal 这个网络，设定网络别名为 apollo-configservice</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">映射端口 8080 到宿主机 8080 端</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设定 JDBC URL 使用的 host 为 MySQL 服务的网络别名 mysql</span></span><br><span class="line">docker run --name $&#123;app_name&#125; \</span><br><span class="line">  --network docker-internal \</span><br><span class="line">  --network-alias $&#123;app_name&#125; \</span><br><span class="line">  -p 8080:8080 \</span><br><span class="line">  -e SERVER_PORT=8080 \</span><br><span class="line">  -e EUREKA_INSTANCE_IP_ADDRESS=$&#123;ip&#125; \</span><br><span class="line">  -e SPRING_DATASOURCE_URL=&quot;jdbc:mysql://mysql:3306/ApolloConfigDB?characterEncoding=utf8&quot; \</span><br><span class="line">  -e SPRING_DATASOURCE_USERNAME=$&#123;db_user&#125; \</span><br><span class="line">  -e SPRING_DATASOURCE_PASSWORD=$&#123;db_pass&#125; \</span><br><span class="line">  -d apolloconfig/$&#123;app_name&#125;:$&#123;version&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="apollo-adminservice"><a href="#apollo-adminservice" class="headerlink" title="apollo-adminservice"></a>apollo-adminservice</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env zsh</span></span><br><span class="line"></span><br><span class="line">version=2.0.1</span><br><span class="line">db_user=root</span><br><span class="line">db_pass=root # 这个数据库密码应该是你部署 MySQL 的时候设置的 root 用户的密码</span><br><span class="line">app_name=apollo-adminservice</span><br><span class="line">ip=xxx.xxx.xxx.xxx # 这里需要改成你自己的宿主机的内网 IP ，一定是你可以用 ifconfig 查询到的那个 IP</span><br><span class="line"></span><br><span class="line">docker pull apolloconfig/$&#123;app_name&#125;:$&#123;version&#125;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 apollo-adminservice ，并且利用 docker-internal 这个网络，设定网络别名为 apollo-adminservice</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">映射端口 8090 到宿主机 8090 端</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设定 JDBC URL 使用的 host 为 MySQL 服务的网络别名 mysql</span></span><br><span class="line">docker run --name $&#123;app_name&#125; \</span><br><span class="line">  --network docker-internal \</span><br><span class="line">  --network-alias $&#123;app_name&#125; \</span><br><span class="line">  -p 8090:8090 \</span><br><span class="line">  -e SERVER_PORT=8090 \</span><br><span class="line">  -e EUREKA_INSTANCE_IP_ADDRESS=$&#123;ip&#125; \</span><br><span class="line">  -e SPRING_DATASOURCE_URL=&quot;jdbc:mysql://mysql:3306/ApolloConfigDB?characterEncoding=utf8&quot; \</span><br><span class="line">  -e SPRING_DATASOURCE_USERNAME=$&#123;db_user&#125; \</span><br><span class="line">  -e SPRING_DATASOURCE_PASSWORD=$&#123;db_pass&#125; \</span><br><span class="line">  -d apolloconfig/$&#123;app_name&#125;:$&#123;version&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="apollo-portal"><a href="#apollo-portal" class="headerlink" title="apollo-portal"></a>apollo-portal</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env zsh</span></span><br><span class="line"></span><br><span class="line">version=2.0.1</span><br><span class="line">db_user=root</span><br><span class="line">db_pass=root # 这个数据库密码应该是你部署 MySQL 的时候设置的 root 用户的密码</span><br><span class="line">app_name=apollo-portal</span><br><span class="line">dev_meta=http://apollo-configservice:8080 # 注意到这里使用的 host 是 apollo-configservice 容器的名称，这是因为部署 apollo-configservice 的时候指定了 --network-alias</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 apollo-portal ，并且利用 docker-internal 这个网络，设定网络别名为 apollo-portal</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">映射端口 8070 到宿主机 8070 端</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设定 JDBC URL 使用的 host 为 MySQL 服务的网络别名 mysql</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设定 Apollo 环境 dev 的 meta server 地址为 http://apollo-configservice:8080</span></span><br><span class="line">docker run --name $&#123;app_name&#125; \</span><br><span class="line">  --network docker-internal \</span><br><span class="line">  --network-alias $&#123;app_name&#125; \</span><br><span class="line">  -p 8070:8070 \</span><br><span class="line">  -e SERVER_PORT=8070 \</span><br><span class="line">  -e SPRING_DATASOURCE_URL=&quot;jdbc:mysql://mysql:3306/ApolloPortalDB?characterEncoding=utf8&quot; \</span><br><span class="line">  -e SPRING_DATASOURCE_USERNAME=$&#123;db_user&#125; \</span><br><span class="line">  -e SPRING_DATASOURCE_PASSWORD=$&#123;db_pass&#125; \</span><br><span class="line">  -e APOLLO_PORTAL_ENVS=dev \</span><br><span class="line">  -e DEV_META=$&#123;dev_meta&#125; \</span><br><span class="line">  -d apolloconfig/$&#123;app_name&#125;:$&#123;version&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="假如你需要更改端口"><a href="#假如你需要更改端口" class="headerlink" title="假如你需要更改端口"></a>假如你需要更改端口</h3><blockquote>
+<p>一般的，Apollo 会占用掉端口<code>8070</code>、<code>8080</code>和<code>8090</code>，大多数应用（包括你可能正在开发的应用）都会占用到其中的某个端口。一旦占用端口，要么就是 Apollo 不能用，要么就是自己的程序不能启动。</p>
+<p>所以这也是为什么我需要写这篇博客的原因：我需要改 Apollo 监听的端口，而且不是一个，而是全部！</p>
+</blockquote>
+<p>注意回顾一下上一节的部署命令，眼尖的读者应该已经看到了，三个命令中都包含了一行设置环境变量的代码<code>-e SERVER_PORT=xxxx</code>。</p>
+<p>在官方文档的<a target="_blank" rel="noopener" href="https://www.apolloconfig.com/#/zh/deployment/distributed-deployment-guide?id=_222-%e9%83%a8%e7%bd%b2apollo%e6%9c%8d%e5%8a%a1%e7%ab%af">2.2.2 部署 Apollo 服务端</a>中，有一段引文简单说明了调整监听端口的做法：</p>
+<blockquote>
+<p>注 3：如要调整服务的监听端口，可以修改 scripts&#x2F;startup.sh 中的<code>SERVER_PORT</code>。另外 apollo-configservice 同时承担 meta server 职责，如果要修改端口，注意要同时 ApolloConfigDB.ServerConfig 表中的<code>eureka.service.url</code>配置项以及 apollo-portal 和 apollo-client 中的使用到的 meta server 信息，详见：<a target="_blank" rel="noopener" href="https://www.apolloconfig.com/#/zh/deployment/distributed-deployment-guide?id=_221124-%e9%85%8d%e7%bd%aeapollo-portal%e7%9a%84meta-service%e4%bf%a1%e6%81%af">2.2.1.1.2.4 配置 apollo-portal 的 meta service 信息</a>和<a target="_blank" rel="noopener" href="https://www.apolloconfig.com/#/zh/usage/java-sdk-user-guide?id=_122-apollo-meta-server">1.2.2 Apollo Meta Server</a>。</p>
+</blockquote>
+<p>这段引文中提到了两个关键参数：</p>
+<ol>
+<li><code>SERVER_PORT</code>环境变量</li>
+<li><code>eureka.service.url</code> Eureka 服务 Url</li>
+</ol>
+<p>在 Apollo 物理机部署的 Release 包里，你可以在 configservice、adminservice 和 portal 的<code>scripts/startup.sh</code>，找到<code>SERVER_PORT</code>这个参数的赋值代码，简单来说，你可以使用环境变量，或者启动入参等可以让 shell script 正确接收参数方式，传入<code>SERVER_PORT</code>来指定监听端口。换算到我们的 docker 启动脚本里，这就是一行<code>-e SERVER_PORT=xxxx</code>。</p>
+<p>而当你修改了 configservice 的端口时，因为相应的 meta server 端口变了，而<code>eureka.service.url</code>还是指向原来的端口<code>8080</code>，当启动完整的服务后，相关的服务不能正确注册到 Eureka，则整套 Apollo 服务端不可用。</p>
+<p>所以当你需要修改端口，请确保做到以下 3 点：</p>
+<ol>
+<li>变更需要更改端口的服务的<code>SERVER_PORT</code>；</li>
+<li>在更新了 configservice 的<code>SERVER_PORT</code>后，需要把数据库 ApolloConfigDB.ServerConfig 表中的<code>eureka.service.url</code>更新到 configservice 指定的端口上；</li>
+<li>apollo-portal 的 meta.url 需要更新到新的端口上，举例如果指定了<code>APOLLO_PORTAL_ENVS=dev</code>，则更新<code>DEV_META</code>的 meta url 到新的端口上。</li>
+</ol>
+<p>注意这里的第三点提到了<code>APOLLO_PORTAL_ENVS</code>和<code>DEV_META</code>，这两个环境变量在官方文档里有相对详细的说明，这里就不再赘述了。</p>
+<hr>
+<h3 id="如果你要从-1-9-迁移到-2-0"><a href="#如果你要从-1-9-迁移到-2-0" class="headerlink" title="如果你要从 1.9 迁移到 2.0"></a>如果你要从 1.9 迁移到 2.0</h3><blockquote>
+<p>我的部署场景不属于全新部署，而是需要从<code>1.9.2</code>版本升级到<code>2.0.1</code>，所以我的部署应该是更新迁移的流程。这里我会把我的操作流程描述出来，供各位参考。</p>
+</blockquote>
+<p>从 1.9 迁移到 2.0，Apollo 官方 Release Logs 中有给出操作步骤，具体可以查看<a target="_blank" rel="noopener" href="https://github.com/apolloconfig/apollo/releases/tag/v2.0.0">Release Apollo 2.0.0 Release · apolloconfig&#x2F;apollo</a>这次版本的<code>How to upgrade from v1.9.x to v2.0.0</code>章节。</p>
+<p>简单来说，我们需要关心的步骤如下：</p>
+<h4 id="（可选的）检查脏数据"><a href="#（可选的）检查脏数据" class="headerlink" title="（可选的）检查脏数据"></a>（可选的）检查脏数据</h4><p>使用下面的脚本来检查数据库中是否存在对于迁移过程来说的脏数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- ApolloConfigDB data unique check</span></span><br><span class="line"><span class="keyword">select</span> `AppId`,`Secret`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `AccessKey` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId`,`Secret` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `AppId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `App` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `AppId`,`Name`, <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `AppNamespace` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId`,`Name` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `AppId`,`Name`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `Cluster` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId`,`Name` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `AppId`,`ClusterName`,`NamespaceName`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `Namespace` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId`,`ClusterName`,`NamespaceName` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `NamespaceId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `NamespaceLock` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `NamespaceId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `ReleaseKey`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `<span class="keyword">Release</span>` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `ReleaseKey` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `Key`,`Cluster`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `ServerConfig` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `Key`,`Cluster` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- ApolloPortalDB data unique check</span></span><br><span class="line"><span class="keyword">select</span> `AppId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `App` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `AppId`,`Name`, <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `AppNamespace` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId`,`Name` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `AppId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `Consumer` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `AppId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `ConsumerId`,`RoleId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `ConsumerRole` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `ConsumerId`,`RoleId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `Token`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `ConsumerToken` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `Token` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `UserId`,`AppId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `Favorite` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `UserId`,`AppId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `TargetId`,`PermissionType`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `Permission` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `TargetId`,`PermissionType` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `RoleName`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `Role` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `RoleName` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `RoleId`,`PermissionId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `RolePermission` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `RoleId`,`PermissionId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `Key`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `ServerConfig` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `Key` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `UserId`,`RoleId`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `UserRole` <span class="keyword">where</span> `IsDeleted`<span class="operator">=</span><span class="number">0</span> <span class="keyword">group</span> <span class="keyword">by</span> `UserId`,`RoleId` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">select</span> `Username`,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> `Users` <span class="keyword">group</span> <span class="keyword">by</span> `Username` <span class="keyword">having</span> <span class="built_in">count</span>(<span class="operator">*</span>) <span class="operator">&gt;</span> <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建新的字段"><a href="#创建新的字段" class="headerlink" title="创建新的字段"></a>创建新的字段</h4><p>在<code>ApolloConfigDB</code>数据库执行下面的脚本，增加 2.0 需要的新字段：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Copyright 2022 Apollo Authors</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="line"><span class="comment">-- you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment">-- You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment">-- distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></span><br><span class="line"><span class="comment">-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment">-- See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment">-- limitations under the License.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"># delta schema <span class="keyword">to</span> upgrade apollo config db <span class="keyword">from</span> v1<span class="number">.9</span><span class="number">.0</span> <span class="keyword">to</span> v2<span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">Use ApolloConfigDB;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `App`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `AppNamespace`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Audit`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Cluster`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `<span class="keyword">Commit</span>`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `GrayReleaseRule`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Item`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`,</span><br><span class="line">    <span class="keyword">ADD</span> INDEX IX_key (`Key`);</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Namespace`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `NamespaceLock`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `<span class="keyword">Release</span>`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ReleaseHistory`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ServerConfig`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `AccessKey`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>ApolloPortalDB</code>数据库执行下面的脚本，增加 2.0 需要的新字段：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Copyright 2022 Apollo Authors</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="line"><span class="comment">-- you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment">-- You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment">-- distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></span><br><span class="line"><span class="comment">-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment">-- See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment">-- limitations under the License.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"># delta schema <span class="keyword">to</span> upgrade apollo portal db <span class="keyword">from</span> v1<span class="number">.9</span><span class="number">.0</span> <span class="keyword">to</span> v2<span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">Use ApolloPortalDB;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `App`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `AppNamespace`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Consumer`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ConsumerRole`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ConsumerToken`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Favorite`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Permission`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Role`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `RolePermission`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ServerConfig`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `UserRole`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">COLUMN</span> `DeletedAt` <span class="type">BIGINT</span>(<span class="number">20</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">&#x27;0&#x27;</span> COMMENT <span class="string">&#x27;Delete timestamp based on milliseconds&#x27;</span> AFTER `IsDeleted`;</span><br></pre></td></tr></table></figure>
+
+<h4 id="按顺序升级服务"><a href="#按顺序升级服务" class="headerlink" title="按顺序升级服务"></a>按顺序升级服务</h4><p>官方给出的建议是，按照<code>apollo-configservice</code> -&gt; <code>apollo-adminservice</code> -&gt; <code>apollo-portal</code>的顺序来升级服务。</p>
+<p>但在我的实际操作中，我发现三个服务只有<code>apollo-configservice</code>和<code>apollo-adminservice</code>会有依赖，所以你可以按照下面的两种流程来滚动升级：</p>
+<ol>
+<li><code>apollo-configservice</code> -&gt; <code>apollo-adminservice</code> -&gt; <code>apollo-portal</code></li>
+<li><code>apollo-portal</code> -&gt; <code>apollo-configservice</code> -&gt; <code>apollo-adminservice</code></li>
+</ol>
+<h4 id="创建-Unique-索引"><a href="#创建-Unique-索引" class="headerlink" title="创建 Unique 索引"></a>创建 Unique 索引</h4><p>在<code>ApolloConfigDB</code>数据库执行下面的脚本：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Copyright 2022 Apollo Authors</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="line"><span class="comment">-- you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment">-- You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment">-- distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></span><br><span class="line"><span class="comment">-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment">-- See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment">-- limitations under the License.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"># delta schema <span class="keyword">to</span> upgrade apollo config db <span class="keyword">from</span> v1<span class="number">.9</span><span class="number">.0</span> <span class="keyword">to</span> v2<span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">Use ApolloConfigDB;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- the follow DML won&#x27;t change the `DataChange_LastTime` field</span></span><br><span class="line"><span class="keyword">UPDATE</span> `AccessKey` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `App` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `AppNamespace` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Audit` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Cluster` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `<span class="keyword">Commit</span>` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `GrayReleaseRule` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Item` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Namespace` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `NamespaceLock` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `<span class="keyword">Release</span>` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `ReleaseHistory` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `ServerConfig` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- add UNIQUE CONSTRAINT INDEX for each table</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `AccessKey`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_Secret_DeletedAt` (`AppId`,`Secret`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `AppId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `App`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_DeletedAt` (`AppId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `AppId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `AppNamespace`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_Name_DeletedAt` (`AppId`,`Name`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_AppId`;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Ignore TABLE `Audit`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Cluster`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_Name_DeletedAt` (`AppId`,`Name`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_AppId_Name`;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Ignore TABLE `Commit`</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- Ignore TABLE `GrayReleaseRule`, add unique index in future</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- Ignore TABLE `Item`, add unique index in future</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Namespace`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_ClusterName_NamespaceName_DeletedAt` (`AppId`(<span class="number">191</span>),`ClusterName`(<span class="number">191</span>),`NamespaceName`(<span class="number">191</span>),`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `AppId_ClusterName_NamespaceName`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `NamespaceLock`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_NamespaceId_DeletedAt` (`NamespaceId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_NamespaceId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `<span class="keyword">Release</span>`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_ReleaseKey_DeletedAt` (`ReleaseKey`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_ReleaseKey`;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- Ignore TABLE `ReleaseHistory`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ServerConfig`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_Key_Cluster_DeletedAt` (`Key`,`Cluster`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_Key`;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>ApolloPortalDB</code>数据库执行下面的脚本：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Copyright 2022 Apollo Authors</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span></span><br><span class="line"><span class="comment">-- you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment">-- You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"><span class="comment">-- Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment">-- distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span></span><br><span class="line"><span class="comment">-- WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment">-- See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment">-- limitations under the License.</span></span><br><span class="line"><span class="comment">--</span></span><br><span class="line"># delta schema <span class="keyword">to</span> upgrade apollo portal db <span class="keyword">from</span> v1<span class="number">.9</span><span class="number">.0</span> <span class="keyword">to</span> v2<span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">Use ApolloPortalDB;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- the follow DML won&#x27;t change the `DataChange_LastTime` field</span></span><br><span class="line"><span class="keyword">UPDATE</span> `App` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `AppNamespace` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Consumer` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `ConsumerRole` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `ConsumerToken` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Favorite` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Permission` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `Role` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `RolePermission` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `ServerConfig` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">UPDATE</span> `UserRole` <span class="keyword">SET</span> `DeletedAt` <span class="operator">=</span> <span class="operator">-</span>Id, `DataChange_LastTime` <span class="operator">=</span> `DataChange_LastTime` <span class="keyword">WHERE</span> `IsDeleted` <span class="operator">=</span> <span class="number">1</span> <span class="keyword">and</span> `DeletedAt` <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- add UNIQUE CONSTRAINT INDEX for each table</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `App`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_DeletedAt` (`AppId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `AppId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `AppNamespace`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_Name_DeletedAt` (`AppId`,`Name`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_AppId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Consumer`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_AppId_DeletedAt` (`AppId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `AppId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ConsumerRole`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_ConsumerId_RoleId_DeletedAt` (`ConsumerId`,`RoleId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_ConsumerId_RoleId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ConsumerToken`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_Token_DeletedAt` (`Token`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_Token`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Favorite`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_UserId_AppId_DeletedAt` (`UserId`,`AppId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_UserId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Permission`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_TargetId_PermissionType_DeletedAt` (`TargetId`,`PermissionType`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_TargetId_PermissionType`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Role`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_RoleName_DeletedAt` (`RoleName`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_RoleName`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `RolePermission`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_RoleId_PermissionId_DeletedAt` (`RoleId`,`PermissionId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_RoleId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `ServerConfig`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_Key_DeletedAt` (`Key`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_Key`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `UserRole`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_UserId_RoleId_DeletedAt` (`UserId`,`RoleId`,`DeletedAt`),</span><br><span class="line">    <span class="keyword">DROP</span> INDEX `IX_UserId_RoleId`;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> `Users`</span><br><span class="line">    <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span> INDEX `UK_Username` (`Username`);</span><br></pre></td></tr></table></figure>
+
+<p>到此为止，如果升级过程中没有出现异常，则说明升级迁移成功。</p>
+<hr>
+<h3 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h3><p>Apollo 的 Docker 部署方式，看起来比较简单，实际操作我个人体验下来还是不如 K8S 的 Helm 部署，Helm 部署会帮我做很多我不需要关心的流程，我仅仅需要调整 service 的服务类型，以及 portal 的 ingress。</p>
+<p>Docker 部署其实有更友好的 Docker-Compose 模式，但要想像我一样完全控制资源，那就比较复杂，就会遇到像我在上面提到的，要利用 Docker Network 打通内网，再利用 MySQL 实现持久化（以及宿主机持久化），再有服务发现，再有更换端口等等。</p>
+<p>不过整套流程做下来，至少有一个比较明确的结论，那就是即使不使用 Docker-Compose，你依然可以拥有一套能够切实解藕并且可维护的部署流程，并且这个流程是可以复制和复用的。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title="0" data-url="https://link.hhtjim.com/163/1834129483.mp3"></li>
+                        
+                    
+                        
+                            <li title="1" data-url="https://link.hhtjim.com/163/1917045512.mp3"></li>
+                        
+                    
+                        
+                            <li title="2" data-url="https://link.hhtjim.com/163/1921647147.mp3"></li>
+                        
+                    
+                        
+                            <li title="3" data-url="https://link.hhtjim.com/163/1824358789.mp3"></li>
+                        
+                    
+                        
+                            <li title="4" data-url="https://link.hhtjim.com/163/33861454.mp3"></li>
+                        
+                    
+                        
+                            <li title="5" data-url="https://link.hhtjim.com/163/1892822514.mp3"></li>
+                        
+                    
+                        
+                            <li title="6" data-url="https://link.hhtjim.com/163/1886749619.mp3"></li>
+                        
+                    
+                        
+                            <li title="7" data-url="https://link.hhtjim.com/163/1893377827.mp3"></li>
+                        
+                    
+                        
+                            <li title="8" data-url="https://link.hhtjim.com/163/1837711414.mp3"></li>
+                        
+                    
+                        
+                            <li title="9" data-url="https://link.hhtjim.com/163/1902821823.mp3"></li>
+                        
+                    
+                        
+                            <li title="10" data-url="https://link.hhtjim.com/163/1905000143.mp3"></li>
+                        
+                    
+                        
+                            <li title="11" data-url="https://link.hhtjim.com/163/1886751583.mp3"></li>
+                        
+                    
+                        
+                            <li title="12" data-url="https://link.hhtjim.com/163/1887056113.mp3"></li>
+                        
+                    
+                        
+                            <li title="13" data-url="https://link.hhtjim.com/163/1847255990.mp3"></li>
+                        
+                    
+                        
+                            <li title="14" data-url="https://link.hhtjim.com/163/1893308333.mp3"></li>
+                        
+                    
+                        
+                            <li title="15" data-url="https://link.hhtjim.com/163/557579321.mp3"></li>
+                        
+                    
+                        
+                            <li title="16" data-url="https://link.hhtjim.com/163/738427.mp3"></li>
+                        
+                    
+                        
+                            <li title="17" data-url="https://link.hhtjim.com/163/1374221428.mp3"></li>
+                        
+                    
+                        
+                            <li title="18" data-url="https://link.hhtjim.com/163/40729292.mp3"></li>
+                        
+                    
+                        
+                            <li title="19" data-url="https://link.hhtjim.com/163/1892668318.mp3"></li>
+                        
+                    
+                        
+                            <li title="20" data-url="https://link.hhtjim.com/163/646913.mp3"></li>
+                        
+                    
+                        
+                            <li title="21" data-url="https://link.hhtjim.com/163/1892470945.mp3"></li>
+                        
+                    
+                        
+                            <li title="22" data-url="https://link.hhtjim.com/163/1192812.mp3"></li>
+                        
+                    
+                        
+                            <li title="23" data-url="https://link.hhtjim.com/163/1323977125.mp3"></li>
+                        
+                    
+                        
+                            <li title="24" data-url="https://link.hhtjim.com/163/4937720.mp3"></li>
+                        
+                    
+                        
+                            <li title="25" data-url="https://link.hhtjim.com/163/32737684.mp3"></li>
+                        
+                    
+                        
+                            <li title="26" data-url="https://link.hhtjim.com/163/26107975.mp3"></li>
+                        
+                    
+                        
+                            <li title="27" data-url="https://link.hhtjim.com/163/744932.mp3"></li>
+                        
+                    
+                        
+                            <li title="28" data-url="https://link.hhtjim.com/163/5105677.mp3"></li>
+                        
+                    
+                        
+                            <li title="29" data-url="https://link.hhtjim.com/163/461433535.mp3"></li>
+                        
+                    
+                        
+                            <li title="30" data-url="https://link.hhtjim.com/163/744960.mp3"></li>
+                        
+                    
+                        
+                            <li title="31" data-url="https://link.hhtjim.com/163/32803111.mp3"></li>
+                        
+                    
+                        
+                            <li title="32" data-url="https://link.hhtjim.com/163/437802377.mp3"></li>
+                        
+                    
+                        
+                            <li title="33" data-url="https://link.hhtjim.com/163/850502.mp3"></li>
+                        
+                    
+                        
+                            <li title="34" data-url="https://link.hhtjim.com/163/32235280.mp3"></li>
+                        
+                    
+                        
+                            <li title="35" data-url="https://link.hhtjim.com/163/459717323.mp3"></li>
+                        
+                    
+                        
+                            <li title="36" data-url="https://link.hhtjim.com/163/1862479259.mp3"></li>
+                        
+                    
+                        
+                            <li title="37" data-url="https://link.hhtjim.com/163/28941658.mp3"></li>
+                        
+                    
+                        
+                            <li title="38" data-url="https://link.hhtjim.com/163/28178210.mp3"></li>
+                        
+                    
+                        
+                            <li title="39" data-url="https://link.hhtjim.com/163/850775.mp3"></li>
+                        
+                    
+                        
+                            <li title="40" data-url="https://link.hhtjim.com/163/28178209.mp3"></li>
+                        
+                    
+                        
+                            <li title="41" data-url="https://link.hhtjim.com/163/40729723.mp3"></li>
+                        
+                    
+                        
+                            <li title="42" data-url="https://link.hhtjim.com/163/833066.mp3"></li>
+                        
+                    
+                        
+                            <li title="43" data-url="https://link.hhtjim.com/163/450222749.mp3"></li>
+                        
+                    
+                        
+                            <li title="44" data-url="https://link.hhtjim.com/163/22785073.mp3"></li>
+                        
+                    
+                        
+                            <li title="45" data-url="https://link.hhtjim.com/163/849603.mp3"></li>
+                        
+                    
+                        
+                            <li title="46" data-url="https://link.hhtjim.com/163/1301674241.mp3"></li>
+                        
+                    
+                        
+                            <li title="47" data-url="https://link.hhtjim.com/163/865025.mp3"></li>
+                        
+                    
+                        
+                            <li title="48" data-url="https://link.hhtjim.com/163/22750771.mp3"></li>
+                        
+                    
+                        
+                            <li title="49" data-url="https://link.hhtjim.com/163/1306498257.mp3"></li>
+                        
+                    
+                        
+                            <li title="50" data-url="https://link.hhtjim.com/163/36190037.mp3"></li>
+                        
+                    
+                        
+                            <li title="51" data-url="https://link.hhtjim.com/163/785200.mp3"></li>
+                        
+                    
+                        
+                            <li title="52" data-url="https://link.hhtjim.com/163/732209.mp3"></li>
+                        
+                    
+                        
+                            <li title="53" data-url="https://link.hhtjim.com/163/1833625379.mp3"></li>
+                        
+                    
+                        
+                            <li title="54" data-url="https://link.hhtjim.com/163/526468582.mp3"></li>
+                        
+                    
+                        
+                            <li title="55" data-url="https://link.hhtjim.com/163/369265.mp3"></li>
+                        
+                    
+                        
+                            <li title="56" data-url="https://link.hhtjim.com/163/2923186.mp3"></li>
+                        
+                    
+                        
+                            <li title="57" data-url="https://link.hhtjim.com/163/22733413.mp3"></li>
+                        
+                    
+                        
+                            <li title="58" data-url="https://link.hhtjim.com/163/730727.mp3"></li>
+                        
+                    
+                        
+                            <li title="59" data-url="https://link.hhtjim.com/163/27709044.mp3"></li>
+                        
+                    
+                        
+                            <li title="60" data-url="https://link.hhtjim.com/163/1836078157.mp3"></li>
+                        
+                    
+                        
+                            <li title="61" data-url="https://link.hhtjim.com/163/1401248183.mp3"></li>
+                        
+                    
+                        
+                            <li title="62" data-url="https://link.hhtjim.com/163/1396561141.mp3"></li>
+                        
+                    
+                        
+                            <li title="63" data-url="https://link.hhtjim.com/163/41672757.mp3"></li>
+                        
+                    
+                        
+                            <li title="64" data-url="https://link.hhtjim.com/163/1810067388.mp3"></li>
+                        
+                    
+                        
+                            <li title="65" data-url="https://link.hhtjim.com/163/412327427.mp3"></li>
+                        
+                    
+                        
+                            <li title="66" data-url="https://link.hhtjim.com/163/593621.mp3"></li>
+                        
+                    
+                        
+                            <li title="67" data-url="https://link.hhtjim.com/163/26135815.mp3"></li>
+                        
+                    
+                        
+                            <li title="68" data-url="https://link.hhtjim.com/163/443291336.mp3"></li>
+                        
+                    
+                        
+                            <li title="69" data-url="https://link.hhtjim.com/163/1399441026.mp3"></li>
+                        
+                    
+                        
+                            <li title="70" data-url="https://link.hhtjim.com/163/1356537558.mp3"></li>
+                        
+                    
+                        
+                            <li title="71" data-url="https://link.hhtjim.com/163/1398575490.mp3"></li>
+                        
+                    
+                        
+                            <li title="72" data-url="https://link.hhtjim.com/163/1298504813.mp3"></li>
+                        
+                    
+                        
+                            <li title="73" data-url="https://link.hhtjim.com/163/1321848058.mp3"></li>
+                        
+                    
+                        
+                            <li title="74" data-url="https://link.hhtjim.com/163/1301573948.mp3"></li>
+                        
+                    
+                        
+                            <li title="75" data-url="https://link.hhtjim.com/163/1356119838.mp3"></li>
+                        
+                    
+                        
+                            <li title="76" data-url="https://link.hhtjim.com/163/1401040013.mp3"></li>
+                        
+                    
+                        
+                            <li title="77" data-url="https://link.hhtjim.com/163/1404469236.mp3"></li>
+                        
+                    
+                        
+                            <li title="78" data-url="https://link.hhtjim.com/163/1813827678.mp3"></li>
+                        
+                    
+                        
+                            <li title="79" data-url="https://link.hhtjim.com/163/22753344.mp3"></li>
+                        
+                    
+                        
+                            <li title="80" data-url="https://link.hhtjim.com/163/1440867211.mp3"></li>
+                        
+                    
+                        
+                            <li title="81" data-url="https://link.hhtjim.com/163/1382794922.mp3"></li>
+                        
+                    
+                        
+                            <li title="82" data-url="https://link.hhtjim.com/163/1390640629.mp3"></li>
+                        
+                    
+                        
+                            <li title="83" data-url="https://link.hhtjim.com/163/1301573950.mp3"></li>
+                        
+                    
+                        
+                            <li title="84" data-url="https://link.hhtjim.com/163/1342949573.mp3"></li>
+                        
+                    
+                        
+                            <li title="85" data-url="https://link.hhtjim.com/163/450400215.mp3"></li>
+                        
+                    
+                        
+                            <li title="86" data-url="https://link.hhtjim.com/163/1433315250.mp3"></li>
+                        
+                    
+                        
+                            <li title="87" data-url="https://link.hhtjim.com/163/1407566490.mp3"></li>
+                        
+                    
+                        
+                            <li title="88" data-url="https://link.hhtjim.com/163/1813516900.mp3"></li>
+                        
+                    
+                        
+                            <li title="89" data-url="https://link.hhtjim.com/163/1446245131.mp3"></li>
+                        
+                    
+                        
+                            <li title="90" data-url="https://link.hhtjim.com/163/1317407941.mp3"></li>
+                        
+                    
+                        
+                            <li title="91" data-url="https://link.hhtjim.com/163/1468875966.mp3"></li>
+                        
+                    
+                        
+                            <li title="92" data-url="https://link.hhtjim.com/163/477854260.mp3"></li>
+                        
+                    
+                        
+                            <li title="93" data-url="https://link.hhtjim.com/163/1351240456.mp3"></li>
+                        
+                    
+                        
+                            <li title="94" data-url="https://link.hhtjim.com/163/1395338963.mp3"></li>
+                        
+                    
+                        
+                            <li title="95" data-url="https://link.hhtjim.com/163/1432169641.mp3"></li>
+                        
+                    
+                        
+                            <li title="96" data-url="https://link.hhtjim.com/163/1466303986.mp3"></li>
+                        
+                    
+                        
+                            <li title="97" data-url="https://link.hhtjim.com/163/1299557936.mp3"></li>
+                        
+                    
+                        
+                            <li title="98" data-url="https://link.hhtjim.com/163/1350129460.mp3"></li>
+                        
+                    
+                        
+                            <li title="99" data-url="https://link.hhtjim.com/163/1379821181.mp3"></li>
+                        
+                    
+                        
+                            <li title="100" data-url="https://link.hhtjim.com/163/1469826888.mp3"></li>
+                        
+                    
+                        
+                            <li title="101" data-url="https://link.hhtjim.com/163/428203072.mp3"></li>
+                        
+                    
+                        
+                            <li title="102" data-url="https://link.hhtjim.com/163/34367059.mp3"></li>
+                        
+                    
+                        
+                            <li title="103" data-url="https://link.hhtjim.com/163/1371721171.mp3"></li>
+                        
+                    
+                        
+                            <li title="104" data-url="https://link.hhtjim.com/163/22765951.mp3"></li>
+                        
+                    
+                        
+                            <li title="105" data-url="https://link.hhtjim.com/163/525122032.mp3"></li>
+                        
+                    
+                        
+                            <li title="106" data-url="https://link.hhtjim.com/163/474739761.mp3"></li>
+                        
+                    
+                        
+                            <li title="107" data-url="https://link.hhtjim.com/163/1458087676.mp3"></li>
+                        
+                    
+                        
+                            <li title="108" data-url="https://link.hhtjim.com/163/33291727.mp3"></li>
+                        
+                    
+                        
+                            <li title="109" data-url="https://link.hhtjim.com/163/28360849.mp3"></li>
+                        
+                    
+                        
+                            <li title="110" data-url="https://link.hhtjim.com/163/640068.mp3"></li>
+                        
+                    
+                        
+                            <li title="111" data-url="https://link.hhtjim.com/163/442589034.mp3"></li>
+                        
+                    
+                        
+                            <li title="112" data-url="https://link.hhtjim.com/163/1347630432.mp3"></li>
+                        
+                    
+                        
+                            <li title="113" data-url="https://link.hhtjim.com/163/775653.mp3"></li>
+                        
+                    
+                        
+                            <li title="114" data-url="https://link.hhtjim.com/163/22651636.mp3"></li>
+                        
+                    
+                        
+                            <li title="115" data-url="https://link.hhtjim.com/163/498880661.mp3"></li>
+                        
+                    
+                        
+                            <li title="116" data-url="https://link.hhtjim.com/163/817723.mp3"></li>
+                        
+                    
+                        
+                            <li title="117" data-url="https://link.hhtjim.com/163/1365933510.mp3"></li>
+                        
+                    
+                        
+                            <li title="118" data-url="https://link.hhtjim.com/163/640866.mp3"></li>
+                        
+                    
+                        
+                            <li title="119" data-url="https://link.hhtjim.com/163/1342954499.mp3"></li>
+                        
+                    
+                        
+                            <li title="120" data-url="https://link.hhtjim.com/163/34179228.mp3"></li>
+                        
+                    
+                        
+                            <li title="121" data-url="https://link.hhtjim.com/163/471554811.mp3"></li>
+                        
+                    
+                        
+                            <li title="122" data-url="https://link.hhtjim.com/163/1342949564.mp3"></li>
+                        
+                    
+                        
+                            <li title="123" data-url="https://link.hhtjim.com/163/28445602.mp3"></li>
+                        
+                    
+                        
+                            <li title="124" data-url="https://link.hhtjim.com/163/425684779.mp3"></li>
+                        
+                    
+                        
+                            <li title="125" data-url="https://link.hhtjim.com/163/1352840033.mp3"></li>
+                        
+                    
+                        
+                            <li title="126" data-url="https://link.hhtjim.com/163/803048.mp3"></li>
+                        
+                    
+                        
+                            <li title="127" data-url="https://link.hhtjim.com/163/22805112.mp3"></li>
+                        
+                    
+                        
+                            <li title="128" data-url="https://link.hhtjim.com/163/640545.mp3"></li>
+                        
+                    
+                        
+                            <li title="129" data-url="https://link.hhtjim.com/163/4899152.mp3"></li>
+                        
+                    
+                        
+                            <li title="130" data-url="https://link.hhtjim.com/163/478384.mp3"></li>
+                        
+                    
+                        
+                            <li title="131" data-url="https://link.hhtjim.com/163/857176.mp3"></li>
+                        
+                    
+                        
+                            <li title="132" data-url="https://link.hhtjim.com/163/29713218.mp3"></li>
+                        
+                    
+                        
+                            <li title="133" data-url="https://link.hhtjim.com/163/448316041.mp3"></li>
+                        
+                    
+                        
+                            <li title="134" data-url="https://link.hhtjim.com/163/32803294.mp3"></li>
+                        
+                    
+                        
+                            <li title="135" data-url="https://link.hhtjim.com/163/1368324900.mp3"></li>
+                        
+                    
+                        
+                            <li title="136" data-url="https://link.hhtjim.com/163/571073131.mp3"></li>
+                        
+                    
+                        
+                            <li title="137" data-url="https://link.hhtjim.com/163/40729223.mp3"></li>
+                        
+                    
+                        
+                            <li title="138" data-url="https://link.hhtjim.com/163/28684025.mp3"></li>
+                        
+                    
+                        
+                            <li title="139" data-url="https://link.hhtjim.com/163/34509272.mp3"></li>
+                        
+                    
+                        
+                            <li title="140" data-url="https://link.hhtjim.com/163/565890090.mp3"></li>
+                        
+                    
+                        
+                            <li title="141" data-url="https://link.hhtjim.com/163/1306163092.mp3"></li>
+                        
+                    
+                        
+                            <li title="142" data-url="https://link.hhtjim.com/163/499018.mp3"></li>
+                        
+                    
+                        
+                            <li title="143" data-url="https://link.hhtjim.com/163/4898497.mp3"></li>
+                        
+                    
+                        
+                            <li title="144" data-url="https://link.hhtjim.com/163/525063503.mp3"></li>
+                        
+                    
+                        
+                            <li title="145" data-url="https://link.hhtjim.com/163/611868.mp3"></li>
+                        
+                    
+                        
+                            <li title="146" data-url="https://link.hhtjim.com/163/543988578.mp3"></li>
+                        
+                    
+                        
+                            <li title="147" data-url="https://link.hhtjim.com/163/487527980.mp3"></li>
+                        
+                    
+                        
+                            <li title="148" data-url="https://link.hhtjim.com/163/1361188105.mp3"></li>
+                        
+                    
+                        
+                            <li title="149" data-url="https://link.hhtjim.com/163/4939764.mp3"></li>
+                        
+                    
+                        
+                            <li title="150" data-url="https://link.hhtjim.com/163/479441420.mp3"></li>
+                        
+                    
+                        
+                            <li title="151" data-url="https://link.hhtjim.com/163/25806118.mp3"></li>
+                        
+                    
+                        
+                            <li title="152" data-url="https://link.hhtjim.com/163/407862870.mp3"></li>
+                        
+                    
+                        
+                            <li title="153" data-url="https://link.hhtjim.com/163/477332351.mp3"></li>
+                        
+                    
+                        
+                            <li title="154" data-url="https://link.hhtjim.com/163/463268158.mp3"></li>
+                        
+                    
+                        
+                            <li title="155" data-url="https://link.hhtjim.com/163/1341138517.mp3"></li>
+                        
+                    
+                        
+                            <li title="156" data-url="https://link.hhtjim.com/163/32046764.mp3"></li>
+                        
+                    
+                        
+                            <li title="157" data-url="https://link.hhtjim.com/163/1306507053.mp3"></li>
+                        
+                    
+                        
+                            <li title="158" data-url="https://link.hhtjim.com/163/557584114.mp3"></li>
+                        
+                    
+                        
+                            <li title="159" data-url="https://link.hhtjim.com/163/624670.mp3"></li>
+                        
+                    
+                        
+                            <li title="160" data-url="https://link.hhtjim.com/163/536623501.mp3"></li>
+                        
+                    
+                        
+                            <li title="161" data-url="https://link.hhtjim.com/163/577438.mp3"></li>
+                        
+                    
+                        
+                            <li title="162" data-url="https://link.hhtjim.com/163/411500258.mp3"></li>
+                        
+                    
+                        
+                            <li title="163" data-url="https://link.hhtjim.com/163/28193400.mp3"></li>
+                        
+                    
+                        
+                            <li title="164" data-url="https://link.hhtjim.com/163/406846048.mp3"></li>
+                        
+                    
+                        
+                            <li title="165" data-url="https://link.hhtjim.com/163/547973475.mp3"></li>
+                        
+                    
+                        
+                            <li title="166" data-url="https://link.hhtjim.com/163/1306507269.mp3"></li>
+                        
+                    
+                        
+                            <li title="167" data-url="https://link.hhtjim.com/163/1320097223.mp3"></li>
+                        
+                    
+                        
+                            <li title="168" data-url="https://link.hhtjim.com/163/419596411.mp3"></li>
+                        
+                    
+                        
+                            <li title="169" data-url="https://link.hhtjim.com/163/658318.mp3"></li>
+                        
+                    
+                        
+                            <li title="170" data-url="https://link.hhtjim.com/163/441835870.mp3"></li>
+                        
+                    
+                        
+                            <li title="171" data-url="https://link.hhtjim.com/163/400876507.mp3"></li>
+                        
+                    
+                        
+                            <li title="172" data-url="https://link.hhtjim.com/163/484249882.mp3"></li>
+                        
+                    
+                        
+                            <li title="173" data-url="https://link.hhtjim.com/163/27785995.mp3"></li>
+                        
+                    
+                        
+                            <li title="174" data-url="https://link.hhtjim.com/163/27785952.mp3"></li>
+                        
+                    
+                        
+                            <li title="175" data-url="https://link.hhtjim.com/163/27901184.mp3"></li>
+                        
+                    
+                        
+                            <li title="176" data-url="https://link.hhtjim.com/163/582005.mp3"></li>
+                        
+                    
+                        
+                            <li title="177" data-url="https://link.hhtjim.com/163/1351607470.mp3"></li>
+                        
+                    
+                        
+                            <li title="178" data-url="https://link.hhtjim.com/163/29307195.mp3"></li>
+                        
+                    
+                        
+                            <li title="179" data-url="https://link.hhtjim.com/163/454231899.mp3"></li>
+                        
+                    
+                        
+                            <li title="180" data-url="https://link.hhtjim.com/163/610061.mp3"></li>
+                        
+                    
+                        
+                            <li title="181" data-url="https://link.hhtjim.com/163/505665802.mp3"></li>
+                        
+                    
+                        
+                            <li title="182" data-url="https://link.hhtjim.com/163/1335390116.mp3"></li>
+                        
+                    
+                        
+                            <li title="183" data-url="https://link.hhtjim.com/163/1315821092.mp3"></li>
+                        
+                    
+                        
+                            <li title="184" data-url="https://link.hhtjim.com/163/399552336.mp3"></li>
+                        
+                    
+                        
+                            <li title="185" data-url="https://link.hhtjim.com/163/776782.mp3"></li>
+                        
+                    
+                        
+                            <li title="186" data-url="https://link.hhtjim.com/163/488388942.mp3"></li>
+                        
+                    
+                        
+                            <li title="187" data-url="https://link.hhtjim.com/163/511634603.mp3"></li>
+                        
+                    
+                        
+                            <li title="188" data-url="https://link.hhtjim.com/163/676568.mp3"></li>
+                        
+                    
+                        
+                            <li title="189" data-url="https://link.hhtjim.com/163/549484811.mp3"></li>
+                        
+                    
+                        
+                            <li title="190" data-url="https://link.hhtjim.com/163/428375160.mp3"></li>
+                        
+                    
+                        
+                            <li title="191" data-url="https://link.hhtjim.com/163/3939265.mp3"></li>
+                        
+                    
+                        
+                            <li title="192" data-url="https://link.hhtjim.com/163/4344553.mp3"></li>
+                        
+                    
+                        
+                            <li title="193" data-url="https://link.hhtjim.com/163/3939119.mp3"></li>
+                        
+                    
+                        
+                            <li title="194" data-url="https://link.hhtjim.com/163/514543705.mp3"></li>
+                        
+                    
+                        
+                            <li title="195" data-url="https://link.hhtjim.com/163/668526.mp3"></li>
+                        
+                    
+                        
+                            <li title="196" data-url="https://link.hhtjim.com/163/461858804.mp3"></li>
+                        
+                    
+                        
+                            <li title="197" data-url="https://link.hhtjim.com/163/432509390.mp3"></li>
+                        
+                    
+                        
+                            <li title="198" data-url="https://link.hhtjim.com/163/480409956.mp3"></li>
+                        
+                    
+                        
+                            <li title="199" data-url="https://link.hhtjim.com/163/1349262474.mp3"></li>
+                        
+                    
+                        
+                            <li title="200" data-url="https://link.hhtjim.com/163/34696849.mp3"></li>
+                        
+                    
+                        
+                            <li title="201" data-url="https://link.hhtjim.com/163/30841216.mp3"></li>
+                        
+                    
+                        
+                            <li title="202" data-url="https://link.hhtjim.com/163/1302953068.mp3"></li>
+                        
+                    
+                        
+                            <li title="203" data-url="https://link.hhtjim.com/163/432486474.mp3"></li>
+                        
+                    
+                        
+                            <li title="204" data-url="https://link.hhtjim.com/163/522529482.mp3"></li>
+                        
+                    
+                        
+                            <li title="205" data-url="https://link.hhtjim.com/163/423058145.mp3"></li>
+                        
+                    
+                        
+                            <li title="206" data-url="https://link.hhtjim.com/163/471799.mp3"></li>
+                        
+                    
+                        
+                            <li title="207" data-url="https://link.hhtjim.com/163/450222764.mp3"></li>
+                        
+                    
+                        
+                            <li title="208" data-url="https://link.hhtjim.com/163/413831435.mp3"></li>
+                        
+                    
+                        
+                            <li title="209" data-url="https://link.hhtjim.com/163/26260384.mp3"></li>
+                        
+                    
+                        
+                            <li title="210" data-url="https://link.hhtjim.com/163/33715610.mp3"></li>
+                        
+                    
+                        
+                            <li title="211" data-url="https://link.hhtjim.com/163/560144.mp3"></li>
+                        
+                    
+                        
+                            <li title="212" data-url="https://link.hhtjim.com/163/28378006.mp3"></li>
+                        
+                    
+                        
+                            <li title="213" data-url="https://link.hhtjim.com/163/587211.mp3"></li>
+                        
+                    
+                        
+                            <li title="214" data-url="https://link.hhtjim.com/163/812531.mp3"></li>
+                        
+                    
+                        
+                            <li title="215" data-url="https://link.hhtjim.com/163/28445574.mp3"></li>
+                        
+                    
+                        
+                            <li title="216" data-url="https://link.hhtjim.com/163/820665.mp3"></li>
+                        
+                    
+                        
+                            <li title="217" data-url="https://link.hhtjim.com/163/27580227.mp3"></li>
+                        
+                    
+                        
+                            <li title="218" data-url="https://link.hhtjim.com/163/435166264.mp3"></li>
+                        
+                    
+                        
+                            <li title="219" data-url="https://link.hhtjim.com/163/421203775.mp3"></li>
+                        
+                    
+                        
+                            <li title="220" data-url="https://link.hhtjim.com/163/32803290.mp3"></li>
+                        
+                    
+                        
+                            <li title="221" data-url="https://link.hhtjim.com/163/33378324.mp3"></li>
+                        
+                    
+                        
+                            <li title="222" data-url="https://link.hhtjim.com/163/812673.mp3"></li>
+                        
+                    
+                        
+                            <li title="223" data-url="https://link.hhtjim.com/163/28445546.mp3"></li>
+                        
+                    
+                        
+                            <li title="224" data-url="https://link.hhtjim.com/163/26116002.mp3"></li>
+                        
+                    
+                        
+                            <li title="225" data-url="https://link.hhtjim.com/163/574919996.mp3"></li>
+                        
+                    
+                        
+                            <li title="226" data-url="https://link.hhtjim.com/163/26116001.mp3"></li>
+                        
+                    
+                        
+                            <li title="227" data-url="https://link.hhtjim.com/163/28875033.mp3"></li>
+                        
+                    
+                        
+                            <li title="228" data-url="https://link.hhtjim.com/163/550483.mp3"></li>
+                        
+                    
+                        
+                            <li title="229" data-url="https://link.hhtjim.com/163/469073339.mp3"></li>
+                        
+                    
+                        
+                            <li title="230" data-url="https://link.hhtjim.com/163/541499348.mp3"></li>
+                        
+                    
+                        
+                            <li title="231" data-url="https://link.hhtjim.com/163/536098169.mp3"></li>
+                        
+                    
+                        
+                            <li title="232" data-url="https://link.hhtjim.com/163/499009.mp3"></li>
+                        
+                    
+                        
+                            <li title="233" data-url="https://link.hhtjim.com/163/1309901145.mp3"></li>
+                        
+                    
+                        
+                            <li title="234" data-url="https://link.hhtjim.com/163/30431360.mp3"></li>
+                        
+                    
+                        
+                            <li title="235" data-url="https://link.hhtjim.com/163/28178158.mp3"></li>
+                        
+                    
+                        
+                            <li title="236" data-url="https://link.hhtjim.com/163/1321424521.mp3"></li>
+                        
+                    
+                        
+                            <li title="237" data-url="https://link.hhtjim.com/163/36493000.mp3"></li>
+                        
+                    
+                        
+                            <li title="238" data-url="https://link.hhtjim.com/163/496617538.mp3"></li>
+                        
+                    
+                        
+                            <li title="239" data-url="https://link.hhtjim.com/163/411236802.mp3"></li>
+                        
+                    
+                        
+                            <li title="240" data-url="https://link.hhtjim.com/163/26092656.mp3"></li>
+                        
+                    
+                        
+                            <li title="241" data-url="https://link.hhtjim.com/163/460839654.mp3"></li>
+                        
+                    
+                        
+                            <li title="242" data-url="https://link.hhtjim.com/163/407000247.mp3"></li>
+                        
+                    
+                        
+                            <li title="243" data-url="https://link.hhtjim.com/163/29897558.mp3"></li>
+                        
+                    
+                        
+                            <li title="244" data-url="https://link.hhtjim.com/163/550138130.mp3"></li>
+                        
+                    
+                        
+                            <li title="245" data-url="https://link.hhtjim.com/163/417613605.mp3"></li>
+                        
+                    
+                        
+                            <li title="246" data-url="https://link.hhtjim.com/163/699893.mp3"></li>
+                        
+                    
+                        
+                            <li title="247" data-url="https://link.hhtjim.com/163/501291909.mp3"></li>
+                        
+                    
+                        
+                            <li title="248" data-url="https://link.hhtjim.com/163/4931484.mp3"></li>
+                        
+                    
+                        
+                            <li title="249" data-url="https://link.hhtjim.com/163/31967337.mp3"></li>
+                        
+                    
+                        
+                            <li title="250" data-url="https://link.hhtjim.com/163/611923.mp3"></li>
+                        
+                    
+                        
+                            <li title="251" data-url="https://link.hhtjim.com/163/1317457906.mp3"></li>
+                        
+                    
+                        
+                            <li title="252" data-url="https://link.hhtjim.com/163/22730168.mp3"></li>
+                        
+                    
+                        
+                            <li title="253" data-url="https://link.hhtjim.com/163/666122.mp3"></li>
+                        
+                    
+                        
+                            <li title="254" data-url="https://link.hhtjim.com/163/838303.mp3"></li>
+                        
+                    
+                        
+                            <li title="255" data-url="https://link.hhtjim.com/163/536098015.mp3"></li>
+                        
+                    
+                        
+                            <li title="256" data-url="https://link.hhtjim.com/163/1316563356.mp3"></li>
+                        
+                    
+                        
+                            <li title="257" data-url="https://link.hhtjim.com/163/566435442.mp3"></li>
+                        
+                    
+                        
+                            <li title="258" data-url="https://link.hhtjim.com/163/610149.mp3"></li>
+                        
+                    
+                        
+                            <li title="259" data-url="https://link.hhtjim.com/163/455345170.mp3"></li>
+                        
+                    
+                        
+                            <li title="260" data-url="https://link.hhtjim.com/163/419238092.mp3"></li>
+                        
+                    
+                        
+                            <li title="261" data-url="https://link.hhtjim.com/163/503127102.mp3"></li>
+                        
+                    
+                        
+                            <li title="262" data-url="https://link.hhtjim.com/163/530986958.mp3"></li>
+                        
+                    
+                        
+                            <li title="263" data-url="https://link.hhtjim.com/163/618325.mp3"></li>
+                        
+                    
+                        
+                            <li title="264" data-url="https://link.hhtjim.com/163/22645576.mp3"></li>
+                        
+                    
+                        
+                            <li title="265" data-url="https://link.hhtjim.com/163/419254423.mp3"></li>
+                        
+                    
+                        
+                            <li title="266" data-url="https://link.hhtjim.com/163/426026778.mp3"></li>
+                        
+                    
+                        
+                            <li title="267" data-url="https://link.hhtjim.com/163/578090.mp3"></li>
+                        
+                    
+                        
+                            <li title="268" data-url="https://link.hhtjim.com/163/562594166.mp3"></li>
+                        
+                    
+                        
+                            <li title="269" data-url="https://link.hhtjim.com/163/542792596.mp3"></li>
+                        
+                    
+                        
+                            <li title="270" data-url="https://link.hhtjim.com/163/22675918.mp3"></li>
+                        
+                    
+                        
+                            <li title="271" data-url="https://link.hhtjim.com/163/489970645.mp3"></li>
+                        
+                    
+                        
+                            <li title="272" data-url="https://link.hhtjim.com/163/20789751.mp3"></li>
+                        
+                    
+                        
+                            <li title="273" data-url="https://link.hhtjim.com/163/561094746.mp3"></li>
+                        
+                    
+                        
+                            <li title="274" data-url="https://link.hhtjim.com/163/667076.mp3"></li>
+                        
+                    
+                        
+                            <li title="275" data-url="https://link.hhtjim.com/163/36496419.mp3"></li>
+                        
+                    
+                        
+                            <li title="276" data-url="https://link.hhtjim.com/163/29785407.mp3"></li>
+                        
+                    
+                        
+                            <li title="277" data-url="https://link.hhtjim.com/163/32450268.mp3"></li>
+                        
+                    
+                        
+                            <li title="278" data-url="https://link.hhtjim.com/163/26217033.mp3"></li>
+                        
+                    
+                        
+                            <li title="279" data-url="https://link.hhtjim.com/163/769950.mp3"></li>
+                        
+                    
+                        
+                            <li title="280" data-url="https://link.hhtjim.com/163/425280305.mp3"></li>
+                        
+                    
+                        
+                            <li title="281" data-url="https://link.hhtjim.com/163/418602555.mp3"></li>
+                        
+                    
+                        
+                            <li title="282" data-url="https://link.hhtjim.com/163/476323636.mp3"></li>
+                        
+                    
+                        
+                            <li title="283" data-url="https://link.hhtjim.com/163/477839693.mp3"></li>
+                        
+                    
+                        
+                            <li title="284" data-url="https://link.hhtjim.com/163/26103161.mp3"></li>
+                        
+                    
+                        
+                            <li title="285" data-url="https://link.hhtjim.com/163/760037.mp3"></li>
+                        
+                    
+                        
+                            <li title="286" data-url="https://link.hhtjim.com/163/469272730.mp3"></li>
+                        
+                    
+                        
+                            <li title="287" data-url="https://link.hhtjim.com/163/467952146.mp3"></li>
+                        
+                    
+                        
+                            <li title="288" data-url="https://link.hhtjim.com/163/4940455.mp3"></li>
+                        
+                    
+                        
+                            <li title="289" data-url="https://link.hhtjim.com/163/28977795.mp3"></li>
+                        
+                    
+                        
+                            <li title="290" data-url="https://link.hhtjim.com/163/417833623.mp3"></li>
+                        
+                    
+                        
+                            <li title="291" data-url="https://link.hhtjim.com/163/424262056.mp3"></li>
+                        
+                    
+                        
+                            <li title="292" data-url="https://link.hhtjim.com/163/40915404.mp3"></li>
+                        
+                    
+                        
+                            <li title="293" data-url="https://link.hhtjim.com/163/40915405.mp3"></li>
+                        
+                    
+                        
+                            <li title="294" data-url="https://link.hhtjim.com/163/666443.mp3"></li>
+                        
+                    
+                        
+                            <li title="295" data-url="https://link.hhtjim.com/163/35090707.mp3"></li>
+                        
+                    
+                        
+                            <li title="296" data-url="https://link.hhtjim.com/163/27538415.mp3"></li>
+                        
+                    
+                        
+                            <li title="297" data-url="https://link.hhtjim.com/163/22703777.mp3"></li>
+                        
+                    
+                        
+                            <li title="298" data-url="https://link.hhtjim.com/163/441835219.mp3"></li>
+                        
+                    
+                        
+                            <li title="299" data-url="https://link.hhtjim.com/163/28828613.mp3"></li>
+                        
+                    
+                        
+                            <li title="300" data-url="https://link.hhtjim.com/163/460319.mp3"></li>
+                        
+                    
+                        
+                            <li title="301" data-url="https://link.hhtjim.com/163/29758025.mp3"></li>
+                        
+                    
+                        
+                            <li title="302" data-url="https://link.hhtjim.com/163/28660405.mp3"></li>
+                        
+                    
+                        
+                            <li title="303" data-url="https://link.hhtjim.com/163/449578849.mp3"></li>
+                        
+                    
+                        
+                            <li title="304" data-url="https://link.hhtjim.com/163/811721.mp3"></li>
+                        
+                    
+                        
+                            <li title="305" data-url="https://link.hhtjim.com/163/38358219.mp3"></li>
+                        
+                    
+                        
+                            <li title="306" data-url="https://link.hhtjim.com/163/514774419.mp3"></li>
+                        
+                    
+                        
+                            <li title="307" data-url="https://link.hhtjim.com/163/537854163.mp3"></li>
+                        
+                    
+                        
+                            <li title="308" data-url="https://link.hhtjim.com/163/537854242.mp3"></li>
+                        
+                    
+                        
+                            <li title="309" data-url="https://link.hhtjim.com/163/537854209.mp3"></li>
+                        
+                    
+                        
+                            <li title="310" data-url="https://link.hhtjim.com/163/528338969.mp3"></li>
+                        
+                    
+                        
+                            <li title="311" data-url="https://link.hhtjim.com/163/38689090.mp3"></li>
+                        
+                    
+                        
+                            <li title="312" data-url="https://link.hhtjim.com/163/406355.mp3"></li>
+                        
+                    
+                        
+                            <li title="313" data-url="https://link.hhtjim.com/163/550573.mp3"></li>
+                        
+                    
+                        
+                            <li title="314" data-url="https://link.hhtjim.com/163/666395.mp3"></li>
+                        
+                    
+                        
+                            <li title="315" data-url="https://link.hhtjim.com/163/453749183.mp3"></li>
+                        
+                    
+                        
+                            <li title="316" data-url="https://link.hhtjim.com/163/26259014.mp3"></li>
+                        
+                    
+                        
+                            <li title="317" data-url="https://link.hhtjim.com/163/29593225.mp3"></li>
+                        
+                    
+                        
+                            <li title="318" data-url="https://link.hhtjim.com/163/476081899.mp3"></li>
+                        
+                    
+                        
+                            <li title="319" data-url="https://link.hhtjim.com/163/476638472.mp3"></li>
+                        
+                    
+                        
+                            <li title="320" data-url="https://link.hhtjim.com/163/529824966.mp3"></li>
+                        
+                    
+                        
+                            <li title="321" data-url="https://link.hhtjim.com/163/496869422.mp3"></li>
+                        
+                    
+                        
+                            <li title="322" data-url="https://link.hhtjim.com/163/525241744.mp3"></li>
+                        
+                    
+                        
+                            <li title="323" data-url="https://link.hhtjim.com/163/525240742.mp3"></li>
+                        
+                    
+                        
+                            <li title="324" data-url="https://link.hhtjim.com/163/402073800.mp3"></li>
+                        
+                    
+                        
+                            <li title="325" data-url="https://link.hhtjim.com/163/419254422.mp3"></li>
+                        
+                    
+                        
+                            <li title="326" data-url="https://link.hhtjim.com/163/28863070.mp3"></li>
+                        
+                    
+                        
+                            <li title="327" data-url="https://link.hhtjim.com/163/26101820.mp3"></li>
+                        
+                    
+                        
+                            <li title="328" data-url="https://link.hhtjim.com/163/19394361.mp3"></li>
+                        
+                    
+                        
+                            <li title="329" data-url="https://link.hhtjim.com/163/650501.mp3"></li>
+                        
+                    
+                        
+                            <li title="330" data-url="https://link.hhtjim.com/163/650499.mp3"></li>
+                        
+                    
+                        
+                            <li title="331" data-url="https://link.hhtjim.com/163/614089.mp3"></li>
+                        
+                    
+                        
+                            <li title="332" data-url="https://link.hhtjim.com/163/614083.mp3"></li>
+                        
+                    
+                        
+                            <li title="333" data-url="https://link.hhtjim.com/163/29043459.mp3"></li>
+                        
+                    
+                        
+                            <li title="334" data-url="https://link.hhtjim.com/163/27901843.mp3"></li>
+                        
+                    
+                        
+                            <li title="335" data-url="https://link.hhtjim.com/163/23666762.mp3"></li>
+                        
+                    
+                        
+                            <li title="336" data-url="https://link.hhtjim.com/163/26339871.mp3"></li>
+                        
+                    
+                        
+                            <li title="337" data-url="https://link.hhtjim.com/163/25773411.mp3"></li>
+                        
+                    
+                        
+                            <li title="338" data-url="https://link.hhtjim.com/163/31134451.mp3"></li>
+                        
+                    
+                        
+                            <li title="339" data-url="https://link.hhtjim.com/163/30621778.mp3"></li>
+                        
+                    
+                        
+                            <li title="340" data-url="https://link.hhtjim.com/163/30621781.mp3"></li>
+                        
+                    
+                        
+                            <li title="341" data-url="https://link.hhtjim.com/163/16686600.mp3"></li>
+                        
+                    
+                        
+                            <li title="342" data-url="https://link.hhtjim.com/163/30841187.mp3"></li>
+                        
+                    
+                        
+                            <li title="343" data-url="https://link.hhtjim.com/163/30590965.mp3"></li>
+                        
+                    
+                        
+                            <li title="344" data-url="https://link.hhtjim.com/163/30621776.mp3"></li>
+                        
+                    
+                        
+                            <li title="345" data-url="https://link.hhtjim.com/163/22757115.mp3"></li>
+                        
+                    
+                        
+                            <li title="346" data-url="https://link.hhtjim.com/163/29379272.mp3"></li>
+                        
+                    
+                        
+                            <li title="347" data-url="https://link.hhtjim.com/163/558173.mp3"></li>
+                        
+                    
+                        
+                            <li title="348" data-url="https://link.hhtjim.com/163/830019.mp3"></li>
+                        
+                    
+                        
+                            <li title="349" data-url="https://link.hhtjim.com/163/28258450.mp3"></li>
+                        
+                    
+                        
+                            <li title="350" data-url="https://link.hhtjim.com/163/22645035.mp3"></li>
+                        
+                    
+                        
+                            <li title="351" data-url="https://link.hhtjim.com/163/4975665.mp3"></li>
+                        
+                    
+                        
+                            <li title="352" data-url="https://link.hhtjim.com/163/296955.mp3"></li>
+                        
+                    
+                        
+                            <li title="353" data-url="https://link.hhtjim.com/163/26115345.mp3"></li>
+                        
+                    
+                        
+                            <li title="354" data-url="https://link.hhtjim.com/163/860372.mp3"></li>
+                        
+                    
+                        
+                            <li title="355" data-url="https://link.hhtjim.com/163/832975.mp3"></li>
+                        
+                    
+                        
+                            <li title="356" data-url="https://link.hhtjim.com/163/832978.mp3"></li>
+                        
+                    
+                        
+                            <li title="357" data-url="https://link.hhtjim.com/163/832982.mp3"></li>
+                        
+                    
+                        
+                            <li title="358" data-url="https://link.hhtjim.com/163/832988.mp3"></li>
+                        
+                    
+                        
+                            <li title="359" data-url="https://link.hhtjim.com/163/832991.mp3"></li>
+                        
+                    
+                        
+                            <li title="360" data-url="https://link.hhtjim.com/163/832994.mp3"></li>
+                        
+                    
+                        
+                            <li title="361" data-url="https://link.hhtjim.com/163/832997.mp3"></li>
+                        
+                    
+                        
+                            <li title="362" data-url="https://link.hhtjim.com/163/833000.mp3"></li>
+                        
+                    
+                        
+                            <li title="363" data-url="https://link.hhtjim.com/163/833002.mp3"></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="content markdown">
+            <h5>友情链接</h5>
+            <p><a target="_blank" rel="noopener" href="https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=dqnzm5fj">阿里云 - 云服务器 精选特惠</a></p>
+            <p><a target="_blank" rel="noopener" href="https://www.aliyun.com/activity/new?userCode=dqnzm5fj">阿里云 - 新人福利</a></p>
+        </div>
+        
+    <div id="gitalk-container" class="comment link"
+		data-enable="false"
+        data-ae="false"
+        data-ci=""
+        data-cs=""
+        data-r=""
+        data-o=""
+        data-a=""
+        data-d="false"
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+    
+<script async>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement('script');
+    hm.src = 'https://hm.baidu.com/hm.js?849815d0f4e3e368be4f98681a16a5cd';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+
+
+</body>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?849815d0f4e3e368be4f98681a16a5cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!-- Google Analytics -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WY5NF40F3Z"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WY5NF40F3Z');
+</script>
+<!-- End Google Analytics -->
+
+
+</html>
