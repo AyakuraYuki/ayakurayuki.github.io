@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Spring Boot CRUD</title>
-    <url>/2017/05/15/2017-05-15-SimpleSpringBootCRUD/</url>
-    <content><![CDATA[<h1 id="SimpleSpringBootCRUD"><a href="#SimpleSpringBootCRUD" class="headerlink" title="SimpleSpringBootCRUD"></a>SimpleSpringBootCRUD</h1><p>这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。</p>
-<p><a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">项目地址</a></p>
-<p>有兴趣的话也可以 fork 下来试着玩玩 : D</p>
+    <title>SSM codes Generator</title>
+    <url>/2017/05/14/2017-05-14-SSMGenerator/</url>
+    <content><![CDATA[<h1 id="SSMGenerator"><a href="#SSMGenerator" class="headerlink" title="SSMGenerator"></a><a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a></h1><blockquote>
+<p>Spring &amp; SpringMVC &amp; MyBatis 项目代码生成模板</p>
+</blockquote>
+<p>根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类</p>
+<p>需要使用 CodeSmith</p>
+<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><p>1.自定义作者名</p>
+<p>2.自定义输出路径</p>
+<p>3.自定义基础包名</p>
+<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。</p>
+<h2 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h2><p><a href="https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip">唯一的下载入口</a><br>（因为不会有 Release 版本，注意随时会有修改）</p>
 ]]></content>
       <categories>
         <category>project</category>
@@ -60,18 +67,11 @@
       </tags>
   </entry>
   <entry>
-    <title>SSM codes Generator</title>
-    <url>/2017/05/14/2017-05-14-SSMGenerator/</url>
-    <content><![CDATA[<h1 id="SSMGenerator"><a href="#SSMGenerator" class="headerlink" title="SSMGenerator"></a><a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a></h1><blockquote>
-<p>Spring &amp; SpringMVC &amp; MyBatis 项目代码生成模板</p>
-</blockquote>
-<p>根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类</p>
-<p>需要使用 CodeSmith</p>
-<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><p>1.自定义作者名</p>
-<p>2.自定义输出路径</p>
-<p>3.自定义基础包名</p>
-<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。</p>
-<h2 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h2><p><a href="https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip">唯一的下载入口</a><br>（因为不会有 Release 版本，注意随时会有修改）</p>
+    <title>Spring Boot CRUD</title>
+    <url>/2017/05/15/2017-05-15-SimpleSpringBootCRUD/</url>
+    <content><![CDATA[<h1 id="SimpleSpringBootCRUD"><a href="#SimpleSpringBootCRUD" class="headerlink" title="SimpleSpringBootCRUD"></a>SimpleSpringBootCRUD</h1><p>这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。</p>
+<p><a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">项目地址</a></p>
+<p>有兴趣的话也可以 fork 下来试着玩玩 : D</p>
 ]]></content>
       <categories>
         <category>project</category>
@@ -114,64 +114,6 @@
 <h4 id="getTransactionManager"><a href="#getTransactionManager" class="headerlink" title="getTransactionManager()"></a>getTransactionManager()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为PlatformTransactionManager Bean</span></span><br><span class="line"><span class="keyword">public</span> PlatformTransactionManager <span class="title function_">getTransactionManager</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    &lt;bean id=&quot;transactionManager&quot;</span></span><br><span class="line"><span class="comment">            class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span></span><br><span class="line"><span class="comment">       	&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span></span><br><span class="line"><span class="comment">    &lt;/bean&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(getDataSource());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Mapping-xml"><a href="#Mapping-xml" class="headerlink" title="Mapping.xml"></a>Mapping.xml</h3><p>MyBatis mapping 文件的配置与 SSM 的配置完全一样，只要把文件放到在 getSqlSessionFactory()中配置的 MapperLocation 文件夹之下，对应文件名匹配格式即可。</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Bean的生命周期</title>
-    <url>/2017/06/28/2017-06-28-AboutBeanLifecycle/</url>
-    <content><![CDATA[<blockquote>
-<p>记录有关 Spring Bean 生命周期的过程</p>
-</blockquote>
-<h2 id="生命周期过程描述"><a href="#生命周期过程描述" class="headerlink" title="生命周期过程描述"></a>生命周期过程描述</h2><p>大致的 Bean 生命周期可以描述为如下过程：</p>
-<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><ol>
-<li><p>实例化</p>
-</li>
-<li><p>设置属性值</p>
-</li>
-<li><p>调用 BeanPostProcessor 的预初始化方法</p>
-</li>
-<li><p>调用 InitializingBean 的 afterPropertiesSet()方法</p>
-</li>
-<li><p>调用定制的初始化方法</p>
-</li>
-<li><p>调用 BeanPostProcessor 的后初始化方法</p>
-</li>
-<li><p>完成实例化，Bean 可以使用</p>
-</li>
-</ol>
-<h4 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h4><ol start="8">
-<li><p>调用 DisposableBean 的 destroy()方法</p>
-</li>
-<li><p>调用定制的销毁方法</p>
-</li>
-</ol>
-<h2 id="相关内容"><a href="#相关内容" class="headerlink" title="相关内容"></a>相关内容</h2><h3 id="Bean-实例化和生命周期行为控制"><a href="#Bean-实例化和生命周期行为控制" class="headerlink" title="Bean 实例化和生命周期行为控制"></a>Bean 实例化和生命周期行为控制</h3><p>Bean 实例化可以通过构造器、静态工厂、实例工厂三种方式进行实例化。</p>
-<p>有三种方式可以控制 Bean 生命周期行为：</p>
-<ul>
-<li><p>InitializingBean &amp; DisposableBean</p>
-</li>
-<li><p>init() &amp; destroy()</p>
-</li>
-<li><p>@PostConstruct &amp; @PreDestroy</p>
-</li>
-</ul>
-<h3 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h3><p>如果我们需要在 Spring 容器完成 Bean 的实例化、配置和其他的初始化前后添加一些自己的逻辑处理，我们就可以定义一个或者多个 BeanPostProcessor 接口的实现，然后注册到容器中。</p>
-<p>在 BeanPostProcessor 中，我们可以通过实现</p>
-<ul>
-<li>public Object postProcessAfterInitialization(Object bean, String arg) throws BeansException</li>
-</ul>
-<p>和</p>
-<ul>
-<li>public Object postProcessBeforeInitialization(Object bean, String arg1) throws BeansException</li>
-</ul>
-<p>来执行 Bean 创建前后的动作</p>
 ]]></content>
       <categories>
         <category>guide</category>
@@ -284,64 +226,6 @@
       </tags>
   </entry>
   <entry>
-    <title>小记Apache端口转发——万网解析初步</title>
-    <url>/2017/08/17/2017-08-17-ApacheRedirect/</url>
-    <content><![CDATA[<blockquote>
-<p>记录自己对万网解析和 Apache 端口转发的理解</p>
-</blockquote>
-<p>最近在做部署平台的事情，第一次从域名到 ECS 到解析，这么一走流程，倒是了解了些许有关解析配置的事情。</p>
-<h2 id="域名配置浅记"><a href="#域名配置浅记" class="headerlink" title="域名配置浅记"></a>域名配置浅记</h2><p>阿里云的域名解析，主要使用的是 A 记录、CNAME 两种，前者直接解析到 IP 地址，后者则可以使域名直接解析到另一个域名（关于解析到另一个域名的授权方面的合法性在这里暂且不提）。</p>
-<p>值得注意的是，A 记录一般情况下不携带端口号，而是从@记录或 www 记录的地址，访问时携带端口号进行对应端口访问。</p>
-<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>万网域名解析配置由于不建议携带端口号配置 A 记录，可以视为所有二级域名配置均被指向同一个 IP 的 80 端口。对于这样的应用情况，我们可以配置 Apache 的 VirtualHost 来将指定的二级域名地址从 80 端转发到本地其他端口上的服务器。</p>
-<p>在我的应用环境中，包含如下两个配置：</p>
-<ul>
-<li><p>8080 端 Tomcat 应用服务器</p>
-</li>
-<li><p>8180 端 Apache 图片服务器</p>
-</li>
-</ul>
-<h3 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h3><p>首先需要配置的是 Apache 的端口监听，以 Apache2.4 为例，需要找到 httpd.conf 的如下位置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Listen: Allows you to bind Apache to specific IP addresses and/or</span></span><br><span class="line"><span class="comment"># ports, instead of the default. See also the &lt;VirtualHost&gt;</span></span><br><span class="line"><span class="comment"># directive.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Change this to Listen on specific IP addresses as shown below to</span></span><br><span class="line"><span class="comment"># prevent Apache from glomming onto all bound IP addresses.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Listen 12.34.56.78:80</span></span><br></pre></td></tr></table></figure>
-
-<p>并在此后添加：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Listen</span> <span class="number">80</span></span><br><span class="line"><span class="string">Listen</span> <span class="number">8180</span></span><br></pre></td></tr></table></figure>
-
-<p>为了打开端口转发，我们需要找到配置文件中的如下两行，取消它们的注释：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#LoadModule proxy_module modules/mod_proxy.so</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#LoadModule proxy_http_module modules/mod_proxy_http.so</span></span><br></pre></td></tr></table></figure>
-
-<p>如果 Apache 处于运行状态，重新启动 Apache 服务器即可使新配置生效。</p>
-<h3 id="配置虚拟服务器转发前的准备"><a href="#配置虚拟服务器转发前的准备" class="headerlink" title="配置虚拟服务器转发前的准备"></a>配置虚拟服务器转发前的准备</h3><p>在配置虚拟服务器之前，我们需要关注几个指令</p>
-<h4 id="ServerName"><a href="#ServerName" class="headerlink" title="ServerName"></a>ServerName</h4><p>ServerName 是一个比较关键的指令，它指定了每个<VirtualHost>对应的主域名或二级域名，该指令的值需要与万网解析配置的 A 记录完全一致，否则会出现 Apache 无法获取访问请求的问题。</p>
-<h4 id="ProxyPass-与-ProxyPassReverse"><a href="#ProxyPass-与-ProxyPassReverse" class="headerlink" title="ProxyPass 与 ProxyPassReverse"></a>ProxyPass 与 ProxyPassReverse</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">ProxyPass</span> [<span class="string">path</span>] <span class="string">!|url</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> [<span class="string">url</span>] <span class="string">url</span></span><br></pre></td></tr></table></figure>
-
-<p>ProxyPass：它主要是用作 URL 前缀匹配，配置的 path 是一个虚拟的路径，在反向代理到后端的 url 后，path 是不会带过去的。该指令可以设置某些 path 不被转发。</p>
-<p>ProxyPassReverse：它一般和 ProxyPass 配合使用，该指令使 Apache 调整 HTTP 重定向应答中 Location、Content-Location、URI 头里的 URL，这样可以避免在 Apache 作为反向代理使用时，后端服务器的 HTTP 重定向造成的绕过反向代理的问题。</p>
-<h4 id="DocumentRoot"><a href="#DocumentRoot" class="headerlink" title="DocumentRoot"></a>DocumentRoot</h4><p>该指令配置了访问本地的根路径</p>
-<h4 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">&lt;Directory</span> <span class="string">path&gt;</span></span><br><span class="line">[<span class="string">options</span>]</span><br><span class="line"><span class="string">&lt;/Directory&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这是一个 XML 标签形式的指令，紧跟 DocumentRoot，配置该本地路径相关的访问选项，其中可以包含：</p>
-<ul>
-<li>Options</li>
-<li>AllowOverride</li>
-<li>Order</li>
-<li>Allow</li>
-<li>Deny</li>
-</ul>
-<p>具体则不在本文详细解释。</p>
-<h3 id="配置转发"><a href="#配置转发" class="headerlink" title="配置转发"></a>配置转发</h3><p>这里就直接把相关的配置放在下面了</p>
-<h4 id="将-Apache-本身配置为图片服务器的场景"><a href="#将-Apache-本身配置为图片服务器的场景" class="headerlink" title="将 Apache 本身配置为图片服务器的场景"></a>将 Apache 本身配置为图片服务器的场景</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Apache物理服务器配置的DocumentRoot与Directory指令</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证"><a href="#另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证" class="headerlink" title="另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证"></a>另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.8180&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">yourdomain.com</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CodErator</title>
     <url>/2017/06/03/2017-06-03-CodErator/</url>
     <content><![CDATA[<h1 id="CodErator"><a href="#CodErator" class="headerlink" title="CodErator"></a><a href="https://github.com/AyakuraYuki/CodErator">CodErator</a></h1><blockquote>
@@ -409,17 +293,119 @@
       </tags>
   </entry>
   <entry>
-    <title>Red-bot function mlborder</title>
-    <url>/2017/09/14/2017-09-14-MlBorderFunction/</url>
-    <content><![CDATA[<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mlborder</span>(<span class="params">self, event_code: <span class="built_in">int</span> = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># Catch current ranking points. Need event code.</span></span><br><span class="line">    <span class="keyword">if</span> event_code <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        url = <span class="string">&quot;http://mlborder.com/events/&#123;&#125;/&quot;</span>.<span class="built_in">format</span>(event_code)</span><br><span class="line">        document = pq(url)</span><br><span class="line">        title = document(<span class="string">&#x27;title&#x27;</span>).text()</span><br><span class="line">        body = document(<span class="string">&#x27;body&#x27;</span>)</span><br><span class="line">        border_div = pq(body(<span class="string">&#x27;.tab-pane&#x27;</span>)[<span class="number">0</span>])(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        data_react_props = border_div.html()</span><br><span class="line"></span><br><span class="line">        original_data = data_react_props[data_react_props.index(<span class="string">&#x27;&#123;&#x27;</span>):data_react_props.rindex(<span class="string">&#x27;&#125;&#x27;</span>) + <span class="number">1</span>]</span><br><span class="line">        prepare_json = original_data.replace(<span class="string">&#x27;&amp;quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">        json_data = json.loads(prepare_json)</span><br><span class="line"></span><br><span class="line">        event_name = title[title.index(<span class="string">&#x27;『&#x27;</span>) + <span class="number">1</span>:title.rindex(<span class="string">&#x27;』&#x27;</span>)]</span><br><span class="line">        event_info = document(<span class="string">&#x27;.list-group-item&#x27;</span>).text()</span><br><span class="line"></span><br><span class="line">        ending_time = event_info[event_info.index(<span class="string">&#x27;〜&#x27;</span>) + <span class="number">1</span>:event_info.rindex(<span class="string">&#x27;,&#x27;</span>)]</span><br><span class="line">        ending_timestamp = time.mktime(time.strptime(ending_time, <span class="string">&#x27;%Y/%m/%d %H:%M&#x27;</span>))</span><br><span class="line">        current_timestamp = time.time()</span><br><span class="line">        left_or_passed_time = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> current_timestamp &lt; ending_timestamp:</span><br><span class="line">            left_timestamp = ending_timestamp - current_timestamp</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;あと　&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass_timestamp = current_timestamp - ending_timestamp</span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;　過ごしだ&#x27;</span></span><br><span class="line">        border_summary = json_data[<span class="string">&#x27;border_summary&#x27;</span>]</span><br><span class="line">        now = (datetime.datetime.fromtimestamp(current_timestamp) + datetime.timedelta(hours=<span class="number">1</span>)).strftime(<span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line">        borders = border_summary[<span class="string">&#x27;borders&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        msg = <span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;event_name&#125;</span>\n<span class="subst">&#123;event_info&#125;</span>\n<span class="subst">&#123;left_or_passed_time&#125;</span>\n\n<span class="subst">&#123;now&#125;</span>&#x27;</span>,</span><br><span class="line">                         <span class="string">f&quot;1位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;10位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;10&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;100位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;100&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;500位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;500&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1200位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1200&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1300位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1300&#x27;</span>]:,&#125;</span>&quot;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> self.bot.say(msg)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">await</span> self.bot.say(<span class="string">&quot;mlborder need an event code.&quot;</span>)</span><br></pre></td></tr></table></figure>
+    <title>Bean的生命周期</title>
+    <url>/2017/06/28/2017-06-28-AboutBeanLifecycle/</url>
+    <content><![CDATA[<blockquote>
+<p>记录有关 Spring Bean 生命周期的过程</p>
+</blockquote>
+<h2 id="生命周期过程描述"><a href="#生命周期过程描述" class="headerlink" title="生命周期过程描述"></a>生命周期过程描述</h2><p>大致的 Bean 生命周期可以描述为如下过程：</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><ol>
+<li><p>实例化</p>
+</li>
+<li><p>设置属性值</p>
+</li>
+<li><p>调用 BeanPostProcessor 的预初始化方法</p>
+</li>
+<li><p>调用 InitializingBean 的 afterPropertiesSet()方法</p>
+</li>
+<li><p>调用定制的初始化方法</p>
+</li>
+<li><p>调用 BeanPostProcessor 的后初始化方法</p>
+</li>
+<li><p>完成实例化，Bean 可以使用</p>
+</li>
+</ol>
+<h4 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h4><ol start="8">
+<li><p>调用 DisposableBean 的 destroy()方法</p>
+</li>
+<li><p>调用定制的销毁方法</p>
+</li>
+</ol>
+<h2 id="相关内容"><a href="#相关内容" class="headerlink" title="相关内容"></a>相关内容</h2><h3 id="Bean-实例化和生命周期行为控制"><a href="#Bean-实例化和生命周期行为控制" class="headerlink" title="Bean 实例化和生命周期行为控制"></a>Bean 实例化和生命周期行为控制</h3><p>Bean 实例化可以通过构造器、静态工厂、实例工厂三种方式进行实例化。</p>
+<p>有三种方式可以控制 Bean 生命周期行为：</p>
+<ul>
+<li><p>InitializingBean &amp; DisposableBean</p>
+</li>
+<li><p>init() &amp; destroy()</p>
+</li>
+<li><p>@PostConstruct &amp; @PreDestroy</p>
+</li>
+</ul>
+<h3 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h3><p>如果我们需要在 Spring 容器完成 Bean 的实例化、配置和其他的初始化前后添加一些自己的逻辑处理，我们就可以定义一个或者多个 BeanPostProcessor 接口的实现，然后注册到容器中。</p>
+<p>在 BeanPostProcessor 中，我们可以通过实现</p>
+<ul>
+<li>public Object postProcessAfterInitialization(Object bean, String arg) throws BeansException</li>
+</ul>
+<p>和</p>
+<ul>
+<li>public Object postProcessBeforeInitialization(Object bean, String arg1) throws BeansException</li>
+</ul>
+<p>来执行 Bean 创建前后的动作</p>
 ]]></content>
       <categories>
         <category>guide</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>Discord</tag>
-        <tag>Discord Bot</tag>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>小记Apache端口转发——万网解析初步</title>
+    <url>/2017/08/17/2017-08-17-ApacheRedirect/</url>
+    <content><![CDATA[<blockquote>
+<p>记录自己对万网解析和 Apache 端口转发的理解</p>
+</blockquote>
+<p>最近在做部署平台的事情，第一次从域名到 ECS 到解析，这么一走流程，倒是了解了些许有关解析配置的事情。</p>
+<h2 id="域名配置浅记"><a href="#域名配置浅记" class="headerlink" title="域名配置浅记"></a>域名配置浅记</h2><p>阿里云的域名解析，主要使用的是 A 记录、CNAME 两种，前者直接解析到 IP 地址，后者则可以使域名直接解析到另一个域名（关于解析到另一个域名的授权方面的合法性在这里暂且不提）。</p>
+<p>值得注意的是，A 记录一般情况下不携带端口号，而是从@记录或 www 记录的地址，访问时携带端口号进行对应端口访问。</p>
+<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>万网域名解析配置由于不建议携带端口号配置 A 记录，可以视为所有二级域名配置均被指向同一个 IP 的 80 端口。对于这样的应用情况，我们可以配置 Apache 的 VirtualHost 来将指定的二级域名地址从 80 端转发到本地其他端口上的服务器。</p>
+<p>在我的应用环境中，包含如下两个配置：</p>
+<ul>
+<li><p>8080 端 Tomcat 应用服务器</p>
+</li>
+<li><p>8180 端 Apache 图片服务器</p>
+</li>
+</ul>
+<h3 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h3><p>首先需要配置的是 Apache 的端口监听，以 Apache2.4 为例，需要找到 httpd.conf 的如下位置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Listen: Allows you to bind Apache to specific IP addresses and/or</span></span><br><span class="line"><span class="comment"># ports, instead of the default. See also the &lt;VirtualHost&gt;</span></span><br><span class="line"><span class="comment"># directive.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Change this to Listen on specific IP addresses as shown below to</span></span><br><span class="line"><span class="comment"># prevent Apache from glomming onto all bound IP addresses.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Listen 12.34.56.78:80</span></span><br></pre></td></tr></table></figure>
+
+<p>并在此后添加：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Listen</span> <span class="number">80</span></span><br><span class="line"><span class="string">Listen</span> <span class="number">8180</span></span><br></pre></td></tr></table></figure>
+
+<p>为了打开端口转发，我们需要找到配置文件中的如下两行，取消它们的注释：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#LoadModule proxy_module modules/mod_proxy.so</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#LoadModule proxy_http_module modules/mod_proxy_http.so</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 Apache 处于运行状态，重新启动 Apache 服务器即可使新配置生效。</p>
+<h3 id="配置虚拟服务器转发前的准备"><a href="#配置虚拟服务器转发前的准备" class="headerlink" title="配置虚拟服务器转发前的准备"></a>配置虚拟服务器转发前的准备</h3><p>在配置虚拟服务器之前，我们需要关注几个指令</p>
+<h4 id="ServerName"><a href="#ServerName" class="headerlink" title="ServerName"></a>ServerName</h4><p>ServerName 是一个比较关键的指令，它指定了每个<VirtualHost>对应的主域名或二级域名，该指令的值需要与万网解析配置的 A 记录完全一致，否则会出现 Apache 无法获取访问请求的问题。</p>
+<h4 id="ProxyPass-与-ProxyPassReverse"><a href="#ProxyPass-与-ProxyPassReverse" class="headerlink" title="ProxyPass 与 ProxyPassReverse"></a>ProxyPass 与 ProxyPassReverse</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">ProxyPass</span> [<span class="string">path</span>] <span class="string">!|url</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> [<span class="string">url</span>] <span class="string">url</span></span><br></pre></td></tr></table></figure>
+
+<p>ProxyPass：它主要是用作 URL 前缀匹配，配置的 path 是一个虚拟的路径，在反向代理到后端的 url 后，path 是不会带过去的。该指令可以设置某些 path 不被转发。</p>
+<p>ProxyPassReverse：它一般和 ProxyPass 配合使用，该指令使 Apache 调整 HTTP 重定向应答中 Location、Content-Location、URI 头里的 URL，这样可以避免在 Apache 作为反向代理使用时，后端服务器的 HTTP 重定向造成的绕过反向代理的问题。</p>
+<h4 id="DocumentRoot"><a href="#DocumentRoot" class="headerlink" title="DocumentRoot"></a>DocumentRoot</h4><p>该指令配置了访问本地的根路径</p>
+<h4 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">&lt;Directory</span> <span class="string">path&gt;</span></span><br><span class="line">[<span class="string">options</span>]</span><br><span class="line"><span class="string">&lt;/Directory&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个 XML 标签形式的指令，紧跟 DocumentRoot，配置该本地路径相关的访问选项，其中可以包含：</p>
+<ul>
+<li>Options</li>
+<li>AllowOverride</li>
+<li>Order</li>
+<li>Allow</li>
+<li>Deny</li>
+</ul>
+<p>具体则不在本文详细解释。</p>
+<h3 id="配置转发"><a href="#配置转发" class="headerlink" title="配置转发"></a>配置转发</h3><p>这里就直接把相关的配置放在下面了</p>
+<h4 id="将-Apache-本身配置为图片服务器的场景"><a href="#将-Apache-本身配置为图片服务器的场景" class="headerlink" title="将 Apache 本身配置为图片服务器的场景"></a>将 Apache 本身配置为图片服务器的场景</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Apache物理服务器配置的DocumentRoot与Directory指令</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证"><a href="#另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证" class="headerlink" title="另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证"></a>另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.8180&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">yourdomain.com</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -483,6 +469,76 @@
       </categories>
       <tags>
         <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Red-bot function mlborder</title>
+    <url>/2017/09/14/2017-09-14-MlBorderFunction/</url>
+    <content><![CDATA[<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mlborder</span>(<span class="params">self, event_code: <span class="built_in">int</span> = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># Catch current ranking points. Need event code.</span></span><br><span class="line">    <span class="keyword">if</span> event_code <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        url = <span class="string">&quot;http://mlborder.com/events/&#123;&#125;/&quot;</span>.<span class="built_in">format</span>(event_code)</span><br><span class="line">        document = pq(url)</span><br><span class="line">        title = document(<span class="string">&#x27;title&#x27;</span>).text()</span><br><span class="line">        body = document(<span class="string">&#x27;body&#x27;</span>)</span><br><span class="line">        border_div = pq(body(<span class="string">&#x27;.tab-pane&#x27;</span>)[<span class="number">0</span>])(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        data_react_props = border_div.html()</span><br><span class="line"></span><br><span class="line">        original_data = data_react_props[data_react_props.index(<span class="string">&#x27;&#123;&#x27;</span>):data_react_props.rindex(<span class="string">&#x27;&#125;&#x27;</span>) + <span class="number">1</span>]</span><br><span class="line">        prepare_json = original_data.replace(<span class="string">&#x27;&amp;quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">        json_data = json.loads(prepare_json)</span><br><span class="line"></span><br><span class="line">        event_name = title[title.index(<span class="string">&#x27;『&#x27;</span>) + <span class="number">1</span>:title.rindex(<span class="string">&#x27;』&#x27;</span>)]</span><br><span class="line">        event_info = document(<span class="string">&#x27;.list-group-item&#x27;</span>).text()</span><br><span class="line"></span><br><span class="line">        ending_time = event_info[event_info.index(<span class="string">&#x27;〜&#x27;</span>) + <span class="number">1</span>:event_info.rindex(<span class="string">&#x27;,&#x27;</span>)]</span><br><span class="line">        ending_timestamp = time.mktime(time.strptime(ending_time, <span class="string">&#x27;%Y/%m/%d %H:%M&#x27;</span>))</span><br><span class="line">        current_timestamp = time.time()</span><br><span class="line">        left_or_passed_time = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> current_timestamp &lt; ending_timestamp:</span><br><span class="line">            left_timestamp = ending_timestamp - current_timestamp</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;あと　&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass_timestamp = current_timestamp - ending_timestamp</span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;　過ごしだ&#x27;</span></span><br><span class="line">        border_summary = json_data[<span class="string">&#x27;border_summary&#x27;</span>]</span><br><span class="line">        now = (datetime.datetime.fromtimestamp(current_timestamp) + datetime.timedelta(hours=<span class="number">1</span>)).strftime(<span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line">        borders = border_summary[<span class="string">&#x27;borders&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        msg = <span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;event_name&#125;</span>\n<span class="subst">&#123;event_info&#125;</span>\n<span class="subst">&#123;left_or_passed_time&#125;</span>\n\n<span class="subst">&#123;now&#125;</span>&#x27;</span>,</span><br><span class="line">                         <span class="string">f&quot;1位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;10位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;10&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;100位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;100&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;500位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;500&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1200位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1200&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1300位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1300&#x27;</span>]:,&#125;</span>&quot;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> self.bot.say(msg)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">await</span> self.bot.say(<span class="string">&quot;mlborder need an event code.&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Discord</tag>
+        <tag>Discord Bot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Content Storage App</title>
+    <url>/2017/10/19/2017-10-19-ContentStorageApp/</url>
+    <content><![CDATA[<h1 id="content-storage-app"><a href="#content-storage-app" class="headerlink" title="content-storage-app"></a>content-storage-app</h1><blockquote>
+<p>泛用型个人内容存储，采用两步验证来验证用户</p>
+</blockquote>
+<h2 id="环境-x2F-Environment"><a href="#环境-x2F-Environment" class="headerlink" title="环境 &#x2F; Environment"></a>环境 &#x2F; Environment</h2><ul>
+<li>Spring Boot <code>ver 2.0.2.RELEASE</code></li>
+<li>MyBatis <code>ver 3.4.6</code></li>
+<li>SQLite JDBC <code>ver 3.23.1</code></li>
+<li>Groovy <code>ver 2.5.0</code></li>
+<li>JDK 1.8 <code>ver 1.8.0_181</code></li>
+</ul>
+<h2 id="特性-x2F-Feature"><a href="#特性-x2F-Feature" class="headerlink" title="特性 &#x2F; Feature"></a>特性 &#x2F; Feature</h2><ul>
+<li>JSON 化存储内容</li>
+<li>使用 Google Authenticator 两步验证</li>
+<li>单机使用</li>
+<li>数据加密后持久化</li>
+<li>DB 文件级唯一的 DES Key</li>
+</ul>
+<h2 id="使用：用户"><a href="#使用：用户" class="headerlink" title="使用：用户"></a>使用：用户</h2><p>如果您是普通用户，建议您从<a href="https://github.com/AyakuraYuki/content-storage-app/releases">Release</a>下载</p>
+<p>Linux&#x2F;macOS 使用<code>startup.sh</code>，Windows 使用<code>startup.bat</code>启动</p>
+<p>浏览器访问地址：<code>http://localhost:8888/</code></p>
+<h2 id="使用：开发者"><a href="#使用：开发者" class="headerlink" title="使用：开发者"></a>使用：开发者</h2><p>如果您是开发者，并且有兴趣进行客制化开发和生成，您可以根据下面的说明来使用</p>
+<h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/AyakuraYuki/content-storage-app.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
+<p>推荐使用 IntelliJ IDEA</p>
+</blockquote>
+<p>选择导入 maven 项目即可</p>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>将配置文件中的 MySQL 连接信息修改为您的 SQLite 连接信息，可修改属性如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:sqlite:&lt;</span> <span class="string">_your_db_file_path_</span> <span class="string">||</span> <span class="string">data/storage.db</span> <span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(java -jar content-storage-app-&lt;version&gt;.jar &amp;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Special-Thanks-to"><a href="#Special-Thanks-to" class="headerlink" title="Special Thanks to"></a>Special Thanks to</h2><div>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/variant-2_logos/jetbrains-variant-2.png" alt="JetBrains" width="300px"/>
+</div>
+
+<ul>
+<li><a href="https://www.jetbrains.com/?from=content-storage-app">JetBrains: Developer Tools for Professionals and Teams</a></li>
+</ul>
+<h3 id="Built-by"><a href="#Built-by" class="headerlink" title="Built by"></a>Built by</h3><div>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/intellij-idea_logos/logo.png" alt="JetBrains" width="120px"/>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/webstorm_logos/logo.png" alt="JetBrains" width="120px"/>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/datagrip_logos/logo.png" alt="JetBrains" width="120px"/>
+</div>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -631,62 +687,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>Content Storage App</title>
-    <url>/2017/10/19/2017-10-19-ContentStorageApp/</url>
-    <content><![CDATA[<h1 id="content-storage-app"><a href="#content-storage-app" class="headerlink" title="content-storage-app"></a>content-storage-app</h1><blockquote>
-<p>泛用型个人内容存储，采用两步验证来验证用户</p>
-</blockquote>
-<h2 id="环境-x2F-Environment"><a href="#环境-x2F-Environment" class="headerlink" title="环境 &#x2F; Environment"></a>环境 &#x2F; Environment</h2><ul>
-<li>Spring Boot <code>ver 2.0.2.RELEASE</code></li>
-<li>MyBatis <code>ver 3.4.6</code></li>
-<li>SQLite JDBC <code>ver 3.23.1</code></li>
-<li>Groovy <code>ver 2.5.0</code></li>
-<li>JDK 1.8 <code>ver 1.8.0_181</code></li>
-</ul>
-<h2 id="特性-x2F-Feature"><a href="#特性-x2F-Feature" class="headerlink" title="特性 &#x2F; Feature"></a>特性 &#x2F; Feature</h2><ul>
-<li>JSON 化存储内容</li>
-<li>使用 Google Authenticator 两步验证</li>
-<li>单机使用</li>
-<li>数据加密后持久化</li>
-<li>DB 文件级唯一的 DES Key</li>
-</ul>
-<h2 id="使用：用户"><a href="#使用：用户" class="headerlink" title="使用：用户"></a>使用：用户</h2><p>如果您是普通用户，建议您从<a href="https://github.com/AyakuraYuki/content-storage-app/releases">Release</a>下载</p>
-<p>Linux&#x2F;macOS 使用<code>startup.sh</code>，Windows 使用<code>startup.bat</code>启动</p>
-<p>浏览器访问地址：<code>http://localhost:8888/</code></p>
-<h2 id="使用：开发者"><a href="#使用：开发者" class="headerlink" title="使用：开发者"></a>使用：开发者</h2><p>如果您是开发者，并且有兴趣进行客制化开发和生成，您可以根据下面的说明来使用</p>
-<h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/AyakuraYuki/content-storage-app.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
-<p>推荐使用 IntelliJ IDEA</p>
-</blockquote>
-<p>选择导入 maven 项目即可</p>
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>将配置文件中的 MySQL 连接信息修改为您的 SQLite 连接信息，可修改属性如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:sqlite:&lt;</span> <span class="string">_your_db_file_path_</span> <span class="string">||</span> <span class="string">data/storage.db</span> <span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(java -jar content-storage-app-&lt;version&gt;.jar &amp;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="Special-Thanks-to"><a href="#Special-Thanks-to" class="headerlink" title="Special Thanks to"></a>Special Thanks to</h2><div>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/variant-2_logos/jetbrains-variant-2.png" alt="JetBrains" width="300px"/>
-</div>
-
-<ul>
-<li><a href="https://www.jetbrains.com/?from=content-storage-app">JetBrains: Developer Tools for Professionals and Teams</a></li>
-</ul>
-<h3 id="Built-by"><a href="#Built-by" class="headerlink" title="Built by"></a>Built by</h3><div>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/intellij-idea_logos/logo.png" alt="JetBrains" width="120px"/>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/webstorm_logos/logo.png" alt="JetBrains" width="120px"/>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/datagrip_logos/logo.png" alt="JetBrains" width="120px"/>
-</div>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>JSON in Swift4</title>
     <url>/2018/01/31/2018-01-31-JSONinSwift/</url>
     <content><![CDATA[<blockquote>
@@ -733,50 +733,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       <tags>
         <tag>Swift</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
-    <url>/2018/05/25/2018-05-25-InviteCode/</url>
-    <content><![CDATA[<blockquote>
-<p>偶然查库检查用户邀请码使用情况的时候，发现居然有重复的邀请码。。。</p>
-</blockquote>
-<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>2018&#x2F;05&#x2F;25，这是个很正常的一天，除了京东白条出账催债这个很恼人的事情，大体也就没什么大事缠身的样子。</p>
-<p>同事在检查用户邀请码使用情况的时候，突然叫道我，说了句很严重很致命的话：”怎么邀请码有重复的？”</p>
-<p>咩话？！点解？！我记得邀请码设计是讨论之后敲定的方案，怎么会有重复的邀请码出现？？？</p>
-<p>问题来了，当然还得确认确认是个什么毛病才行。。。</p>
-<h2 id="述"><a href="#述" class="headerlink" title="述"></a>述</h2><p>在本文进行下去之前，让我来说明一下当时的设计是个什么样的方案。</p>
-<p>首先在邀请码的需求上，我们采用的是<code>6</code>位字符串，邀请码生成组合中有<code>4</code>位是字母，另外<code>2</code>位是数字。而在字母组合上，我们去除了邀请码中可能输入错误的字母<code>O</code>和<code>L</code>，并将剩余的 24 个字母打乱组合成四个基础字母组。</p>
-<p>随后遍历四组基础字母和数字，生成无重复的邀请码生成组合。</p>
-<p>文字说明比较生硬，但经过上述处理后，产生的邀请码生成组合没有重复，可以看下面给出的范例：（注意观察，结合后面的内容思考这里埋的坑）</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;huax54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;huac54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p>这只是第一步，因为全部组合的可能性只有 1118 个，完全不可能当作邀请码来使用（根本不够嘛），所以我们更激进的，直接用每个组合进行遍历生成一批邀请码。</p>
-<h2 id="验"><a href="#验" class="headerlink" title="验"></a>验</h2><p>明眼人应该还没看到这里就能想到上面的设计方案存在什么问题了，我先走个过程，来验证一下代码中是否存在问题。</p>
-<p>在判断重复的时候，我们采用 Redis Set 的特性来排除重复。Redis Set 这一数据结构内部不允许出现重复，并且是无序的，所以能满足下面两点需求：</p>
-<ol>
-<li>添加到 Set 内的数据不会有重复</li>
-<li>随机取出邀请码并移出 Set</li>
-</ol>
-<p>在实现的时候，我将上面产生的邀请码生成组合落库，通过状态字段过滤已用组合，实际产生的邀请码存入 Redis Set 中，每当 Set 的集合个数少于 10000 条，就生成新的邀请码丢入 Set。（埋坑）</p>
-<p>在取邀请码的时候，用到 spop 取出，表示这个邀请码已用过，不再可用。（埋了个大坑！）</p>
-<p>那么看到这里，我就来说一下上面的实现存在了什么问题：</p>
-<p>首先，组合中有相互存在的字母，你有<code>h</code>我也有<code>h</code>，你有<code>5</code>我也有<code>5</code>，并没有保证生成组合两两间的完全去重。</p>
-<p>其次，生成的条件只有一个，只要满足 6 位字符就是个合理的邀请码，这样一来就有可能出现多组都是<code>hahhhh</code>，或者<code>555e55</code>之类的邀请码。</p>
-<h2 id="研"><a href="#研" class="headerlink" title="研"></a>研</h2><p>上面提到的三个埋坑点，其实很大的原因是<code>Redis Set内部元素一定唯一</code>这一特性，使得我在开发过程中过度依赖了 Redis 特性，忽视了邀请码 pop 后的场景会产生的问题，以及没有注意到邀请码生成组合本身存在的缺陷。</p>
-<p>埋坑点 1 虽然不是影响最严重的因素，但由于设置的阈值过低，很有可能已经使用过的邀请码早就被 pop 出 Set 了，没有元素重复判断的参照。</p>
-<p>埋坑点 2 则是随机取出邀请码，这里用到了 spop，spop 做的事情是，返回一个随机的元素，并且将这个元素从 Set 中移除。由于元素移除后，Set 中不存在这个元素，从而会导致相同的元素能够成功进入 Set 中。这样的情景其实只是保证了 Redis Set 内的唯一性，但没有保证整个邀请码系统的邀请码唯一性。</p>
-<p>然而上面的埋坑点都不是根源，要知道这些邀请码都是由数据库中的邀请码生成组合产生的，追根揭底还是要检查邀请码组合的构成。</p>
-<p>最终我发现，如果邀请码生成组合内如果两两间存在相同的字符，在现有的生成方法中必定会出现像上面提到的<code>hahhhh</code>的情况。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 邀请码生成写入Redis的为代码</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c1 : chars) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">char</span> c2 : chars) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c3 : chars) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> c4 : chars) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c5 : chars) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> c6 : chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c1 == c4 &amp;&amp; c1 == c5 &amp;&amp; c1 == c6) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            redis.sadd(INVITE_CODE_SET, <span class="string">&quot;&quot;</span> + c1 + c2 + c3 + c4 + c5 + c6);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>再来看邀请码生成组合的生成方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; letters.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; letters.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span>; k &lt; letters.length - <span class="number">1</span>; k++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">3</span>; l &lt; letters.length; l++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; numbers.length - <span class="number">1</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">1</span>; y &lt; numbers.length; y++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (letters[i] == letters[j] || letters[i] == letters[k]</span><br><span class="line">                || letters[i] == letters[l]</span><br><span class="line">                || letters[j] == letters[k] || letters[j] == letters[l]</span><br><span class="line">                || letters[k] == letters[l]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (numbers[x] == numbers[y]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">InviteCodeGenerateGroup</span> <span class="variable">group</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InviteCodeGenerateGroup</span>();</span><br><span class="line">            group.setCharacters(<span class="string">&quot;&quot;</span> + letters[i] + letters[j] + letters[k] + letters[l]);</span><br><span class="line">            group.setNumbers(<span class="string">&quot;&quot;</span> + numbers[x] + numbers[y]);</span><br><span class="line">            group.setStatus(NORMAL);</span><br><span class="line">            db.insert(group);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的生成方式存在的缺陷已经很明显了，通过遍历数组的方式，仅在最里层遍历做去重，并不能做到有一个组合是<code>hatc12</code>，其他组合不能有这个组合中的任何字母的情况。</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
   </entry>
   <entry>
     <title>RegEx</title>
@@ -886,6 +842,50 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
+    <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
+    <url>/2018/05/25/2018-05-25-InviteCode/</url>
+    <content><![CDATA[<blockquote>
+<p>偶然查库检查用户邀请码使用情况的时候，发现居然有重复的邀请码。。。</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>2018&#x2F;05&#x2F;25，这是个很正常的一天，除了京东白条出账催债这个很恼人的事情，大体也就没什么大事缠身的样子。</p>
+<p>同事在检查用户邀请码使用情况的时候，突然叫道我，说了句很严重很致命的话：”怎么邀请码有重复的？”</p>
+<p>咩话？！点解？！我记得邀请码设计是讨论之后敲定的方案，怎么会有重复的邀请码出现？？？</p>
+<p>问题来了，当然还得确认确认是个什么毛病才行。。。</p>
+<h2 id="述"><a href="#述" class="headerlink" title="述"></a>述</h2><p>在本文进行下去之前，让我来说明一下当时的设计是个什么样的方案。</p>
+<p>首先在邀请码的需求上，我们采用的是<code>6</code>位字符串，邀请码生成组合中有<code>4</code>位是字母，另外<code>2</code>位是数字。而在字母组合上，我们去除了邀请码中可能输入错误的字母<code>O</code>和<code>L</code>，并将剩余的 24 个字母打乱组合成四个基础字母组。</p>
+<p>随后遍历四组基础字母和数字，生成无重复的邀请码生成组合。</p>
+<p>文字说明比较生硬，但经过上述处理后，产生的邀请码生成组合没有重复，可以看下面给出的范例：（注意观察，结合后面的内容思考这里埋的坑）</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;huax54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;huac54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>这只是第一步，因为全部组合的可能性只有 1118 个，完全不可能当作邀请码来使用（根本不够嘛），所以我们更激进的，直接用每个组合进行遍历生成一批邀请码。</p>
+<h2 id="验"><a href="#验" class="headerlink" title="验"></a>验</h2><p>明眼人应该还没看到这里就能想到上面的设计方案存在什么问题了，我先走个过程，来验证一下代码中是否存在问题。</p>
+<p>在判断重复的时候，我们采用 Redis Set 的特性来排除重复。Redis Set 这一数据结构内部不允许出现重复，并且是无序的，所以能满足下面两点需求：</p>
+<ol>
+<li>添加到 Set 内的数据不会有重复</li>
+<li>随机取出邀请码并移出 Set</li>
+</ol>
+<p>在实现的时候，我将上面产生的邀请码生成组合落库，通过状态字段过滤已用组合，实际产生的邀请码存入 Redis Set 中，每当 Set 的集合个数少于 10000 条，就生成新的邀请码丢入 Set。（埋坑）</p>
+<p>在取邀请码的时候，用到 spop 取出，表示这个邀请码已用过，不再可用。（埋了个大坑！）</p>
+<p>那么看到这里，我就来说一下上面的实现存在了什么问题：</p>
+<p>首先，组合中有相互存在的字母，你有<code>h</code>我也有<code>h</code>，你有<code>5</code>我也有<code>5</code>，并没有保证生成组合两两间的完全去重。</p>
+<p>其次，生成的条件只有一个，只要满足 6 位字符就是个合理的邀请码，这样一来就有可能出现多组都是<code>hahhhh</code>，或者<code>555e55</code>之类的邀请码。</p>
+<h2 id="研"><a href="#研" class="headerlink" title="研"></a>研</h2><p>上面提到的三个埋坑点，其实很大的原因是<code>Redis Set内部元素一定唯一</code>这一特性，使得我在开发过程中过度依赖了 Redis 特性，忽视了邀请码 pop 后的场景会产生的问题，以及没有注意到邀请码生成组合本身存在的缺陷。</p>
+<p>埋坑点 1 虽然不是影响最严重的因素，但由于设置的阈值过低，很有可能已经使用过的邀请码早就被 pop 出 Set 了，没有元素重复判断的参照。</p>
+<p>埋坑点 2 则是随机取出邀请码，这里用到了 spop，spop 做的事情是，返回一个随机的元素，并且将这个元素从 Set 中移除。由于元素移除后，Set 中不存在这个元素，从而会导致相同的元素能够成功进入 Set 中。这样的情景其实只是保证了 Redis Set 内的唯一性，但没有保证整个邀请码系统的邀请码唯一性。</p>
+<p>然而上面的埋坑点都不是根源，要知道这些邀请码都是由数据库中的邀请码生成组合产生的，追根揭底还是要检查邀请码组合的构成。</p>
+<p>最终我发现，如果邀请码生成组合内如果两两间存在相同的字符，在现有的生成方法中必定会出现像上面提到的<code>hahhhh</code>的情况。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 邀请码生成写入Redis的为代码</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c1 : chars) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">char</span> c2 : chars) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c3 : chars) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> c4 : chars) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c5 : chars) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> c6 : chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c1 == c4 &amp;&amp; c1 == c5 &amp;&amp; c1 == c6) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            redis.sadd(INVITE_CODE_SET, <span class="string">&quot;&quot;</span> + c1 + c2 + c3 + c4 + c5 + c6);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看邀请码生成组合的生成方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; letters.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; letters.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span>; k &lt; letters.length - <span class="number">1</span>; k++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">3</span>; l &lt; letters.length; l++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; numbers.length - <span class="number">1</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">1</span>; y &lt; numbers.length; y++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (letters[i] == letters[j] || letters[i] == letters[k]</span><br><span class="line">                || letters[i] == letters[l]</span><br><span class="line">                || letters[j] == letters[k] || letters[j] == letters[l]</span><br><span class="line">                || letters[k] == letters[l]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (numbers[x] == numbers[y]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">InviteCodeGenerateGroup</span> <span class="variable">group</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InviteCodeGenerateGroup</span>();</span><br><span class="line">            group.setCharacters(<span class="string">&quot;&quot;</span> + letters[i] + letters[j] + letters[k] + letters[l]);</span><br><span class="line">            group.setNumbers(<span class="string">&quot;&quot;</span> + numbers[x] + numbers[y]);</span><br><span class="line">            group.setStatus(NORMAL);</span><br><span class="line">            db.insert(group);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的生成方式存在的缺陷已经很明显了，通过遍历数组的方式，仅在最里层遍历做去重，并不能做到有一个组合是<code>hatc12</code>，其他组合不能有这个组合中的任何字母的情况。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+  </entry>
+  <entry>
     <title>在新版的macOS上切换不同版本的JDK</title>
     <url>/2018/05/31/2018-05-31-SwitchDifferentJDK/</url>
     <content><![CDATA[<blockquote>
@@ -928,6 +928,37 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
+    <title>DD Monitor</title>
+    <url>/2019/08/27/2019-08-27-DDMonitor/</url>
+    <content><![CDATA[<h1 id="dd-monitor"><a href="#dd-monitor" class="headerlink" title="dd_monitor"></a>dd_monitor</h1><blockquote>
+<p>誰でも大好き</p>
+</blockquote>
+<blockquote>
+<p><a href="https://github.com/AyakuraYuki/dd_monitor">Github Repo here</a></p>
+</blockquote>
+<p>DD monitor, which means a monitor for DDs (DD means <code>誰でも大好き</code>), can let you watch multiple YouTube streams (if the stream is enabled to be embedded outside YouTube) in one screen at the same time.</p>
+<p>In the beginning, I was planning to see the multi-view of Hololive’s Project Winter collab streams, but it is very difficult to allocate space for browsers. So I decide to build this program to make things easier.</p>
+<p>When I noticed that hey if I can use YouTube embed link, I can watch not only the Project Winter streams but also every stream which supports to play outside YouTube.</p>
+<p>So this is it, a simple but functionally DD monitor.</p>
+<p>DD 监视器，你要来当监视房里的老大爷吗？这个工具可以让你同时观看多个（允许在 YouTube 外部播放的）油管直播。</p>
+<p>一开始的时候我打算看当时 Hololive 的 Project Winter 联动直播，但是一起 8 个视角，给浏览器分配空间太难了。所以我决定搞一个工具来把事情变得容易解决。</p>
+<p>然而当我注意到，当我使用油管的外部嵌入链接时，我不但可以用来看 Project Winter 联动直播，还可以看任何支持在油管外播放的直播。</p>
+<p>所以，这就是一个简单但很好用的 DD 监视器。</p>
+<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><ul>
+<li>Python 3.7.4</li>
+<li>Flask 1.1.1</li>
+<li>sqlite3</li>
+<li>Vue 3</li>
+</ul>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>简记Python里的单例化实现办法</title>
     <url>/2019/08/01/2019-08-01-PythonMetaclassSingleton/</url>
     <content><![CDATA[<blockquote>
@@ -958,73 +989,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       <tags>
         <tag>Python</tag>
         <tag>design pattern</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简记修复Git提交时GPG签名失败的问题</title>
-    <url>/2019/11/15/2019-11-15-FixGPGSignFailedProb/</url>
-    <content><![CDATA[<blockquote>
-<p>一直以来都很正常的 GPG 签名，唐突暴毙了？？？</p>
-</blockquote>
-<p>最近在 IDEA 提交代码的时候，因为 GPG 签名失败的问题，一直没有提交成功。</p>
-<p>起初是直接走的 IDEA 的 VCS 提交，一开始还觉得是没有触发输入证书密码的界面导致的，但回想了一下之前都可以提交，那应该跟证书密码没什么关系才对。</p>
-<p>于是我尝试去终端走命令的方式提交了下，老样子还是失败了。。。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: gpg failed to sign the data</span><br><span class="line">fatal: failed to write commit object</span><br></pre></td></tr></table></figure>
-
-<p>上 stack overflow 搜搜问题，偶然发现有一条答案挺有用的，先贴原文地址</p>
-<p><a href="https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data">Git error - gpg failed to sign data</a></p>
-<p>具体步骤嘛，首先检查 Git 全局配置的签名程序配置对了没，正确的配置应该是<code>gpg.program=gpg2</code></p>
-<p>那么我本机的话，gpg2 是定位到了<code>/usr/local/bin/gpg2</code>，可以直接跑下面的命令修复配置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global gpg.program /usr/local/bin/gpg2</span><br></pre></td></tr></table></figure>
-
-<p>接着用下面的命令检查 GPG 签名时是不是正常工作的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | gpg2 --clearsign</span><br></pre></td></tr></table></figure>
-
-<p>顺带一提如果没有输入证书密码的界面，或许需要安装<code>pinentry</code>，以 macOS 举例，可以用<code>brew install pinentry</code>装一下就完事了</p>
-<p>之后再尝试<code>git commit</code>，没报错的话就到此为止了，问题定位在没有正确配置签名程序（以及有可能是缺少<code>pinentry</code>）</p>
-<p>尝试提交还是失败的话，这时候就要把一个叫<code>gpg-agent</code>的家伙干掉了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> gpg-agent</span><br></pre></td></tr></table></figure>
-
-<p>一般到此为止，重新提交就可以正常签名。要是缺少<code>gpgconf</code>或者<code>--kill</code>选项丢失，重新装一下<code>gnupg</code>或许是个好选择。</p>
-<p>那么这里我顺带吐槽一下，国内各个博客，不是教你怎么关闭提交签名，就是让你检查提交时的<code>user.name</code>和<code>user.email</code>，其实那些都不是主要问题，别人就是要用 GPG 对提交签名，你们却教别人关闭签名，意义何在？</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>GPG</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>DD Monitor</title>
-    <url>/2019/08/27/2019-08-27-DDMonitor/</url>
-    <content><![CDATA[<h1 id="dd-monitor"><a href="#dd-monitor" class="headerlink" title="dd_monitor"></a>dd_monitor</h1><blockquote>
-<p>誰でも大好き</p>
-</blockquote>
-<blockquote>
-<p><a href="https://github.com/AyakuraYuki/dd_monitor">Github Repo here</a></p>
-</blockquote>
-<p>DD monitor, which means a monitor for DDs (DD means <code>誰でも大好き</code>), can let you watch multiple YouTube streams (if the stream is enabled to be embedded outside YouTube) in one screen at the same time.</p>
-<p>In the beginning, I was planning to see the multi-view of Hololive’s Project Winter collab streams, but it is very difficult to allocate space for browsers. So I decide to build this program to make things easier.</p>
-<p>When I noticed that hey if I can use YouTube embed link, I can watch not only the Project Winter streams but also every stream which supports to play outside YouTube.</p>
-<p>So this is it, a simple but functionally DD monitor.</p>
-<p>DD 监视器，你要来当监视房里的老大爷吗？这个工具可以让你同时观看多个（允许在 YouTube 外部播放的）油管直播。</p>
-<p>一开始的时候我打算看当时 Hololive 的 Project Winter 联动直播，但是一起 8 个视角，给浏览器分配空间太难了。所以我决定搞一个工具来把事情变得容易解决。</p>
-<p>然而当我注意到，当我使用油管的外部嵌入链接时，我不但可以用来看 Project Winter 联动直播，还可以看任何支持在油管外播放的直播。</p>
-<p>所以，这就是一个简单但很好用的 DD 监视器。</p>
-<h2 id="Environment"><a href="#Environment" class="headerlink" title="Environment"></a>Environment</h2><ul>
-<li>Python 3.7.4</li>
-<li>Flask 1.1.1</li>
-<li>sqlite3</li>
-<li>Vue 3</li>
-</ul>
-]]></content>
-      <categories>
-        <category>project</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1232,6 +1196,42 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
+    <title>简记修复Git提交时GPG签名失败的问题</title>
+    <url>/2019/11/15/2019-11-15-FixGPGSignFailedProb/</url>
+    <content><![CDATA[<blockquote>
+<p>一直以来都很正常的 GPG 签名，唐突暴毙了？？？</p>
+</blockquote>
+<p>最近在 IDEA 提交代码的时候，因为 GPG 签名失败的问题，一直没有提交成功。</p>
+<p>起初是直接走的 IDEA 的 VCS 提交，一开始还觉得是没有触发输入证书密码的界面导致的，但回想了一下之前都可以提交，那应该跟证书密码没什么关系才对。</p>
+<p>于是我尝试去终端走命令的方式提交了下，老样子还是失败了。。。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: gpg failed to sign the data</span><br><span class="line">fatal: failed to write commit object</span><br></pre></td></tr></table></figure>
+
+<p>上 stack overflow 搜搜问题，偶然发现有一条答案挺有用的，先贴原文地址</p>
+<p><a href="https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data">Git error - gpg failed to sign data</a></p>
+<p>具体步骤嘛，首先检查 Git 全局配置的签名程序配置对了没，正确的配置应该是<code>gpg.program=gpg2</code></p>
+<p>那么我本机的话，gpg2 是定位到了<code>/usr/local/bin/gpg2</code>，可以直接跑下面的命令修复配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global gpg.program /usr/local/bin/gpg2</span><br></pre></td></tr></table></figure>
+
+<p>接着用下面的命令检查 GPG 签名时是不是正常工作的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | gpg2 --clearsign</span><br></pre></td></tr></table></figure>
+
+<p>顺带一提如果没有输入证书密码的界面，或许需要安装<code>pinentry</code>，以 macOS 举例，可以用<code>brew install pinentry</code>装一下就完事了</p>
+<p>之后再尝试<code>git commit</code>，没报错的话就到此为止了，问题定位在没有正确配置签名程序（以及有可能是缺少<code>pinentry</code>）</p>
+<p>尝试提交还是失败的话，这时候就要把一个叫<code>gpg-agent</code>的家伙干掉了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> gpg-agent</span><br></pre></td></tr></table></figure>
+
+<p>一般到此为止，重新提交就可以正常签名。要是缺少<code>gpgconf</code>或者<code>--kill</code>选项丢失，重新装一下<code>gnupg</code>或许是个好选择。</p>
+<p>那么这里我顺带吐槽一下，国内各个博客，不是教你怎么关闭提交签名，就是让你检查提交时的<code>user.name</code>和<code>user.email</code>，其实那些都不是主要问题，别人就是要用 GPG 对提交签名，你们却教别人关闭签名，意义何在？</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>GPG</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在Docker部署Apollo的正确姿势</title>
     <url>/2022/07/08/2022-07-08-ApolloInDocker/</url>
     <content><![CDATA[<blockquote>
@@ -1358,6 +1358,44 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       <tags>
         <tag>Apollo</tag>
         <tag>Docker</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>优雅使用CompletableFuture的正确姿势</title>
+    <url>/2022/10/27/2022-10-27-HackCompletableFuture/</url>
+    <content><![CDATA[<blockquote>
+<p>利用反射优化 <code>ForkJoinPool</code> 让 <code>CompletableFuture</code> 用起来更舒服</p>
+</blockquote>
+<p>本文开头我不过多讨论 <code>CompletableFuture</code> 底层的东西，从入口出发。</p>
+<p>以 <code>java.util.concurrent.CompletableFuture#supplyAsync(java.util.function.Supplier&lt;U&gt;)</code> 为入口，我们将创建得到一个 <code>CompletableFuture</code> 对象。<br>这个方法的相关代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns a new CompletableFuture that is asynchronously completed</span></span><br><span class="line"><span class="comment"> * by a task running in the &#123;<span class="doctag">@link</span> ForkJoinPool#commonPool()&#125; with</span></span><br><span class="line"><span class="comment"> * the value obtained by calling the given Supplier.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> supplier a function returning the value to be used</span></span><br><span class="line"><span class="comment"> * to complete the returned CompletableFuture</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &lt;U&gt; the function&#x27;s return type</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> the new CompletableFuture</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;U&gt; CompletableFuture&lt;U&gt; <span class="title function_">supplyAsync</span><span class="params">(Supplier&lt;U&gt; supplier)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> asyncSupplyStage(ASYNC_POOL, supplier);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法的 Javadoc 已经明说了，他会创建一个在 <code>ForkJoinPool#commonPool()</code> 中运行的任务。<br>我们可以自己优化一个线程池，提交给 <code>CompletableFuture</code> 拿去创建任务，但我们可以更激进的，去直接优化这个 <code>commonPool</code>。</p>
+<p>要想优化这个 <code>commonPool</code>，我们可以关注一下 <code>java.util.concurrent.ForkJoinPool#common</code> 这个对象，这是一个 <code>ForkJoinPool</code> 默认创建的通用池，所有通过 <code>CompletableFuture</code> 创建的应用，并且没有指定线程池的，都会走到这个默认池。<br>另外，我们还可以关注 <code>java.util.concurrent.CompletableFuture#ASYNC_POOL</code> 这个对象，这是一个由 <code>CompletableFuture</code> 自身维护的，一个有条件的线程池，他会按照 <code>java.util.concurrent.CompletableFuture#USE_COMMON_POOL</code> 的判断结果，选择使用下面两种的其中一种线程池：</p>
+<ul>
+<li><code>java.util.concurrent.ForkJoinPool#common</code></li>
+<li><code>java.util.concurrent.CompletableFuture.ThreadPerTaskExecutor</code></li>
+</ul>
+<p>目前我们明确了要优化的目标，一共是两个线程池，分别是：</p>
+<ul>
+<li>从 <code>java.util.concurrent.ForkJoinPool</code> 挑出 <code>common</code> 对象，用我们自己的 <code>ForkJoinPool</code> 覆盖它</li>
+<li>从 <code>java.util.concurrent.CompletableFuture</code> 挑出 <code>ASYNC_POOL</code> 对象，用我们自己的 <code>ForkJoinPool</code> 覆盖它</li>
+</ul>
+<p>我们需要使用反射来把我们自己的 <code>ForkJoinPool</code> 塞到对应的类里，下面直接贴代码，后续有时间再来解释怎么设置并发度。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Modifier;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CompletableFuture;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ForkJoinPool;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadPools</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 默认阻塞系数</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">double</span> <span class="variable">DEFAULT_BLOCKING_COEFFICIENT</span> <span class="operator">=</span> <span class="number">0.9</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 默认线程池并发度 核数 / (1 - 阻塞系数) * 2</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">int</span> <span class="variable">DEFAULT_PARALLELISM</span> <span class="operator">=</span> (<span class="type">int</span>) (Runtime.getRuntime().availableProcessors() / (<span class="number">1</span> - DEFAULT_BLOCKING_COEFFICIENT)) * <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> ForkJoinPool common;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> &#123;</span><br><span class="line">    common = newForkJoinPool(<span class="string">&quot;Fork-Join-Common-Pool&quot;</span>, DEFAULT_PARALLELISM);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="type">var</span> <span class="variable">forkJoinPoolCommon</span> <span class="operator">=</span> ForkJoinPool.class.getDeclaredField(<span class="string">&quot;common&quot;</span>);</span><br><span class="line">      reflectionSet(forkJoinPoolCommon, common);</span><br><span class="line">      <span class="type">var</span> <span class="variable">completableFutureAsyncPool</span> <span class="operator">=</span> CompletableFuture.class.getDeclaredField(<span class="string">&quot;ASYNC_POOL&quot;</span>);</span><br><span class="line">      reflectionSet(completableFutureAsyncPool, common);</span><br><span class="line">      log.info(<span class="string">&quot;modify Fork-Join-Common-Pool parallelism: &#123;&#125; success!&quot;</span>, DEFAULT_PARALLELISM);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchFieldException | IllegalAccessException e) &#123;</span><br><span class="line">      log.warn(<span class="string">&quot;Can not find declared field: common&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> &lt;T&gt; <span class="keyword">void</span> <span class="title function_">reflectionSet</span><span class="params">(Field field, T t)</span> <span class="keyword">throws</span> NoSuchFieldException, IllegalAccessException &#123;</span><br><span class="line">    field.setAccessible(<span class="literal">true</span>);</span><br><span class="line">    <span class="type">boolean</span> <span class="variable">isFinal</span> <span class="operator">=</span> Modifier.isFinal(field.getModifiers());</span><br><span class="line">    <span class="type">Field</span> <span class="variable">modifiers</span> <span class="operator">=</span> field.getClass().getDeclaredField(<span class="string">&quot;modifiers&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (isFinal) &#123;</span><br><span class="line">      modifiers.setAccessible(<span class="literal">true</span>);</span><br><span class="line">      modifiers.setInt(field, field.getModifiers() &amp; ~Modifier.FINAL);</span><br><span class="line">    &#125;</span><br><span class="line">    field.set(<span class="literal">null</span>, t);</span><br><span class="line">    <span class="keyword">if</span> (isFinal) &#123;</span><br><span class="line">      modifiers.setInt(field, field.getModifiers() &amp; ~Modifier.FINAL);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> ForkJoinPool <span class="title function_">newForkJoinPool</span><span class="params">(String name, <span class="type">int</span> parallelism)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ForkJoin</span>(parallelism, getForkJoinFactory(name));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> ForkJoin.ForkJoinThreadFactory <span class="title function_">getForkJoinFactory</span><span class="params">(String name)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ForkJoin</span>.ForkJoinThreadFactory(name);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.ForkJoinPool;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ForkJoinWorkerThread;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.atomic.AtomicLong;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ForkJoin</span> <span class="keyword">extends</span> <span class="title class_">ForkJoinPool</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">ForkJoin</span><span class="params">(<span class="type">int</span> parallelism, ForkJoinWorkerThreadFactory factory)</span> &#123;</span><br><span class="line">    <span class="built_in">this</span>(parallelism, factory, <span class="literal">null</span>, <span class="literal">true</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">ForkJoin</span><span class="params">(<span class="type">int</span> parallelism, ForkJoinWorkerThreadFactory factory, Thread.UncaughtExceptionHandler handler, <span class="type">boolean</span> asyncMode)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>(parallelism, factory, handler, asyncMode);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">execute</span><span class="params">(Runnable command)</span> &#123;</span><br><span class="line">    <span class="built_in">super</span>.execute(command);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">ForkJoinThreadFactory</span> <span class="keyword">implements</span> <span class="title class_">ForkJoinWorkerThreadFactory</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String     name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">AtomicLong</span> <span class="variable">count</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AtomicLong</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">ForkJoinThreadFactory</span><span class="params">(String name)</span> &#123;</span><br><span class="line">      <span class="built_in">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> ForkJoinWorkerThread <span class="title function_">newThread</span><span class="params">(ForkJoinPool pool)</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">NamedForkJoinWorkerThread</span>(String.format(<span class="string">&quot;%s-%d&quot;</span>, name, count.incrementAndGet()), pool);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">NamedForkJoinWorkerThread</span> <span class="keyword">extends</span> <span class="title class_">ForkJoinWorkerThread</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="title function_">NamedForkJoinWorkerThread</span><span class="params">(String name, ForkJoinPool pool)</span> &#123;</span><br><span class="line">      <span class="built_in">super</span>(pool);</span><br><span class="line">      <span class="built_in">super</span>.setName(name);</span><br><span class="line">      <span class="built_in">super</span>.setContextClassLoader(ClassLoader.getSystemClassLoader());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>附赠一个拆箱异步任务拿结果的工具类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Objects;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CompletableFuture;</span><br><span class="line"><span class="keyword">import</span> java.util.stream.Collectors;</span><br><span class="line"><span class="keyword">import</span> lombok.extern.slf4j.Slf4j;</span><br><span class="line"><span class="keyword">import</span> org.springframework.util.CollectionUtils;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * FutureUtil</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> kuaiyue</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/4/6 7:40 下午</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FutureUtil</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">joinWithEx</span><span class="params">(CompletableFuture&lt;T&gt; future)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> future.join();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      log.warn(<span class="string">&quot;joinWithEx exception!!&quot;</span>, e);</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">joinSafe</span><span class="params">(CompletableFuture&lt;T&gt; future, T demotionResult, String apiName, Object... args)</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> future.join();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      log.warn(<span class="string">&quot;future.join exception!! apiName:[&#123;&#125;] args:[&#123;&#125;]&quot;</span>, apiName, args, e);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> demotionResult;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;K, V&gt; CompletableFuture&lt;Map&lt;K, V&gt;&gt; <span class="title function_">mergeFutures</span><span class="params">(List&lt;CompletableFuture&lt;Map&lt;K, V&gt;&gt;&gt; futures)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (CollectionUtils.isEmpty(futures)) &#123;</span><br><span class="line">      <span class="keyword">return</span> CompletableFuture.completedFuture(Collections.emptyMap());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> CompletableFuture.allOf(futures.toArray(<span class="keyword">new</span> <span class="title class_">CompletableFuture</span>[<span class="number">0</span>]))</span><br><span class="line">        .thenApply(v -&gt; futures.stream()</span><br><span class="line">            .map(CompletableFuture::join)</span><br><span class="line">            .filter(Objects::nonNull)</span><br><span class="line">            .map(Map::entrySet)</span><br><span class="line">            .flatMap(Set::stream)</span><br><span class="line">            .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (k1, k2) -&gt; k2)));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; CompletableFuture&lt;List&lt;T&gt;&gt; <span class="title function_">mergeListFutures</span><span class="params">(List&lt;CompletableFuture&lt;T&gt;&gt; futures)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (CollectionUtils.isEmpty(futures)) &#123;</span><br><span class="line">      <span class="keyword">return</span> CompletableFuture.completedFuture(Collections.emptyList());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> CompletableFuture.allOf(futures.toArray(<span class="keyword">new</span> <span class="title class_">CompletableFuture</span>[<span class="number">0</span>]))</span><br><span class="line">        .thenApply(v -&gt; futures.stream()</span><br><span class="line">            .map(CompletableFuture::join)</span><br><span class="line">            .filter(Objects::nonNull)</span><br><span class="line">            .collect(Collectors.toList()));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Thread</tag>
       </tags>
   </entry>
 </search>
