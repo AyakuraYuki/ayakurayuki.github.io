@@ -79,8 +79,11 @@ services:
             KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
             KAFKA_LOG_RETENTION_HOURS: 72
             KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-            KAFKA_LISTENERS: PLAINTEXT://:9092
-            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092
+            KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092
+            # 如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问
+            # 如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
         depends_on:
             - zookeeper
+
 ```
