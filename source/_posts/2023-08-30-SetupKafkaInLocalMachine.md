@@ -33,10 +33,15 @@ docker run -d --privileged=true --restart=always --name=zookeeper -p 2181:2181 -
 
 ```shell
 mkdir -p ~/.kafka/data
-docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v ~/.kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka
+docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v ~/.kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka
 ```
 
-完成上述配置后，重启一下 Kafka
+### 关于 `KAFKA_ADVERTISED_LISTENERS`
+
+-   如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问
+-   如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通
+
+### 完成上述配置后，重启一下 Kafka
 
 ```shell
 docker restart kafka
@@ -78,5 +83,4 @@ services:
             KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092
         depends_on:
             - zookeeper
-
 ```
