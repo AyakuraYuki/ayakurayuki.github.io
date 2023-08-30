@@ -33,11 +33,48 @@ docker run -d --privileged=true --restart=always --name=zookeeper -p 2181:2181 -
 
 ```shell
 mkdir -p /var/docker-services/kafka/data
-docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v /var/docker-services/kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka
+docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v /var/docker-services/kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka
 ```
 
 完成上述配置后，重启一下 Kafka
 
 ```shell
 docker restart kafka
+```
+
+## docker-compose
+
+```yaml
+version: "3"
+
+services:
+  zookeeper:
+    image: "wurstmeister/zookeeper"
+    container_name: zookeeper
+    privileged: true
+    restart: always
+    ports:
+      - "2181:2181"
+    volumes:
+      - /var/docker-services/zookeeper/data:/data
+      - /var/docker-services/zookeeper/datalog:/datalog
+    tty: true
+  kafka:
+    image: "wurstmeister/kafka"
+    container_name: kafka
+    privileged: true
+    restart: always
+    ports:
+      - "9092:9092"
+    volumes:
+      - /var/docker-services/kafka/data:/kafka
+    tty: true
+    environment:
+      KAFKA_BROKER_ID: 0
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+      KAFKA_LOG_RETENTION_HOURS: 72
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_LISTENERS: PLAINTEXT://:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092
+
 ```
