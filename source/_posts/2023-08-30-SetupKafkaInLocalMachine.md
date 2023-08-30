@@ -24,16 +24,16 @@ docker pull wurstmeister/kafka
 ## Zookeeper
 
 ```shell
-mkdir -p /var/docker-services/zookeeper/data
-mkdir -p /var/docker-services/zookeeper/datalog
-docker run -d --privileged=true --restart=always --name=zookeeper -p 2181:2181 -v /etc/localtime:/etc/localtime -v /var/docker-services/zookeeper/data:/data -v /var/docker-services/zookeeper/datalog:/datalog -t wurstmeister/zookeeper
+mkdir -p ~/.zookeeper/data
+mkdir -p ~/.zookeeper/datalog
+docker run -d --privileged=true --restart=always --name=zookeeper -p 2181:2181 -v /etc/localtime:/etc/localtime -v ~/.zookeeper/data:/data -v ~/.zookeeper/datalog:/datalog -t wurstmeister/zookeeper
 ```
 
 ## Kafka
 
 ```shell
-mkdir -p /var/docker-services/kafka/data
-docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v /var/docker-services/kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka
+mkdir -p ~/.kafka/data
+docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v ~/.kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka
 ```
 
 完成上述配置后，重启一下 Kafka
@@ -48,33 +48,35 @@ docker restart kafka
 version: "3"
 
 services:
-  zookeeper:
-    image: "wurstmeister/zookeeper"
-    container_name: zookeeper
-    privileged: true
-    restart: always
-    ports:
-      - "2181:2181"
-    volumes:
-      - /var/docker-services/zookeeper/data:/data
-      - /var/docker-services/zookeeper/datalog:/datalog
-    tty: true
-  kafka:
-    image: "wurstmeister/kafka"
-    container_name: kafka
-    privileged: true
-    restart: always
-    ports:
-      - "9092:9092"
-    volumes:
-      - /var/docker-services/kafka/data:/kafka
-    tty: true
-    environment:
-      KAFKA_BROKER_ID: 0
-      KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
-      KAFKA_LOG_RETENTION_HOURS: 72
-      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_LISTENERS: PLAINTEXT://:9092
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092
+    zookeeper:
+        image: "wurstmeister/zookeeper"
+        container_name: zookeeper
+        privileged: true
+        restart: always
+        ports:
+            - "2181:2181"
+        volumes:
+            - ~/.zookeeper/data:/data
+            - ~/.zookeeper/datalog:/datalog
+        tty: true
+    kafka:
+        image: "wurstmeister/kafka"
+        container_name: kafka
+        privileged: true
+        restart: always
+        ports:
+            - "9092:9092"
+        volumes:
+            - ~/.kafka/data:/kafka
+        tty: true
+        environment:
+            KAFKA_BROKER_ID: 0
+            KAFKA_AUTO_CREATE_TOPICS_ENABLE: true
+            KAFKA_LOG_RETENTION_HOURS: 72
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            KAFKA_LISTENERS: PLAINTEXT://:9092
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://:9092
+        depends_on:
+            - zookeeper
 
 ```
