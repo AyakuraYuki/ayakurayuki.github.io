@@ -20,7 +20,7 @@ cover:
 
 这里推荐一个 [crontab guru](https://crontab.guru/) 网站可以快速检查 Crontab 表达式，这个网站会指出不符合标准的表达式。
 
-![crontab guru website](/static/images/2021-03-03-AnalysisOfDiscordBotOAuth/cover-discord-bot.png)
+![crontab guru website](/static/images/2023-12-06-AutoDeployByCrontab/crontab-guru-image.png)
 
 这里给出一个例子：
 
