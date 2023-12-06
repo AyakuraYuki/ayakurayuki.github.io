@@ -23,50 +23,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Million Live Event Ranking Viewer</title>
-    <url>/2017/05/15/2017-05-15-MLEventRankingViewer/</url>
-    <content><![CDATA[<h1 id="Million-Live-Event-Ranking-Viewer"><a href="#Million-Live-Event-Ranking-Viewer" class="headerlink" title="Million Live Event Ranking Viewer"></a>Million Live Event Ranking Viewer</h1><blockquote>
-<p>卡牌游戏偶像大师百万现场活动排名查看器，简单查看各个分数线的分数。</p>
-</blockquote>
-<p>这是一个用于查看 Million Live 活动排名的小工具，可以方便查看各分数线的分数。</p>
-<h2 id="开发工具及项目环境"><a href="#开发工具及项目环境" class="headerlink" title="开发工具及项目环境"></a>开发工具及项目环境</h2><p>1.Intellij Idea</p>
-<p>2.使用 Maven 构建项目</p>
-<p>3.JavaSE 1.8</p>
-<h2 id="使用技术"><a href="#使用技术" class="headerlink" title="使用技术"></a>使用技术</h2><p>1.Httpclient ——Ver4.5.2</p>
-<p>2.Jsoup ——Ver1.10.2</p>
-<p>3.log4j ——Ver1.2.17</p>
-<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>配置文件里可以设置当前活动的活动编号，这个编号可以从 URL 中提取，例如当期「夢の国！？ショコラティエの大冒険」的编号是 348。</p>
-<h2 id="参与测试？"><a href="#参与测试？" class="headerlink" title="参与测试？"></a>参与测试？</h2><p>可以在 <a href="https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list/releases">这里</a> 下载最新版，包括测试版本和发布版。</p>
-<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><ul>
-<li><p>需要配合使用 Chrome 调试、Firebug、Fiddler 等软件抓取请求头，获得 Cookie 之后设置配置文件 config.properties</p>
-</li>
-<li><p>异常错误转储为日志尚未完成</p>
-</li>
-<li><p>Cookie 失效的情况，刷新排名之后界面不刷新任何数据，也不会有异常错误提示</p>
-</li>
-<li><p>由于是单线程加 Swing 编程，点击刷新按钮后界面会卡住“假死”，但不是真正的程序崩溃，也由此导致获取的数据会有相对较大的延迟。</p>
-</li>
-</ul>
-<p>根据上述问题，该软件可能需要重写，所以暂时就没什么更新了。</p>
-<h2 id="关于-config-properties-的说明："><a href="#关于-config-properties-的说明：" class="headerlink" title="关于 config.properties 的说明："></a>关于 config.properties 的说明：</h2><ul>
-<li><p>第 1-10 行属于 HTTP 请求配置，这个配置暂时需要用户自行提取请求头内容。推荐的获取方式是使用 Chrome 的 F12 调试界面，选择 Network，然后重新载入 mypage 页面，获取 mypage 的 Request Header 中的 User-Agent 和 Cookie，将这两项复制到 config.properties 对应的两项中即可。需要注意的是，Cookie 需要复制的内容是从”PHPSESSID”开始到”utmcsr&#x3D;”的”u”前面的”.”，中间的这一段。</p>
-</li>
-<li><p>第 12 行是活动编号，活动的「ランキング」页面的 URL 中，“event&#x2F;”后面的数字即是活动编号</p>
-</li>
-<li><p>第 13-15 行是软件表格的背景色设置，分别代表 R、G、B 颜色数值</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>project</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Swing</tag>
-        <tag>IM@S</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Spring Boot CRUD</title>
     <url>/2017/05/15/2017-05-15-SimpleSpringBootCRUD/</url>
     <content><![CDATA[<h1 id="SimpleSpringBootCRUD"><a href="#SimpleSpringBootCRUD" class="headerlink" title="SimpleSpringBootCRUD"></a>SimpleSpringBootCRUD</h1><p>这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。</p>
@@ -82,45 +38,70 @@
       </tags>
   </entry>
   <entry>
-    <title>Spring Boot学习之基本配置</title>
-    <url>/2017/05/16/2017-05-16-SpringBootConfig/</url>
-    <content><![CDATA[<blockquote>
-<p>Spring Boot 其实可以不需要配置就能运行，但实际的实现过程中，我们还是需要给它写一些配置，准确的说，是给包含第三方依赖的环境编写配置。</p>
+    <title>CodErator</title>
+    <url>/2017/06/03/2017-06-03-CodErator/</url>
+    <content><![CDATA[<h1 id="CodErator"><a href="#CodErator" class="headerlink" title="CodErator"></a><a href="https://github.com/AyakuraYuki/CodErator">CodErator</a></h1><blockquote>
+<p>轻量级代码生成工具</p>
 </blockquote>
-<h2 id="Maven-pom-xml"><a href="#Maven-pom-xml" class="headerlink" title="Maven - pom.xml"></a>Maven - pom.xml</h2><p>根据相关文档说明，构建 Spring Boot 项目建议使用 Gradle，但不排斥 Maven 创建项目。</p>
-<p>在我的演示项目中，我使用了 Spring Boot + MyBatis + Thymeleaf 的环境。</p>
-<p>以下是使用 Maven 创建 Spring Boot 项目所用的 pom.xml 文件配置内容。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring Boot基础依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot JDBC 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring-MyBatis 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Thymeleaf 模板引擎支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- MySQL 连接器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot 测试单元支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Restful 文档 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.restdocs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-restdocs-mockmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot 开发工具包 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Groovy 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.groovy<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>groovy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            使用Maven package时，如果指定了这个插件，打包会生成JAR文件，而不是WAR文件</span></span><br><span class="line"><span class="comment">            启动Spring Boot是通过指定的BootApplication.main()来启动，所以使用JAR包直接运行</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Environment-application-yml"><a href="#Environment-application-yml" class="headerlink" title="Environment - application.yml"></a>Environment - application.yml</h2><p><a href="http://www.yaml.org/">YAML</a> (YAML Ain’t Markup Language)，即“YAML 不是一种置标语言”，是所有编程语言的人性化数据序列化标准。</p>
-<p>YAML 是 JSON 的一个超集，也是一种方便的定义层次配置数据的格式。只要将 SnakeYAML 库放到 classpath 下，SpringApplication 就会自动支持 YAML，以作为 properties 的替换。</p>
-<p>简单来说，YAML 不像 xml 那样需要配置繁琐的标签和属性以及文档验证，也不像 properties 那样只有普通的 key&#x2F;value。YAML 使用大纲的缩进表现形式，让配置项有明显的结构表示。</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># System configuration</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">display-name:</span> <span class="string">CRUD</span> <span class="comment"># 定义服务器的显示名称</span></span><br><span class="line">    <span class="attr">port:</span></span><br><span class="line">        <span class="number">8888</span> <span class="comment"># 定义可访问的端口，默认访问端口是8080</span></span><br><span class="line">        <span class="comment"># 由于Spring Boot是内建Tomcat，所以没有了Tomcat的配置，取而代之的是在这里配置访问端口</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Datasource &amp; Thymeleaf configuration</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">datasource:</span></span><br><span class="line">        <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span> <span class="comment"># 定义数据源使用的驱动类</span></span><br><span class="line">        <span class="attr">username:</span> <span class="string">root</span> <span class="comment"># 数据库用户</span></span><br><span class="line">        <span class="attr">password:</span> <span class="string">root</span> <span class="comment"># 数据库密码</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">jdbc:mysql://[server_address]:[port]/[schema_name]</span> <span class="comment"># 连接URL</span></span><br><span class="line">    <span class="attr">thymeleaf:</span> <span class="comment"># 配置模板引擎</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment"># 开启模板引擎，默认true，这里配置其实可以不写这句</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="string">HTML5</span> <span class="comment"># 定义模板类型</span></span><br><span class="line">        <span class="attr">encoding:</span> <span class="string">utf-8</span> <span class="comment"># 编码，不用多说了</span></span><br><span class="line">        <span class="attr">content-type:</span> <span class="string">text/html</span> <span class="comment"># 报文类型</span></span><br><span class="line">        <span class="attr">cache:</span></span><br><span class="line">            <span class="literal">false</span> <span class="comment"># 是否开启缓存，这里跟修改模板文件后自动部署有关</span></span><br><span class="line">            <span class="comment"># 关闭之后如果对模板文件有修改，就会更新服务器上的文件</span></span><br><span class="line">        <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span> <span class="comment"># 访问前缀，默认是/template文件夹</span></span><br><span class="line">        <span class="attr">suffix:</span> <span class="string">.html</span> <span class="comment"># 访问后缀，可以改为其他的名称，默认就是.html</span></span><br><span class="line">    <span class="attr">resources:</span> <span class="comment"># 资源文件绑定</span></span><br><span class="line">        <span class="attr">static-locations:</span> <span class="string">classpath:/static</span> <span class="comment"># 这里的配置可以使模板像调用本地文件一样调用到样式资源</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="MyBatis-bean-amp-mapping-xml"><a href="#MyBatis-bean-amp-mapping-xml" class="headerlink" title="MyBatis - bean &amp; mapping xml"></a>MyBatis - bean &amp; mapping xml</h2><p>MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以对配置和原生 Map 使用简单的 XML 或注解，将接口和 POJO 映射成数据库中的记录。</p>
-<p>MyBatis 相比 Hibernate，其可控性几乎是完全的，程序员可以通过 mapping 配置，使程序不用回炉重造就能支持多个数据库的连接，并且有效控制对数据的操作。</p>
-<p>本演示项目没有使用如 Druid、DBCP 等的数据库连接池工具，而是使用 Tomcat 数据库连接池，使用 Tomcat 连接池的配置相对简单，适合初学者入门（但为了数据库连接信息安全，更推荐使用 Druid）。对于使用数据库连接池的配置，会在今后撰文介绍。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;me.yuki.dao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BootApplication</span> &#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="meta">@ConfigurationProperties(&quot;spring.datasource&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> DataSource <span class="title function_">getDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.tomcat.jdbc.pool.DataSource();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionFactory <span class="title function_">getSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    	<span class="type">SqlSessionFactoryBean</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">    	sqlSessionFactory.setDataSource(getDataSource());</span><br><span class="line">    	<span class="type">PathMatchingResourcePatternResolver</span> <span class="variable">resolver</span></span><br><span class="line">    	                        <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>();</span><br><span class="line">    	sqlSessionFactory.setMapperLocations(resolver.getResources(<span class="string">&quot;/mapper/*.xml&quot;</span>));</span><br><span class="line">    	<span class="keyword">return</span> sqlSessionFactory.getObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> PlatformTransactionManager <span class="title function_">getTransactionManager</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(getDataSource());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		SpringApplication.run(BootApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="数据源配置-代码分析"><a href="#数据源配置-代码分析" class="headerlink" title="数据源配置 - 代码分析"></a>数据源配置 - 代码分析</h3><h4 id="类注解"><a href="#类注解" class="headerlink" title="类注解"></a>类注解</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span> <span class="comment">// 标记该类是Spring Boot启动类</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;me.yuki.dao&quot;)</span> <span class="comment">// 配置mapper扫描器扫描的包位置</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="getDataSource"><a href="#getDataSource" class="headerlink" title="getDataSource()"></a>getDataSource()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为DataSource Bean</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(&quot;spring.datasource&quot;)</span> <span class="comment">// 从yml取得节点spring.datasource下的配置</span></span><br><span class="line"><span class="keyword">public</span> DataSource <span class="title function_">getDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.tomcat.jdbc.pool.DataSource(); <span class="comment">// 从Tomcat获取DataSource</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对应的 SpringFramework 配置如下（可能会有不同，参考的 xml 采用了 DBCP 配置数据源）</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.apache.commons.dbcp.BasicDataSource&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;close&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.driver-class-name&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.username&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.password&#125;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="getSqlSessionFactory"><a href="#getSqlSessionFactory" class="headerlink" title="getSqlSessionFactory()"></a>getSqlSessionFactory()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为SqlSessionFactory Bean</span></span><br><span class="line"><span class="keyword">public</span> SqlSessionFactory <span class="title function_">getSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">// &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span></span><br><span class="line">    <span class="type">SqlSessionFactoryBean</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">    <span class="comment">// &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span></span><br><span class="line">    sqlSessionFactory.setDataSource(getDataSource());</span><br><span class="line">    <span class="type">PathMatchingResourcePatternResolver</span> <span class="variable">resolver</span></span><br><span class="line">                            <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>();</span><br><span class="line">    <span class="comment">// &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath*:/mapper/*.xml&quot; /&gt;</span></span><br><span class="line">    sqlSessionFactory.setMapperLocations(resolver.getResources(<span class="string">&quot;/mapper/*.xml&quot;</span>));</span><br><span class="line">    <span class="keyword">return</span> sqlSessionFactory.getObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="getTransactionManager"><a href="#getTransactionManager" class="headerlink" title="getTransactionManager()"></a>getTransactionManager()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为PlatformTransactionManager Bean</span></span><br><span class="line"><span class="keyword">public</span> PlatformTransactionManager <span class="title function_">getTransactionManager</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    &lt;bean id=&quot;transactionManager&quot;</span></span><br><span class="line"><span class="comment">            class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span></span><br><span class="line"><span class="comment">       	&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span></span><br><span class="line"><span class="comment">    &lt;/bean&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(getDataSource());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="Mapping-xml"><a href="#Mapping-xml" class="headerlink" title="Mapping.xml"></a>Mapping.xml</h3><p>MyBatis mapping 文件的配置与 SSM 的配置完全一样，只要把文件放到在 getSqlSessionFactory()中配置的 MapperLocation 文件夹之下，对应文件名匹配格式即可。</p>
+<p>查询元数据，暴力封装元数据信息，暴力生成源码，能生成就是好工具，反正都要按需求改！</p>
+<h2 id="环境与依赖"><a href="#环境与依赖" class="headerlink" title="环境与依赖"></a>环境与依赖</h2><ul>
+<li><p>项目创建于 Visual Studio 2017</p>
+</li>
+<li><p>.Net Framework 4.5.2</p>
+</li>
+<li><p>WinForm</p>
+</li>
+<li><p>“难用”的要死的<a href="https://github.com/Antaris/RazorEngine">Razor Engine 3.9.3</a></p>
+</li>
+<li><p>MySQL Connector.Net 6.9</p>
+</li>
+</ul>
+<h2 id="使用目标"><a href="#使用目标" class="headerlink" title="使用目标"></a>使用目标</h2><h3 id="JavaEE"><a href="#JavaEE" class="headerlink" title="JavaEE"></a>JavaEE</h3><ul>
+<li><p>SSM 框架代码生成</p>
+</li>
+<li><p>可自由选择需要生成的层面</p>
+</li>
+</ul>
+<h3 id="CSharp"><a href="#CSharp" class="headerlink" title="CSharp"></a>CSharp</h3><ul>
+<li>生成 Entity</li>
+</ul>
+<h2 id="支持功能"><a href="#支持功能" class="headerlink" title="支持功能"></a>支持功能</h2><ul>
+<li><p>连接到指定 schema，尚未支持不指定 schema 的连接</p>
+</li>
+<li><p>表字段内容获取</p>
+</li>
+<li><p>列表多选即可选择需要生成的表</p>
+</li>
+<li><p>指定输出位置</p>
+</li>
+</ul>
+<h2 id="开发路线"><a href="#开发路线" class="headerlink" title="开发路线"></a>开发路线</h2><ul>
+<li><p>项目初始版本属于 XP 模型产物，根据开发过程遇到的问题，可能需要在代码框架、逻辑设计上重新进行分析。</p>
+</li>
+<li><p>初始版本对模板的支持比较严格，不建议用户修改模板文件。然而这不是废话吗？并不，我鼓励各位根据自己的需求或者代码风格去修改模板文件，只要遵守现有的文件名以及 Razor Engine 语法即可。</p>
+</li>
+<li><p>未来考虑对模板支持进行大的修改，做到支持程序猿自己定义的模板。这个修改只要确保程序猿们遵守了 Razor Engine 语法，就可以生成代码，不受模板文件名的影响。</p>
+</li>
+<li><p>上述开发路线说明或许会因为懒癌发作延期，作为开源项目，如果各位愿意的话，倒不是不可以去修改。欢迎 fork，不求 star。</p>
+</li>
+</ul>
+<h2 id="现存问题"><a href="#现存问题" class="headerlink" title="现存问题"></a>现存问题</h2><ul>
+<li><p>模板文件是定死的，包括文件名（前缀后缀）、文件数量</p>
+</li>
+<li><p>仅支持三层生成（Entity、Dao、Service）</p>
+</li>
+<li><p>C#暂时只支持 Entity，其余两层因为本人没有接触过 ASP.Net MVC 所以不太能下手</p>
+</li>
+<li><p>一些藏得比较深的 bug</p>
+</li>
+</ul>
 ]]></content>
       <categories>
-        <category>guide</category>
+        <category>project</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
+        <tag>C#</tag>
+        <tag>generator</tag>
       </tags>
   </entry>
   <entry>
@@ -216,73 +197,6 @@
 </ol>
 <p>这就显得比较“粗暴”了，获取了表名交给 Table，获取了这个表的所有字段元数据，分别封装成 Column 交给 Table 里的 list。</p>
 <p>这样一来，最后在模板内的调用就可以直接用属性去拿到信息了。</p>
-]]></content>
-      <categories>
-        <category>project</category>
-      </categories>
-      <tags>
-        <tag>C#</tag>
-        <tag>generator</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CodErator</title>
-    <url>/2017/06/03/2017-06-03-CodErator/</url>
-    <content><![CDATA[<h1 id="CodErator"><a href="#CodErator" class="headerlink" title="CodErator"></a><a href="https://github.com/AyakuraYuki/CodErator">CodErator</a></h1><blockquote>
-<p>轻量级代码生成工具</p>
-</blockquote>
-<p>查询元数据，暴力封装元数据信息，暴力生成源码，能生成就是好工具，反正都要按需求改！</p>
-<h2 id="环境与依赖"><a href="#环境与依赖" class="headerlink" title="环境与依赖"></a>环境与依赖</h2><ul>
-<li><p>项目创建于 Visual Studio 2017</p>
-</li>
-<li><p>.Net Framework 4.5.2</p>
-</li>
-<li><p>WinForm</p>
-</li>
-<li><p>“难用”的要死的<a href="https://github.com/Antaris/RazorEngine">Razor Engine 3.9.3</a></p>
-</li>
-<li><p>MySQL Connector.Net 6.9</p>
-</li>
-</ul>
-<h2 id="使用目标"><a href="#使用目标" class="headerlink" title="使用目标"></a>使用目标</h2><h3 id="JavaEE"><a href="#JavaEE" class="headerlink" title="JavaEE"></a>JavaEE</h3><ul>
-<li><p>SSM 框架代码生成</p>
-</li>
-<li><p>可自由选择需要生成的层面</p>
-</li>
-</ul>
-<h3 id="CSharp"><a href="#CSharp" class="headerlink" title="CSharp"></a>CSharp</h3><ul>
-<li>生成 Entity</li>
-</ul>
-<h2 id="支持功能"><a href="#支持功能" class="headerlink" title="支持功能"></a>支持功能</h2><ul>
-<li><p>连接到指定 schema，尚未支持不指定 schema 的连接</p>
-</li>
-<li><p>表字段内容获取</p>
-</li>
-<li><p>列表多选即可选择需要生成的表</p>
-</li>
-<li><p>指定输出位置</p>
-</li>
-</ul>
-<h2 id="开发路线"><a href="#开发路线" class="headerlink" title="开发路线"></a>开发路线</h2><ul>
-<li><p>项目初始版本属于 XP 模型产物，根据开发过程遇到的问题，可能需要在代码框架、逻辑设计上重新进行分析。</p>
-</li>
-<li><p>初始版本对模板的支持比较严格，不建议用户修改模板文件。然而这不是废话吗？并不，我鼓励各位根据自己的需求或者代码风格去修改模板文件，只要遵守现有的文件名以及 Razor Engine 语法即可。</p>
-</li>
-<li><p>未来考虑对模板支持进行大的修改，做到支持程序猿自己定义的模板。这个修改只要确保程序猿们遵守了 Razor Engine 语法，就可以生成代码，不受模板文件名的影响。</p>
-</li>
-<li><p>上述开发路线说明或许会因为懒癌发作延期，作为开源项目，如果各位愿意的话，倒不是不可以去修改。欢迎 fork，不求 star。</p>
-</li>
-</ul>
-<h2 id="现存问题"><a href="#现存问题" class="headerlink" title="现存问题"></a>现存问题</h2><ul>
-<li><p>模板文件是定死的，包括文件名（前缀后缀）、文件数量</p>
-</li>
-<li><p>仅支持三层生成（Entity、Dao、Service）</p>
-</li>
-<li><p>C#暂时只支持 Entity，其余两层因为本人没有接触过 ASP.Net MVC 所以不太能下手</p>
-</li>
-<li><p>一些藏得比较深的 bug</p>
-</li>
-</ul>
 ]]></content>
       <categories>
         <category>project</category>
@@ -486,52 +400,82 @@
       </tags>
   </entry>
   <entry>
-    <title>Content Storage App</title>
-    <url>/2017/10/19/2017-10-19-ContentStorageApp/</url>
-    <content><![CDATA[<h1 id="content-storage-app"><a href="#content-storage-app" class="headerlink" title="content-storage-app"></a>content-storage-app</h1><blockquote>
-<p>泛用型个人内容存储，采用两步验证来验证用户</p>
+    <title>Million Live Event Ranking Viewer</title>
+    <url>/2017/05/15/2017-05-15-MLEventRankingViewer/</url>
+    <content><![CDATA[<h1 id="Million-Live-Event-Ranking-Viewer"><a href="#Million-Live-Event-Ranking-Viewer" class="headerlink" title="Million Live Event Ranking Viewer"></a>Million Live Event Ranking Viewer</h1><blockquote>
+<p>卡牌游戏偶像大师百万现场活动排名查看器，简单查看各个分数线的分数。</p>
 </blockquote>
-<h2 id="环境-x2F-Environment"><a href="#环境-x2F-Environment" class="headerlink" title="环境 &#x2F; Environment"></a>环境 &#x2F; Environment</h2><ul>
-<li>Spring Boot <code>ver 2.0.2.RELEASE</code></li>
-<li>MyBatis <code>ver 3.4.6</code></li>
-<li>SQLite JDBC <code>ver 3.23.1</code></li>
-<li>Groovy <code>ver 2.5.0</code></li>
-<li>JDK 1.8 <code>ver 1.8.0_181</code></li>
+<p>这是一个用于查看 Million Live 活动排名的小工具，可以方便查看各分数线的分数。</p>
+<h2 id="开发工具及项目环境"><a href="#开发工具及项目环境" class="headerlink" title="开发工具及项目环境"></a>开发工具及项目环境</h2><p>1.Intellij Idea</p>
+<p>2.使用 Maven 构建项目</p>
+<p>3.JavaSE 1.8</p>
+<h2 id="使用技术"><a href="#使用技术" class="headerlink" title="使用技术"></a>使用技术</h2><p>1.Httpclient ——Ver4.5.2</p>
+<p>2.Jsoup ——Ver1.10.2</p>
+<p>3.log4j ——Ver1.2.17</p>
+<h2 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h2><p>配置文件里可以设置当前活动的活动编号，这个编号可以从 URL 中提取，例如当期「夢の国！？ショコラティエの大冒険」的编号是 348。</p>
+<h2 id="参与测试？"><a href="#参与测试？" class="headerlink" title="参与测试？"></a>参与测试？</h2><p>可以在 <a href="https://github.com/AyakuraYuki/IMAS-ML-event-ranking-list/releases">这里</a> 下载最新版，包括测试版本和发布版。</p>
+<h2 id="已知问题"><a href="#已知问题" class="headerlink" title="已知问题"></a>已知问题</h2><ul>
+<li><p>需要配合使用 Chrome 调试、Firebug、Fiddler 等软件抓取请求头，获得 Cookie 之后设置配置文件 config.properties</p>
+</li>
+<li><p>异常错误转储为日志尚未完成</p>
+</li>
+<li><p>Cookie 失效的情况，刷新排名之后界面不刷新任何数据，也不会有异常错误提示</p>
+</li>
+<li><p>由于是单线程加 Swing 编程，点击刷新按钮后界面会卡住“假死”，但不是真正的程序崩溃，也由此导致获取的数据会有相对较大的延迟。</p>
+</li>
 </ul>
-<h2 id="特性-x2F-Feature"><a href="#特性-x2F-Feature" class="headerlink" title="特性 &#x2F; Feature"></a>特性 &#x2F; Feature</h2><ul>
-<li>JSON 化存储内容</li>
-<li>使用 Google Authenticator 两步验证</li>
-<li>单机使用</li>
-<li>数据加密后持久化</li>
-<li>DB 文件级唯一的 DES Key</li>
+<p>根据上述问题，该软件可能需要重写，所以暂时就没什么更新了。</p>
+<h2 id="关于-config-properties-的说明："><a href="#关于-config-properties-的说明：" class="headerlink" title="关于 config.properties 的说明："></a>关于 config.properties 的说明：</h2><ul>
+<li><p>第 1-10 行属于 HTTP 请求配置，这个配置暂时需要用户自行提取请求头内容。推荐的获取方式是使用 Chrome 的 F12 调试界面，选择 Network，然后重新载入 mypage 页面，获取 mypage 的 Request Header 中的 User-Agent 和 Cookie，将这两项复制到 config.properties 对应的两项中即可。需要注意的是，Cookie 需要复制的内容是从”PHPSESSID”开始到”utmcsr&#x3D;”的”u”前面的”.”，中间的这一段。</p>
+</li>
+<li><p>第 12 行是活动编号，活动的「ランキング」页面的 URL 中，“event&#x2F;”后面的数字即是活动编号</p>
+</li>
+<li><p>第 13-15 行是软件表格的背景色设置，分别代表 R、G、B 颜色数值</p>
+</li>
 </ul>
-<h2 id="使用：用户"><a href="#使用：用户" class="headerlink" title="使用：用户"></a>使用：用户</h2><p>如果您是普通用户，建议您从<a href="https://github.com/AyakuraYuki/content-storage-app/releases">Release</a>下载</p>
-<p>Linux&#x2F;macOS 使用<code>startup.sh</code>，Windows 使用<code>startup.bat</code>启动</p>
-<p>浏览器访问地址：<code>http://localhost:8888/</code></p>
-<h2 id="使用：开发者"><a href="#使用：开发者" class="headerlink" title="使用：开发者"></a>使用：开发者</h2><p>如果您是开发者，并且有兴趣进行客制化开发和生成，您可以根据下面的说明来使用</p>
-<h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/AyakuraYuki/content-storage-app.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
-<p>推荐使用 IntelliJ IDEA</p>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Swing</tag>
+        <tag>IM@S</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot学习之基本配置</title>
+    <url>/2017/05/16/2017-05-16-SpringBootConfig/</url>
+    <content><![CDATA[<blockquote>
+<p>Spring Boot 其实可以不需要配置就能运行，但实际的实现过程中，我们还是需要给它写一些配置，准确的说，是给包含第三方依赖的环境编写配置。</p>
 </blockquote>
-<p>选择导入 maven 项目即可</p>
-<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>将配置文件中的 MySQL 连接信息修改为您的 SQLite 连接信息，可修改属性如下：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:sqlite:&lt;</span> <span class="string">_your_db_file_path_</span> <span class="string">||</span> <span class="string">data/storage.db</span> <span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Maven-pom-xml"><a href="#Maven-pom-xml" class="headerlink" title="Maven - pom.xml"></a>Maven - pom.xml</h2><p>根据相关文档说明，构建 Spring Boot 项目建议使用 Gradle，但不排斥 Maven 创建项目。</p>
+<p>在我的演示项目中，我使用了 Spring Boot + MyBatis + Thymeleaf 的环境。</p>
+<p>以下是使用 Maven 创建 Spring Boot 项目所用的 pom.xml 文件配置内容。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring Boot基础依赖 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.5.2.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot JDBC 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring-MyBatis 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mybatis.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Thymeleaf 模板引擎支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-thymeleaf<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- MySQL 连接器 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>runtime<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot 测试单元支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Restful 文档 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.restdocs<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-restdocs-mockmvc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Spring Boot 开发工具包 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-devtools<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- Groovy 支持 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.codehaus.groovy<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>groovy<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">            使用Maven package时，如果指定了这个插件，打包会生成JAR文件，而不是WAR文件</span></span><br><span class="line"><span class="comment">            启动Spring Boot是通过指定的BootApplication.main()来启动，所以使用JAR包直接运行</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(java -jar content-storage-app-&lt;version&gt;.jar &amp;)</span><br></pre></td></tr></table></figure>
+<h2 id="Environment-application-yml"><a href="#Environment-application-yml" class="headerlink" title="Environment - application.yml"></a>Environment - application.yml</h2><p><a href="http://www.yaml.org/">YAML</a> (YAML Ain’t Markup Language)，即“YAML 不是一种置标语言”，是所有编程语言的人性化数据序列化标准。</p>
+<p>YAML 是 JSON 的一个超集，也是一种方便的定义层次配置数据的格式。只要将 SnakeYAML 库放到 classpath 下，SpringApplication 就会自动支持 YAML，以作为 properties 的替换。</p>
+<p>简单来说，YAML 不像 xml 那样需要配置繁琐的标签和属性以及文档验证，也不像 properties 那样只有普通的 key&#x2F;value。YAML 使用大纲的缩进表现形式，让配置项有明显的结构表示。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># System configuration</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">display-name:</span> <span class="string">CRUD</span> <span class="comment"># 定义服务器的显示名称</span></span><br><span class="line">    <span class="attr">port:</span></span><br><span class="line">        <span class="number">8888</span> <span class="comment"># 定义可访问的端口，默认访问端口是8080</span></span><br><span class="line">        <span class="comment"># 由于Spring Boot是内建Tomcat，所以没有了Tomcat的配置，取而代之的是在这里配置访问端口</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Datasource &amp; Thymeleaf configuration</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">datasource:</span></span><br><span class="line">        <span class="attr">driver-class-name:</span> <span class="string">com.mysql.jdbc.Driver</span> <span class="comment"># 定义数据源使用的驱动类</span></span><br><span class="line">        <span class="attr">username:</span> <span class="string">root</span> <span class="comment"># 数据库用户</span></span><br><span class="line">        <span class="attr">password:</span> <span class="string">root</span> <span class="comment"># 数据库密码</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">jdbc:mysql://[server_address]:[port]/[schema_name]</span> <span class="comment"># 连接URL</span></span><br><span class="line">    <span class="attr">thymeleaf:</span> <span class="comment"># 配置模板引擎</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span> <span class="comment"># 开启模板引擎，默认true，这里配置其实可以不写这句</span></span><br><span class="line">        <span class="attr">mode:</span> <span class="string">HTML5</span> <span class="comment"># 定义模板类型</span></span><br><span class="line">        <span class="attr">encoding:</span> <span class="string">utf-8</span> <span class="comment"># 编码，不用多说了</span></span><br><span class="line">        <span class="attr">content-type:</span> <span class="string">text/html</span> <span class="comment"># 报文类型</span></span><br><span class="line">        <span class="attr">cache:</span></span><br><span class="line">            <span class="literal">false</span> <span class="comment"># 是否开启缓存，这里跟修改模板文件后自动部署有关</span></span><br><span class="line">            <span class="comment"># 关闭之后如果对模板文件有修改，就会更新服务器上的文件</span></span><br><span class="line">        <span class="attr">prefix:</span> <span class="string">classpath:/templates/</span> <span class="comment"># 访问前缀，默认是/template文件夹</span></span><br><span class="line">        <span class="attr">suffix:</span> <span class="string">.html</span> <span class="comment"># 访问后缀，可以改为其他的名称，默认就是.html</span></span><br><span class="line">    <span class="attr">resources:</span> <span class="comment"># 资源文件绑定</span></span><br><span class="line">        <span class="attr">static-locations:</span> <span class="string">classpath:/static</span> <span class="comment"># 这里的配置可以使模板像调用本地文件一样调用到样式资源</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="Special-Thanks-to"><a href="#Special-Thanks-to" class="headerlink" title="Special Thanks to"></a>Special Thanks to</h2><div>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/variant-2_logos/jetbrains-variant-2.png" alt="JetBrains" width="300px"/>
-</div>
+<h2 id="MyBatis-bean-amp-mapping-xml"><a href="#MyBatis-bean-amp-mapping-xml" class="headerlink" title="MyBatis - bean &amp; mapping xml"></a>MyBatis - bean &amp; mapping xml</h2><p>MyBatis 是支持定制化 SQL、存储过程以及高级映射的优秀的持久层框架。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以对配置和原生 Map 使用简单的 XML 或注解，将接口和 POJO 映射成数据库中的记录。</p>
+<p>MyBatis 相比 Hibernate，其可控性几乎是完全的，程序员可以通过 mapping 配置，使程序不用回炉重造就能支持多个数据库的连接，并且有效控制对数据的操作。</p>
+<p>本演示项目没有使用如 Druid、DBCP 等的数据库连接池工具，而是使用 Tomcat 数据库连接池，使用 Tomcat 连接池的配置相对简单，适合初学者入门（但为了数据库连接信息安全，更推荐使用 Druid）。对于使用数据库连接池的配置，会在今后撰文介绍。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;me.yuki.dao&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BootApplication</span> &#123;</span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="meta">@ConfigurationProperties(&quot;spring.datasource&quot;)</span></span><br><span class="line">	<span class="keyword">public</span> DataSource <span class="title function_">getDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.tomcat.jdbc.pool.DataSource();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> SqlSessionFactory <span class="title function_">getSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    	<span class="type">SqlSessionFactoryBean</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">    	sqlSessionFactory.setDataSource(getDataSource());</span><br><span class="line">    	<span class="type">PathMatchingResourcePatternResolver</span> <span class="variable">resolver</span></span><br><span class="line">    	                        <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>();</span><br><span class="line">    	sqlSessionFactory.setMapperLocations(resolver.getResources(<span class="string">&quot;/mapper/*.xml&quot;</span>));</span><br><span class="line">    	<span class="keyword">return</span> sqlSessionFactory.getObject();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Bean</span></span><br><span class="line">	<span class="keyword">public</span> PlatformTransactionManager <span class="title function_">getTransactionManager</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(getDataSource());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		SpringApplication.run(BootApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ul>
-<li><a href="https://www.jetbrains.com/?from=content-storage-app">JetBrains: Developer Tools for Professionals and Teams</a></li>
-</ul>
-<h3 id="Built-by"><a href="#Built-by" class="headerlink" title="Built by"></a>Built by</h3><div>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/intellij-idea_logos/logo.png" alt="JetBrains" width="120px"/>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/webstorm_logos/logo.png" alt="JetBrains" width="120px"/>
-  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/datagrip_logos/logo.png" alt="JetBrains" width="120px"/>
-</div>
+<h3 id="数据源配置-代码分析"><a href="#数据源配置-代码分析" class="headerlink" title="数据源配置 - 代码分析"></a>数据源配置 - 代码分析</h3><h4 id="类注解"><a href="#类注解" class="headerlink" title="类注解"></a>类注解</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span> <span class="comment">// 标记该类是Spring Boot启动类</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;me.yuki.dao&quot;)</span> <span class="comment">// 配置mapper扫描器扫描的包位置</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="getDataSource"><a href="#getDataSource" class="headerlink" title="getDataSource()"></a>getDataSource()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为DataSource Bean</span></span><br><span class="line"><span class="meta">@ConfigurationProperties(&quot;spring.datasource&quot;)</span> <span class="comment">// 从yml取得节点spring.datasource下的配置</span></span><br><span class="line"><span class="keyword">public</span> DataSource <span class="title function_">getDataSource</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">org</span>.apache.tomcat.jdbc.pool.DataSource(); <span class="comment">// 从Tomcat获取DataSource</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对应的 SpringFramework 配置如下（可能会有不同，参考的 xml 采用了 DBCP 配置数据源）</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">&quot;dataSource&quot;</span> <span class="attr">class</span>=<span class="string">&quot;org.apache.commons.dbcp.BasicDataSource&quot;</span> <span class="attr">destroy-method</span>=<span class="string">&quot;close&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;driverClassName&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.driver-class-name&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;url&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.url&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.username&#125;&quot;</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">value</span>=<span class="string">&quot;$&#123;spring.datasource.password&#125;&quot;</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="getSqlSessionFactory"><a href="#getSqlSessionFactory" class="headerlink" title="getSqlSessionFactory()"></a>getSqlSessionFactory()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为SqlSessionFactory Bean</span></span><br><span class="line"><span class="keyword">public</span> SqlSessionFactory <span class="title function_">getSqlSessionFactory</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    <span class="comment">// &lt;bean id=&quot;sqlSessionFactory&quot; class=&quot;org.mybatis.spring.SqlSessionFactoryBean&quot;&gt;</span></span><br><span class="line">    <span class="type">SqlSessionFactoryBean</span> <span class="variable">sqlSessionFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SqlSessionFactoryBean</span>();</span><br><span class="line">    <span class="comment">// &lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span></span><br><span class="line">    sqlSessionFactory.setDataSource(getDataSource());</span><br><span class="line">    <span class="type">PathMatchingResourcePatternResolver</span> <span class="variable">resolver</span></span><br><span class="line">                            <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PathMatchingResourcePatternResolver</span>();</span><br><span class="line">    <span class="comment">// &lt;property name=&quot;mapperLocations&quot; value=&quot;classpath*:/mapper/*.xml&quot; /&gt;</span></span><br><span class="line">    sqlSessionFactory.setMapperLocations(resolver.getResources(<span class="string">&quot;/mapper/*.xml&quot;</span>));</span><br><span class="line">    <span class="keyword">return</span> sqlSessionFactory.getObject();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="getTransactionManager"><a href="#getTransactionManager" class="headerlink" title="getTransactionManager()"></a>getTransactionManager()</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Bean</span> <span class="comment">// 注册为PlatformTransactionManager Bean</span></span><br><span class="line"><span class="keyword">public</span> PlatformTransactionManager <span class="title function_">getTransactionManager</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    &lt;bean id=&quot;transactionManager&quot;</span></span><br><span class="line"><span class="comment">            class=&quot;org.springframework.jdbc.datasource.DataSourceTransactionManager&quot;&gt;</span></span><br><span class="line"><span class="comment">       	&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</span></span><br><span class="line"><span class="comment">    &lt;/bean&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">DataSourceTransactionManager</span>(getDataSource());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Mapping-xml"><a href="#Mapping-xml" class="headerlink" title="Mapping.xml"></a>Mapping.xml</h3><p>MyBatis mapping 文件的配置与 SSM 的配置完全一样，只要把文件放到在 getSqlSessionFactory()中配置的 MapperLocation 文件夹之下，对应文件名匹配格式即可。</p>
 ]]></content>
       <categories>
         <category>guide</category>
@@ -684,6 +628,62 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </categories>
       <tags>
         <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Content Storage App</title>
+    <url>/2017/10/19/2017-10-19-ContentStorageApp/</url>
+    <content><![CDATA[<h1 id="content-storage-app"><a href="#content-storage-app" class="headerlink" title="content-storage-app"></a>content-storage-app</h1><blockquote>
+<p>泛用型个人内容存储，采用两步验证来验证用户</p>
+</blockquote>
+<h2 id="环境-x2F-Environment"><a href="#环境-x2F-Environment" class="headerlink" title="环境 &#x2F; Environment"></a>环境 &#x2F; Environment</h2><ul>
+<li>Spring Boot <code>ver 2.0.2.RELEASE</code></li>
+<li>MyBatis <code>ver 3.4.6</code></li>
+<li>SQLite JDBC <code>ver 3.23.1</code></li>
+<li>Groovy <code>ver 2.5.0</code></li>
+<li>JDK 1.8 <code>ver 1.8.0_181</code></li>
+</ul>
+<h2 id="特性-x2F-Feature"><a href="#特性-x2F-Feature" class="headerlink" title="特性 &#x2F; Feature"></a>特性 &#x2F; Feature</h2><ul>
+<li>JSON 化存储内容</li>
+<li>使用 Google Authenticator 两步验证</li>
+<li>单机使用</li>
+<li>数据加密后持久化</li>
+<li>DB 文件级唯一的 DES Key</li>
+</ul>
+<h2 id="使用：用户"><a href="#使用：用户" class="headerlink" title="使用：用户"></a>使用：用户</h2><p>如果您是普通用户，建议您从<a href="https://github.com/AyakuraYuki/content-storage-app/releases">Release</a>下载</p>
+<p>Linux&#x2F;macOS 使用<code>startup.sh</code>，Windows 使用<code>startup.bat</code>启动</p>
+<p>浏览器访问地址：<code>http://localhost:8888/</code></p>
+<h2 id="使用：开发者"><a href="#使用：开发者" class="headerlink" title="使用：开发者"></a>使用：开发者</h2><p>如果您是开发者，并且有兴趣进行客制化开发和生成，您可以根据下面的说明来使用</p>
+<h3 id="clone"><a href="#clone" class="headerlink" title="clone"></a>clone</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/AyakuraYuki/content-storage-app.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h3><blockquote>
+<p>推荐使用 IntelliJ IDEA</p>
+</blockquote>
+<p>选择导入 maven 项目即可</p>
+<h3 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h3><p>将配置文件中的 MySQL 连接信息修改为您的 SQLite 连接信息，可修改属性如下：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="string">jdbc:sqlite:&lt;</span> <span class="string">_your_db_file_path_</span> <span class="string">||</span> <span class="string">data/storage.db</span> <span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a>执行程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">(java -jar content-storage-app-&lt;version&gt;.jar &amp;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Special-Thanks-to"><a href="#Special-Thanks-to" class="headerlink" title="Special Thanks to"></a>Special Thanks to</h2><div>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/variant-2_logos/jetbrains-variant-2.png" alt="JetBrains" width="300px"/>
+</div>
+
+<ul>
+<li><a href="https://www.jetbrains.com/?from=content-storage-app">JetBrains: Developer Tools for Professionals and Teams</a></li>
+</ul>
+<h3 id="Built-by"><a href="#Built-by" class="headerlink" title="Built by"></a>Built by</h3><div>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/intellij-idea_logos/logo.png" alt="JetBrains" width="120px"/>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/webstorm_logos/logo.png" alt="JetBrains" width="120px"/>
+  <img src="https://blog.ayakurayuki.cc/assets/img/jetbrains/datagrip_logos/logo.png" alt="JetBrains" width="120px"/>
+</div>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -842,6 +842,48 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
+    <title>在新版的macOS上切换不同版本的JDK</title>
+    <url>/2018/05/31/2018-05-31-SwitchDifferentJDK/</url>
+    <content><![CDATA[<blockquote>
+<p>新版 macOS 的 JDK 切换似乎有些，不那么直接？这就仁者见仁了。</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>为了开发（或者说玩耍）的需要，我们或多或少都会在本机上安装多个版本的 JDK。在 Windows 上，我们可以很自然的，通过定义<code>JAVA_HOME</code>的路径，来修改我们要使用的 JDK 版本。在 Linux 系统中，我们也可以通过直接定义 JDK 的路径，去配置要使用的 JDK 版本。</p>
+<p>对于 Windows 和 Linux 开发者来说，修改 JDK 使用的版本可以说是非常舒适了，简单配置一下路径，就能实现目标。然而反观 macOS，它在 JDK 版本切换上，有些人会说它方便，有些人则会说它恼人，从 macOS 10.5+版本开始，Apple 为 macOS 加的一个新东西，可以说是让那些习惯了配置路径修改 JDK 版本的开发者感到很不习惯。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>让我们先来看看来自<code>Apple Developer - Guides and Sample Code</code>中<a href="https://developer.apple.com/library/content/qa/qa1170/_index.html">Technical Q&amp;A QA1170 Important Java Directories on Mac OS X</a>的文档说明。</p>
+<hr>
+<h4 id="Java-Home"><a href="#Java-Home" class="headerlink" title="Java Home"></a>Java Home</h4><p>Many Java applications need to know the location of a <code>$JAVA_HOME</code> directory. The <code>$JAVA_HOME</code> on Mac OS X should be found using the <code>/usr/libexec/java_home</code> command line tool on Mac OS X 10.5 or later. On older Mac OS X versions where the tool does not exist, use the fixed path “<code>/Library/Java/Home</code>“. The <code>/usr/libexec/java_home</code> tool dynamically finds the top Java version specified in Java Preferences for the current user. This path allows access to the <code>bin</code> subdirectory where command line tools such as <code>java</code>, <code>javac</code>, etc. exist as on other platforms. The tool <code>/usr/libexec/java_home</code> allows you to specify a particular CPU architecture and Java platform version when locating a <code>$JAVA_HOME</code>.</p>
+<p>Another advantage of dynamically finding this path, as opposed to hardcoding the fixed endpoint, is that it is updated when a new version of Java is downloaded via Software Update or installed with a newer version of Mac OS X. For this reason, it is important that developers do not install files in the JDKs inside of <code>/System</code>, since the changes will be lost with subsequent updates by newer versions of Java.</p>
+<p>To obtain the path to the currently executing <code>$JAVA_HOME</code>, use the <code>java.home</code> System property.</p>
+<hr>
+<p>可以看到，在使用 macOS 10.5 或更新版本的系统时，Apple 已经推荐开发者使用<code>/usr/libexec/java_home</code>去设置 JDK 的版本了，并且由于<code>java_home</code>会动态查找到最新的 JDK 版本，并且支持通过发行版通称，即 JDK1.7、JDK1.8、JDK11 等来获取路径，所以很适合用来切换不同版本的 JDK。</p>
+<p>让我们再来看一下接下来会用到的脚本。我们可以利用如<code>/usr/libexec/java_home -v 1.8</code>来查找当前本机存在的 Java 1.8 版本路径，在 Terminal 中执行该脚本会得到以下的返回值：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ /usr/libexec/java_home -v 1.8</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+
+<p>而输入参数为<code>-v 10</code>时，则会有下面的返回：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ /usr/libexec/java_home -v 10</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+
+<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>根据官方文档的说明，在新版本 macOS 中，我们只需要将以往的</p>
+<p><code>export JAVA_HOME=&lt;JAVA_HOME_PATH&gt;</code></p>
+<p>改写成形如</p>
+<p><code>export JAVA_&lt;MAIN_VERSION&gt;_HOME=$(/usr/libexec/lava_home -v&lt;MAIN_VERSION_NUMBER&gt;)</code></p>
+<p>即可完成对某个版本的配置，最后再以下面的配置完成 JDK 版本选择：</p>
+<p><code>export JAVA_HOME=$&#123;JAVA_&lt;MAIN_VERSION&gt;_HOME&#125;</code></p>
+<p>而为了快速切换版本，我们可以使用 alias 来绑定别名执行相应的<code>export</code>操作。完整的脚本配置如下脚本所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># .bash_profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Java</span></span><br><span class="line"><span class="built_in">export</span> JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)</span><br><span class="line"><span class="built_in">export</span> JAVA_X_HOME=$(/usr/libexec/java_home -v10)</span><br><span class="line"><span class="built_in">alias</span> jdk8=<span class="string">&#x27;export JAVA_HOME=$&#123;JAVA_8_HOME&#125;&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> jdkX=<span class="string">&#x27;export JAVA_HOME=$&#123;JAVA_X_HOME&#125;&#x27;</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=<span class="variable">$&#123;JAVA_8_HOME&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行结果直接上 Bash 输出吧</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br><span class="line">*****-Pro:~ *****$ jdkX</span><br><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;10.0.1&quot; 2018-04-17</span><br><span class="line">Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)</span><br><span class="line">*****-Pro:~ *****$ jdk8</span><br><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>macOS</tag>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
     <url>/2018/05/25/2018-05-25-InviteCode/</url>
     <content><![CDATA[<blockquote>
@@ -886,45 +928,36 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </categories>
   </entry>
   <entry>
-    <title>在新版的macOS上切换不同版本的JDK</title>
-    <url>/2018/05/31/2018-05-31-SwitchDifferentJDK/</url>
+    <title>简记Python里的单例化实现办法</title>
+    <url>/2019/08/01/2019-08-01-PythonMetaclassSingleton/</url>
     <content><![CDATA[<blockquote>
-<p>新版 macOS 的 JDK 切换似乎有些，不那么直接？这就仁者见仁了。</p>
+<p>简单记录了我学到的 Python 单例的内容</p>
+<p>本人一直都在用 Python3，以下的内容都基于 Python3 来记录，Python2 的这里就不放了</p>
 </blockquote>
-<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>为了开发（或者说玩耍）的需要，我们或多或少都会在本机上安装多个版本的 JDK。在 Windows 上，我们可以很自然的，通过定义<code>JAVA_HOME</code>的路径，来修改我们要使用的 JDK 版本。在 Linux 系统中，我们也可以通过直接定义 JDK 的路径，去配置要使用的 JDK 版本。</p>
-<p>对于 Windows 和 Linux 开发者来说，修改 JDK 使用的版本可以说是非常舒适了，简单配置一下路径，就能实现目标。然而反观 macOS，它在 JDK 版本切换上，有些人会说它方便，有些人则会说它恼人，从 macOS 10.5+版本开始，Apple 为 macOS 加的一个新东西，可以说是让那些习惯了配置路径修改 JDK 版本的开发者感到很不习惯。</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>让我们先来看看来自<code>Apple Developer - Guides and Sample Code</code>中<a href="https://developer.apple.com/library/content/qa/qa1170/_index.html">Technical Q&amp;A QA1170 Important Java Directories on Mac OS X</a>的文档说明。</p>
-<hr>
-<h4 id="Java-Home"><a href="#Java-Home" class="headerlink" title="Java Home"></a>Java Home</h4><p>Many Java applications need to know the location of a <code>$JAVA_HOME</code> directory. The <code>$JAVA_HOME</code> on Mac OS X should be found using the <code>/usr/libexec/java_home</code> command line tool on Mac OS X 10.5 or later. On older Mac OS X versions where the tool does not exist, use the fixed path “<code>/Library/Java/Home</code>“. The <code>/usr/libexec/java_home</code> tool dynamically finds the top Java version specified in Java Preferences for the current user. This path allows access to the <code>bin</code> subdirectory where command line tools such as <code>java</code>, <code>javac</code>, etc. exist as on other platforms. The tool <code>/usr/libexec/java_home</code> allows you to specify a particular CPU architecture and Java platform version when locating a <code>$JAVA_HOME</code>.</p>
-<p>Another advantage of dynamically finding this path, as opposed to hardcoding the fixed endpoint, is that it is updated when a new version of Java is downloaded via Software Update or installed with a newer version of Mac OS X. For this reason, it is important that developers do not install files in the JDKs inside of <code>/System</code>, since the changes will be lost with subsequent updates by newer versions of Java.</p>
-<p>To obtain the path to the currently executing <code>$JAVA_HOME</code>, use the <code>java.home</code> System property.</p>
-<hr>
-<p>可以看到，在使用 macOS 10.5 或更新版本的系统时，Apple 已经推荐开发者使用<code>/usr/libexec/java_home</code>去设置 JDK 的版本了，并且由于<code>java_home</code>会动态查找到最新的 JDK 版本，并且支持通过发行版通称，即 JDK1.7、JDK1.8、JDK11 等来获取路径，所以很适合用来切换不同版本的 JDK。</p>
-<p>让我们再来看一下接下来会用到的脚本。我们可以利用如<code>/usr/libexec/java_home -v 1.8</code>来查找当前本机存在的 Java 1.8 版本路径，在 Terminal 中执行该脚本会得到以下的返回值：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ /usr/libexec/java_home -v 1.8</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk1.8.0_161.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+<h2 id="引入模块"><a href="#引入模块" class="headerlink" title="引入模块"></a>引入模块</h2><p>模块在第一次导入时，会生成<code>pyc</code>文件，当第二次导入时，就会直接加载<code>pyc</code>文件，避免再次执行模块代码产生新的对象。</p>
+<p>a.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">singleton = Singleton()</span><br></pre></td></tr></table></figure>
 
-<p>而输入参数为<code>-v 10</code>时，则会有下面的返回：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ /usr/libexec/java_home -v 10</span><br><span class="line">/Library/Java/JavaVirtualMachines/jdk-10.0.1.jdk/Contents/Home</span><br></pre></td></tr></table></figure>
+<p>b.py</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> singleton</span><br></pre></td></tr></table></figure>
 
-<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>根据官方文档的说明，在新版本 macOS 中，我们只需要将以往的</p>
-<p><code>export JAVA_HOME=&lt;JAVA_HOME_PATH&gt;</code></p>
-<p>改写成形如</p>
-<p><code>export JAVA_&lt;MAIN_VERSION&gt;_HOME=$(/usr/libexec/lava_home -v&lt;MAIN_VERSION_NUMBER&gt;)</code></p>
-<p>即可完成对某个版本的配置，最后再以下面的配置完成 JDK 版本选择：</p>
-<p><code>export JAVA_HOME=$&#123;JAVA_&lt;MAIN_VERSION&gt;_HOME&#125;</code></p>
-<p>而为了快速切换版本，我们可以使用 alias 来绑定别名执行相应的<code>export</code>操作。完整的脚本配置如下脚本所示：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># .bash_profile</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Java</span></span><br><span class="line"><span class="built_in">export</span> JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)</span><br><span class="line"><span class="built_in">export</span> JAVA_X_HOME=$(/usr/libexec/java_home -v10)</span><br><span class="line"><span class="built_in">alias</span> jdk8=<span class="string">&#x27;export JAVA_HOME=$&#123;JAVA_8_HOME&#125;&#x27;</span></span><br><span class="line"><span class="built_in">alias</span> jdkX=<span class="string">&#x27;export JAVA_HOME=$&#123;JAVA_X_HOME&#125;&#x27;</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=<span class="variable">$&#123;JAVA_8_HOME&#125;</span></span><br></pre></td></tr></table></figure>
+<h2 id="装饰器（我倒是喜欢理解成注解，谁叫我之前写-Java-的）"><a href="#装饰器（我倒是喜欢理解成注解，谁叫我之前写-Java-的）" class="headerlink" title="装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）"></a>装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">singleton</span>(<span class="params">cls</span>):</span><br><span class="line">    __instances = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_singleton</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> __instances:</span><br><span class="line">            __instances[cls] = cls(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> __instances[cls]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> _singleton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@singleton</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x=<span class="number">0</span></span>):</span><br><span class="line">        self.x = x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a1 = A(<span class="number">2</span>)</span><br><span class="line">a2 = A(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
 
-<p>执行结果直接上 Bash 输出吧</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br><span class="line">*****-Pro:~ *****$ jdkX</span><br><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;10.0.1&quot; 2018-04-17</span><br><span class="line">Java(TM) SE Runtime Environment 18.3 (build 10.0.1+10)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM 18.3 (build 10.0.1+10, mixed mode)</span><br><span class="line">*****-Pro:~ *****$ jdk8</span><br><span class="line">*****-Pro:~ *****$ java -version</span><br><span class="line">java version &quot;1.8.0_161&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_161-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.161-b12, mixed mode)</span><br></pre></td></tr></table></figure>
+<h3 id="线程锁实现线程安全的单例"><a href="#线程锁实现线程安全的单例" class="headerlink" title="线程锁实现线程安全的单例"></a>线程锁实现线程安全的单例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance_lock = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">instance</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">            <span class="keyword">with</span> Singleton._instance_lock:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">                    Singleton._instance = Singleton(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> Singleton._instance</span><br></pre></td></tr></table></figure>
+
+<h3 id="new-实现"><a href="#new-实现" class="headerlink" title="__new__实现"></a><code>__new__</code>实现</h3><p><code>__new__</code>是 Python 生命周期中必经的步骤，即使我们没有显式声明<code>__new__</code>函数，解释器依旧帮我们执行了<code>object.__new__</code>。</p>
+<p>所以我们可以将单例初始化的代码放入<code>__new__</code>函数中，让解释器来帮我们处理初始化的流程。</p>
+<p>用<code>__new__</code>的方式实现单例是最方便的，并且同样可以实现线程安全的单例。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance_lock = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">            <span class="keyword">with</span> Singleton._instance_lock:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">                    Singleton._instance = <span class="built_in">object</span>.__new__(cls)</span><br><span class="line">        <span class="keyword">return</span> Singleton._instance</span><br></pre></td></tr></table></figure>
+
+<h3 id="metaclass元类"><a href="#metaclass元类" class="headerlink" title="metaclass元类"></a><code>metaclass</code>元类</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>(<span class="title class_ inherited__">type</span>):</span><br><span class="line">    _instances = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> cls._instances:</span><br><span class="line">            cls._instances[cls] = <span class="built_in">super</span>(Singleton, cls).__call__(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> cls._instances[cls]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(metaclass=constant.Singleton):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>guide</category>
       </categories>
       <tags>
-        <tag>Java</tag>
-        <tag>macOS</tag>
-        <tag>JDK</tag>
+        <tag>Python</tag>
+        <tag>design pattern</tag>
       </tags>
   </entry>
   <entry>
@@ -959,36 +992,39 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>简记Python里的单例化实现办法</title>
-    <url>/2019/08/01/2019-08-01-PythonMetaclassSingleton/</url>
+    <title>简记修复Git提交时GPG签名失败的问题</title>
+    <url>/2019/11/15/2019-11-15-FixGPGSignFailedProb/</url>
     <content><![CDATA[<blockquote>
-<p>简单记录了我学到的 Python 单例的内容</p>
-<p>本人一直都在用 Python3，以下的内容都基于 Python3 来记录，Python2 的这里就不放了</p>
+<p>一直以来都很正常的 GPG 签名，唐突暴毙了？？？</p>
 </blockquote>
-<h2 id="引入模块"><a href="#引入模块" class="headerlink" title="引入模块"></a>引入模块</h2><p>模块在第一次导入时，会生成<code>pyc</code>文件，当第二次导入时，就会直接加载<code>pyc</code>文件，避免再次执行模块代码产生新的对象。</p>
-<p>a.py</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">foo</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">singleton = Singleton()</span><br></pre></td></tr></table></figure>
+<p>最近在 IDEA 提交代码的时候，因为 GPG 签名失败的问题，一直没有提交成功。</p>
+<p>起初是直接走的 IDEA 的 VCS 提交，一开始还觉得是没有触发输入证书密码的界面导致的，但回想了一下之前都可以提交，那应该跟证书密码没什么关系才对。</p>
+<p>于是我尝试去终端走命令的方式提交了下，老样子还是失败了。。。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: gpg failed to sign the data</span><br><span class="line">fatal: failed to write commit object</span><br></pre></td></tr></table></figure>
 
-<p>b.py</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> a <span class="keyword">import</span> singleton</span><br></pre></td></tr></table></figure>
+<p>上 stack overflow 搜搜问题，偶然发现有一条答案挺有用的，先贴原文地址</p>
+<p><a href="https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data">Git error - gpg failed to sign data</a></p>
+<p>具体步骤嘛，首先检查 Git 全局配置的签名程序配置对了没，正确的配置应该是<code>gpg.program=gpg2</code></p>
+<p>那么我本机的话，gpg2 是定位到了<code>/usr/local/bin/gpg2</code>，可以直接跑下面的命令修复配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global gpg.program /usr/local/bin/gpg2</span><br></pre></td></tr></table></figure>
 
-<h2 id="装饰器（我倒是喜欢理解成注解，谁叫我之前写-Java-的）"><a href="#装饰器（我倒是喜欢理解成注解，谁叫我之前写-Java-的）" class="headerlink" title="装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）"></a>装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">singleton</span>(<span class="params">cls</span>):</span><br><span class="line">    __instances = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">_singleton</span>(<span class="params">*args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> __instances:</span><br><span class="line">            __instances[cls] = cls(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> __instances[cls]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> _singleton</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@singleton</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>:</span><br><span class="line">    a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, x=<span class="number">0</span></span>):</span><br><span class="line">        self.x = x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a1 = A(<span class="number">2</span>)</span><br><span class="line">a2 = A(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>接着用下面的命令检查 GPG 签名时是不是正常工作的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | gpg2 --clearsign</span><br></pre></td></tr></table></figure>
 
-<h3 id="线程锁实现线程安全的单例"><a href="#线程锁实现线程安全的单例" class="headerlink" title="线程锁实现线程安全的单例"></a>线程锁实现线程安全的单例</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance_lock = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        time.sleep(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="meta">    @classmethod</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">instance</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">            <span class="keyword">with</span> Singleton._instance_lock:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">                    Singleton._instance = Singleton(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> Singleton._instance</span><br></pre></td></tr></table></figure>
+<p>顺带一提如果没有输入证书密码的界面，或许需要安装<code>pinentry</code>，以 macOS 举例，可以用<code>brew install pinentry</code>装一下就完事了</p>
+<p>之后再尝试<code>git commit</code>，没报错的话就到此为止了，问题定位在没有正确配置签名程序（以及有可能是缺少<code>pinentry</code>）</p>
+<p>尝试提交还是失败的话，这时候就要把一个叫<code>gpg-agent</code>的家伙干掉了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> gpg-agent</span><br></pre></td></tr></table></figure>
 
-<h3 id="new-实现"><a href="#new-实现" class="headerlink" title="__new__实现"></a><code>__new__</code>实现</h3><p><code>__new__</code>是 Python 生命周期中必经的步骤，即使我们没有显式声明<code>__new__</code>函数，解释器依旧帮我们执行了<code>object.__new__</code>。</p>
-<p>所以我们可以将单例初始化的代码放入<code>__new__</code>函数中，让解释器来帮我们处理初始化的流程。</p>
-<p>用<code>__new__</code>的方式实现单例是最方便的，并且同样可以实现线程安全的单例。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>:</span><br><span class="line">    _instance_lock = threading.Lock()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__new__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">            <span class="keyword">with</span> Singleton._instance_lock:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> <span class="built_in">hasattr</span>(Singleton, <span class="string">&quot;_instance&quot;</span>):</span><br><span class="line">                    Singleton._instance = <span class="built_in">object</span>.__new__(cls)</span><br><span class="line">        <span class="keyword">return</span> Singleton._instance</span><br></pre></td></tr></table></figure>
-
-<h3 id="metaclass元类"><a href="#metaclass元类" class="headerlink" title="metaclass元类"></a><code>metaclass</code>元类</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Singleton</span>(<span class="title class_ inherited__">type</span>):</span><br><span class="line">    _instances = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__call__</span>(<span class="params">cls, *args, **kwargs</span>):</span><br><span class="line">        <span class="keyword">if</span> cls <span class="keyword">not</span> <span class="keyword">in</span> cls._instances:</span><br><span class="line">            cls._instances[cls] = <span class="built_in">super</span>(Singleton, cls).__call__(*args, **kwargs)</span><br><span class="line">        <span class="keyword">return</span> cls._instances[cls]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>(metaclass=constant.Singleton):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>一般到此为止，重新提交就可以正常签名。要是缺少<code>gpgconf</code>或者<code>--kill</code>选项丢失，重新装一下<code>gnupg</code>或许是个好选择。</p>
+<p>那么这里我顺带吐槽一下，国内各个博客，不是教你怎么关闭提交签名，就是让你检查提交时的<code>user.name</code>和<code>user.email</code>，其实那些都不是主要问题，别人就是要用 GPG 对提交签名，你们却教别人关闭签名，意义何在？</p>
 ]]></content>
       <categories>
         <category>guide</category>
       </categories>
       <tags>
-        <tag>Python</tag>
-        <tag>design pattern</tag>
+        <tag>Git</tag>
+        <tag>GPG</tag>
       </tags>
   </entry>
   <entry>
@@ -1124,114 +1160,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>利用Helm在Kubernetes部署无状态的Apollo配置中心</title>
-    <url>/2022/04/02/2022-04-02-ApolloInKubernetes/</url>
-    <content><![CDATA[<blockquote>
-<p>采用 K8S 无状态模式部署 Apollo 配置中心，可以利用 Helm 安装，本文给出部署 Apollo 配置中心的步骤说明。</p>
-<p>截至发文日，我所使用的版本为<code>1.9.2</code>。</p>
-<p>如果你还不了解 Apollo 配置中心，建议在阅读本文前，查看<a href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>。</p>
-</blockquote>
-<p>要在 Kubernetes 部署 Apollo 配置中心，你需要做以下准备：</p>
-<ol>
-<li>安装<code>kubectl</code>和<code>helm</code>命令行工具；</li>
-<li>执行 Apollo 配置中心初始化数据库的 SQL 文件；</li>
-<li>准备几个部署时会用到的文件，具体文件个数，视你要部署的环境；</li>
-<li>以阿里云 ACK 为例子，你可以在 ACK 集群详情页面找到用于连接到 Kubernetes 的 <code>.kube/config</code> 描述文件。</li>
-</ol>
-<hr>
-<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>部署和操作 Kubernetes 所需要的命令行工具有<code>kubectl</code>和<code>helm</code>，这里我们主要会用到<code>helm</code>，它是 Kubernetes 的包管理工具，我们可以通过<code>helm</code>向自己的集群部署通用包应用。</p>
-<ul>
-<li><a href="https://kubernetes.io/docs/tasks/tools/"><code>kubectl</code> Install Tools | Kubernetes</a></li>
-<li><a href="https://helm.sh/"><code>helm</code> Helm</a></li>
-</ul>
-<hr>
-<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>初始化数据库的相关脚本，可以在<a href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>获取，这里不再给出具体链接。</p>
-<p>需要注意，初始化 Apollo 配置中心的数据库内容，需要执行一共两个脚本，分别是<code>ApolloPortalDB.sql</code>和<code>ApolloConfigDB.sql</code>。两个脚本缺一不可。</p>
-<p>本文举例给出两个文件执行后，对应的数据库库名：</p>
-<ul>
-<li><code>ApolloPortalDB.sql</code>对应数据库 schema：<code>ApolloPortalDB</code></li>
-<li><code>ApolloConfigDB.sql</code>对应数据库 schema：<code>ApolloConfigDB</code></li>
-</ul>
-<hr>
-<h3 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h3><p>这里我们举例部署 pro 环境和 fat 环境，那么我们需要准备的文件有如下四个。</p>
-<blockquote>
-<p>请注意，三个描述文件中连接数据库的参数，需要根据实际情况改变。</p>
-<p>如果部署环境允许，即 ACK 集群和数据库处在同一个 VPC 内，可以将<code>host</code>改成私网地址；公网地址理论上也是支持的，但我没有验证过，就不在本文下定论了。</p>
-</blockquote>
-<ul>
-<li>apollo 中心服务 pro 环境描述文件</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">configdb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloConfigDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>apollo 中心服务 fat 环境描述文件</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">configdb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloConfigDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>apollo 控制台描述文件</li>
-</ul>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">portaldb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloPortalDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br><span class="line"><span class="attr">config:</span></span><br><span class="line">    <span class="attr">envs:</span> <span class="string">test,prod</span></span><br><span class="line">    <span class="attr">metaServers:</span></span><br><span class="line">        <span class="comment"># 此处的域名，是依据 Kubernetes Pod 间通信域名来配置的，其名称需要在 helm 部署脚本里指定，请注意对比连接字符串与部署脚本的关系</span></span><br><span class="line">        <span class="attr">prod:</span> <span class="string">http://apollo-service-apollo-configservice.middleware.svc.cluster.local:8080</span></span><br><span class="line">        <span class="attr">test:</span> <span class="string">http://apollo-service-test-apollo-configservice.middleware.svc.cluster.local:8080</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>helm 部署脚本</li>
-</ul>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建命名空间</span></span><br><span class="line">kubectl create namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">向集群注册 Apollo Charts</span></span><br><span class="line">helm repo add apollo https://www.apolloconfig.com/charts</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 pro 环境</span></span><br><span class="line">helm install -f apollo_prod-config-values.yml apollo-service apollo/apollo-service --namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 fat 环境</span></span><br><span class="line">helm install -f apollo_test-config-values.yml apollo-service-test apollo/apollo-service --namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 控制台</span></span><br><span class="line">helm install -f apollo_portal-config-values.yml apollo-portal apollo/apollo-portal --namespace middleware</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>准备好上述文件，并配置好本机的命令行工具后，执行部署脚本。安装过程视网络情况而定，一般会需要一小段时间。</p>
-<p>执行成功后，前往阿里云 ACK 集群查看命名空间 middleware 的部署情况，可以在「无状态」页面和「服务」页面看到新部署的服务。</p>
-<p>现在部署好的服务暂时还不可用，你需要调整相关的路由配置和服务类型。</p>
-<p>首先，修改「服务」页面 <code>apollo-portal</code> 服务的类型为 <code>NodePort</code>（节点端口），然后前往「路由」页面，为这个服务创建域名解析，最后前往阿里云 DNS 控制台配置好 Apollo Portal 控制台的域名解析。</p>
-<p>其次，修改「服务」页面 <code>apollo-service-apollo-configservice</code> 服务和 <code>apollo-service-test-apollo-configservice</code> 服务的服务类型为 <code>LoadBalancer</code>（负载均衡），设为私网访问（因为配置中心不一定需要开放公网访问）。</p>
-<p>到此为止，Apollo 配置中心部署完毕。</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Kubernetes</tag>
-        <tag>Apollo</tag>
-        <tag>Helm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简记修复Git提交时GPG签名失败的问题</title>
-    <url>/2019/11/15/2019-11-15-FixGPGSignFailedProb/</url>
-    <content><![CDATA[<blockquote>
-<p>一直以来都很正常的 GPG 签名，唐突暴毙了？？？</p>
-</blockquote>
-<p>最近在 IDEA 提交代码的时候，因为 GPG 签名失败的问题，一直没有提交成功。</p>
-<p>起初是直接走的 IDEA 的 VCS 提交，一开始还觉得是没有触发输入证书密码的界面导致的，但回想了一下之前都可以提交，那应该跟证书密码没什么关系才对。</p>
-<p>于是我尝试去终端走命令的方式提交了下，老样子还是失败了。。。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: gpg failed to sign the data</span><br><span class="line">fatal: failed to write commit object</span><br></pre></td></tr></table></figure>
-
-<p>上 stack overflow 搜搜问题，偶然发现有一条答案挺有用的，先贴原文地址</p>
-<p><a href="https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data">Git error - gpg failed to sign data</a></p>
-<p>具体步骤嘛，首先检查 Git 全局配置的签名程序配置对了没，正确的配置应该是<code>gpg.program=gpg2</code></p>
-<p>那么我本机的话，gpg2 是定位到了<code>/usr/local/bin/gpg2</code>，可以直接跑下面的命令修复配置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global gpg.program /usr/local/bin/gpg2</span><br></pre></td></tr></table></figure>
-
-<p>接着用下面的命令检查 GPG 签名时是不是正常工作的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | gpg2 --clearsign</span><br></pre></td></tr></table></figure>
-
-<p>顺带一提如果没有输入证书密码的界面，或许需要安装<code>pinentry</code>，以 macOS 举例，可以用<code>brew install pinentry</code>装一下就完事了</p>
-<p>之后再尝试<code>git commit</code>，没报错的话就到此为止了，问题定位在没有正确配置签名程序（以及有可能是缺少<code>pinentry</code>）</p>
-<p>尝试提交还是失败的话，这时候就要把一个叫<code>gpg-agent</code>的家伙干掉了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> gpg-agent</span><br></pre></td></tr></table></figure>
-
-<p>一般到此为止，重新提交就可以正常签名。要是缺少<code>gpgconf</code>或者<code>--kill</code>选项丢失，重新装一下<code>gnupg</code>或许是个好选择。</p>
-<p>那么这里我顺带吐槽一下，国内各个博客，不是教你怎么关闭提交签名，就是让你检查提交时的<code>user.name</code>和<code>user.email</code>，其实那些都不是主要问题，别人就是要用 GPG 对提交签名，你们却教别人关闭签名，意义何在？</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>GPG</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Docker部署Apollo的正确姿势</title>
     <url>/2022/07/08/2022-07-08-ApolloInDocker/</url>
     <content><![CDATA[<blockquote>
@@ -1356,8 +1284,132 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
         <category>guide</category>
       </categories>
       <tags>
-        <tag>Apollo</tag>
         <tag>Docker</tag>
+        <tag>Apollo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>利用Helm在Kubernetes部署无状态的Apollo配置中心</title>
+    <url>/2022/04/02/2022-04-02-ApolloInKubernetes/</url>
+    <content><![CDATA[<blockquote>
+<p>采用 K8S 无状态模式部署 Apollo 配置中心，可以利用 Helm 安装，本文给出部署 Apollo 配置中心的步骤说明。</p>
+<p>截至发文日，我所使用的版本为<code>1.9.2</code>。</p>
+<p>如果你还不了解 Apollo 配置中心，建议在阅读本文前，查看<a href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>。</p>
+</blockquote>
+<p>要在 Kubernetes 部署 Apollo 配置中心，你需要做以下准备：</p>
+<ol>
+<li>安装<code>kubectl</code>和<code>helm</code>命令行工具；</li>
+<li>执行 Apollo 配置中心初始化数据库的 SQL 文件；</li>
+<li>准备几个部署时会用到的文件，具体文件个数，视你要部署的环境；</li>
+<li>以阿里云 ACK 为例子，你可以在 ACK 集群详情页面找到用于连接到 Kubernetes 的 <code>.kube/config</code> 描述文件。</li>
+</ol>
+<hr>
+<h3 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h3><p>部署和操作 Kubernetes 所需要的命令行工具有<code>kubectl</code>和<code>helm</code>，这里我们主要会用到<code>helm</code>，它是 Kubernetes 的包管理工具，我们可以通过<code>helm</code>向自己的集群部署通用包应用。</p>
+<ul>
+<li><a href="https://kubernetes.io/docs/tasks/tools/"><code>kubectl</code> Install Tools | Kubernetes</a></li>
+<li><a href="https://helm.sh/"><code>helm</code> Helm</a></li>
+</ul>
+<hr>
+<h3 id="初始化数据库"><a href="#初始化数据库" class="headerlink" title="初始化数据库"></a>初始化数据库</h3><p>初始化数据库的相关脚本，可以在<a href="https://www.apolloconfig.com/#/zh/README">Apollo 配置中心官方文档</a>获取，这里不再给出具体链接。</p>
+<p>需要注意，初始化 Apollo 配置中心的数据库内容，需要执行一共两个脚本，分别是<code>ApolloPortalDB.sql</code>和<code>ApolloConfigDB.sql</code>。两个脚本缺一不可。</p>
+<p>本文举例给出两个文件执行后，对应的数据库库名：</p>
+<ul>
+<li><code>ApolloPortalDB.sql</code>对应数据库 schema：<code>ApolloPortalDB</code></li>
+<li><code>ApolloConfigDB.sql</code>对应数据库 schema：<code>ApolloConfigDB</code></li>
+</ul>
+<hr>
+<h3 id="准备文件"><a href="#准备文件" class="headerlink" title="准备文件"></a>准备文件</h3><p>这里我们举例部署 pro 环境和 fat 环境，那么我们需要准备的文件有如下四个。</p>
+<blockquote>
+<p>请注意，三个描述文件中连接数据库的参数，需要根据实际情况改变。</p>
+<p>如果部署环境允许，即 ACK 集群和数据库处在同一个 VPC 内，可以将<code>host</code>改成私网地址；公网地址理论上也是支持的，但我没有验证过，就不在本文下定论了。</p>
+</blockquote>
+<ul>
+<li>apollo 中心服务 pro 环境描述文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">configdb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloConfigDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>apollo 中心服务 fat 环境描述文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">configdb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloConfigDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>apollo 控制台描述文件</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">portaldb:</span></span><br><span class="line">    <span class="attr">host:</span> <span class="string">&quot;&lt;database-connect-host&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成你的数据库 Host</span></span><br><span class="line">    <span class="attr">dbName:</span> <span class="string">&quot;ApolloPortalDB&quot;</span></span><br><span class="line">    <span class="attr">userName:</span> <span class="string">&quot;&lt;database-username&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的用户名</span></span><br><span class="line">    <span class="attr">password:</span> <span class="string">&quot;&lt;database-password&gt;&quot;</span> <span class="comment"># 将单引号内的所有字符，替换成连接数据库的密码</span></span><br><span class="line">    <span class="attr">connectionStringProperties:</span> <span class="string">&quot;characterEncoding=utf8&amp;useSSL=false&quot;</span></span><br><span class="line">    <span class="attr">service:</span></span><br><span class="line">        <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">type:</span> <span class="string">ExternalName</span></span><br><span class="line"><span class="attr">config:</span></span><br><span class="line">    <span class="attr">envs:</span> <span class="string">test,prod</span></span><br><span class="line">    <span class="attr">metaServers:</span></span><br><span class="line">        <span class="comment"># 此处的域名，是依据 Kubernetes Pod 间通信域名来配置的，其名称需要在 helm 部署脚本里指定，请注意对比连接字符串与部署脚本的关系</span></span><br><span class="line">        <span class="attr">prod:</span> <span class="string">http://apollo-service-apollo-configservice.middleware.svc.cluster.local:8080</span></span><br><span class="line">        <span class="attr">test:</span> <span class="string">http://apollo-service-test-apollo-configservice.middleware.svc.cluster.local:8080</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>helm 部署脚本</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">创建命名空间</span></span><br><span class="line">kubectl create namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">向集群注册 Apollo Charts</span></span><br><span class="line">helm repo add apollo https://www.apolloconfig.com/charts</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 pro 环境</span></span><br><span class="line">helm install -f apollo_prod-config-values.yml apollo-service apollo/apollo-service --namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 fat 环境</span></span><br><span class="line">helm install -f apollo_test-config-values.yml apollo-service-test apollo/apollo-service --namespace middleware</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">部署 控制台</span></span><br><span class="line">helm install -f apollo_portal-config-values.yml apollo-portal apollo/apollo-portal --namespace middleware</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><p>准备好上述文件，并配置好本机的命令行工具后，执行部署脚本。安装过程视网络情况而定，一般会需要一小段时间。</p>
+<p>执行成功后，前往阿里云 ACK 集群查看命名空间 middleware 的部署情况，可以在「无状态」页面和「服务」页面看到新部署的服务。</p>
+<p>现在部署好的服务暂时还不可用，你需要调整相关的路由配置和服务类型。</p>
+<p>首先，修改「服务」页面 <code>apollo-portal</code> 服务的类型为 <code>NodePort</code>（节点端口），然后前往「路由」页面，为这个服务创建域名解析，最后前往阿里云 DNS 控制台配置好 Apollo Portal 控制台的域名解析。</p>
+<p>其次，修改「服务」页面 <code>apollo-service-apollo-configservice</code> 服务和 <code>apollo-service-test-apollo-configservice</code> 服务的服务类型为 <code>LoadBalancer</code>（负载均衡），设为私网访问（因为配置中心不一定需要开放公网访问）。</p>
+<p>到此为止，Apollo 配置中心部署完毕。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Apollo</tag>
+        <tag>Kubernetes</tag>
+        <tag>Helm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录一下本地搭建 Kafka 的一些命令</title>
+    <url>/2023/08/30/2023-08-30-SetupKafkaInLocalMachine/</url>
+    <content><![CDATA[<p>简单记录一下本地搭建 Kafka 用到的命令。</p>
+<p>利用 Docker 在本地搭建单机版 Kafka。</p>
+<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/.zookeeper/data</span><br><span class="line">mkdir -p ~/.zookeeper/datalog</span><br><span class="line">docker run -d --privileged=true --restart=always --name=zookeeper -p 2181:2181 -v /etc/localtime:/etc/localtime -v ~/.zookeeper/data:/data -v ~/.zookeeper/datalog:/datalog -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/.kafka/data</span><br><span class="line">docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v ~/.kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于-KAFKA-ADVERTISED-LISTENERS"><a href="#关于-KAFKA-ADVERTISED-LISTENERS" class="headerlink" title="关于 KAFKA_ADVERTISED_LISTENERS"></a>关于 <code>KAFKA_ADVERTISED_LISTENERS</code></h3><ul>
+<li>如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问</li>
+<li>如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通</li>
+</ul>
+<h3 id="完成上述配置后，重启一下-Kafka"><a href="#完成上述配置后，重启一下-Kafka" class="headerlink" title="完成上述配置后，重启一下 Kafka"></a>完成上述配置后，重启一下 Kafka</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker restart kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">    <span class="attr">zookeeper:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">&quot;wurstmeister/zookeeper&quot;</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">zookeeper</span></span><br><span class="line">        <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;2181:2181&quot;</span></span><br><span class="line">        <span class="attr">volumes:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.zookeeper/data:/data</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.zookeeper/datalog:/datalog</span></span><br><span class="line">        <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">kafka:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">&quot;wurstmeister/kafka&quot;</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">kafka</span></span><br><span class="line">        <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;9092:9092&quot;</span></span><br><span class="line">        <span class="attr">volumes:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.kafka/data:/kafka</span></span><br><span class="line">        <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">environment:</span></span><br><span class="line">            <span class="attr">KAFKA_BROKER_ID:</span> <span class="number">0</span></span><br><span class="line">            <span class="attr">KAFKA_AUTO_CREATE_TOPICS_ENABLE:</span> <span class="literal">true</span></span><br><span class="line">            <span class="attr">KAFKA_LOG_RETENTION_HOURS:</span> <span class="number">72</span></span><br><span class="line">            <span class="attr">KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">zookeeper:2181</span></span><br><span class="line">            <span class="attr">KAFKA_LISTENERS:</span> <span class="string">PLAINTEXT://0.0.0.0:9092</span></span><br><span class="line">            <span class="comment"># 如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问</span></span><br><span class="line">            <span class="comment"># 如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通</span></span><br><span class="line">            <span class="attr">KAFKA_ADVERTISED_LISTENERS:</span> <span class="string">PLAINTEXT://localhost:9092</span></span><br><span class="line">        <span class="attr">depends_on:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">zookeeper</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Kafka</tag>
+        <tag>Zookeeper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录一个配合 Crontab 实现自动部署的脚本</title>
+    <url>/2023/12/06/2023-12-06-AutoDeployByCrontab/</url>
+    <content><![CDATA[<p>记录一个配合 Linux Crontab 实现的自动定时部署脚本</p>
+<h2 id="Crontab-部分"><a href="#Crontab-部分" class="headerlink" title="Crontab 部分"></a>Crontab 部分</h2><p>首先简单说一下 Crontab 的 <code>cron</code> 表达式，Crontab 的 <code>cron</code> 表达式与通常我们在 Java、Golang 里写过的 6 位表达式不同，它是一个只支持到【分钟】单位的表达式，所以只有 5 位。</p>
+<p>对于需要指定间隔的表达式，还需要把时间范围显式地给表达出来。</p>
+<p>这里推荐一个 <a href="https://crontab.guru/">crontab guru</a> 网站可以快速检查 Crontab 表达式，这个网站会指出不符合标准的表达式。</p>
+<p><img src="/static/images/2021-03-03-AnalysisOfDiscordBotOAuth/cover-discord-bot.png" alt="crontab guru website"></p>
+<p>这里给出一个例子：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line"># Edit this file to introduce tasks to be run by cron.</span><br><span class="line"># </span><br><span class="line"># Each task to run has to be defined through a single line</span><br><span class="line"># indicating with different fields when the task will be run</span><br><span class="line"># and what command to run for the task</span><br><span class="line"># </span><br><span class="line"># To define the time you can provide concrete values for</span><br><span class="line"># minute (m), hour (h), day of month (dom), month (mon),</span><br><span class="line"># and day of week (dow) or use &#x27;*&#x27; in these fields (for &#x27;any&#x27;).</span><br><span class="line"># </span><br><span class="line"># Notice that tasks will be started based on the cron&#x27;s system</span><br><span class="line"># daemon&#x27;s notion of time and timezones.</span><br><span class="line"># </span><br><span class="line"># Output of the crontab jobs (including errors) is sent through</span><br><span class="line"># email to the user the crontab file belongs to (unless redirected).</span><br><span class="line"># </span><br><span class="line"># For example, you can run a backup of all your user accounts</span><br><span class="line"># at 5 a.m every week with:</span><br><span class="line"># 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/</span><br><span class="line"># </span><br><span class="line"># For more information see the manual pages of crontab(5) and cron(8)</span><br><span class="line"># </span><br><span class="line"># m h  dom mon dow   command</span><br><span class="line"></span><br><span class="line"># 每间隔 5 分钟，定时执行脚本 /data/shell/cleanup-docker-images.sh</span><br><span class="line">0-59/5 * * * * /data/shell/cleanup-docker-images.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到，这里我定义了一个每间隔 5 分钟清理一次 docker 镜像的任务，它每隔 5 分钟就会执行一次脚本 <code>/data/shell/cleanup-docker-images.sh</code>。</p>
+<p>当然，这里也可以不使用脚本，在 <code>cron</code> 表达式后面可以接一些简单的脚本命令，例如 <code>echo &quot;2233&quot;</code>。</p>
+<h2 id="命令部分"><a href="#命令部分" class="headerlink" title="命令部分"></a>命令部分</h2><p>本文说的是一个自动部署，那么下面直接给出一个用来做自动部署的脚本。</p>
+<p>假设这是一个网页，它使用了 yarn 来作为依赖管理工具，使用 Nuxt 来构建网页。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/usr/bin/env bash</span></span><br><span class="line"></span><br><span class="line">cd /path/to/git-repo || exit</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查 git 仓库更新</span></span><br><span class="line">git stash</span><br><span class="line">git checkout deploy_branch</span><br><span class="line">old_version=$(git rev-parse HEAD)</span><br><span class="line">echo &quot;old version: $old_version&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 刷新分支和更新信息</span></span></span><br><span class="line">git fetch --prune origin</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 拉取变更</span></span></span><br><span class="line">git pull</span><br><span class="line">new_version=$(git rev-parse HEAD)</span><br><span class="line">echo &quot;new version: $new_version&quot;</span><br><span class="line">if [ &quot;$old_version&quot; = &quot;$new_version&quot; ]; then</span><br><span class="line">    ### 没有更新，退出脚本</span><br><span class="line">    echo &quot;不需要更新&quot;</span><br><span class="line">    exit 0</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">cd /path/to/git-repo || exit</span><br><span class="line">yarn</span><br><span class="line">yarn nuxt cleanup</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 下面这句命令配置在 package.json 中，等效于 `yarn nuxt generate`</span></span></span><br><span class="line">yarn generate</span><br><span class="line"></span><br><span class="line">cd /path/to/git-repo || exit</span><br><span class="line">cp -a /var/www/website /var/www/website-backup</span><br><span class="line">cp -a /path/to/git-repo/dist/* /var/www/website</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">## 可选：重载 nginx</span></span></span><br><span class="line">nginx -s reload</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Crontab</tag>
       </tags>
   </entry>
   <entry>
@@ -1365,6 +1417,9 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
     <url>/2022/10/27/2022-10-27-HackCompletableFuture/</url>
     <content><![CDATA[<blockquote>
 <p>利用反射优化 <code>ForkJoinPool</code> 让 <code>CompletableFuture</code> 用起来更舒服</p>
+</blockquote>
+<blockquote>
+<p>注意：自 JDK17 以后，需要强制 <code>--add-opens</code> 打开反射，较为繁琐，建议 JDK17 以后自己开一个 <code>ForkJoinPool</code> 传入给 <code>CompletableFuture</code>，也建议 JDK21 以后直接使用虚拟线程（协程）。</p>
 </blockquote>
 <p>本文开头我不过多讨论 <code>CompletableFuture</code> 底层的东西，从入口出发。</p>
 <p>以 <code>java.util.concurrent.CompletableFuture#supplyAsync(java.util.function.Supplier&lt;U&gt;)</code> 为入口，我们将创建得到一个 <code>CompletableFuture</code> 对象。<br>这个方法的相关代码如下：</p>
