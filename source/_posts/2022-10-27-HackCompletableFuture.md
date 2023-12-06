@@ -12,6 +12,8 @@ cover:
 
 > 利用反射优化 `ForkJoinPool` 让 `CompletableFuture` 用起来更舒服
 
+> 注意：自 JDK17 以后，需要强制 `--add-opens` 打开反射，较为繁琐，建议 JDK17 以后自己开一个 `ForkJoinPool` 传入给 `CompletableFuture`，也建议 JDK21 以后直接使用虚拟线程（协程）。
+
 本文开头我不过多讨论 `CompletableFuture` 底层的东西，从入口出发。
 
 以 `java.util.concurrent.CompletableFuture#supplyAsync(java.util.function.Supplier<U>)` 为入口，我们将创建得到一个 `CompletableFuture` 对象。
