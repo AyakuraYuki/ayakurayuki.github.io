@@ -93,7 +93,9 @@ yarn nuxt cleanup
 yarn generate
 
 cd /path/to/git-repo || exit
+### 备份旧资源
 cp -a /var/www/website /var/www/website-backup
+### 拷贝新资源
 cp -a /path/to/git-repo/dist/* /var/www/website
 
 ### 可选：重载 nginx
