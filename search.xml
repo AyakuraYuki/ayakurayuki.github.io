@@ -1,28 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SSM codes Generator</title>
-    <url>/2017/05/14/2017-05-14-SSMGenerator/</url>
-    <content><![CDATA[<h1 id="SSMGenerator"><a href="#SSMGenerator" class="headerlink" title="SSMGenerator"></a><a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a></h1><blockquote>
-<p>Spring &amp; SpringMVC &amp; MyBatis 项目代码生成模板</p>
-</blockquote>
-<p>根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类</p>
-<p>需要使用 CodeSmith</p>
-<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><p>1.自定义作者名</p>
-<p>2.自定义输出路径</p>
-<p>3.自定义基础包名</p>
-<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。</p>
-<h2 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h2><p><a href="https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip">唯一的下载入口</a><br>（因为不会有 Release 版本，注意随时会有修改）</p>
-]]></content>
-      <categories>
-        <category>project</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Million Live Event Ranking Viewer</title>
     <url>/2017/05/15/2017-05-15-MLEventRankingViewer/</url>
     <content><![CDATA[<h1 id="Million-Live-Event-Ranking-Viewer"><a href="#Million-Live-Event-Ranking-Viewer" class="headerlink" title="Million Live Event Ranking Viewer"></a>Million Live Event Ranking Viewer</h1><blockquote>
@@ -72,6 +50,28 @@
     <content><![CDATA[<h1 id="SimpleSpringBootCRUD"><a href="#SimpleSpringBootCRUD" class="headerlink" title="SimpleSpringBootCRUD"></a>SimpleSpringBootCRUD</h1><p>这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。</p>
 <p><a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">项目地址</a></p>
 <p>有兴趣的话也可以 fork 下来试着玩玩 : D</p>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SSM codes Generator</title>
+    <url>/2017/05/14/2017-05-14-SSMGenerator/</url>
+    <content><![CDATA[<h1 id="SSMGenerator"><a href="#SSMGenerator" class="headerlink" title="SSMGenerator"></a><a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a></h1><blockquote>
+<p>Spring &amp; SpringMVC &amp; MyBatis 项目代码生成模板</p>
+</blockquote>
+<p>根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类</p>
+<p>需要使用 CodeSmith</p>
+<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><p>1.自定义作者名</p>
+<p>2.自定义输出路径</p>
+<p>3.自定义基础包名</p>
+<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。</p>
+<h2 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h2><p><a href="https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip">唯一的下载入口</a><br>（因为不会有 Release 版本，注意随时会有修改）</p>
 ]]></content>
       <categories>
         <category>project</category>
@@ -409,6 +409,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Red-bot function mlborder</title>
+    <url>/2017/09/14/2017-09-14-MlBorderFunction/</url>
+    <content><![CDATA[<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mlborder</span>(<span class="params">self, event_code: <span class="built_in">int</span> = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># Catch current ranking points. Need event code.</span></span><br><span class="line">    <span class="keyword">if</span> event_code <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        url = <span class="string">&quot;http://mlborder.com/events/&#123;&#125;/&quot;</span>.<span class="built_in">format</span>(event_code)</span><br><span class="line">        document = pq(url)</span><br><span class="line">        title = document(<span class="string">&#x27;title&#x27;</span>).text()</span><br><span class="line">        body = document(<span class="string">&#x27;body&#x27;</span>)</span><br><span class="line">        border_div = pq(body(<span class="string">&#x27;.tab-pane&#x27;</span>)[<span class="number">0</span>])(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        data_react_props = border_div.html()</span><br><span class="line"></span><br><span class="line">        original_data = data_react_props[data_react_props.index(<span class="string">&#x27;&#123;&#x27;</span>):data_react_props.rindex(<span class="string">&#x27;&#125;&#x27;</span>) + <span class="number">1</span>]</span><br><span class="line">        prepare_json = original_data.replace(<span class="string">&#x27;&amp;quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">        json_data = json.loads(prepare_json)</span><br><span class="line"></span><br><span class="line">        event_name = title[title.index(<span class="string">&#x27;『&#x27;</span>) + <span class="number">1</span>:title.rindex(<span class="string">&#x27;』&#x27;</span>)]</span><br><span class="line">        event_info = document(<span class="string">&#x27;.list-group-item&#x27;</span>).text()</span><br><span class="line"></span><br><span class="line">        ending_time = event_info[event_info.index(<span class="string">&#x27;〜&#x27;</span>) + <span class="number">1</span>:event_info.rindex(<span class="string">&#x27;,&#x27;</span>)]</span><br><span class="line">        ending_timestamp = time.mktime(time.strptime(ending_time, <span class="string">&#x27;%Y/%m/%d %H:%M&#x27;</span>))</span><br><span class="line">        current_timestamp = time.time()</span><br><span class="line">        left_or_passed_time = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> current_timestamp &lt; ending_timestamp:</span><br><span class="line">            left_timestamp = ending_timestamp - current_timestamp</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;あと　&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass_timestamp = current_timestamp - ending_timestamp</span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;　過ごしだ&#x27;</span></span><br><span class="line">        border_summary = json_data[<span class="string">&#x27;border_summary&#x27;</span>]</span><br><span class="line">        now = (datetime.datetime.fromtimestamp(current_timestamp) + datetime.timedelta(hours=<span class="number">1</span>)).strftime(<span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line">        borders = border_summary[<span class="string">&#x27;borders&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        msg = <span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;event_name&#125;</span>\n<span class="subst">&#123;event_info&#125;</span>\n<span class="subst">&#123;left_or_passed_time&#125;</span>\n\n<span class="subst">&#123;now&#125;</span>&#x27;</span>,</span><br><span class="line">                         <span class="string">f&quot;1位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;10位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;10&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;100位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;100&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;500位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;500&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1200位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1200&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1300位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1300&#x27;</span>]:,&#125;</span>&quot;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> self.bot.say(msg)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">await</span> self.bot.say(<span class="string">&quot;mlborder need an event code.&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Discord</tag>
+        <tag>Discord Bot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Android项目各文件夹含义说明</title>
     <url>/2017/09/14/2017-09-14-ASProjectFolders/</url>
     <content><![CDATA[<blockquote>
@@ -472,20 +486,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Red-bot function mlborder</title>
-    <url>/2017/09/14/2017-09-14-MlBorderFunction/</url>
-    <content><![CDATA[<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mlborder</span>(<span class="params">self, event_code: <span class="built_in">int</span> = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># Catch current ranking points. Need event code.</span></span><br><span class="line">    <span class="keyword">if</span> event_code <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        url = <span class="string">&quot;http://mlborder.com/events/&#123;&#125;/&quot;</span>.<span class="built_in">format</span>(event_code)</span><br><span class="line">        document = pq(url)</span><br><span class="line">        title = document(<span class="string">&#x27;title&#x27;</span>).text()</span><br><span class="line">        body = document(<span class="string">&#x27;body&#x27;</span>)</span><br><span class="line">        border_div = pq(body(<span class="string">&#x27;.tab-pane&#x27;</span>)[<span class="number">0</span>])(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        data_react_props = border_div.html()</span><br><span class="line"></span><br><span class="line">        original_data = data_react_props[data_react_props.index(<span class="string">&#x27;&#123;&#x27;</span>):data_react_props.rindex(<span class="string">&#x27;&#125;&#x27;</span>) + <span class="number">1</span>]</span><br><span class="line">        prepare_json = original_data.replace(<span class="string">&#x27;&amp;quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">        json_data = json.loads(prepare_json)</span><br><span class="line"></span><br><span class="line">        event_name = title[title.index(<span class="string">&#x27;『&#x27;</span>) + <span class="number">1</span>:title.rindex(<span class="string">&#x27;』&#x27;</span>)]</span><br><span class="line">        event_info = document(<span class="string">&#x27;.list-group-item&#x27;</span>).text()</span><br><span class="line"></span><br><span class="line">        ending_time = event_info[event_info.index(<span class="string">&#x27;〜&#x27;</span>) + <span class="number">1</span>:event_info.rindex(<span class="string">&#x27;,&#x27;</span>)]</span><br><span class="line">        ending_timestamp = time.mktime(time.strptime(ending_time, <span class="string">&#x27;%Y/%m/%d %H:%M&#x27;</span>))</span><br><span class="line">        current_timestamp = time.time()</span><br><span class="line">        left_or_passed_time = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> current_timestamp &lt; ending_timestamp:</span><br><span class="line">            left_timestamp = ending_timestamp - current_timestamp</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;あと　&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass_timestamp = current_timestamp - ending_timestamp</span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;　過ごしだ&#x27;</span></span><br><span class="line">        border_summary = json_data[<span class="string">&#x27;border_summary&#x27;</span>]</span><br><span class="line">        now = (datetime.datetime.fromtimestamp(current_timestamp) + datetime.timedelta(hours=<span class="number">1</span>)).strftime(<span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line">        borders = border_summary[<span class="string">&#x27;borders&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        msg = <span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;event_name&#125;</span>\n<span class="subst">&#123;event_info&#125;</span>\n<span class="subst">&#123;left_or_passed_time&#125;</span>\n\n<span class="subst">&#123;now&#125;</span>&#x27;</span>,</span><br><span class="line">                         <span class="string">f&quot;1位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;10位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;10&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;100位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;100&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;500位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;500&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1200位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1200&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1300位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1300&#x27;</span>]:,&#125;</span>&quot;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> self.bot.say(msg)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">await</span> self.bot.say(<span class="string">&quot;mlborder need an event code.&quot;</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Discord</tag>
-        <tag>Discord Bot</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Content Storage App</title>
     <url>/2017/10/19/2017-10-19-ContentStorageApp/</url>
     <content><![CDATA[<h1 id="content-storage-app"><a href="#content-storage-app" class="headerlink" title="content-storage-app"></a>content-storage-app</h1><blockquote>
@@ -539,6 +539,28 @@
       <tags>
         <tag>Java</tag>
         <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CG5th SSA in Hong Kong</title>
+    <url>/2017/11/02/2017-11-02-CG5thSSAinHK/</url>
+    <content><![CDATA[<blockquote>
+<p>THE IDOLM@STER CINDERELLA GIRLS 5thLIVE TOUR Serendipity Parade!!! Live viewing in Hong Kong</p>
+</blockquote>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/1.png" alt="A店收获之-1"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/2.png" alt="A店收获-2"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/3.png" alt="入场券"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/4.png" alt="港P派送的物品"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/5.png" alt="自制call本部分内容——出演名单"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/6.png" alt="开场留影，地藏位"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/7.png" alt="过期了的抽选券"></p>
+]]></content>
+      <categories>
+        <category>life</category>
+      </categories>
+      <tags>
+        <tag>IM@S</tag>
+        <tag>CinderellaGirls</tag>
       </tags>
   </entry>
   <entry>
@@ -649,25 +671,19 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>CG5th SSA in Hong Kong</title>
-    <url>/2017/11/02/2017-11-02-CG5thSSAinHK/</url>
+    <title>Create a full deck of cards in Swift</title>
+    <url>/2018/01/22/2018-01-22-PokerBySwift/</url>
     <content><![CDATA[<blockquote>
-<p>THE IDOLM@STER CINDERELLA GIRLS 5thLIVE TOUR Serendipity Parade!!! Live viewing in Hong Kong</p>
+<p>使用 Swift Playground 创建的一个程序，可以创建一套含 52 张的扑克牌，并按照花色和牌号排序。</p>
 </blockquote>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/1.png" alt="A店收获之-1"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/2.png" alt="A店收获-2"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/3.png" alt="入场券"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/4.png" alt="港P派送的物品"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/5.png" alt="自制call本部分内容——出演名单"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/6.png" alt="开场留影，地藏位"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/7.png" alt="过期了的抽选券"></p>
+<p>最近开始学习 Swift 编程，学到枚举和结构体，看到最后一个 Experiment 要实现创建一套扑克，结合了一下以前写过的”双条件”排序和官方 GuidedTour，弄了下面的代码实现。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Base card rank</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Rank</span>: <span class="title class_">Int</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> ace <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">    <span class="keyword">case</span> jack, queen, king</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .ace:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;ace&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .jack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;jack&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .queen:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;queen&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .king:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;king&quot;</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">String</span>(<span class="keyword">self</span>.rawValue)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">equals</span>(<span class="params">compare</span>: <span class="type">Rank</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.rawValue <span class="operator">==</span> compare.rawValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Card suit</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Suit</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> spades, hearts, diamonds, clubs</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .spades:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;spades&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .hearts:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;hearts&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;diamonds&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;clubs&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">color</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .hearts, .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;red&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .spades, .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;black&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Poker struct with rank and suit.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Poker</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> rank: <span class="type">Rank</span></span><br><span class="line">    <span class="keyword">var</span> suit: <span class="type">Suit</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">description</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This card is a <span class="subst">\(suit.color())</span> <span class="subst">\(suit.simpleDescription())</span> <span class="subst">\(rank.simpleDescription())</span>.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> poker <span class="operator">=</span> [<span class="type">Poker</span>]()</span><br><span class="line"><span class="comment">// Add cards</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">13</span> &#123;</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.spades))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.hearts))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.diamonds))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.clubs))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order by suit, then rank</span></span><br><span class="line">poker.sort(by: &#123;l, r -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> l.suit.simpleDescription() <span class="operator">&lt;</span> r.suit.simpleDescription() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> l.suit.simpleDescription().elementsEqual(r.suit.simpleDescription()) &#123;</span><br><span class="line">        <span class="keyword">return</span> l.rank.rawValue <span class="operator">&lt;</span> r.rank.rawValue</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// Display</span></span><br><span class="line">poker.forEach &#123; (item) <span class="keyword">in</span></span><br><span class="line">    <span class="built_in">print</span>(item.description())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>life</category>
+        <category>guide</category>
       </categories>
       <tags>
-        <tag>IM@S</tag>
-        <tag>CinderellaGirls</tag>
+        <tag>Swift</tag>
       </tags>
   </entry>
   <entry>
@@ -717,6 +733,50 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       <tags>
         <tag>Swift</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
+    <url>/2018/05/25/2018-05-25-InviteCode/</url>
+    <content><![CDATA[<blockquote>
+<p>偶然查库检查用户邀请码使用情况的时候，发现居然有重复的邀请码。。。</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>2018&#x2F;05&#x2F;25，这是个很正常的一天，除了京东白条出账催债这个很恼人的事情，大体也就没什么大事缠身的样子。</p>
+<p>同事在检查用户邀请码使用情况的时候，突然叫道我，说了句很严重很致命的话：”怎么邀请码有重复的？”</p>
+<p>咩话？！点解？！我记得邀请码设计是讨论之后敲定的方案，怎么会有重复的邀请码出现？？？</p>
+<p>问题来了，当然还得确认确认是个什么毛病才行。。。</p>
+<h2 id="述"><a href="#述" class="headerlink" title="述"></a>述</h2><p>在本文进行下去之前，让我来说明一下当时的设计是个什么样的方案。</p>
+<p>首先在邀请码的需求上，我们采用的是<code>6</code>位字符串，邀请码生成组合中有<code>4</code>位是字母，另外<code>2</code>位是数字。而在字母组合上，我们去除了邀请码中可能输入错误的字母<code>O</code>和<code>L</code>，并将剩余的 24 个字母打乱组合成四个基础字母组。</p>
+<p>随后遍历四组基础字母和数字，生成无重复的邀请码生成组合。</p>
+<p>文字说明比较生硬，但经过上述处理后，产生的邀请码生成组合没有重复，可以看下面给出的范例：（注意观察，结合后面的内容思考这里埋的坑）</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;huax54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;huac54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>这只是第一步，因为全部组合的可能性只有 1118 个，完全不可能当作邀请码来使用（根本不够嘛），所以我们更激进的，直接用每个组合进行遍历生成一批邀请码。</p>
+<h2 id="验"><a href="#验" class="headerlink" title="验"></a>验</h2><p>明眼人应该还没看到这里就能想到上面的设计方案存在什么问题了，我先走个过程，来验证一下代码中是否存在问题。</p>
+<p>在判断重复的时候，我们采用 Redis Set 的特性来排除重复。Redis Set 这一数据结构内部不允许出现重复，并且是无序的，所以能满足下面两点需求：</p>
+<ol>
+<li>添加到 Set 内的数据不会有重复</li>
+<li>随机取出邀请码并移出 Set</li>
+</ol>
+<p>在实现的时候，我将上面产生的邀请码生成组合落库，通过状态字段过滤已用组合，实际产生的邀请码存入 Redis Set 中，每当 Set 的集合个数少于 10000 条，就生成新的邀请码丢入 Set。（埋坑）</p>
+<p>在取邀请码的时候，用到 spop 取出，表示这个邀请码已用过，不再可用。（埋了个大坑！）</p>
+<p>那么看到这里，我就来说一下上面的实现存在了什么问题：</p>
+<p>首先，组合中有相互存在的字母，你有<code>h</code>我也有<code>h</code>，你有<code>5</code>我也有<code>5</code>，并没有保证生成组合两两间的完全去重。</p>
+<p>其次，生成的条件只有一个，只要满足 6 位字符就是个合理的邀请码，这样一来就有可能出现多组都是<code>hahhhh</code>，或者<code>555e55</code>之类的邀请码。</p>
+<h2 id="研"><a href="#研" class="headerlink" title="研"></a>研</h2><p>上面提到的三个埋坑点，其实很大的原因是<code>Redis Set内部元素一定唯一</code>这一特性，使得我在开发过程中过度依赖了 Redis 特性，忽视了邀请码 pop 后的场景会产生的问题，以及没有注意到邀请码生成组合本身存在的缺陷。</p>
+<p>埋坑点 1 虽然不是影响最严重的因素，但由于设置的阈值过低，很有可能已经使用过的邀请码早就被 pop 出 Set 了，没有元素重复判断的参照。</p>
+<p>埋坑点 2 则是随机取出邀请码，这里用到了 spop，spop 做的事情是，返回一个随机的元素，并且将这个元素从 Set 中移除。由于元素移除后，Set 中不存在这个元素，从而会导致相同的元素能够成功进入 Set 中。这样的情景其实只是保证了 Redis Set 内的唯一性，但没有保证整个邀请码系统的邀请码唯一性。</p>
+<p>然而上面的埋坑点都不是根源，要知道这些邀请码都是由数据库中的邀请码生成组合产生的，追根揭底还是要检查邀请码组合的构成。</p>
+<p>最终我发现，如果邀请码生成组合内如果两两间存在相同的字符，在现有的生成方法中必定会出现像上面提到的<code>hahhhh</code>的情况。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 邀请码生成写入Redis的为代码</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c1 : chars) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">char</span> c2 : chars) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c3 : chars) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> c4 : chars) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c5 : chars) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> c6 : chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c1 == c4 &amp;&amp; c1 == c5 &amp;&amp; c1 == c6) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            redis.sadd(INVITE_CODE_SET, <span class="string">&quot;&quot;</span> + c1 + c2 + c3 + c4 + c5 + c6);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看邀请码生成组合的生成方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; letters.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; letters.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span>; k &lt; letters.length - <span class="number">1</span>; k++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">3</span>; l &lt; letters.length; l++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; numbers.length - <span class="number">1</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">1</span>; y &lt; numbers.length; y++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (letters[i] == letters[j] || letters[i] == letters[k]</span><br><span class="line">                || letters[i] == letters[l]</span><br><span class="line">                || letters[j] == letters[k] || letters[j] == letters[l]</span><br><span class="line">                || letters[k] == letters[l]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (numbers[x] == numbers[y]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">InviteCodeGenerateGroup</span> <span class="variable">group</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InviteCodeGenerateGroup</span>();</span><br><span class="line">            group.setCharacters(<span class="string">&quot;&quot;</span> + letters[i] + letters[j] + letters[k] + letters[l]);</span><br><span class="line">            group.setNumbers(<span class="string">&quot;&quot;</span> + numbers[x] + numbers[y]);</span><br><span class="line">            group.setStatus(NORMAL);</span><br><span class="line">            db.insert(group);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的生成方式存在的缺陷已经很明显了，通过遍历数组的方式，仅在最里层遍历做去重，并不能做到有一个组合是<code>hatc12</code>，其他组合不能有这个组合中的任何字母的情况。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
   </entry>
   <entry>
     <title>RegEx</title>
@@ -826,50 +886,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
-    <url>/2018/05/25/2018-05-25-InviteCode/</url>
-    <content><![CDATA[<blockquote>
-<p>偶然查库检查用户邀请码使用情况的时候，发现居然有重复的邀请码。。。</p>
-</blockquote>
-<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>2018&#x2F;05&#x2F;25，这是个很正常的一天，除了京东白条出账催债这个很恼人的事情，大体也就没什么大事缠身的样子。</p>
-<p>同事在检查用户邀请码使用情况的时候，突然叫道我，说了句很严重很致命的话：”怎么邀请码有重复的？”</p>
-<p>咩话？！点解？！我记得邀请码设计是讨论之后敲定的方案，怎么会有重复的邀请码出现？？？</p>
-<p>问题来了，当然还得确认确认是个什么毛病才行。。。</p>
-<h2 id="述"><a href="#述" class="headerlink" title="述"></a>述</h2><p>在本文进行下去之前，让我来说明一下当时的设计是个什么样的方案。</p>
-<p>首先在邀请码的需求上，我们采用的是<code>6</code>位字符串，邀请码生成组合中有<code>4</code>位是字母，另外<code>2</code>位是数字。而在字母组合上，我们去除了邀请码中可能输入错误的字母<code>O</code>和<code>L</code>，并将剩余的 24 个字母打乱组合成四个基础字母组。</p>
-<p>随后遍历四组基础字母和数字，生成无重复的邀请码生成组合。</p>
-<p>文字说明比较生硬，但经过上述处理后，产生的邀请码生成组合没有重复，可以看下面给出的范例：（注意观察，结合后面的内容思考这里埋的坑）</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;huax54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;huac54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p>这只是第一步，因为全部组合的可能性只有 1118 个，完全不可能当作邀请码来使用（根本不够嘛），所以我们更激进的，直接用每个组合进行遍历生成一批邀请码。</p>
-<h2 id="验"><a href="#验" class="headerlink" title="验"></a>验</h2><p>明眼人应该还没看到这里就能想到上面的设计方案存在什么问题了，我先走个过程，来验证一下代码中是否存在问题。</p>
-<p>在判断重复的时候，我们采用 Redis Set 的特性来排除重复。Redis Set 这一数据结构内部不允许出现重复，并且是无序的，所以能满足下面两点需求：</p>
-<ol>
-<li>添加到 Set 内的数据不会有重复</li>
-<li>随机取出邀请码并移出 Set</li>
-</ol>
-<p>在实现的时候，我将上面产生的邀请码生成组合落库，通过状态字段过滤已用组合，实际产生的邀请码存入 Redis Set 中，每当 Set 的集合个数少于 10000 条，就生成新的邀请码丢入 Set。（埋坑）</p>
-<p>在取邀请码的时候，用到 spop 取出，表示这个邀请码已用过，不再可用。（埋了个大坑！）</p>
-<p>那么看到这里，我就来说一下上面的实现存在了什么问题：</p>
-<p>首先，组合中有相互存在的字母，你有<code>h</code>我也有<code>h</code>，你有<code>5</code>我也有<code>5</code>，并没有保证生成组合两两间的完全去重。</p>
-<p>其次，生成的条件只有一个，只要满足 6 位字符就是个合理的邀请码，这样一来就有可能出现多组都是<code>hahhhh</code>，或者<code>555e55</code>之类的邀请码。</p>
-<h2 id="研"><a href="#研" class="headerlink" title="研"></a>研</h2><p>上面提到的三个埋坑点，其实很大的原因是<code>Redis Set内部元素一定唯一</code>这一特性，使得我在开发过程中过度依赖了 Redis 特性，忽视了邀请码 pop 后的场景会产生的问题，以及没有注意到邀请码生成组合本身存在的缺陷。</p>
-<p>埋坑点 1 虽然不是影响最严重的因素，但由于设置的阈值过低，很有可能已经使用过的邀请码早就被 pop 出 Set 了，没有元素重复判断的参照。</p>
-<p>埋坑点 2 则是随机取出邀请码，这里用到了 spop，spop 做的事情是，返回一个随机的元素，并且将这个元素从 Set 中移除。由于元素移除后，Set 中不存在这个元素，从而会导致相同的元素能够成功进入 Set 中。这样的情景其实只是保证了 Redis Set 内的唯一性，但没有保证整个邀请码系统的邀请码唯一性。</p>
-<p>然而上面的埋坑点都不是根源，要知道这些邀请码都是由数据库中的邀请码生成组合产生的，追根揭底还是要检查邀请码组合的构成。</p>
-<p>最终我发现，如果邀请码生成组合内如果两两间存在相同的字符，在现有的生成方法中必定会出现像上面提到的<code>hahhhh</code>的情况。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 邀请码生成写入Redis的为代码</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c1 : chars) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">char</span> c2 : chars) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c3 : chars) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> c4 : chars) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c5 : chars) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> c6 : chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c1 == c4 &amp;&amp; c1 == c5 &amp;&amp; c1 == c6) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            redis.sadd(INVITE_CODE_SET, <span class="string">&quot;&quot;</span> + c1 + c2 + c3 + c4 + c5 + c6);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>再来看邀请码生成组合的生成方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; letters.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; letters.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span>; k &lt; letters.length - <span class="number">1</span>; k++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">3</span>; l &lt; letters.length; l++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; numbers.length - <span class="number">1</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">1</span>; y &lt; numbers.length; y++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (letters[i] == letters[j] || letters[i] == letters[k]</span><br><span class="line">                || letters[i] == letters[l]</span><br><span class="line">                || letters[j] == letters[k] || letters[j] == letters[l]</span><br><span class="line">                || letters[k] == letters[l]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (numbers[x] == numbers[y]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">InviteCodeGenerateGroup</span> <span class="variable">group</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InviteCodeGenerateGroup</span>();</span><br><span class="line">            group.setCharacters(<span class="string">&quot;&quot;</span> + letters[i] + letters[j] + letters[k] + letters[l]);</span><br><span class="line">            group.setNumbers(<span class="string">&quot;&quot;</span> + numbers[x] + numbers[y]);</span><br><span class="line">            group.setStatus(NORMAL);</span><br><span class="line">            db.insert(group);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的生成方式存在的缺陷已经很明显了，通过遍历数组的方式，仅在最里层遍历做去重，并不能做到有一个组合是<code>hatc12</code>，其他组合不能有这个组合中的任何字母的情况。</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-  </entry>
-  <entry>
     <title>在新版的macOS上切换不同版本的JDK</title>
     <url>/2018/05/31/2018-05-31-SwitchDifferentJDK/</url>
     <content><![CDATA[<blockquote>
@@ -942,22 +958,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       <tags>
         <tag>Python</tag>
         <tag>design pattern</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Create a full deck of cards in Swift</title>
-    <url>/2018/01/22/2018-01-22-PokerBySwift/</url>
-    <content><![CDATA[<blockquote>
-<p>使用 Swift Playground 创建的一个程序，可以创建一套含 52 张的扑克牌，并按照花色和牌号排序。</p>
-</blockquote>
-<p>最近开始学习 Swift 编程，学到枚举和结构体，看到最后一个 Experiment 要实现创建一套扑克，结合了一下以前写过的”双条件”排序和官方 GuidedTour，弄了下面的代码实现。</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Base card rank</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Rank</span>: <span class="title class_">Int</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> ace <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">    <span class="keyword">case</span> jack, queen, king</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .ace:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;ace&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .jack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;jack&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .queen:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;queen&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .king:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;king&quot;</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">String</span>(<span class="keyword">self</span>.rawValue)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">equals</span>(<span class="params">compare</span>: <span class="type">Rank</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.rawValue <span class="operator">==</span> compare.rawValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Card suit</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Suit</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> spades, hearts, diamonds, clubs</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .spades:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;spades&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .hearts:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;hearts&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;diamonds&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;clubs&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">color</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .hearts, .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;red&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .spades, .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;black&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Poker struct with rank and suit.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Poker</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> rank: <span class="type">Rank</span></span><br><span class="line">    <span class="keyword">var</span> suit: <span class="type">Suit</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">description</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This card is a <span class="subst">\(suit.color())</span> <span class="subst">\(suit.simpleDescription())</span> <span class="subst">\(rank.simpleDescription())</span>.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> poker <span class="operator">=</span> [<span class="type">Poker</span>]()</span><br><span class="line"><span class="comment">// Add cards</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">13</span> &#123;</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.spades))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.hearts))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.diamonds))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.clubs))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order by suit, then rank</span></span><br><span class="line">poker.sort(by: &#123;l, r -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> l.suit.simpleDescription() <span class="operator">&lt;</span> r.suit.simpleDescription() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> l.suit.simpleDescription().elementsEqual(r.suit.simpleDescription()) &#123;</span><br><span class="line">        <span class="keyword">return</span> l.rank.rawValue <span class="operator">&lt;</span> r.rank.rawValue</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// Display</span></span><br><span class="line">poker.forEach &#123; (item) <span class="keyword">in</span></span><br><span class="line">    <span class="built_in">print</span>(item.description())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Swift</tag>
       </tags>
   </entry>
   <entry>
@@ -1092,6 +1092,74 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
+    <title>粗分析Discord Bot OAuth认证过程</title>
+    <url>/2021/03/03/2021-03-03-AnalysisOfDiscordBotOAuth/</url>
+    <content><![CDATA[<blockquote>
+<p>稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近因为我需要设计一个开放 API 系统（虽然我可不保证能达到<code>系统</code>这个高度），我重新回顾了一下以前做<code>Discord Bots</code>的事情，也稍微花了点时间啃了<a href="https://discord.com/developers/docs/topics/oauth2#bots">Discord Dev Doc - OAuth - Bots</a>章节，<br>所以为了避免以后还要重新回去想一遍流程之类的细节，我想把我对整个 Bot 认证授权的理解粗略记录下来。</p>
+<h2 id="关于-Discord-Bot"><a href="#关于-Discord-Bot" class="headerlink" title="关于 Discord Bot"></a>关于 Discord Bot</h2><p><code>Discord Bots</code>（下简称<code>Bot</code>或<code>Bots（复数形式）</code>）是个比较巧妙的东西，透过 RESTFul API 和 Gateway，Discord 开放了几乎所有能对外使用的功能，这在 Discord 这个平台中给了开发者很大的发展空间。</p>
+<blockquote>
+<p>We support the authorization code grant, the implicit grant, client credentials, and some modified special-for-Discord flows for Bots and Webhooks</p>
+</blockquote>
+<p>Discord 开发团队为<code>Bots</code>设计的 OAuth 是一种定制化的 OAuth，有别于一般的客户端授权模式，它让 Bots 的接入变得十分简单。</p>
+<p>一个可用的<code>Bot</code>其本质，是一个由开发者创建的<code>Application</code>（下简称<code>APP</code>）下属的一个特殊的用户，在 Discord 中，这样的用户被称为<code>Bot user</code>。</p>
+<p>在创建<code>APP</code>时，Discord 会为<code>APP</code>分配在一般的<code>OAuth</code>所需的诸如<code>ClientID</code>、<code>ClientSecret</code>等参数，并且创建一个属于这个应用的<code>Bot user</code>，分配一个专有的<code>Token</code>，可以理解<code>Token</code>是<code>Bot user</code>用来登录的密码。</p>
+<h2 id="Bots是怎么运作的？"><a href="#Bots是怎么运作的？" class="headerlink" title="Bots是怎么运作的？"></a><code>Bots</code>是怎么运作的？</h2><p>当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些 API，但拿不到什么有用的数据），因为这个时候你手上的<code>APP</code>还仅仅只是一个空壳，甚至<code>Bot</code>没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里<code>Bot</code>连加好友的能力都没有）。</p>
+<p>在<a href="https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow">Bot Authorization Flow</a>章节中，文档告诉了你授权<code>Bot</code>进入伺服器的流程。</p>
+<p><code>https://discord.com/api/oauth2/authorize?client_id=157730590492196864&amp;scope=bot&amp;permissions=1</code></p>
+<table>
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">client_id</td>
+<td align="left">your app’s client id</td>
+</tr>
+<tr>
+<td align="left">scope</td>
+<td align="left">needs to include <code>bot</code> for the bot flow</td>
+</tr>
+<tr>
+<td align="left">permissions</td>
+<td align="left">the permissions you’re requesting</td>
+</tr>
+<tr>
+<td align="left">guild_id</td>
+<td align="left">pre-fills the dropdown picker with a guild for the user</td>
+</tr>
+<tr>
+<td align="left">disable_guild_select</td>
+<td align="left"><code>true</code> or <code>false</code> —disallows the user from changing the guild dropdown</td>
+</tr>
+</tbody></table>
+<p>这个链接会把你带到一个 Discord 官方提供的授权页面，在这个页面里，按我的理解，Discord 做了如下几件事情：</p>
+<ol>
+<li>验证用户登录状态</li>
+<li>用户选择需要加入的自己持有的伺服器</li>
+<li>等待用户通过授权</li>
+</ol>
+<p>从上面的流程上来看，一个<code>Bot</code>的授权，实际上是一个加入伺服器的申请，需要伺服器所有者通过<code>Bot</code>的加入申请（有可能是管理员？我在我加入过的所有伺服器都没有管理员的身份，所以管理员可否授权我就无从得知了）。</p>
+<p>所以明面上来看，<code>Bot</code>的授权流程其实还蛮简单的，把应用 ID 或者一个拼好的链接发送给伺服器所有者，然后等待对方通过授权（通过加入伺服器申请），之后这个<code>Bot</code>就可以在伺服器里快乐玩耍了。</p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续的工作，以我通常会用的<code>Discord.py</code>举例，只要把一些需要交给<code>Bot</code>去做的事情、指令等等，写好代码定义好，再把 Discord 下发的<code>Token</code>放到代码里跑起来，似乎就完成了一个简单的<code>APP</code>了。</p>
+<h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><p>到这里，该说的东西也不剩多少了。</p>
+<p><code>Bots</code>依赖<code>Application</code>，是<code>APP</code>下属的一个特殊用户，这个用户有一个全局唯一的<code>Token</code>，这个<code>Token</code>一方面用来辨别<code>Bot user</code>，一方面用来申请<code>Bot</code>用的<code>access_token</code>来调用开放的 API。</p>
+<p><code>Bot</code>能正常工作，通常需要让伺服器所有者通过授权，也就是通过加入申请，让<code>Bot user</code>加入到伺服器中。</p>
+<p>大概就点到这里为止。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Discord</tag>
+        <tag>Discord Bot</tag>
+        <tag>Discord API</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>利用Helm在Kubernetes部署无状态的Apollo配置中心</title>
     <url>/2022/04/02/2022-04-02-ApolloInKubernetes/</url>
     <content><![CDATA[<blockquote>
@@ -1161,74 +1229,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
         <tag>Kubernetes</tag>
         <tag>Apollo</tag>
         <tag>Helm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>粗分析Discord Bot OAuth认证过程</title>
-    <url>/2021/03/03/2021-03-03-AnalysisOfDiscordBotOAuth/</url>
-    <content><![CDATA[<blockquote>
-<p>稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解</p>
-</blockquote>
-<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>最近因为我需要设计一个开放 API 系统（虽然我可不保证能达到<code>系统</code>这个高度），我重新回顾了一下以前做<code>Discord Bots</code>的事情，也稍微花了点时间啃了<a href="https://discord.com/developers/docs/topics/oauth2#bots">Discord Dev Doc - OAuth - Bots</a>章节，<br>所以为了避免以后还要重新回去想一遍流程之类的细节，我想把我对整个 Bot 认证授权的理解粗略记录下来。</p>
-<h2 id="关于-Discord-Bot"><a href="#关于-Discord-Bot" class="headerlink" title="关于 Discord Bot"></a>关于 Discord Bot</h2><p><code>Discord Bots</code>（下简称<code>Bot</code>或<code>Bots（复数形式）</code>）是个比较巧妙的东西，透过 RESTFul API 和 Gateway，Discord 开放了几乎所有能对外使用的功能，这在 Discord 这个平台中给了开发者很大的发展空间。</p>
-<blockquote>
-<p>We support the authorization code grant, the implicit grant, client credentials, and some modified special-for-Discord flows for Bots and Webhooks</p>
-</blockquote>
-<p>Discord 开发团队为<code>Bots</code>设计的 OAuth 是一种定制化的 OAuth，有别于一般的客户端授权模式，它让 Bots 的接入变得十分简单。</p>
-<p>一个可用的<code>Bot</code>其本质，是一个由开发者创建的<code>Application</code>（下简称<code>APP</code>）下属的一个特殊的用户，在 Discord 中，这样的用户被称为<code>Bot user</code>。</p>
-<p>在创建<code>APP</code>时，Discord 会为<code>APP</code>分配在一般的<code>OAuth</code>所需的诸如<code>ClientID</code>、<code>ClientSecret</code>等参数，并且创建一个属于这个应用的<code>Bot user</code>，分配一个专有的<code>Token</code>，可以理解<code>Token</code>是<code>Bot user</code>用来登录的密码。</p>
-<h2 id="Bots是怎么运作的？"><a href="#Bots是怎么运作的？" class="headerlink" title="Bots是怎么运作的？"></a><code>Bots</code>是怎么运作的？</h2><p>当你创建了一个应用后，你还不能拿着 Discord 下发给你的东西直接去快乐调接口（或者说你可以去调用一些 API，但拿不到什么有用的数据），因为这个时候你手上的<code>APP</code>还仅仅只是一个空壳，甚至<code>Bot</code>没有进入过一个伺服器，也没有加过一个好友（别忘了，在 Discord 里<code>Bot</code>连加好友的能力都没有）。</p>
-<p>在<a href="https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow">Bot Authorization Flow</a>章节中，文档告诉了你授权<code>Bot</code>进入伺服器的流程。</p>
-<p><code>https://discord.com/api/oauth2/authorize?client_id=157730590492196864&amp;scope=bot&amp;permissions=1</code></p>
-<table>
-<thead>
-<tr>
-<th align="left">name</th>
-<th align="left">description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">client_id</td>
-<td align="left">your app’s client id</td>
-</tr>
-<tr>
-<td align="left">scope</td>
-<td align="left">needs to include <code>bot</code> for the bot flow</td>
-</tr>
-<tr>
-<td align="left">permissions</td>
-<td align="left">the permissions you’re requesting</td>
-</tr>
-<tr>
-<td align="left">guild_id</td>
-<td align="left">pre-fills the dropdown picker with a guild for the user</td>
-</tr>
-<tr>
-<td align="left">disable_guild_select</td>
-<td align="left"><code>true</code> or <code>false</code> —disallows the user from changing the guild dropdown</td>
-</tr>
-</tbody></table>
-<p>这个链接会把你带到一个 Discord 官方提供的授权页面，在这个页面里，按我的理解，Discord 做了如下几件事情：</p>
-<ol>
-<li>验证用户登录状态</li>
-<li>用户选择需要加入的自己持有的伺服器</li>
-<li>等待用户通过授权</li>
-</ol>
-<p>从上面的流程上来看，一个<code>Bot</code>的授权，实际上是一个加入伺服器的申请，需要伺服器所有者通过<code>Bot</code>的加入申请（有可能是管理员？我在我加入过的所有伺服器都没有管理员的身份，所以管理员可否授权我就无从得知了）。</p>
-<p>所以明面上来看，<code>Bot</code>的授权流程其实还蛮简单的，把应用 ID 或者一个拼好的链接发送给伺服器所有者，然后等待对方通过授权（通过加入伺服器申请），之后这个<code>Bot</code>就可以在伺服器里快乐玩耍了。</p>
-<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>后续的工作，以我通常会用的<code>Discord.py</code>举例，只要把一些需要交给<code>Bot</code>去做的事情、指令等等，写好代码定义好，再把 Discord 下发的<code>Token</code>放到代码里跑起来，似乎就完成了一个简单的<code>APP</code>了。</p>
-<h2 id="关键点"><a href="#关键点" class="headerlink" title="关键点"></a>关键点</h2><p>到这里，该说的东西也不剩多少了。</p>
-<p><code>Bots</code>依赖<code>Application</code>，是<code>APP</code>下属的一个特殊用户，这个用户有一个全局唯一的<code>Token</code>，这个<code>Token</code>一方面用来辨别<code>Bot user</code>，一方面用来申请<code>Bot</code>用的<code>access_token</code>来调用开放的 API。</p>
-<p><code>Bot</code>能正常工作，通常需要让伺服器所有者通过授权，也就是通过加入申请，让<code>Bot user</code>加入到伺服器中。</p>
-<p>大概就点到这里为止。</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Discord</tag>
-        <tag>Discord Bot</tag>
-        <tag>Discord API</tag>
       </tags>
   </entry>
   <entry>
