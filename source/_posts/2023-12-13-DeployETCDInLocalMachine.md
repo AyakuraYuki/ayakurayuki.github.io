@@ -8,7 +8,7 @@ tags:
     - supervisor
     - etcd
 mp3:
-cover:
+cover: /static/images/covers/etcd-hero.png
 ---
 
 > 我在 Github Gist 上写了一份在本机环境部署 etcd 单机版的脚本和配置，在这里记录一下使用方式

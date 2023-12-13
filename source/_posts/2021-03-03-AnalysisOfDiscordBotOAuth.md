@@ -8,7 +8,7 @@ tags:
     - Discord API
     - Discord Bot
 mp3:
-cover: /static/images/2021-03-03-AnalysisOfDiscordBotOAuth/cover-discord-bot.png
+cover: /static/images/covers/cover-discord-bot.png
 ---
 
 > 稍微记录一下我对 V8 版本的 Discord Bot 授权认证的流程的理解
