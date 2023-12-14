@@ -10,7 +10,11 @@ mp3:
 cover:
 ---
 
-自从 macOS Catalina 版本开始，苹果就开始收缩用户操作文件夹的权限了，但仍然可以按照下面介绍的两种办法来扩展用户权限：
+先说结论，苹果在 macOS BigSur 后加强了 SIP 政策，新增了`系统文件保护`的机制，而恰好 `/` 目录就属于系统文件的部分，所以不允许普通用户直接在这个目录下操作。
+
+SIP (System Integrity Protection) 是苹果自 OS X 10.11 引入的系统完整性功能，有关 SIP 的介绍可以前往 [System Integrity Protection - Wikipedia](https://en.wikipedia.org/wiki/System_Integrity_Protection) 查看，这里不赘述。
+
+我们仍然可以按照下面介绍的两种办法来扩展用户权限：
 
 1. 修改 SIP 权限（不安全）
     1. 打开终端，输入 `csrutil status`，显示 `enabled` 表示启用了 SIP，接下来需要禁用 SIP；
