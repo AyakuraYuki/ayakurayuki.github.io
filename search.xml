@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>SSM codes Generator</title>
+    <url>/2017/05/14/2017-05-14-SSMGenerator/</url>
+    <content><![CDATA[<h1 id="SSMGenerator"><a href="#SSMGenerator" class="headerlink" title="SSMGenerator"></a><a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a></h1><blockquote>
+<p>Spring &amp; SpringMVC &amp; MyBatis 项目代码生成模板</p>
+</blockquote>
+<p>根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类</p>
+<p>需要使用 CodeSmith</p>
+<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><p>1.自定义作者名</p>
+<p>2.自定义输出路径</p>
+<p>3.自定义基础包名</p>
+<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。</p>
+<h2 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h2><p><a href="https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip">唯一的下载入口</a><br>（因为不会有 Release 版本，注意随时会有修改）</p>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring Boot CRUD</title>
+    <url>/2017/05/15/2017-05-15-SimpleSpringBootCRUD/</url>
+    <content><![CDATA[<h1 id="SimpleSpringBootCRUD"><a href="#SimpleSpringBootCRUD" class="headerlink" title="SimpleSpringBootCRUD"></a>SimpleSpringBootCRUD</h1><p>这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。</p>
+<p><a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">项目地址</a></p>
+<p>有兴趣的话也可以 fork 下来试着玩玩 : D</p>
+]]></content>
+      <categories>
+        <category>project</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Million Live Event Ranking Viewer</title>
     <url>/2017/05/15/2017-05-15-MLEventRankingViewer/</url>
     <content><![CDATA[<h1 id="Million-Live-Event-Ranking-Viewer"><a href="#Million-Live-Event-Ranking-Viewer" class="headerlink" title="Million Live Event Ranking Viewer"></a>Million Live Event Ranking Viewer</h1><blockquote>
@@ -42,43 +79,6 @@
         <tag>Java</tag>
         <tag>Swing</tag>
         <tag>IM@S</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring Boot CRUD</title>
-    <url>/2017/05/15/2017-05-15-SimpleSpringBootCRUD/</url>
-    <content><![CDATA[<h1 id="SimpleSpringBootCRUD"><a href="#SimpleSpringBootCRUD" class="headerlink" title="SimpleSpringBootCRUD"></a>SimpleSpringBootCRUD</h1><p>这是一个基础的 CRUD 系统，基于 Spring Boot 编写，整合了 MyBatis 和 Thymeleaf。</p>
-<p><a href="https://github.com/AyakuraYuki/SimpleSpringBootCRUD">项目地址</a></p>
-<p>有兴趣的话也可以 fork 下来试着玩玩 : D</p>
-]]></content>
-      <categories>
-        <category>project</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SSM codes Generator</title>
-    <url>/2017/05/14/2017-05-14-SSMGenerator/</url>
-    <content><![CDATA[<h1 id="SSMGenerator"><a href="#SSMGenerator" class="headerlink" title="SSMGenerator"></a><a href="https://github.com/AyakuraYuki/SSMGenerator">SSMGenerator</a></h1><blockquote>
-<p>Spring &amp; SpringMVC &amp; MyBatis 项目代码生成模板</p>
-</blockquote>
-<p>根据数据库生成对应的 po、dao、service、mapping 代码以及两个通用类</p>
-<p>需要使用 CodeSmith</p>
-<h2 id="支持"><a href="#支持" class="headerlink" title="支持"></a>支持</h2><p>1.自定义作者名</p>
-<p>2.自定义输出路径</p>
-<p>3.自定义基础包名</p>
-<h2 id="Bugs"><a href="#Bugs" class="headerlink" title="Bugs"></a>Bugs</h2><p>暂时没有发现 Bug，如果找到 Bug 请到 issues 留言，或者其他方式找到我并告诉我你遇到的问题。</p>
-<h2 id="获取模板"><a href="#获取模板" class="headerlink" title="获取模板"></a>获取模板</h2><p><a href="https://github.com/AyakuraYuki/SSMGenerator/archive/master.zip">唯一的下载入口</a><br>（因为不会有 Release 版本，注意随时会有修改）</p>
-]]></content>
-      <categories>
-        <category>project</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -191,6 +191,199 @@
       </tags>
   </entry>
   <entry>
+    <title>小记Apache端口转发——万网解析初步</title>
+    <url>/2017/08/17/2017-08-17-ApacheRedirect/</url>
+    <content><![CDATA[<blockquote>
+<p>记录自己对万网解析和 Apache 端口转发的理解</p>
+</blockquote>
+<p>最近在做部署平台的事情，第一次从域名到 ECS 到解析，这么一走流程，倒是了解了些许有关解析配置的事情。</p>
+<h2 id="域名配置浅记"><a href="#域名配置浅记" class="headerlink" title="域名配置浅记"></a>域名配置浅记</h2><p>阿里云的域名解析，主要使用的是 A 记录、CNAME 两种，前者直接解析到 IP 地址，后者则可以使域名直接解析到另一个域名（关于解析到另一个域名的授权方面的合法性在这里暂且不提）。</p>
+<p>值得注意的是，A 记录一般情况下不携带端口号，而是从@记录或 www 记录的地址，访问时携带端口号进行对应端口访问。</p>
+<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>万网域名解析配置由于不建议携带端口号配置 A 记录，可以视为所有二级域名配置均被指向同一个 IP 的 80 端口。对于这样的应用情况，我们可以配置 Apache 的 VirtualHost 来将指定的二级域名地址从 80 端转发到本地其他端口上的服务器。</p>
+<p>在我的应用环境中，包含如下两个配置：</p>
+<ul>
+<li><p>8080 端 Tomcat 应用服务器</p>
+</li>
+<li><p>8180 端 Apache 图片服务器</p>
+</li>
+</ul>
+<h3 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h3><p>首先需要配置的是 Apache 的端口监听，以 Apache2.4 为例，需要找到 httpd.conf 的如下位置</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Listen: Allows you to bind Apache to specific IP addresses and/or</span></span><br><span class="line"><span class="comment"># ports, instead of the default. See also the &lt;VirtualHost&gt;</span></span><br><span class="line"><span class="comment"># directive.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Change this to Listen on specific IP addresses as shown below to</span></span><br><span class="line"><span class="comment"># prevent Apache from glomming onto all bound IP addresses.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Listen 12.34.56.78:80</span></span><br></pre></td></tr></table></figure>
+
+<p>并在此后添加：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Listen</span> <span class="number">80</span></span><br><span class="line"><span class="string">Listen</span> <span class="number">8180</span></span><br></pre></td></tr></table></figure>
+
+<p>为了打开端口转发，我们需要找到配置文件中的如下两行，取消它们的注释：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#LoadModule proxy_module modules/mod_proxy.so</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#LoadModule proxy_http_module modules/mod_proxy_http.so</span></span><br></pre></td></tr></table></figure>
+
+<p>如果 Apache 处于运行状态，重新启动 Apache 服务器即可使新配置生效。</p>
+<h3 id="配置虚拟服务器转发前的准备"><a href="#配置虚拟服务器转发前的准备" class="headerlink" title="配置虚拟服务器转发前的准备"></a>配置虚拟服务器转发前的准备</h3><p>在配置虚拟服务器之前，我们需要关注几个指令</p>
+<h4 id="ServerName"><a href="#ServerName" class="headerlink" title="ServerName"></a>ServerName</h4><p>ServerName 是一个比较关键的指令，它指定了每个<VirtualHost>对应的主域名或二级域名，该指令的值需要与万网解析配置的 A 记录完全一致，否则会出现 Apache 无法获取访问请求的问题。</p>
+<h4 id="ProxyPass-与-ProxyPassReverse"><a href="#ProxyPass-与-ProxyPassReverse" class="headerlink" title="ProxyPass 与 ProxyPassReverse"></a>ProxyPass 与 ProxyPassReverse</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">ProxyPass</span> [<span class="string">path</span>] <span class="string">!|url</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> [<span class="string">url</span>] <span class="string">url</span></span><br></pre></td></tr></table></figure>
+
+<p>ProxyPass：它主要是用作 URL 前缀匹配，配置的 path 是一个虚拟的路径，在反向代理到后端的 url 后，path 是不会带过去的。该指令可以设置某些 path 不被转发。</p>
+<p>ProxyPassReverse：它一般和 ProxyPass 配合使用，该指令使 Apache 调整 HTTP 重定向应答中 Location、Content-Location、URI 头里的 URL，这样可以避免在 Apache 作为反向代理使用时，后端服务器的 HTTP 重定向造成的绕过反向代理的问题。</p>
+<h4 id="DocumentRoot"><a href="#DocumentRoot" class="headerlink" title="DocumentRoot"></a>DocumentRoot</h4><p>该指令配置了访问本地的根路径</p>
+<h4 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">&lt;Directory</span> <span class="string">path&gt;</span></span><br><span class="line">[<span class="string">options</span>]</span><br><span class="line"><span class="string">&lt;/Directory&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这是一个 XML 标签形式的指令，紧跟 DocumentRoot，配置该本地路径相关的访问选项，其中可以包含：</p>
+<ul>
+<li>Options</li>
+<li>AllowOverride</li>
+<li>Order</li>
+<li>Allow</li>
+<li>Deny</li>
+</ul>
+<p>具体则不在本文详细解释。</p>
+<h3 id="配置转发"><a href="#配置转发" class="headerlink" title="配置转发"></a>配置转发</h3><p>这里就直接把相关的配置放在下面了</p>
+<h4 id="将-Apache-本身配置为图片服务器的场景"><a href="#将-Apache-本身配置为图片服务器的场景" class="headerlink" title="将 Apache 本身配置为图片服务器的场景"></a>将 Apache 本身配置为图片服务器的场景</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Apache物理服务器配置的DocumentRoot与Directory指令</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证"><a href="#另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证" class="headerlink" title="另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证"></a>另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.8180&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">yourdomain.com</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Android项目各文件夹含义说明</title>
+    <url>/2017/09/14/2017-09-14-ASProjectFolders/</url>
+    <content><![CDATA[<blockquote>
+<p>使用 Android Studio 2.3 版开发的 Android 项目文件结构说明</p>
+</blockquote>
+<blockquote>
+<p>AS 版本：Android Studio 2.3.3 <br/><br>视图：Project <br/><br>注：本文部分说明可以通过“视图：Android”查看该文件&#x2F;文件夹影响或相关的部分</p>
+</blockquote>
+<p>初次创建了一个 Basic Activity 例程之后，我们会获得如下图的文件结构</p>
+<p><img src="/static/images/2017-09-14-ASProjectFolders/1.png"></p>
+<h1 id="Demo"><a href="#Demo" class="headerlink" title="&#x2F;Demo"></a>&#x2F;Demo</h1><p>这个文件夹是整个项目的根目录，包含了项目的主要资源文件，以及构建所需的 Gradle 配置和脚本。</p>
+<h3 id="gradle"><a href="#gradle" class="headerlink" title="&#x2F;gradle"></a>&#x2F;gradle</h3><p>该文件夹主要包含了 gradle wrapper 有关的文件，无须我们关心。</p>
+<h3 id="idea-Demo-iml"><a href="#idea-Demo-iml" class="headerlink" title="&#x2F;.idea &amp; Demo.iml"></a>&#x2F;.idea &amp; Demo.iml</h3><p>这两个文件放在一起说，主要是它们和项目完全无关。由于 AS 2.x 之后使用了 JetBrains 的 IDE 系列，所以必然会创建它们，用来让 IDE 识别项目，并自动配置 IDE 相关环境。</p>
+<h3 id="gradle-1"><a href="#gradle-1" class="headerlink" title="&#x2F;.gradle"></a>&#x2F;.gradle</h3><p>该文件夹是 AS 自动生成的，表示该项目是一个由 gradle 管理和构建的项目，效果与上面的两项相同。</p>
+<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>这是用来存放需要忽略，不提交到 git 版本控制项目中的文件&#x2F;文件夹的名称。通过这个文件，就可以在 commit&#x2F;push 到 git 时自动忽略列表中的文件&#x2F;文件夹。</p>
+<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>这个文件在项目中一共有两个，位于&#x2F;Demo 下的该文件配置了项目构建相关的配置信息，一般不需要修改。</p>
+<p>在本人的项目中，由于我使用了 Groovy 进行 Android 开发，所以我会对本文件进行修改。</p>
+<h3 id="settings-gradle"><a href="#settings-gradle" class="headerlink" title="settings.gradle"></a>settings.gradle</h3><p>这个文件在例程 Demo 中，由于我们只有一个&#x2F;app，所以只会包含一句：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">include</span> <span class="string">&#x27;:app&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>它的作用是，指定 Project 中所引入的 module。通常该文件由 IDE 自动完成注入，不需要开发者自行填写。</p>
+<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><p>Gradle 全局配置，包括代理设置、编译所需 JVM 内存等。一般不建议修改，或使用 IDE 提供的工具进行影响较小的修改。</p>
+<h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><p>这个文件不是用来配置本地化默认国家语言编码的，而是用来指定本机 Android SKD 的路径。根据文件注释说明，该文件不能上传到版本控制项目中，以免出现协同开发错误。</p>
+<h3 id="gradlew-gradlew-bat"><a href="#gradlew-gradlew-bat" class="headerlink" title="gradlew &amp; gradlew.bat"></a>gradlew &amp; gradlew.bat</h3><p>这两个文件，前者运行于 Unix&#x2F;Linux 系统，后者运行于 Windows 系统，它们是用于命令行执行 Gradle 脚本的批处理脚本，一般不允许修改。</p>
+<h1 id="app"><a href="#app" class="headerlink" title="&#x2F;app"></a>&#x2F;app</h1><p>主要的开发目录，项目的几乎所有的资源都存放在如下目录中。该文件夹内构成如图</p>
+<p><img src="/static/images/2017-09-14-ASProjectFolders/2.png"></p>
+<h3 id="build"><a href="#build" class="headerlink" title="&#x2F;build"></a>&#x2F;build</h3><p>该文件夹也是作为构建输出文件夹，但相对于&#x2F;Demo&#x2F;build，该文件夹用于存放具体编译构建的资源，其内容更复杂。</p>
+<h3 id="libs"><a href="#libs" class="headerlink" title="&#x2F;libs"></a>&#x2F;libs</h3><p>如果项目使用了第三方依赖包，这些依赖包会被存放到该文件夹中，并由 IDE 自动注入。</p>
+<h3 id="gitignore-1"><a href="#gitignore-1" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>同理，该文件夹管理根目录为&#x2F;app 的目录下，不提交到 git 的文件&#x2F;文件夹列表</p>
+<h3 id="app-iml"><a href="#app-iml" class="headerlink" title="app.iml"></a>app.iml</h3><p>该文件用于让 AS 识别项目，但不建议直接从此处打开，否则会缺失全局 gradle 配置信息，导致编译构建失败。</p>
+<h3 id="build-gradle-1"><a href="#build-gradle-1" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>此处的 build.gradle 直接管理项目引入的依赖包、编译器版本等配置信息，比&#x2F;Demo&#x2F;build.gradle 更复杂，一般开发不需要修改。</p>
+<p>同理，我使用了 Groovy 开发，所以我需要在这个文件夹添加相关的依赖和 compile 信息。</p>
+<h3 id="proguard-rules-pro"><a href="#proguard-rules-pro" class="headerlink" title="proguard-rules.pro"></a>proguard-rules.pro</h3><p>进行大型 Java 项目开发的开发者应该都清楚该文件的作用。该文件是由开发者指定代码混淆保护的混淆规则，显式指定忽略哪些包、类，或者混淆哪些包、类。</p>
+<p>对代码混淆不熟悉的开发者一般不会修改这个文件。</p>
+<h2 id="app-src（或称-src）"><a href="#app-src（或称-src）" class="headerlink" title="&#x2F;app&#x2F;src（或称&#x2F;src）"></a>&#x2F;app&#x2F;src（或称&#x2F;src）</h2><p>该文件夹无疑是我们开发的重心，所有的源代码和资源文件都在这个文件夹下。</p>
+<p>该文件夹的构成如下图：</p>
+<p><img src="/static/images/2017-09-14-ASProjectFolders/3.png"></p>
+<h3 id="androidTest"><a href="#androidTest" class="headerlink" title="&#x2F;androidTest"></a>&#x2F;androidTest</h3><p>此处用来编写 Android Test 测试用例，可以对项目进行测试。</p>
+<h3 id="test"><a href="#test" class="headerlink" title="&#x2F;test"></a>&#x2F;test</h3><p>相对的此处则是编写单元测试代码，可以对一些独立模块进行功能性测试。</p>
+<h3 id="main"><a href="#main" class="headerlink" title="&#x2F;main"></a>&#x2F;main</h3><p>该文件夹包含了我们接触最多的开发资源，具体如下</p>
+<h3 id="java"><a href="#java" class="headerlink" title="&#x2F;java"></a>&#x2F;java</h3><p>顾名思义，这个包下面包含了程序主要的逻辑代码（Java 代码），所有的 Java 包&#x2F;类，都在这个包下面存放。</p>
+<h3 id="res"><a href="#res" class="headerlink" title="&#x2F;res"></a>&#x2F;res</h3><p>全称“resources”，即资源文件。这个文件夹下存放了一个 APK 所需的如 ICON、颜色配置、layout 设计、界面元素等等文件。</p>
+<p>该文件夹内的结构比较规范，一般不用担心资源该放在哪里。</p>
+<h4 id="drawable"><a href="#drawable" class="headerlink" title="&#x2F;drawable"></a>&#x2F;drawable</h4><p>该文件夹用来存放图片</p>
+<h4 id="mipmap"><a href="#mipmap" class="headerlink" title="&#x2F;mipmap"></a>&#x2F;mipmap</h4><p>该文件夹用来存放 ICON</p>
+<h4 id="values"><a href="#values" class="headerlink" title="&#x2F;values"></a>&#x2F;values</h4><p>该文件夹用来存放样式、颜色配置</p>
+<h4 id="layout"><a href="#layout" class="headerlink" title="&#x2F;layout"></a>&#x2F;layout</h4><p>该文件夹存放 application 的布局配置文件</p>
+<h3 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>该文件管理了整个 application 的配置，包括定义的组件、application 所需的权限，都在这个文件里定义。</p>
+<h1 id="核心文件"><a href="#核心文件" class="headerlink" title="核心文件"></a>核心文件</h1><h3 id="AndroidManifest-xml-1"><a href="#AndroidManifest-xml-1" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>一个 Android Application 的所有样式配置、activities、使用到的权限，都会被引入到这个文件中，在安装、运行时被调用。这个文件相当于 Android Application 的中枢。</p>
+<h3 id="layout-activity-main-xml"><a href="#layout-activity-main-xml" class="headerlink" title="layout&#x2F;activity_main.xml"></a>layout&#x2F;activity_main.xml</h3><p>这个文件是整个 Android Application 的基础界面设计配置文件，几乎所有的前台显示的界面的设计配置文件都会由这个文件引用。</p>
+<h3 id="cc-ayakurayuki-demo-MainActivity"><a href="#cc-ayakurayuki-demo-MainActivity" class="headerlink" title="cc.ayakurayuki.demo.MainActivity"></a>cc.ayakurayuki.demo.MainActivity</h3><blockquote>
+<p>（路径：cc&#x2F;ayakurayuki&#x2F;demo&#x2F;MainActivity.groovy）</p>
+</blockquote>
+<p>这个文件即逻辑代码，创建的 Basic Activity 会生成。它管理了 application 中按钮、菜单等元素交互的逻辑。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Bean的生命周期</title>
+    <url>/2017/06/28/2017-06-28-AboutBeanLifecycle/</url>
+    <content><![CDATA[<blockquote>
+<p>记录有关 Spring Bean 生命周期的过程</p>
+</blockquote>
+<h2 id="生命周期过程描述"><a href="#生命周期过程描述" class="headerlink" title="生命周期过程描述"></a>生命周期过程描述</h2><p>大致的 Bean 生命周期可以描述为如下过程：</p>
+<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><ol>
+<li><p>实例化</p>
+</li>
+<li><p>设置属性值</p>
+</li>
+<li><p>调用 BeanPostProcessor 的预初始化方法</p>
+</li>
+<li><p>调用 InitializingBean 的 afterPropertiesSet()方法</p>
+</li>
+<li><p>调用定制的初始化方法</p>
+</li>
+<li><p>调用 BeanPostProcessor 的后初始化方法</p>
+</li>
+<li><p>完成实例化，Bean 可以使用</p>
+</li>
+</ol>
+<h4 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h4><ol start="8">
+<li><p>调用 DisposableBean 的 destroy()方法</p>
+</li>
+<li><p>调用定制的销毁方法</p>
+</li>
+</ol>
+<h2 id="相关内容"><a href="#相关内容" class="headerlink" title="相关内容"></a>相关内容</h2><h3 id="Bean-实例化和生命周期行为控制"><a href="#Bean-实例化和生命周期行为控制" class="headerlink" title="Bean 实例化和生命周期行为控制"></a>Bean 实例化和生命周期行为控制</h3><p>Bean 实例化可以通过构造器、静态工厂、实例工厂三种方式进行实例化。</p>
+<p>有三种方式可以控制 Bean 生命周期行为：</p>
+<ul>
+<li><p>InitializingBean &amp; DisposableBean</p>
+</li>
+<li><p>init() &amp; destroy()</p>
+</li>
+<li><p>@PostConstruct &amp; @PreDestroy</p>
+</li>
+</ul>
+<h3 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h3><p>如果我们需要在 Spring 容器完成 Bean 的实例化、配置和其他的初始化前后添加一些自己的逻辑处理，我们就可以定义一个或者多个 BeanPostProcessor 接口的实现，然后注册到容器中。</p>
+<p>在 BeanPostProcessor 中，我们可以通过实现</p>
+<ul>
+<li>public Object postProcessAfterInitialization(Object bean, String arg) throws BeansException</li>
+</ul>
+<p>和</p>
+<ul>
+<li>public Object postProcessBeforeInitialization(Object bean, String arg1) throws BeansException</li>
+</ul>
+<p>来执行 Bean 创建前后的动作</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Spring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Red-bot function mlborder</title>
+    <url>/2017/09/14/2017-09-14-MlBorderFunction/</url>
+    <content><![CDATA[<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mlborder</span>(<span class="params">self, event_code: <span class="built_in">int</span> = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># Catch current ranking points. Need event code.</span></span><br><span class="line">    <span class="keyword">if</span> event_code <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        url = <span class="string">&quot;http://mlborder.com/events/&#123;&#125;/&quot;</span>.<span class="built_in">format</span>(event_code)</span><br><span class="line">        document = pq(url)</span><br><span class="line">        title = document(<span class="string">&#x27;title&#x27;</span>).text()</span><br><span class="line">        body = document(<span class="string">&#x27;body&#x27;</span>)</span><br><span class="line">        border_div = pq(body(<span class="string">&#x27;.tab-pane&#x27;</span>)[<span class="number">0</span>])(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        data_react_props = border_div.html()</span><br><span class="line"></span><br><span class="line">        original_data = data_react_props[data_react_props.index(<span class="string">&#x27;&#123;&#x27;</span>):data_react_props.rindex(<span class="string">&#x27;&#125;&#x27;</span>) + <span class="number">1</span>]</span><br><span class="line">        prepare_json = original_data.replace(<span class="string">&#x27;&amp;quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">        json_data = json.loads(prepare_json)</span><br><span class="line"></span><br><span class="line">        event_name = title[title.index(<span class="string">&#x27;『&#x27;</span>) + <span class="number">1</span>:title.rindex(<span class="string">&#x27;』&#x27;</span>)]</span><br><span class="line">        event_info = document(<span class="string">&#x27;.list-group-item&#x27;</span>).text()</span><br><span class="line"></span><br><span class="line">        ending_time = event_info[event_info.index(<span class="string">&#x27;〜&#x27;</span>) + <span class="number">1</span>:event_info.rindex(<span class="string">&#x27;,&#x27;</span>)]</span><br><span class="line">        ending_timestamp = time.mktime(time.strptime(ending_time, <span class="string">&#x27;%Y/%m/%d %H:%M&#x27;</span>))</span><br><span class="line">        current_timestamp = time.time()</span><br><span class="line">        left_or_passed_time = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> current_timestamp &lt; ending_timestamp:</span><br><span class="line">            left_timestamp = ending_timestamp - current_timestamp</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;あと　&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass_timestamp = current_timestamp - ending_timestamp</span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;　過ごしだ&#x27;</span></span><br><span class="line">        border_summary = json_data[<span class="string">&#x27;border_summary&#x27;</span>]</span><br><span class="line">        now = (datetime.datetime.fromtimestamp(current_timestamp) + datetime.timedelta(hours=<span class="number">1</span>)).strftime(<span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line">        borders = border_summary[<span class="string">&#x27;borders&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        msg = <span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;event_name&#125;</span>\n<span class="subst">&#123;event_info&#125;</span>\n<span class="subst">&#123;left_or_passed_time&#125;</span>\n\n<span class="subst">&#123;now&#125;</span>&#x27;</span>,</span><br><span class="line">                         <span class="string">f&quot;1位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;10位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;10&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;100位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;100&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;500位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;500&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1200位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1200&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1300位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1300&#x27;</span>]:,&#125;</span>&quot;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> self.bot.say(msg)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">await</span> self.bot.say(<span class="string">&quot;mlborder need an event code.&quot;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Discord</tag>
+        <tag>Discord Bot</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CodErator开发笔记</title>
     <url>/2017/06/03/2017-06-03-CodEratorDevelopNote/</url>
     <content><![CDATA[<blockquote>
@@ -293,199 +486,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Bean的生命周期</title>
-    <url>/2017/06/28/2017-06-28-AboutBeanLifecycle/</url>
-    <content><![CDATA[<blockquote>
-<p>记录有关 Spring Bean 生命周期的过程</p>
-</blockquote>
-<h2 id="生命周期过程描述"><a href="#生命周期过程描述" class="headerlink" title="生命周期过程描述"></a>生命周期过程描述</h2><p>大致的 Bean 生命周期可以描述为如下过程：</p>
-<h4 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h4><ol>
-<li><p>实例化</p>
-</li>
-<li><p>设置属性值</p>
-</li>
-<li><p>调用 BeanPostProcessor 的预初始化方法</p>
-</li>
-<li><p>调用 InitializingBean 的 afterPropertiesSet()方法</p>
-</li>
-<li><p>调用定制的初始化方法</p>
-</li>
-<li><p>调用 BeanPostProcessor 的后初始化方法</p>
-</li>
-<li><p>完成实例化，Bean 可以使用</p>
-</li>
-</ol>
-<h4 id="关闭"><a href="#关闭" class="headerlink" title="关闭"></a>关闭</h4><ol start="8">
-<li><p>调用 DisposableBean 的 destroy()方法</p>
-</li>
-<li><p>调用定制的销毁方法</p>
-</li>
-</ol>
-<h2 id="相关内容"><a href="#相关内容" class="headerlink" title="相关内容"></a>相关内容</h2><h3 id="Bean-实例化和生命周期行为控制"><a href="#Bean-实例化和生命周期行为控制" class="headerlink" title="Bean 实例化和生命周期行为控制"></a>Bean 实例化和生命周期行为控制</h3><p>Bean 实例化可以通过构造器、静态工厂、实例工厂三种方式进行实例化。</p>
-<p>有三种方式可以控制 Bean 生命周期行为：</p>
-<ul>
-<li><p>InitializingBean &amp; DisposableBean</p>
-</li>
-<li><p>init() &amp; destroy()</p>
-</li>
-<li><p>@PostConstruct &amp; @PreDestroy</p>
-</li>
-</ul>
-<h3 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor"></a>BeanPostProcessor</h3><p>如果我们需要在 Spring 容器完成 Bean 的实例化、配置和其他的初始化前后添加一些自己的逻辑处理，我们就可以定义一个或者多个 BeanPostProcessor 接口的实现，然后注册到容器中。</p>
-<p>在 BeanPostProcessor 中，我们可以通过实现</p>
-<ul>
-<li>public Object postProcessAfterInitialization(Object bean, String arg) throws BeansException</li>
-</ul>
-<p>和</p>
-<ul>
-<li>public Object postProcessBeforeInitialization(Object bean, String arg1) throws BeansException</li>
-</ul>
-<p>来执行 Bean 创建前后的动作</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>小记Apache端口转发——万网解析初步</title>
-    <url>/2017/08/17/2017-08-17-ApacheRedirect/</url>
-    <content><![CDATA[<blockquote>
-<p>记录自己对万网解析和 Apache 端口转发的理解</p>
-</blockquote>
-<p>最近在做部署平台的事情，第一次从域名到 ECS 到解析，这么一走流程，倒是了解了些许有关解析配置的事情。</p>
-<h2 id="域名配置浅记"><a href="#域名配置浅记" class="headerlink" title="域名配置浅记"></a>域名配置浅记</h2><p>阿里云的域名解析，主要使用的是 A 记录、CNAME 两种，前者直接解析到 IP 地址，后者则可以使域名直接解析到另一个域名（关于解析到另一个域名的授权方面的合法性在这里暂且不提）。</p>
-<p>值得注意的是，A 记录一般情况下不携带端口号，而是从@记录或 www 记录的地址，访问时携带端口号进行对应端口访问。</p>
-<h2 id="端口转发"><a href="#端口转发" class="headerlink" title="端口转发"></a>端口转发</h2><p>万网域名解析配置由于不建议携带端口号配置 A 记录，可以视为所有二级域名配置均被指向同一个 IP 的 80 端口。对于这样的应用情况，我们可以配置 Apache 的 VirtualHost 来将指定的二级域名地址从 80 端转发到本地其他端口上的服务器。</p>
-<p>在我的应用环境中，包含如下两个配置：</p>
-<ul>
-<li><p>8080 端 Tomcat 应用服务器</p>
-</li>
-<li><p>8180 端 Apache 图片服务器</p>
-</li>
-</ul>
-<h3 id="前期工作"><a href="#前期工作" class="headerlink" title="前期工作"></a>前期工作</h3><p>首先需要配置的是 Apache 的端口监听，以 Apache2.4 为例，需要找到 httpd.conf 的如下位置</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Listen: Allows you to bind Apache to specific IP addresses and/or</span></span><br><span class="line"><span class="comment"># ports, instead of the default. See also the &lt;VirtualHost&gt;</span></span><br><span class="line"><span class="comment"># directive.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Change this to Listen on specific IP addresses as shown below to</span></span><br><span class="line"><span class="comment"># prevent Apache from glomming onto all bound IP addresses.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#Listen 12.34.56.78:80</span></span><br></pre></td></tr></table></figure>
-
-<p>并在此后添加：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">Listen</span> <span class="number">80</span></span><br><span class="line"><span class="string">Listen</span> <span class="number">8180</span></span><br></pre></td></tr></table></figure>
-
-<p>为了打开端口转发，我们需要找到配置文件中的如下两行，取消它们的注释：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#LoadModule proxy_module modules/mod_proxy.so</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#LoadModule proxy_http_module modules/mod_proxy_http.so</span></span><br></pre></td></tr></table></figure>
-
-<p>如果 Apache 处于运行状态，重新启动 Apache 服务器即可使新配置生效。</p>
-<h3 id="配置虚拟服务器转发前的准备"><a href="#配置虚拟服务器转发前的准备" class="headerlink" title="配置虚拟服务器转发前的准备"></a>配置虚拟服务器转发前的准备</h3><p>在配置虚拟服务器之前，我们需要关注几个指令</p>
-<h4 id="ServerName"><a href="#ServerName" class="headerlink" title="ServerName"></a>ServerName</h4><p>ServerName 是一个比较关键的指令，它指定了每个<VirtualHost>对应的主域名或二级域名，该指令的值需要与万网解析配置的 A 记录完全一致，否则会出现 Apache 无法获取访问请求的问题。</p>
-<h4 id="ProxyPass-与-ProxyPassReverse"><a href="#ProxyPass-与-ProxyPassReverse" class="headerlink" title="ProxyPass 与 ProxyPassReverse"></a>ProxyPass 与 ProxyPassReverse</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">ProxyPass</span> [<span class="string">path</span>] <span class="string">!|url</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> [<span class="string">url</span>] <span class="string">url</span></span><br></pre></td></tr></table></figure>
-
-<p>ProxyPass：它主要是用作 URL 前缀匹配，配置的 path 是一个虚拟的路径，在反向代理到后端的 url 后，path 是不会带过去的。该指令可以设置某些 path 不被转发。</p>
-<p>ProxyPassReverse：它一般和 ProxyPass 配合使用，该指令使 Apache 调整 HTTP 重定向应答中 Location、Content-Location、URI 头里的 URL，这样可以避免在 Apache 作为反向代理使用时，后端服务器的 HTTP 重定向造成的绕过反向代理的问题。</p>
-<h4 id="DocumentRoot"><a href="#DocumentRoot" class="headerlink" title="DocumentRoot"></a>DocumentRoot</h4><p>该指令配置了访问本地的根路径</p>
-<h4 id="Directory"><a href="#Directory" class="headerlink" title="Directory"></a>Directory</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 语法</span></span><br><span class="line"><span class="string">&lt;Directory</span> <span class="string">path&gt;</span></span><br><span class="line">[<span class="string">options</span>]</span><br><span class="line"><span class="string">&lt;/Directory&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>这是一个 XML 标签形式的指令，紧跟 DocumentRoot，配置该本地路径相关的访问选项，其中可以包含：</p>
-<ul>
-<li>Options</li>
-<li>AllowOverride</li>
-<li>Order</li>
-<li>Allow</li>
-<li>Deny</li>
-</ul>
-<p>具体则不在本文详细解释。</p>
-<h3 id="配置转发"><a href="#配置转发" class="headerlink" title="配置转发"></a>配置转发</h3><p>这里就直接把相关的配置放在下面了</p>
-<h4 id="将-Apache-本身配置为图片服务器的场景"><a href="#将-Apache-本身配置为图片服务器的场景" class="headerlink" title="将 Apache 本身配置为图片服务器的场景"></a>将 Apache 本身配置为图片服务器的场景</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Apache物理服务器配置的DocumentRoot与Directory指令</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证"><a href="#另一种配置，Apache-本身也作为图片服务器，但多做了一层转发，尚待查证" class="headerlink" title="另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证"></a>另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证</h4><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Tomcat</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">www.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8080/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Picture Server</span></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.80&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">pic.yourdomain.com</span></span><br><span class="line"><span class="string">ProxyPass</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">ProxyPassReverse</span> <span class="string">/</span> <span class="string">http://yourdomain.com:8180/</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&lt;VirtualHost</span> <span class="string">*.8180&gt;</span></span><br><span class="line"><span class="string">ServerName</span> <span class="string">yourdomain.com</span></span><br><span class="line"><span class="string">DocumentRoot</span> [<span class="string">Your</span> <span class="string">image</span> <span class="string">path</span>]</span><br><span class="line"><span class="string">&lt;Directory</span> [<span class="string">same</span> <span class="string">as</span> <span class="string">DocumentRoot</span>]<span class="string">&gt;</span></span><br><span class="line"><span class="string">    Options FollowSymLinks</span></span><br><span class="line"><span class="string">    AllowOverride None</span></span><br><span class="line"><span class="string">    Require all granted</span></span><br><span class="line"><span class="string"></span><span class="string">&lt;/Directory&gt;</span></span><br><span class="line"><span class="string">&lt;/VirtualHost&gt;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Red-bot function mlborder</title>
-    <url>/2017/09/14/2017-09-14-MlBorderFunction/</url>
-    <content><![CDATA[<h1 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">@commands.command()</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">def</span> <span class="title function_">mlborder</span>(<span class="params">self, event_code: <span class="built_in">int</span> = <span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># Catch current ranking points. Need event code.</span></span><br><span class="line">    <span class="keyword">if</span> event_code <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        url = <span class="string">&quot;http://mlborder.com/events/&#123;&#125;/&quot;</span>.<span class="built_in">format</span>(event_code)</span><br><span class="line">        document = pq(url)</span><br><span class="line">        title = document(<span class="string">&#x27;title&#x27;</span>).text()</span><br><span class="line">        body = document(<span class="string">&#x27;body&#x27;</span>)</span><br><span class="line">        border_div = pq(body(<span class="string">&#x27;.tab-pane&#x27;</span>)[<span class="number">0</span>])(<span class="string">&#x27;div&#x27;</span>)</span><br><span class="line">        data_react_props = border_div.html()</span><br><span class="line"></span><br><span class="line">        original_data = data_react_props[data_react_props.index(<span class="string">&#x27;&#123;&#x27;</span>):data_react_props.rindex(<span class="string">&#x27;&#125;&#x27;</span>) + <span class="number">1</span>]</span><br><span class="line">        prepare_json = original_data.replace(<span class="string">&#x27;&amp;quot;&#x27;</span>, <span class="string">&#x27;&quot;&#x27;</span>)</span><br><span class="line">        json_data = json.loads(prepare_json)</span><br><span class="line"></span><br><span class="line">        event_name = title[title.index(<span class="string">&#x27;『&#x27;</span>) + <span class="number">1</span>:title.rindex(<span class="string">&#x27;』&#x27;</span>)]</span><br><span class="line">        event_info = document(<span class="string">&#x27;.list-group-item&#x27;</span>).text()</span><br><span class="line"></span><br><span class="line">        ending_time = event_info[event_info.index(<span class="string">&#x27;〜&#x27;</span>) + <span class="number">1</span>:event_info.rindex(<span class="string">&#x27;,&#x27;</span>)]</span><br><span class="line">        ending_timestamp = time.mktime(time.strptime(ending_time, <span class="string">&#x27;%Y/%m/%d %H:%M&#x27;</span>))</span><br><span class="line">        current_timestamp = time.time()</span><br><span class="line">        left_or_passed_time = <span class="string">&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">if</span> current_timestamp &lt; ending_timestamp:</span><br><span class="line">            left_timestamp = ending_timestamp - current_timestamp</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;あと　&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(left_timestamp))</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            pass_timestamp = current_timestamp - ending_timestamp</span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%d&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;日&#x27;</span></span><br><span class="line">            left_or_passed_time += time.strftime(<span class="string">&#x27;%H:%M:%S&#x27;</span>, time.localtime(pass_timestamp))</span><br><span class="line">            left_or_passed_time += <span class="string">&#x27;　過ごしだ&#x27;</span></span><br><span class="line">        border_summary = json_data[<span class="string">&#x27;border_summary&#x27;</span>]</span><br><span class="line">        now = (datetime.datetime.fromtimestamp(current_timestamp) + datetime.timedelta(hours=<span class="number">1</span>)).strftime(<span class="string">&#x27;%Y/%m/%d %H:%M:%S&#x27;</span>)</span><br><span class="line">        borders = border_summary[<span class="string">&#x27;borders&#x27;</span>]</span><br><span class="line"></span><br><span class="line">        msg = <span class="string">&#x27;\n&#x27;</span>.join([<span class="string">f&#x27;<span class="subst">&#123;event_name&#125;</span>\n<span class="subst">&#123;event_info&#125;</span>\n<span class="subst">&#123;left_or_passed_time&#125;</span>\n\n<span class="subst">&#123;now&#125;</span>&#x27;</span>,</span><br><span class="line">                         <span class="string">f&quot;1位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;10位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;10&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;100位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;100&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;500位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;500&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1200位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1200&#x27;</span>]:,&#125;</span>&quot;</span>,</span><br><span class="line">                         <span class="string">f&quot;1300位：\t\t<span class="subst">&#123;borders[<span class="string">&#x27;1300&#x27;</span>]:,&#125;</span>&quot;</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">await</span> self.bot.say(msg)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">await</span> self.bot.say(<span class="string">&quot;mlborder need an event code.&quot;</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>Discord</tag>
-        <tag>Discord Bot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Android项目各文件夹含义说明</title>
-    <url>/2017/09/14/2017-09-14-ASProjectFolders/</url>
-    <content><![CDATA[<blockquote>
-<p>使用 Android Studio 2.3 版开发的 Android 项目文件结构说明</p>
-</blockquote>
-<blockquote>
-<p>AS 版本：Android Studio 2.3.3 <br/><br>视图：Project <br/><br>注：本文部分说明可以通过“视图：Android”查看该文件&#x2F;文件夹影响或相关的部分</p>
-</blockquote>
-<p>初次创建了一个 Basic Activity 例程之后，我们会获得如下图的文件结构</p>
-<p><img src="/static/images/2017-09-14-ASProjectFolders/1.png"></p>
-<h1 id="Demo"><a href="#Demo" class="headerlink" title="&#x2F;Demo"></a>&#x2F;Demo</h1><p>这个文件夹是整个项目的根目录，包含了项目的主要资源文件，以及构建所需的 Gradle 配置和脚本。</p>
-<h3 id="gradle"><a href="#gradle" class="headerlink" title="&#x2F;gradle"></a>&#x2F;gradle</h3><p>该文件夹主要包含了 gradle wrapper 有关的文件，无须我们关心。</p>
-<h3 id="idea-Demo-iml"><a href="#idea-Demo-iml" class="headerlink" title="&#x2F;.idea &amp; Demo.iml"></a>&#x2F;.idea &amp; Demo.iml</h3><p>这两个文件放在一起说，主要是它们和项目完全无关。由于 AS 2.x 之后使用了 JetBrains 的 IDE 系列，所以必然会创建它们，用来让 IDE 识别项目，并自动配置 IDE 相关环境。</p>
-<h3 id="gradle-1"><a href="#gradle-1" class="headerlink" title="&#x2F;.gradle"></a>&#x2F;.gradle</h3><p>该文件夹是 AS 自动生成的，表示该项目是一个由 gradle 管理和构建的项目，效果与上面的两项相同。</p>
-<h3 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>这是用来存放需要忽略，不提交到 git 版本控制项目中的文件&#x2F;文件夹的名称。通过这个文件，就可以在 commit&#x2F;push 到 git 时自动忽略列表中的文件&#x2F;文件夹。</p>
-<h3 id="build-gradle"><a href="#build-gradle" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>这个文件在项目中一共有两个，位于&#x2F;Demo 下的该文件配置了项目构建相关的配置信息，一般不需要修改。</p>
-<p>在本人的项目中，由于我使用了 Groovy 进行 Android 开发，所以我会对本文件进行修改。</p>
-<h3 id="settings-gradle"><a href="#settings-gradle" class="headerlink" title="settings.gradle"></a>settings.gradle</h3><p>这个文件在例程 Demo 中，由于我们只有一个&#x2F;app，所以只会包含一句：</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">include</span> <span class="string">&#x27;:app&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>它的作用是，指定 Project 中所引入的 module。通常该文件由 IDE 自动完成注入，不需要开发者自行填写。</p>
-<h3 id="gradle-properties"><a href="#gradle-properties" class="headerlink" title="gradle.properties"></a>gradle.properties</h3><p>Gradle 全局配置，包括代理设置、编译所需 JVM 内存等。一般不建议修改，或使用 IDE 提供的工具进行影响较小的修改。</p>
-<h3 id="local-properties"><a href="#local-properties" class="headerlink" title="local.properties"></a>local.properties</h3><p>这个文件不是用来配置本地化默认国家语言编码的，而是用来指定本机 Android SKD 的路径。根据文件注释说明，该文件不能上传到版本控制项目中，以免出现协同开发错误。</p>
-<h3 id="gradlew-gradlew-bat"><a href="#gradlew-gradlew-bat" class="headerlink" title="gradlew &amp; gradlew.bat"></a>gradlew &amp; gradlew.bat</h3><p>这两个文件，前者运行于 Unix&#x2F;Linux 系统，后者运行于 Windows 系统，它们是用于命令行执行 Gradle 脚本的批处理脚本，一般不允许修改。</p>
-<h1 id="app"><a href="#app" class="headerlink" title="&#x2F;app"></a>&#x2F;app</h1><p>主要的开发目录，项目的几乎所有的资源都存放在如下目录中。该文件夹内构成如图</p>
-<p><img src="/static/images/2017-09-14-ASProjectFolders/2.png"></p>
-<h3 id="build"><a href="#build" class="headerlink" title="&#x2F;build"></a>&#x2F;build</h3><p>该文件夹也是作为构建输出文件夹，但相对于&#x2F;Demo&#x2F;build，该文件夹用于存放具体编译构建的资源，其内容更复杂。</p>
-<h3 id="libs"><a href="#libs" class="headerlink" title="&#x2F;libs"></a>&#x2F;libs</h3><p>如果项目使用了第三方依赖包，这些依赖包会被存放到该文件夹中，并由 IDE 自动注入。</p>
-<h3 id="gitignore-1"><a href="#gitignore-1" class="headerlink" title=".gitignore"></a>.gitignore</h3><p>同理，该文件夹管理根目录为&#x2F;app 的目录下，不提交到 git 的文件&#x2F;文件夹列表</p>
-<h3 id="app-iml"><a href="#app-iml" class="headerlink" title="app.iml"></a>app.iml</h3><p>该文件用于让 AS 识别项目，但不建议直接从此处打开，否则会缺失全局 gradle 配置信息，导致编译构建失败。</p>
-<h3 id="build-gradle-1"><a href="#build-gradle-1" class="headerlink" title="build.gradle"></a>build.gradle</h3><p>此处的 build.gradle 直接管理项目引入的依赖包、编译器版本等配置信息，比&#x2F;Demo&#x2F;build.gradle 更复杂，一般开发不需要修改。</p>
-<p>同理，我使用了 Groovy 开发，所以我需要在这个文件夹添加相关的依赖和 compile 信息。</p>
-<h3 id="proguard-rules-pro"><a href="#proguard-rules-pro" class="headerlink" title="proguard-rules.pro"></a>proguard-rules.pro</h3><p>进行大型 Java 项目开发的开发者应该都清楚该文件的作用。该文件是由开发者指定代码混淆保护的混淆规则，显式指定忽略哪些包、类，或者混淆哪些包、类。</p>
-<p>对代码混淆不熟悉的开发者一般不会修改这个文件。</p>
-<h2 id="app-src（或称-src）"><a href="#app-src（或称-src）" class="headerlink" title="&#x2F;app&#x2F;src（或称&#x2F;src）"></a>&#x2F;app&#x2F;src（或称&#x2F;src）</h2><p>该文件夹无疑是我们开发的重心，所有的源代码和资源文件都在这个文件夹下。</p>
-<p>该文件夹的构成如下图：</p>
-<p><img src="/static/images/2017-09-14-ASProjectFolders/3.png"></p>
-<h3 id="androidTest"><a href="#androidTest" class="headerlink" title="&#x2F;androidTest"></a>&#x2F;androidTest</h3><p>此处用来编写 Android Test 测试用例，可以对项目进行测试。</p>
-<h3 id="test"><a href="#test" class="headerlink" title="&#x2F;test"></a>&#x2F;test</h3><p>相对的此处则是编写单元测试代码，可以对一些独立模块进行功能性测试。</p>
-<h3 id="main"><a href="#main" class="headerlink" title="&#x2F;main"></a>&#x2F;main</h3><p>该文件夹包含了我们接触最多的开发资源，具体如下</p>
-<h3 id="java"><a href="#java" class="headerlink" title="&#x2F;java"></a>&#x2F;java</h3><p>顾名思义，这个包下面包含了程序主要的逻辑代码（Java 代码），所有的 Java 包&#x2F;类，都在这个包下面存放。</p>
-<h3 id="res"><a href="#res" class="headerlink" title="&#x2F;res"></a>&#x2F;res</h3><p>全称“resources”，即资源文件。这个文件夹下存放了一个 APK 所需的如 ICON、颜色配置、layout 设计、界面元素等等文件。</p>
-<p>该文件夹内的结构比较规范，一般不用担心资源该放在哪里。</p>
-<h4 id="drawable"><a href="#drawable" class="headerlink" title="&#x2F;drawable"></a>&#x2F;drawable</h4><p>该文件夹用来存放图片</p>
-<h4 id="mipmap"><a href="#mipmap" class="headerlink" title="&#x2F;mipmap"></a>&#x2F;mipmap</h4><p>该文件夹用来存放 ICON</p>
-<h4 id="values"><a href="#values" class="headerlink" title="&#x2F;values"></a>&#x2F;values</h4><p>该文件夹用来存放样式、颜色配置</p>
-<h4 id="layout"><a href="#layout" class="headerlink" title="&#x2F;layout"></a>&#x2F;layout</h4><p>该文件夹存放 application 的布局配置文件</p>
-<h3 id="AndroidManifest-xml"><a href="#AndroidManifest-xml" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>该文件管理了整个 application 的配置，包括定义的组件、application 所需的权限，都在这个文件里定义。</p>
-<h1 id="核心文件"><a href="#核心文件" class="headerlink" title="核心文件"></a>核心文件</h1><h3 id="AndroidManifest-xml-1"><a href="#AndroidManifest-xml-1" class="headerlink" title="AndroidManifest.xml"></a>AndroidManifest.xml</h3><p>一个 Android Application 的所有样式配置、activities、使用到的权限，都会被引入到这个文件中，在安装、运行时被调用。这个文件相当于 Android Application 的中枢。</p>
-<h3 id="layout-activity-main-xml"><a href="#layout-activity-main-xml" class="headerlink" title="layout&#x2F;activity_main.xml"></a>layout&#x2F;activity_main.xml</h3><p>这个文件是整个 Android Application 的基础界面设计配置文件，几乎所有的前台显示的界面的设计配置文件都会由这个文件引用。</p>
-<h3 id="cc-ayakurayuki-demo-MainActivity"><a href="#cc-ayakurayuki-demo-MainActivity" class="headerlink" title="cc.ayakurayuki.demo.MainActivity"></a>cc.ayakurayuki.demo.MainActivity</h3><blockquote>
-<p>（路径：cc&#x2F;ayakurayuki&#x2F;demo&#x2F;MainActivity.groovy）</p>
-</blockquote>
-<p>这个文件即逻辑代码，创建的 Basic Activity 会生成。它管理了 application 中按钮、菜单等元素交互的逻辑。</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Android</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Content Storage App</title>
     <url>/2017/10/19/2017-10-19-ContentStorageApp/</url>
     <content><![CDATA[<h1 id="content-storage-app"><a href="#content-storage-app" class="headerlink" title="content-storage-app"></a>content-storage-app</h1><blockquote>
@@ -539,28 +539,6 @@
       <tags>
         <tag>Java</tag>
         <tag>Spring</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CG5th SSA in Hong Kong</title>
-    <url>/2017/11/02/2017-11-02-CG5thSSAinHK/</url>
-    <content><![CDATA[<blockquote>
-<p>THE IDOLM@STER CINDERELLA GIRLS 5thLIVE TOUR Serendipity Parade!!! Live viewing in Hong Kong</p>
-</blockquote>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/1.png" alt="A店收获之-1"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/2.png" alt="A店收获-2"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/3.png" alt="入场券"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/4.png" alt="港P派送的物品"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/5.png" alt="自制call本部分内容——出演名单"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/6.png" alt="开场留影，地藏位"></p>
-<p><img src="/static/images/2017-11-02-CG5thSSAinHK/7.png" alt="过期了的抽选券"></p>
-]]></content>
-      <categories>
-        <category>life</category>
-      </categories>
-      <tags>
-        <tag>IM@S</tag>
-        <tag>CinderellaGirls</tag>
       </tags>
   </entry>
   <entry>
@@ -671,19 +649,25 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>Create a full deck of cards in Swift</title>
-    <url>/2018/01/22/2018-01-22-PokerBySwift/</url>
+    <title>CG5th SSA in Hong Kong</title>
+    <url>/2017/11/02/2017-11-02-CG5thSSAinHK/</url>
     <content><![CDATA[<blockquote>
-<p>使用 Swift Playground 创建的一个程序，可以创建一套含 52 张的扑克牌，并按照花色和牌号排序。</p>
+<p>THE IDOLM@STER CINDERELLA GIRLS 5thLIVE TOUR Serendipity Parade!!! Live viewing in Hong Kong</p>
 </blockquote>
-<p>最近开始学习 Swift 编程，学到枚举和结构体，看到最后一个 Experiment 要实现创建一套扑克，结合了一下以前写过的”双条件”排序和官方 GuidedTour，弄了下面的代码实现。</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Base card rank</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Rank</span>: <span class="title class_">Int</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> ace <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">    <span class="keyword">case</span> jack, queen, king</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .ace:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;ace&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .jack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;jack&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .queen:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;queen&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .king:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;king&quot;</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">String</span>(<span class="keyword">self</span>.rawValue)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">equals</span>(<span class="params">compare</span>: <span class="type">Rank</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.rawValue <span class="operator">==</span> compare.rawValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Card suit</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Suit</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> spades, hearts, diamonds, clubs</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .spades:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;spades&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .hearts:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;hearts&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;diamonds&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;clubs&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">color</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .hearts, .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;red&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .spades, .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;black&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Poker struct with rank and suit.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Poker</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> rank: <span class="type">Rank</span></span><br><span class="line">    <span class="keyword">var</span> suit: <span class="type">Suit</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">description</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This card is a <span class="subst">\(suit.color())</span> <span class="subst">\(suit.simpleDescription())</span> <span class="subst">\(rank.simpleDescription())</span>.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> poker <span class="operator">=</span> [<span class="type">Poker</span>]()</span><br><span class="line"><span class="comment">// Add cards</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">13</span> &#123;</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.spades))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.hearts))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.diamonds))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.clubs))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order by suit, then rank</span></span><br><span class="line">poker.sort(by: &#123;l, r -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> l.suit.simpleDescription() <span class="operator">&lt;</span> r.suit.simpleDescription() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> l.suit.simpleDescription().elementsEqual(r.suit.simpleDescription()) &#123;</span><br><span class="line">        <span class="keyword">return</span> l.rank.rawValue <span class="operator">&lt;</span> r.rank.rawValue</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// Display</span></span><br><span class="line">poker.forEach &#123; (item) <span class="keyword">in</span></span><br><span class="line">    <span class="built_in">print</span>(item.description())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/1.png" alt="A店收获之-1"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/2.png" alt="A店收获-2"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/3.png" alt="入场券"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/4.png" alt="港P派送的物品"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/5.png" alt="自制call本部分内容——出演名单"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/6.png" alt="开场留影，地藏位"></p>
+<p><img src="/static/images/2017-11-02-CG5thSSAinHK/7.png" alt="过期了的抽选券"></p>
 ]]></content>
       <categories>
-        <category>guide</category>
+        <category>life</category>
       </categories>
       <tags>
-        <tag>Swift</tag>
+        <tag>IM@S</tag>
+        <tag>CinderellaGirls</tag>
       </tags>
   </entry>
   <entry>
@@ -735,48 +719,20 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
-    <url>/2018/05/25/2018-05-25-InviteCode/</url>
+    <title>Create a full deck of cards in Swift</title>
+    <url>/2018/01/22/2018-01-22-PokerBySwift/</url>
     <content><![CDATA[<blockquote>
-<p>偶然查库检查用户邀请码使用情况的时候，发现居然有重复的邀请码。。。</p>
+<p>使用 Swift Playground 创建的一个程序，可以创建一套含 52 张的扑克牌，并按照花色和牌号排序。</p>
 </blockquote>
-<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>2018&#x2F;05&#x2F;25，这是个很正常的一天，除了京东白条出账催债这个很恼人的事情，大体也就没什么大事缠身的样子。</p>
-<p>同事在检查用户邀请码使用情况的时候，突然叫道我，说了句很严重很致命的话：”怎么邀请码有重复的？”</p>
-<p>咩话？！点解？！我记得邀请码设计是讨论之后敲定的方案，怎么会有重复的邀请码出现？？？</p>
-<p>问题来了，当然还得确认确认是个什么毛病才行。。。</p>
-<h2 id="述"><a href="#述" class="headerlink" title="述"></a>述</h2><p>在本文进行下去之前，让我来说明一下当时的设计是个什么样的方案。</p>
-<p>首先在邀请码的需求上，我们采用的是<code>6</code>位字符串，邀请码生成组合中有<code>4</code>位是字母，另外<code>2</code>位是数字。而在字母组合上，我们去除了邀请码中可能输入错误的字母<code>O</code>和<code>L</code>，并将剩余的 24 个字母打乱组合成四个基础字母组。</p>
-<p>随后遍历四组基础字母和数字，生成无重复的邀请码生成组合。</p>
-<p>文字说明比较生硬，但经过上述处理后，产生的邀请码生成组合没有重复，可以看下面给出的范例：（注意观察，结合后面的内容思考这里埋的坑）</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;huax54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;huac54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
-
-<p>这只是第一步，因为全部组合的可能性只有 1118 个，完全不可能当作邀请码来使用（根本不够嘛），所以我们更激进的，直接用每个组合进行遍历生成一批邀请码。</p>
-<h2 id="验"><a href="#验" class="headerlink" title="验"></a>验</h2><p>明眼人应该还没看到这里就能想到上面的设计方案存在什么问题了，我先走个过程，来验证一下代码中是否存在问题。</p>
-<p>在判断重复的时候，我们采用 Redis Set 的特性来排除重复。Redis Set 这一数据结构内部不允许出现重复，并且是无序的，所以能满足下面两点需求：</p>
-<ol>
-<li>添加到 Set 内的数据不会有重复</li>
-<li>随机取出邀请码并移出 Set</li>
-</ol>
-<p>在实现的时候，我将上面产生的邀请码生成组合落库，通过状态字段过滤已用组合，实际产生的邀请码存入 Redis Set 中，每当 Set 的集合个数少于 10000 条，就生成新的邀请码丢入 Set。（埋坑）</p>
-<p>在取邀请码的时候，用到 spop 取出，表示这个邀请码已用过，不再可用。（埋了个大坑！）</p>
-<p>那么看到这里，我就来说一下上面的实现存在了什么问题：</p>
-<p>首先，组合中有相互存在的字母，你有<code>h</code>我也有<code>h</code>，你有<code>5</code>我也有<code>5</code>，并没有保证生成组合两两间的完全去重。</p>
-<p>其次，生成的条件只有一个，只要满足 6 位字符就是个合理的邀请码，这样一来就有可能出现多组都是<code>hahhhh</code>，或者<code>555e55</code>之类的邀请码。</p>
-<h2 id="研"><a href="#研" class="headerlink" title="研"></a>研</h2><p>上面提到的三个埋坑点，其实很大的原因是<code>Redis Set内部元素一定唯一</code>这一特性，使得我在开发过程中过度依赖了 Redis 特性，忽视了邀请码 pop 后的场景会产生的问题，以及没有注意到邀请码生成组合本身存在的缺陷。</p>
-<p>埋坑点 1 虽然不是影响最严重的因素，但由于设置的阈值过低，很有可能已经使用过的邀请码早就被 pop 出 Set 了，没有元素重复判断的参照。</p>
-<p>埋坑点 2 则是随机取出邀请码，这里用到了 spop，spop 做的事情是，返回一个随机的元素，并且将这个元素从 Set 中移除。由于元素移除后，Set 中不存在这个元素，从而会导致相同的元素能够成功进入 Set 中。这样的情景其实只是保证了 Redis Set 内的唯一性，但没有保证整个邀请码系统的邀请码唯一性。</p>
-<p>然而上面的埋坑点都不是根源，要知道这些邀请码都是由数据库中的邀请码生成组合产生的，追根揭底还是要检查邀请码组合的构成。</p>
-<p>最终我发现，如果邀请码生成组合内如果两两间存在相同的字符，在现有的生成方法中必定会出现像上面提到的<code>hahhhh</code>的情况。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 邀请码生成写入Redis的为代码</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c1 : chars) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">char</span> c2 : chars) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c3 : chars) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> c4 : chars) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c5 : chars) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> c6 : chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c1 == c4 &amp;&amp; c1 == c5 &amp;&amp; c1 == c6) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            redis.sadd(INVITE_CODE_SET, <span class="string">&quot;&quot;</span> + c1 + c2 + c3 + c4 + c5 + c6);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>再来看邀请码生成组合的生成方法</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; letters.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; letters.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span>; k &lt; letters.length - <span class="number">1</span>; k++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">3</span>; l &lt; letters.length; l++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; numbers.length - <span class="number">1</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">1</span>; y &lt; numbers.length; y++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (letters[i] == letters[j] || letters[i] == letters[k]</span><br><span class="line">                || letters[i] == letters[l]</span><br><span class="line">                || letters[j] == letters[k] || letters[j] == letters[l]</span><br><span class="line">                || letters[k] == letters[l]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (numbers[x] == numbers[y]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">InviteCodeGenerateGroup</span> <span class="variable">group</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InviteCodeGenerateGroup</span>();</span><br><span class="line">            group.setCharacters(<span class="string">&quot;&quot;</span> + letters[i] + letters[j] + letters[k] + letters[l]);</span><br><span class="line">            group.setNumbers(<span class="string">&quot;&quot;</span> + numbers[x] + numbers[y]);</span><br><span class="line">            group.setStatus(NORMAL);</span><br><span class="line">            db.insert(group);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样的生成方式存在的缺陷已经很明显了，通过遍历数组的方式，仅在最里层遍历做去重，并不能做到有一个组合是<code>hatc12</code>，其他组合不能有这个组合中的任何字母的情况。</p>
+<p>最近开始学习 Swift 编程，学到枚举和结构体，看到最后一个 Experiment 要实现创建一套扑克，结合了一下以前写过的”双条件”排序和官方 GuidedTour，弄了下面的代码实现。</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Base card rank</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Rank</span>: <span class="title class_">Int</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> ace <span class="operator">=</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">case</span> two, three, four, five, six, seven, eight, nine, ten</span><br><span class="line">    <span class="keyword">case</span> jack, queen, king</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .ace:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;ace&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .jack:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;jack&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .queen:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;queen&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .king:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;king&quot;</span></span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="type">String</span>(<span class="keyword">self</span>.rawValue)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">equals</span>(<span class="params">compare</span>: <span class="type">Rank</span>) -&gt; <span class="type">Bool</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.rawValue <span class="operator">==</span> compare.rawValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Card suit</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Suit</span> &#123;</span><br><span class="line">    <span class="keyword">case</span> spades, hearts, diamonds, clubs</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">simpleDescription</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .spades:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;spades&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .hearts:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;hearts&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;diamonds&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;clubs&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">color</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">switch</span> <span class="keyword">self</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> .hearts, .diamonds:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;red&quot;</span></span><br><span class="line">        <span class="keyword">case</span> .spades, .clubs:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;black&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Poker struct with rank and suit.</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Poker</span> &#123;</span><br><span class="line">    <span class="keyword">var</span> rank: <span class="type">Rank</span></span><br><span class="line">    <span class="keyword">var</span> suit: <span class="type">Suit</span></span><br><span class="line">    <span class="keyword">func</span> <span class="title function_">description</span>() -&gt; <span class="type">String</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;This card is a <span class="subst">\(suit.color())</span> <span class="subst">\(suit.simpleDescription())</span> <span class="subst">\(rank.simpleDescription())</span>.&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> poker <span class="operator">=</span> [<span class="type">Poker</span>]()</span><br><span class="line"><span class="comment">// Add cards</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span><span class="operator">...</span><span class="number">13</span> &#123;</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.spades))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.hearts))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.diamonds))</span><br><span class="line">    poker.append(<span class="type">Poker</span>(rank: <span class="type">Rank</span>(rawValue: i)<span class="operator">!</span>, suit: <span class="type">Suit</span>.clubs))</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Order by suit, then rank</span></span><br><span class="line">poker.sort(by: &#123;l, r -&gt; <span class="type">Bool</span> <span class="keyword">in</span></span><br><span class="line">    <span class="keyword">if</span> l.suit.simpleDescription() <span class="operator">&lt;</span> r.suit.simpleDescription() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> l.suit.simpleDescription().elementsEqual(r.suit.simpleDescription()) &#123;</span><br><span class="line">        <span class="keyword">return</span> l.rank.rawValue <span class="operator">&lt;</span> r.rank.rawValue</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// Display</span></span><br><span class="line">poker.forEach &#123; (item) <span class="keyword">in</span></span><br><span class="line">    <span class="built_in">print</span>(item.description())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>guide</category>
       </categories>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
   </entry>
   <entry>
     <title>RegEx</title>
@@ -886,6 +842,50 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
+    <title>小记一个菜鸟程序员设计的邀请码功能中的一个bug引发的思考</title>
+    <url>/2018/05/25/2018-05-25-InviteCode/</url>
+    <content><![CDATA[<blockquote>
+<p>偶然查库检查用户邀请码使用情况的时候，发现居然有重复的邀请码。。。</p>
+</blockquote>
+<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>2018&#x2F;05&#x2F;25，这是个很正常的一天，除了京东白条出账催债这个很恼人的事情，大体也就没什么大事缠身的样子。</p>
+<p>同事在检查用户邀请码使用情况的时候，突然叫道我，说了句很严重很致命的话：”怎么邀请码有重复的？”</p>
+<p>咩话？！点解？！我记得邀请码设计是讨论之后敲定的方案，怎么会有重复的邀请码出现？？？</p>
+<p>问题来了，当然还得确认确认是个什么毛病才行。。。</p>
+<h2 id="述"><a href="#述" class="headerlink" title="述"></a>述</h2><p>在本文进行下去之前，让我来说明一下当时的设计是个什么样的方案。</p>
+<p>首先在邀请码的需求上，我们采用的是<code>6</code>位字符串，邀请码生成组合中有<code>4</code>位是字母，另外<code>2</code>位是数字。而在字母组合上，我们去除了邀请码中可能输入错误的字母<code>O</code>和<code>L</code>，并将剩余的 24 个字母打乱组合成四个基础字母组。</p>
+<p>随后遍历四组基础字母和数字，生成无重复的邀请码生成组合。</p>
+<p>文字说明比较生硬，但经过上述处理后，产生的邀请码生成组合没有重复，可以看下面给出的范例：（注意观察，结合后面的内容思考这里埋的坑）</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">[</span></span><br><span class="line">  <span class="string">&quot;huax54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huax58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="string">&quot;huac54&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac56&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac57&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="string">&quot;huac58&quot;</span><span class="punctuation">,</span></span><br><span class="line">  ...</span><br><span class="line"><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>这只是第一步，因为全部组合的可能性只有 1118 个，完全不可能当作邀请码来使用（根本不够嘛），所以我们更激进的，直接用每个组合进行遍历生成一批邀请码。</p>
+<h2 id="验"><a href="#验" class="headerlink" title="验"></a>验</h2><p>明眼人应该还没看到这里就能想到上面的设计方案存在什么问题了，我先走个过程，来验证一下代码中是否存在问题。</p>
+<p>在判断重复的时候，我们采用 Redis Set 的特性来排除重复。Redis Set 这一数据结构内部不允许出现重复，并且是无序的，所以能满足下面两点需求：</p>
+<ol>
+<li>添加到 Set 内的数据不会有重复</li>
+<li>随机取出邀请码并移出 Set</li>
+</ol>
+<p>在实现的时候，我将上面产生的邀请码生成组合落库，通过状态字段过滤已用组合，实际产生的邀请码存入 Redis Set 中，每当 Set 的集合个数少于 10000 条，就生成新的邀请码丢入 Set。（埋坑）</p>
+<p>在取邀请码的时候，用到 spop 取出，表示这个邀请码已用过，不再可用。（埋了个大坑！）</p>
+<p>那么看到这里，我就来说一下上面的实现存在了什么问题：</p>
+<p>首先，组合中有相互存在的字母，你有<code>h</code>我也有<code>h</code>，你有<code>5</code>我也有<code>5</code>，并没有保证生成组合两两间的完全去重。</p>
+<p>其次，生成的条件只有一个，只要满足 6 位字符就是个合理的邀请码，这样一来就有可能出现多组都是<code>hahhhh</code>，或者<code>555e55</code>之类的邀请码。</p>
+<h2 id="研"><a href="#研" class="headerlink" title="研"></a>研</h2><p>上面提到的三个埋坑点，其实很大的原因是<code>Redis Set内部元素一定唯一</code>这一特性，使得我在开发过程中过度依赖了 Redis 特性，忽视了邀请码 pop 后的场景会产生的问题，以及没有注意到邀请码生成组合本身存在的缺陷。</p>
+<p>埋坑点 1 虽然不是影响最严重的因素，但由于设置的阈值过低，很有可能已经使用过的邀请码早就被 pop 出 Set 了，没有元素重复判断的参照。</p>
+<p>埋坑点 2 则是随机取出邀请码，这里用到了 spop，spop 做的事情是，返回一个随机的元素，并且将这个元素从 Set 中移除。由于元素移除后，Set 中不存在这个元素，从而会导致相同的元素能够成功进入 Set 中。这样的情景其实只是保证了 Redis Set 内的唯一性，但没有保证整个邀请码系统的邀请码唯一性。</p>
+<p>然而上面的埋坑点都不是根源，要知道这些邀请码都是由数据库中的邀请码生成组合产生的，追根揭底还是要检查邀请码组合的构成。</p>
+<p>最终我发现，如果邀请码生成组合内如果两两间存在相同的字符，在现有的生成方法中必定会出现像上面提到的<code>hahhhh</code>的情况。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 邀请码生成写入Redis的为代码</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">char</span> c1 : chars) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">char</span> c2 : chars) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">char</span> c3 : chars) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">char</span> c4 : chars) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c5 : chars) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">char</span> c6 : chars) &#123;</span><br><span class="line">            <span class="keyword">if</span> (c1 == c2 &amp;&amp; c1 == c3 &amp;&amp; c1 == c4 &amp;&amp; c1 == c5 &amp;&amp; c1 == c6) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            redis.sadd(INVITE_CODE_SET, <span class="string">&quot;&quot;</span> + c1 + c2 + c3 + c4 + c5 + c6);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再来看邀请码生成组合的生成方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; letters.length - <span class="number">3</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; letters.length - <span class="number">2</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> <span class="number">2</span>; k &lt; letters.length - <span class="number">1</span>; k++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">3</span>; l &lt; letters.length; l++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> <span class="number">0</span>; x &lt; numbers.length - <span class="number">1</span>; x++) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> <span class="number">1</span>; y &lt; numbers.length; y++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (letters[i] == letters[j] || letters[i] == letters[k]</span><br><span class="line">                || letters[i] == letters[l]</span><br><span class="line">                || letters[j] == letters[k] || letters[j] == letters[l]</span><br><span class="line">                || letters[k] == letters[l]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (numbers[x] == numbers[y]) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="type">InviteCodeGenerateGroup</span> <span class="variable">group</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InviteCodeGenerateGroup</span>();</span><br><span class="line">            group.setCharacters(<span class="string">&quot;&quot;</span> + letters[i] + letters[j] + letters[k] + letters[l]);</span><br><span class="line">            group.setNumbers(<span class="string">&quot;&quot;</span> + numbers[x] + numbers[y]);</span><br><span class="line">            group.setStatus(NORMAL);</span><br><span class="line">            db.insert(group);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样的生成方式存在的缺陷已经很明显了，通过遍历数组的方式，仅在最里层遍历做去重，并不能做到有一个组合是<code>hatc12</code>，其他组合不能有这个组合中的任何字母的情况。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+  </entry>
+  <entry>
     <title>在新版的macOS上切换不同版本的JDK</title>
     <url>/2018/05/31/2018-05-31-SwitchDifferentJDK/</url>
     <content><![CDATA[<blockquote>
@@ -992,106 +992,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>简记修复Git提交时GPG签名失败的问题</title>
-    <url>/2019/11/15/2019-11-15-FixGPGSignFailedProb/</url>
-    <content><![CDATA[<blockquote>
-<p>一直以来都很正常的 GPG 签名，唐突暴毙了？？？</p>
-</blockquote>
-<p>最近在 IDEA 提交代码的时候，因为 GPG 签名失败的问题，一直没有提交成功。</p>
-<p>起初是直接走的 IDEA 的 VCS 提交，一开始还觉得是没有触发输入证书密码的界面导致的，但回想了一下之前都可以提交，那应该跟证书密码没什么关系才对。</p>
-<p>于是我尝试去终端走命令的方式提交了下，老样子还是失败了。。。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: gpg failed to sign the data</span><br><span class="line">fatal: failed to write commit object</span><br></pre></td></tr></table></figure>
-
-<p>上 stack overflow 搜搜问题，偶然发现有一条答案挺有用的，先贴原文地址</p>
-<p><a href="https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data">Git error - gpg failed to sign data</a></p>
-<p>具体步骤嘛，首先检查 Git 全局配置的签名程序配置对了没，正确的配置应该是<code>gpg.program=gpg2</code></p>
-<p>那么我本机的话，gpg2 是定位到了<code>/usr/local/bin/gpg2</code>，可以直接跑下面的命令修复配置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global gpg.program /usr/local/bin/gpg2</span><br></pre></td></tr></table></figure>
-
-<p>接着用下面的命令检查 GPG 签名时是不是正常工作的</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | gpg2 --clearsign</span><br></pre></td></tr></table></figure>
-
-<p>顺带一提如果没有输入证书密码的界面，或许需要安装<code>pinentry</code>，以 macOS 举例，可以用<code>brew install pinentry</code>装一下就完事了</p>
-<p>之后再尝试<code>git commit</code>，没报错的话就到此为止了，问题定位在没有正确配置签名程序（以及有可能是缺少<code>pinentry</code>）</p>
-<p>尝试提交还是失败的话，这时候就要把一个叫<code>gpg-agent</code>的家伙干掉了</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> gpg-agent</span><br></pre></td></tr></table></figure>
-
-<p>一般到此为止，重新提交就可以正常签名。要是缺少<code>gpgconf</code>或者<code>--kill</code>选项丢失，重新装一下<code>gnupg</code>或许是个好选择。</p>
-<p>那么这里我顺带吐槽一下，国内各个博客，不是教你怎么关闭提交签名，就是让你检查提交时的<code>user.name</code>和<code>user.email</code>，其实那些都不是主要问题，别人就是要用 GPG 对提交签名，你们却教别人关闭签名，意义何在？</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-        <tag>GPG</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Sign in with Apple? Back-end?</title>
-    <url>/2020/11/24/2020-11-24-SignInWithApple/</url>
-    <content><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>一年前（注：本文撰写日期<code>2020-11-24</code>），Apple 对开发文档做了修改，自 iOS 13 之后，Apple 提供了一项名为<code>Sign in with Apple</code>的服务，旨在利用 Apple ID 服务，为第三方应用提供通过 iCloud 账号登录注册的入口。</p>
-<p>然而，这项服务随之而来的改动是，任何接入第三方应用登录入口的 APP，必须接入<code>Sign in with Apple</code>服务，否则将会被拒绝上架到 App Store。</p>
-<p>得知这个改动已经是撰写本文的时候了，其实我不知道该不该庆幸 App Store 审核人员没有因为我们没接这项服务而否掉我们的 APP，不过也是时候要把这个漏洞给补上了。</p>
-<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>也没啥背景，「一图流」走起：</p>
-<p><img src="/static/images/2020-11-24-SignInWithApple/01.jpeg" alt="反正好狠的规定"></p>
-<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>根据 Apple Developer Documentation 中对 <a href="https://developer.apple.com/documentation/sign_in_with_apple"><code>Sign in with Apple</code></a> 的说明，利用这项服务跟我们去接入微信服务号登录的流程是差不多的：</p>
-<ol>
-<li>向 Apple ID Server 申请登录，从那边获取一个叫<code>code</code>的东西。没错，这就是 OAuth 中的授权码，<code>Sign in with Apple</code>本质上还是一个 OAuth 授权认证的服务。</li>
-<li>那么我们都清楚了这是一个 OAuth 的授权码模式。APP 那边拿到了<code>code</code>之后，接着就是把这玩意儿扔给后端服务器，由后端服务器去通过<code>code</code>换取相应的用户信息。</li>
-<li>服务器换到用户信息，就可以继续完成后续的登录&#x2F;注册的事情。</li>
-</ol>
-<h2 id="动手？"><a href="#动手？" class="headerlink" title="动手？"></a>动手？</h2><p>那么，说的那么简单，实际上对于后段服务器需要做的事情，网上的文档还是比较少的，绝大多数接入<code>Sign in with Apple</code>的教程都是客户端方案。当然，我们要的是一个思路，这些方案里或多或少都点到了一些。</p>
-<p>实际施工的时候，后端需要关注的细节可以罗列为如下几点：</p>
-<ol>
-<li>从 Apple ID Server 获取公钥，取得的不是一个公钥，而是一组公钥，而这些公钥只是用来对<code>id_token</code>校验用的。这里提到的<code>id_token</code>会在后面解释。</li>
-<li>换取用户信息的操作，需要服务器走一次生成 JWT 的流程，这个流程依赖的一些参数可能不是你想象中的那么容易理解，因为<code>Sign in with Apple</code>提供给你的一些配置信息并不像其他的 OAuth 服务那样容易理解。</li>
-<li>苹果的这套服务有个好处，你可以本地调试。是的，本地调试，不一定需要提交到测试服务器，也不一定需要提交到生产环境，但是有可能本地调试通过了放到线上就会有一大批问题。（毕竟生产环境你永远都不知道会发生什么，对吧？）</li>
-<li>我上面第一条提到了<code>id_token</code>对吧，首先这个东西是一个”JWT”，那么你可以按照 JWT 的方式来对这个参数进行解析取值。但是，苹果在这个参数上用了一个叫 JWS 的概念，所以才会有第一条说到的”校验”。</li>
-</ol>
-<h2 id="好，可以动手了"><a href="#好，可以动手了" class="headerlink" title="好，可以动手了"></a>好，可以动手了</h2><p>首先我们需要一些来自苹果那边下发的”toolkit”，这些配置里包括<code>TeamID</code>、<code>KeyID</code>、<code>BundleID</code>，还有一个私钥文件。</p>
-<p>服务端需要按照下面的流程来完成授权认证的操作：</p>
-<ol>
-<li>请求和验证用户，即换取用户信息<br>a. 构造请求信息<br>b. 生成一个叫<code>client_secret</code>的东西</li>
-<li>检查返回值的有效性<br>a. 从 Apple ID Server 获取公钥组<br>b. 反解析<code>id_token</code>并进行必要的 JWS 检查<br>c. 检查有效性</li>
-</ol>
-<h3 id="请求和验证"><a href="#请求和验证" class="headerlink" title="请求和验证"></a>请求和验证</h3><p>构造请求信息需要携带的一些参数如下所示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=CLIENT_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=CLIENT_SECRET&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27; \</span><br><span class="line">     -d &#x27;redirect_uri=REDIRECT_URI&#x27;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens">这里我贴出官方的接口文档，方便各位查看</a></p>
-<p>这些参数中，<code>client_id</code>、<code>client_secret</code>、<code>grant_type</code>是必须的，<code>redirect_uri</code>仅在需要网页登录时才携带，CS 模式不需要这个参数，<code>code</code>是从 APP 那里拿到的授权码。</p>
-<p>这里的信息不像微信服务号接入的那样，是<code>AppID + AppSecret</code>的模式，而是<code>BundleID + JWS</code>的模式。也就是说，苹果并不会给你我们平常看到的一组字符串，而是需要把 APP 的 BundleID 当作这里的<code>client_id</code>的参数，然后自己去生成一个 JWS 丢给<code>client_secret</code>。</p>
-<p>所以上面的 cURL，可以转换成下面的 cURL。这里我用的是 CS 模式，而不是 BS 模式，所以把<code>redirect_uri</code>去掉了。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=BUNDLE_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=TOKEN&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>生成<code>client_secret</code>的话，这里我还是直接丢代码吧，代码里会有详细的说明：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">    String teamId;</span><br><span class="line">    String keyId;</span><br><span class="line">    String clientId;</span><br><span class="line">    String keyPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">// 读取私钥</span></span><br><span class="line">    <span class="type">byte</span>[] readKeyFile(AppConfig appConfig) &#123;</span><br><span class="line">        <span class="comment">// 获取配置的私钥文件路径</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">keyPath</span> <span class="operator">=</span> appConfig.keyPath;</span><br><span class="line">        String base64;</span><br><span class="line">        <span class="comment">// 创建字符读取流</span></span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> getClass().classLoader.getResourceAsStream(keyPath);</span><br><span class="line">            <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(Objects.requireNonNull(is)))</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="comment">// 这里我们只需要私钥文件中排除头部和尾部的中间部分，也就是私钥正文部分</span></span><br><span class="line">            base64 = reader.lines().collect(Collectors.joining());</span><br><span class="line">            base64 = base64.replace(<span class="string">&quot;-----BEGIN PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">                .replace(<span class="string">&quot;-----END PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;读取私钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 最后获得私钥的bytes</span></span><br><span class="line">        <span class="keyword">return</span> Base64.decodeBase64(base64);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成client_secret</span></span><br><span class="line">    String <span class="title function_">generateClientSecret</span><span class="params">(AppConfig appConfig)</span> &#123;</span><br><span class="line">        Map&lt;String, Object&gt; header = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定加密的算法是ES256</span></span><br><span class="line">        header.put(<span class="string">&quot;alg&quot;</span>, <span class="string">&quot;ES256&quot;</span>);</span><br><span class="line">        <span class="comment">// 并且苹果下发给我们的toolkit里，用&quot;KeyID&quot;作为header.kid</span></span><br><span class="line">        header.put(<span class="string">&quot;kid&quot;</span>, appConfig.keyId);</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">iat</span> <span class="operator">=</span> System.currentTimeMillis() / <span class="number">1000</span>;</span><br><span class="line">        Map&lt;String, Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定开发者生成JWS所用的issuer是TeamID</span></span><br><span class="line">        claims.put(<span class="string">&quot;iss&quot;</span>, appConfig.teamId);</span><br><span class="line">        <span class="comment">// iat和exp的参数是UNIX时间戳，秒级单位</span></span><br><span class="line">        claims.put(<span class="string">&quot;iat&quot;</span>, iat);</span><br><span class="line">        <span class="comment">// 这里的过期时间有限制，不能大于iat的六个月之后的时间</span></span><br><span class="line">        claims.put(<span class="string">&quot;exp&quot;</span>, iat + <span class="number">3</span> * <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>);</span><br><span class="line">        <span class="comment">// aud是一个固定参数，也是苹果规定的</span></span><br><span class="line">        claims.put(<span class="string">&quot;aud&quot;</span>, <span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// subject则是开发者手上的APP的BundleID</span></span><br><span class="line">        claims.put(<span class="string">&quot;sub&quot;</span>, appConfig.clientId);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">PKCS8EncodedKeySpec</span> <span class="variable">pkcs8EncodedKeySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PKCS8EncodedKeySpec</span>(readAppleAuthPrivateKey(appConfig));</span><br><span class="line">            <span class="type">KeyFactory</span> <span class="variable">keyFactory</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;EC&quot;</span>);</span><br><span class="line">            <span class="type">PrivateKey</span> <span class="variable">privateKey</span> <span class="operator">=</span> keyFactory.generatePrivate(pkcs8EncodedKeySpec);</span><br><span class="line">            <span class="keyword">return</span> Jwts.builder()</span><br><span class="line">                .setHeader(header)</span><br><span class="line">                .setClaims(claims)</span><br><span class="line">                .signWith(SignatureAlgorithm.ES256, privateKey)</span><br><span class="line">                .compact();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;创建ClientSecret失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="检查返回值的有效性"><a href="#检查返回值的有效性" class="headerlink" title="检查返回值的有效性"></a>检查返回值的有效性</h3><p>上面的请求如果没有错误，我们会获得 Apple ID Server 下发的 TokenResponse：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    access_token: &quot;一个token，但是没什么用，因为苹果没有开其他的服务接口&quot;,</span><br><span class="line">    token_type: &quot;Bearer，固定值&quot;,</span><br><span class="line">    expires_in: 3600,</span><br><span class="line">    refresh_token: &quot;一个用来刷新token的token&quot;,</span><br><span class="line">    id_token: &quot;identityToken，结果是JWT，这个是核心&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>就像上面的 JSON 里写到的，<code>id_token</code>是我们整个流程的核心，它包括了必要的<code>sub</code>，也就是我们常说的微信开放平台 UnionID 的概念。</p>
-<p>你可能会好奇为什么我提到了 UnionID。Apple ID Server 没有开放平台和公众平台的说法，理论上一个 Team 下的所有 APP 获取到的都是同一个 UserID，当然也有可能这个就是整个 Apple ID Server 给用户分配的全局 UserID，苹果用这样的 ID 统一了第三方登录的体系，你可以通过这个 UserID，在你的开发者账号下所有的 APP 中打通账户信息。</p>
-<p>接下来，我们可以选择直接信任 Apple ID Server 返回给我们的数据，直接解析 <code>id_token</code> 的 payload 拿到<code>sub</code>，但是我还是建议走一遍公钥校验以验证回传数据的可靠性。</p>
-<p>获取公钥很简单，苹果的公钥接口是开放的，不需要任何校验，任何人都可以调用，方法也很简单：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -G https://appleid.apple.com/auth/keys</span><br></pre></td></tr></table></figure>
-
-<p>这个接口会返回不止一个公钥，而是一组公钥列表，例如：</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;keys&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;86D88Kf&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iGaLqP6y-SJCCBq5Hv6pGDbG_SQ11MNjH7rWHcCFYz4hGwHC4lcSurTlV8u3avoVNM8jXevG1Iu1SY11qInqUvjJur--hghr1b56OPJu6H1iKulSxGjEIyDP6c5BdE1uwprYyr4IO9th8fOwCPygjLFrh44XEGbDIFeImwvBAGOhmMB2AD1n1KviyNsH0bEB7phQtiLk-ILjv1bORSRl8AK677-1T8isGfHKXGZ_ZGtStDe7Lu0Ihp8zoUt59kx2o9uWpROkzF56ypresiIl4WprClRCjz8x6cPZXU2qNWhu71TQvUFwvIvbkE1oYaJMb0jcOTmBRZA2QuYw-zHLwQ&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eXaunmL&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4dGQ7bQK8LgILOdLsYzfZjkEAoQeVC_aqyc8GC6RX7dq_KvRAQAWPvkam8VQv4GK5T4ogklEKEvj5ISBamdDNq1n52TpxQwI2EqxSk7I9fKPKhRt4F8-2yETlYvye-2s6NeWJim0KBtOVrk0gWvEDgd6WOqJl_yt5WBISvILNyVg1qAAM8JeX6dRPosahRVDjA52G2X-Tip84wqwyRpUlq2ybzcLh3zyhCitBOebiRWDQfG26EH9lTlJhll-p_Dg8vAXxJLIJ4SNLcqgFeZe4OfHLgdzMvxXZJnPp_VgmkcpUdRotazKZumj6dBPcXI_XID4Z4Z3OM1KrZPJNdUhxw&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>是不是有点意外，苹果并不想让你直接知道该用哪个公钥去检查返回值，而是需要通过<code>KeyID</code>获取正确的公钥来验证返回值。这个<code>KeyID</code>也很好拿，就在<code>id_token</code>的 header 里，反解析 JWT 就能拿到。下面我把我自己的代码贴一下：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从Apple服务器获取验证Token签名的公钥（服务器缓存3600秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> JWKSet <span class="title function_">requestApplePublicKey</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// JWKSet，其结构如上面的 API 返回值</span></span><br><span class="line">        JWKSet obj;</span><br><span class="line">        <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redis.get(KEY_APPLE_PUBLIC_KEY_LIST);</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotEmpty(value)) &#123;</span><br><span class="line">            <span class="comment">// 服务器可以做一次短时缓存，从缓存读取公钥列表</span></span><br><span class="line">            obj = JSON.parseObject(value, JWKSet.class);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 第一次访问/缓存未命中，向 Apple ID Server 请求公钥组</span></span><br><span class="line">            <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">            <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> restTemplate.getForObject(API_APPLE_AUTH_KEY, String.class);</span><br><span class="line">            <span class="keyword">if</span> (StringUtil.isEmpty(content)) &#123;</span><br><span class="line">                <span class="comment">// 考虑到有可能会请求失败，这里我做了判空</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            obj = JSON.parseObject(content, JWKSet.class);</span><br><span class="line">            <span class="comment">// 写入短时缓存</span></span><br><span class="line">            redis.setex(KEY_APPLE_PUBLIC_KEY_LIST, content, <span class="number">3600</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 返回获取到的公钥对象</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取匹配identityToken.kid的公钥</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> kid 从 id_token 解析出来的 KeyID</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> PublicKey <span class="title function_">getApplePublicKey</span><span class="params">(String kid)</span> &#123;</span><br><span class="line">        <span class="type">JWKSet</span> <span class="variable">jwkSet</span> <span class="operator">=</span> requestApplePublicKey();</span><br><span class="line">        <span class="keyword">if</span> (jwkSet == <span class="literal">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (JWKSet.Keys key : jwkSet.getKeys()) &#123;</span><br><span class="line">            <span class="comment">// 在这里，我们把从 id_token 反解到的 kid 拿来查询公钥，如果找到了，则通过关键的两个参数 n 和 e 构造公钥对象，这个公钥会被用来验证 id_token 的有效性。</span></span><br><span class="line">            <span class="keyword">if</span> (kid.equals(key.getKid())) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> key.getN();</span><br><span class="line">                    <span class="type">String</span> <span class="variable">e</span> <span class="operator">=</span> key.getE();</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">modulus</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(n));</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">publicExponent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(e));</span><br><span class="line">                    <span class="type">RSAPublicKeySpec</span> <span class="variable">spec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RSAPublicKeySpec</span>(modulus, publicExponent);</span><br><span class="line">                    <span class="type">KeyFactory</span> <span class="variable">kf</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;RSA&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span> kf.generatePublic(spec);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    log.error(<span class="string">&quot;解析获取公钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检查identityToken是否合法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">verifyAppleIdentityToken</span><span class="params">(String identityToken)</span> &#123;</span><br><span class="line">        <span class="type">DecodedJWT</span> <span class="variable">jwt</span> <span class="operator">=</span> JWT.decode(identityToken);</span><br><span class="line">        <span class="type">String</span> <span class="variable">keyId</span> <span class="operator">=</span> jwt.getKeyId();</span><br><span class="line">        <span class="type">String</span> <span class="variable">audience</span> <span class="operator">=</span> jwt.getAudience().get(<span class="number">0</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">subject</span> <span class="operator">=</span> jwt.getSubject();</span><br><span class="line"></span><br><span class="line">        <span class="type">PublicKey</span> <span class="variable">publicKey</span> <span class="operator">=</span> getApplePublicKey(keyId);</span><br><span class="line">        <span class="type">JwtParser</span> <span class="variable">jwtParser</span> <span class="operator">=</span> Jwts.parser().setSigningKey(publicKey);</span><br><span class="line">        <span class="comment">// 官方文档说明描述到，由 Apple ID Server 签发的 token 信息，其 iss 是固定值 https://appleid.apple.com</span></span><br><span class="line">        jwtParser.requireIssuer(<span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// 这里检查 aud 是来自指定 App 发起的授权</span></span><br><span class="line">        jwtParser.requireAudience(audience);</span><br><span class="line">        <span class="comment">// 这个检查一般来说会使用客户端传来的 user 做 sub 的检查依据，但我自己的实现就没考虑这么多了。</span></span><br><span class="line">        <span class="comment">// 建议在 APP 向后端服务器发起登录调用时，安全起见，除开 code 授权码之外，也把 user 传来，因为客户端收到的 user 一定是 Apple ID Server 回传的合法值。</span></span><br><span class="line">        jwtParser.requireSubject(subject);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Jws&lt;Claims&gt; jws = jwtParser.parseClaimsJws(identityToken);</span><br><span class="line">            <span class="comment">// 检查 JWS 里是否存在 auth_time ，理由嘛我不知道，但我看大多数文档里大家都是这么检查的 :(</span></span><br><span class="line">            <span class="keyword">return</span> jws != <span class="literal">null</span> &amp;&amp; jws.getBody().containsKey(<span class="string">&quot;auth_time&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>只要我们对<code>id_token</code>的检查通过，整个授权流程基本就算完成了，后端服务器就能正确获取到 user 信息，从而进行我们自己的第三方登录&#x2F;注册流程。</p>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Apple</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>粗分析Discord Bot OAuth认证过程</title>
     <url>/2021/03/03/2021-03-03-AnalysisOfDiscordBotOAuth/</url>
     <content><![CDATA[<blockquote>
@@ -1157,6 +1057,42 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
         <tag>Discord</tag>
         <tag>Discord Bot</tag>
         <tag>Discord API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简记修复Git提交时GPG签名失败的问题</title>
+    <url>/2019/11/15/2019-11-15-FixGPGSignFailedProb/</url>
+    <content><![CDATA[<blockquote>
+<p>一直以来都很正常的 GPG 签名，唐突暴毙了？？？</p>
+</blockquote>
+<p>最近在 IDEA 提交代码的时候，因为 GPG 签名失败的问题，一直没有提交成功。</p>
+<p>起初是直接走的 IDEA 的 VCS 提交，一开始还觉得是没有触发输入证书密码的界面导致的，但回想了一下之前都可以提交，那应该跟证书密码没什么关系才对。</p>
+<p>于是我尝试去终端走命令的方式提交了下，老样子还是失败了。。。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">error: gpg failed to sign the data</span><br><span class="line">fatal: failed to write commit object</span><br></pre></td></tr></table></figure>
+
+<p>上 stack overflow 搜搜问题，偶然发现有一条答案挺有用的，先贴原文地址</p>
+<p><a href="https://stackoverflow.com/questions/41052538/git-error-gpg-failed-to-sign-data">Git error - gpg failed to sign data</a></p>
+<p>具体步骤嘛，首先检查 Git 全局配置的签名程序配置对了没，正确的配置应该是<code>gpg.program=gpg2</code></p>
+<p>那么我本机的话，gpg2 是定位到了<code>/usr/local/bin/gpg2</code>，可以直接跑下面的命令修复配置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global gpg.program /usr/local/bin/gpg2</span><br></pre></td></tr></table></figure>
+
+<p>接着用下面的命令检查 GPG 签名时是不是正常工作的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;test&quot;</span> | gpg2 --clearsign</span><br></pre></td></tr></table></figure>
+
+<p>顺带一提如果没有输入证书密码的界面，或许需要安装<code>pinentry</code>，以 macOS 举例，可以用<code>brew install pinentry</code>装一下就完事了</p>
+<p>之后再尝试<code>git commit</code>，没报错的话就到此为止了，问题定位在没有正确配置签名程序（以及有可能是缺少<code>pinentry</code>）</p>
+<p>尝试提交还是失败的话，这时候就要把一个叫<code>gpg-agent</code>的家伙干掉了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gpgconf --<span class="built_in">kill</span> gpg-agent</span><br></pre></td></tr></table></figure>
+
+<p>一般到此为止，重新提交就可以正常签名。要是缺少<code>gpgconf</code>或者<code>--kill</code>选项丢失，重新装一下<code>gnupg</code>或许是个好选择。</p>
+<p>那么这里我顺带吐槽一下，国内各个博客，不是教你怎么关闭提交签名，就是让你检查提交时的<code>user.name</code>和<code>user.email</code>，其实那些都不是主要问题，别人就是要用 GPG 对提交签名，你们却教别人关闭签名，意义何在？</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>GPG</tag>
       </tags>
   </entry>
   <entry>
@@ -1229,6 +1165,97 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
         <tag>Kubernetes</tag>
         <tag>Apollo</tag>
         <tag>Helm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Sign in with Apple? Back-end?</title>
+    <url>/2020/11/24/2020-11-24-SignInWithApple/</url>
+    <content><![CDATA[<h2 id="引"><a href="#引" class="headerlink" title="引"></a>引</h2><p>一年前（注：本文撰写日期<code>2020-11-24</code>），Apple 对开发文档做了修改，自 iOS 13 之后，Apple 提供了一项名为<code>Sign in with Apple</code>的服务，旨在利用 Apple ID 服务，为第三方应用提供通过 iCloud 账号登录注册的入口。</p>
+<p>然而，这项服务随之而来的改动是，任何接入第三方应用登录入口的 APP，必须接入<code>Sign in with Apple</code>服务，否则将会被拒绝上架到 App Store。</p>
+<p>得知这个改动已经是撰写本文的时候了，其实我不知道该不该庆幸 App Store 审核人员没有因为我们没接这项服务而否掉我们的 APP，不过也是时候要把这个漏洞给补上了。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>也没啥背景，「一图流」走起：</p>
+<p><img src="/static/images/2020-11-24-SignInWithApple/01.jpeg" alt="反正好狠的规定"></p>
+<h2 id="怎么做"><a href="#怎么做" class="headerlink" title="怎么做"></a>怎么做</h2><p>根据 Apple Developer Documentation 中对 <a href="https://developer.apple.com/documentation/sign_in_with_apple"><code>Sign in with Apple</code></a> 的说明，利用这项服务跟我们去接入微信服务号登录的流程是差不多的：</p>
+<ol>
+<li>向 Apple ID Server 申请登录，从那边获取一个叫<code>code</code>的东西。没错，这就是 OAuth 中的授权码，<code>Sign in with Apple</code>本质上还是一个 OAuth 授权认证的服务。</li>
+<li>那么我们都清楚了这是一个 OAuth 的授权码模式。APP 那边拿到了<code>code</code>之后，接着就是把这玩意儿扔给后端服务器，由后端服务器去通过<code>code</code>换取相应的用户信息。</li>
+<li>服务器换到用户信息，就可以继续完成后续的登录&#x2F;注册的事情。</li>
+</ol>
+<h2 id="动手？"><a href="#动手？" class="headerlink" title="动手？"></a>动手？</h2><p>那么，说的那么简单，实际上对于后段服务器需要做的事情，网上的文档还是比较少的，绝大多数接入<code>Sign in with Apple</code>的教程都是客户端方案。当然，我们要的是一个思路，这些方案里或多或少都点到了一些。</p>
+<p>实际施工的时候，后端需要关注的细节可以罗列为如下几点：</p>
+<ol>
+<li>从 Apple ID Server 获取公钥，取得的不是一个公钥，而是一组公钥，而这些公钥只是用来对<code>id_token</code>校验用的。这里提到的<code>id_token</code>会在后面解释。</li>
+<li>换取用户信息的操作，需要服务器走一次生成 JWT 的流程，这个流程依赖的一些参数可能不是你想象中的那么容易理解，因为<code>Sign in with Apple</code>提供给你的一些配置信息并不像其他的 OAuth 服务那样容易理解。</li>
+<li>苹果的这套服务有个好处，你可以本地调试。是的，本地调试，不一定需要提交到测试服务器，也不一定需要提交到生产环境，但是有可能本地调试通过了放到线上就会有一大批问题。（毕竟生产环境你永远都不知道会发生什么，对吧？）</li>
+<li>我上面第一条提到了<code>id_token</code>对吧，首先这个东西是一个”JWT”，那么你可以按照 JWT 的方式来对这个参数进行解析取值。但是，苹果在这个参数上用了一个叫 JWS 的概念，所以才会有第一条说到的”校验”。</li>
+</ol>
+<h2 id="好，可以动手了"><a href="#好，可以动手了" class="headerlink" title="好，可以动手了"></a>好，可以动手了</h2><p>首先我们需要一些来自苹果那边下发的”toolkit”，这些配置里包括<code>TeamID</code>、<code>KeyID</code>、<code>BundleID</code>，还有一个私钥文件。</p>
+<p>服务端需要按照下面的流程来完成授权认证的操作：</p>
+<ol>
+<li>请求和验证用户，即换取用户信息<br>a. 构造请求信息<br>b. 生成一个叫<code>client_secret</code>的东西</li>
+<li>检查返回值的有效性<br>a. 从 Apple ID Server 获取公钥组<br>b. 反解析<code>id_token</code>并进行必要的 JWS 检查<br>c. 检查有效性</li>
+</ol>
+<h3 id="请求和验证"><a href="#请求和验证" class="headerlink" title="请求和验证"></a>请求和验证</h3><p>构造请求信息需要携带的一些参数如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=CLIENT_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=CLIENT_SECRET&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27; \</span><br><span class="line">     -d &#x27;redirect_uri=REDIRECT_URI&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens">这里我贴出官方的接口文档，方便各位查看</a></p>
+<p>这些参数中，<code>client_id</code>、<code>client_secret</code>、<code>grant_type</code>是必须的，<code>redirect_uri</code>仅在需要网页登录时才携带，CS 模式不需要这个参数，<code>code</code>是从 APP 那里拿到的授权码。</p>
+<p>这里的信息不像微信服务号接入的那样，是<code>AppID + AppSecret</code>的模式，而是<code>BundleID + JWS</code>的模式。也就是说，苹果并不会给你我们平常看到的一组字符串，而是需要把 APP 的 BundleID 当作这里的<code>client_id</code>的参数，然后自己去生成一个 JWS 丢给<code>client_secret</code>。</p>
+<p>所以上面的 cURL，可以转换成下面的 cURL。这里我用的是 CS 模式，而不是 BS 模式，所以把<code>redirect_uri</code>去掉了。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -v POST &quot;https://appleid.apple.com/auth/token&quot; \</span><br><span class="line">     -H &#x27;content-type: application/x-www-form-urlencoded&#x27; \</span><br><span class="line">     -d &#x27;client_id=BUNDLE_ID&#x27; \</span><br><span class="line">     -d &#x27;client_secret=TOKEN&#x27; \</span><br><span class="line">     -d &#x27;code=CODE&#x27; \</span><br><span class="line">     -d &#x27;grant_type=authorization_code&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>生成<code>client_secret</code>的话，这里我还是直接丢代码吧，代码里会有详细的说明：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AppConfig</span> &#123;</span><br><span class="line">    String teamId;</span><br><span class="line">    String keyId;</span><br><span class="line">    String clientId;</span><br><span class="line">    String keyPath;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">// 读取私钥</span></span><br><span class="line">    <span class="type">byte</span>[] readKeyFile(AppConfig appConfig) &#123;</span><br><span class="line">        <span class="comment">// 获取配置的私钥文件路径</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">keyPath</span> <span class="operator">=</span> appConfig.keyPath;</span><br><span class="line">        String base64;</span><br><span class="line">        <span class="comment">// 创建字符读取流</span></span><br><span class="line">        <span class="keyword">try</span> (</span><br><span class="line">            <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> getClass().classLoader.getResourceAsStream(keyPath);</span><br><span class="line">            <span class="type">BufferedReader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(Objects.requireNonNull(is)))</span><br><span class="line">        ) &#123;</span><br><span class="line">            <span class="comment">// 这里我们只需要私钥文件中排除头部和尾部的中间部分，也就是私钥正文部分</span></span><br><span class="line">            base64 = reader.lines().collect(Collectors.joining());</span><br><span class="line">            base64 = base64.replace(<span class="string">&quot;-----BEGIN PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">                .replace(<span class="string">&quot;-----END PRIVATE KEY-----&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;读取私钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 最后获得私钥的bytes</span></span><br><span class="line">        <span class="keyword">return</span> Base64.decodeBase64(base64);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 生成client_secret</span></span><br><span class="line">    String <span class="title function_">generateClientSecret</span><span class="params">(AppConfig appConfig)</span> &#123;</span><br><span class="line">        Map&lt;String, Object&gt; header = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定加密的算法是ES256</span></span><br><span class="line">        header.put(<span class="string">&quot;alg&quot;</span>, <span class="string">&quot;ES256&quot;</span>);</span><br><span class="line">        <span class="comment">// 并且苹果下发给我们的toolkit里，用&quot;KeyID&quot;作为header.kid</span></span><br><span class="line">        header.put(<span class="string">&quot;kid&quot;</span>, appConfig.keyId);</span><br><span class="line"></span><br><span class="line">        <span class="type">long</span> <span class="variable">iat</span> <span class="operator">=</span> System.currentTimeMillis() / <span class="number">1000</span>;</span><br><span class="line">        Map&lt;String, Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">// 苹果规定开发者生成JWS所用的issuer是TeamID</span></span><br><span class="line">        claims.put(<span class="string">&quot;iss&quot;</span>, appConfig.teamId);</span><br><span class="line">        <span class="comment">// iat和exp的参数是UNIX时间戳，秒级单位</span></span><br><span class="line">        claims.put(<span class="string">&quot;iat&quot;</span>, iat);</span><br><span class="line">        <span class="comment">// 这里的过期时间有限制，不能大于iat的六个月之后的时间</span></span><br><span class="line">        claims.put(<span class="string">&quot;exp&quot;</span>, iat + <span class="number">3</span> * <span class="number">30</span> * <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span>);</span><br><span class="line">        <span class="comment">// aud是一个固定参数，也是苹果规定的</span></span><br><span class="line">        claims.put(<span class="string">&quot;aud&quot;</span>, <span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// subject则是开发者手上的APP的BundleID</span></span><br><span class="line">        claims.put(<span class="string">&quot;sub&quot;</span>, appConfig.clientId);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">PKCS8EncodedKeySpec</span> <span class="variable">pkcs8EncodedKeySpec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PKCS8EncodedKeySpec</span>(readAppleAuthPrivateKey(appConfig));</span><br><span class="line">            <span class="type">KeyFactory</span> <span class="variable">keyFactory</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;EC&quot;</span>);</span><br><span class="line">            <span class="type">PrivateKey</span> <span class="variable">privateKey</span> <span class="operator">=</span> keyFactory.generatePrivate(pkcs8EncodedKeySpec);</span><br><span class="line">            <span class="keyword">return</span> Jwts.builder()</span><br><span class="line">                .setHeader(header)</span><br><span class="line">                .setClaims(claims)</span><br><span class="line">                .signWith(SignatureAlgorithm.ES256, privateKey)</span><br><span class="line">                .compact();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(<span class="string">&quot;创建ClientSecret失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="检查返回值的有效性"><a href="#检查返回值的有效性" class="headerlink" title="检查返回值的有效性"></a>检查返回值的有效性</h3><p>上面的请求如果没有错误，我们会获得 Apple ID Server 下发的 TokenResponse：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    access_token: &quot;一个token，但是没什么用，因为苹果没有开其他的服务接口&quot;,</span><br><span class="line">    token_type: &quot;Bearer，固定值&quot;,</span><br><span class="line">    expires_in: 3600,</span><br><span class="line">    refresh_token: &quot;一个用来刷新token的token&quot;,</span><br><span class="line">    id_token: &quot;identityToken，结果是JWT，这个是核心&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就像上面的 JSON 里写到的，<code>id_token</code>是我们整个流程的核心，它包括了必要的<code>sub</code>，也就是我们常说的微信开放平台 UnionID 的概念。</p>
+<p>你可能会好奇为什么我提到了 UnionID。Apple ID Server 没有开放平台和公众平台的说法，理论上一个 Team 下的所有 APP 获取到的都是同一个 UserID，当然也有可能这个就是整个 Apple ID Server 给用户分配的全局 UserID，苹果用这样的 ID 统一了第三方登录的体系，你可以通过这个 UserID，在你的开发者账号下所有的 APP 中打通账户信息。</p>
+<p>接下来，我们可以选择直接信任 Apple ID Server 返回给我们的数据，直接解析 <code>id_token</code> 的 payload 拿到<code>sub</code>，但是我还是建议走一遍公钥校验以验证回传数据的可靠性。</p>
+<p>获取公钥很简单，苹果的公钥接口是开放的，不需要任何校验，任何人都可以调用，方法也很简单：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -G https://appleid.apple.com/auth/keys</span><br></pre></td></tr></table></figure>
+
+<p>这个接口会返回不止一个公钥，而是一组公钥列表，例如：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;keys&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;86D88Kf&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;iGaLqP6y-SJCCBq5Hv6pGDbG_SQ11MNjH7rWHcCFYz4hGwHC4lcSurTlV8u3avoVNM8jXevG1Iu1SY11qInqUvjJur--hghr1b56OPJu6H1iKulSxGjEIyDP6c5BdE1uwprYyr4IO9th8fOwCPygjLFrh44XEGbDIFeImwvBAGOhmMB2AD1n1KviyNsH0bEB7phQtiLk-ILjv1bORSRl8AK677-1T8isGfHKXGZ_ZGtStDe7Lu0Ihp8zoUt59kx2o9uWpROkzF56ypresiIl4WprClRCjz8x6cPZXU2qNWhu71TQvUFwvIvbkE1oYaJMb0jcOTmBRZA2QuYw-zHLwQ&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="punctuation">&#123;</span></span><br><span class="line">            <span class="attr">&quot;kty&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RSA&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;kid&quot;</span><span class="punctuation">:</span> <span class="string">&quot;eXaunmL&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;use&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sig&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;RS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;n&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4dGQ7bQK8LgILOdLsYzfZjkEAoQeVC_aqyc8GC6RX7dq_KvRAQAWPvkam8VQv4GK5T4ogklEKEvj5ISBamdDNq1n52TpxQwI2EqxSk7I9fKPKhRt4F8-2yETlYvye-2s6NeWJim0KBtOVrk0gWvEDgd6WOqJl_yt5WBISvILNyVg1qAAM8JeX6dRPosahRVDjA52G2X-Tip84wqwyRpUlq2ybzcLh3zyhCitBOebiRWDQfG26EH9lTlJhll-p_Dg8vAXxJLIJ4SNLcqgFeZe4OfHLgdzMvxXZJnPp_VgmkcpUdRotazKZumj6dBPcXI_XID4Z4Z3OM1KrZPJNdUhxw&quot;</span><span class="punctuation">,</span></span><br><span class="line">            <span class="attr">&quot;e&quot;</span><span class="punctuation">:</span> <span class="string">&quot;AQAB&quot;</span></span><br><span class="line">        <span class="punctuation">&#125;</span></span><br><span class="line">    <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>是不是有点意外，苹果并不想让你直接知道该用哪个公钥去检查返回值，而是需要通过<code>KeyID</code>获取正确的公钥来验证返回值。这个<code>KeyID</code>也很好拿，就在<code>id_token</code>的 header 里，反解析 JWT 就能拿到。下面我把我自己的代码贴一下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Service</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 从Apple服务器获取验证Token签名的公钥（服务器缓存3600秒）</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> JWKSet <span class="title function_">requestApplePublicKey</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// JWKSet，其结构如上面的 API 返回值</span></span><br><span class="line">        JWKSet obj;</span><br><span class="line">        <span class="type">String</span> <span class="variable">value</span> <span class="operator">=</span> redis.get(KEY_APPLE_PUBLIC_KEY_LIST);</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isNotEmpty(value)) &#123;</span><br><span class="line">            <span class="comment">// 服务器可以做一次短时缓存，从缓存读取公钥列表</span></span><br><span class="line">            obj = JSON.parseObject(value, JWKSet.class);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 第一次访问/缓存未命中，向 Apple ID Server 请求公钥组</span></span><br><span class="line">            <span class="type">RestTemplate</span> <span class="variable">restTemplate</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RestTemplate</span>();</span><br><span class="line">            <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> restTemplate.getForObject(API_APPLE_AUTH_KEY, String.class);</span><br><span class="line">            <span class="keyword">if</span> (StringUtil.isEmpty(content)) &#123;</span><br><span class="line">                <span class="comment">// 考虑到有可能会请求失败，这里我做了判空</span></span><br><span class="line">                <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            obj = JSON.parseObject(content, JWKSet.class);</span><br><span class="line">            <span class="comment">// 写入短时缓存</span></span><br><span class="line">            redis.setex(KEY_APPLE_PUBLIC_KEY_LIST, content, <span class="number">3600</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 返回获取到的公钥对象</span></span><br><span class="line">        <span class="keyword">return</span> obj;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取匹配identityToken.kid的公钥</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> kid 从 id_token 解析出来的 KeyID</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> PublicKey <span class="title function_">getApplePublicKey</span><span class="params">(String kid)</span> &#123;</span><br><span class="line">        <span class="type">JWKSet</span> <span class="variable">jwkSet</span> <span class="operator">=</span> requestApplePublicKey();</span><br><span class="line">        <span class="keyword">if</span> (jwkSet == <span class="literal">null</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (JWKSet.Keys key : jwkSet.getKeys()) &#123;</span><br><span class="line">            <span class="comment">// 在这里，我们把从 id_token 反解到的 kid 拿来查询公钥，如果找到了，则通过关键的两个参数 n 和 e 构造公钥对象，这个公钥会被用来验证 id_token 的有效性。</span></span><br><span class="line">            <span class="keyword">if</span> (kid.equals(key.getKid())) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="type">String</span> <span class="variable">n</span> <span class="operator">=</span> key.getN();</span><br><span class="line">                    <span class="type">String</span> <span class="variable">e</span> <span class="operator">=</span> key.getE();</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">modulus</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(n));</span><br><span class="line">                    <span class="type">BigInteger</span> <span class="variable">publicExponent</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BigInteger</span>(<span class="number">1</span>, Base64.decodeBase64(e));</span><br><span class="line">                    <span class="type">RSAPublicKeySpec</span> <span class="variable">spec</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RSAPublicKeySpec</span>(modulus, publicExponent);</span><br><span class="line">                    <span class="type">KeyFactory</span> <span class="variable">kf</span> <span class="operator">=</span> KeyFactory.getInstance(<span class="string">&quot;RSA&quot;</span>);</span><br><span class="line">                    <span class="keyword">return</span> kf.generatePublic(spec);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    log.error(<span class="string">&quot;解析获取公钥失败：&quot;</span> + e.getLocalizedMessage(), e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检查identityToken是否合法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">verifyAppleIdentityToken</span><span class="params">(String identityToken)</span> &#123;</span><br><span class="line">        <span class="type">DecodedJWT</span> <span class="variable">jwt</span> <span class="operator">=</span> JWT.decode(identityToken);</span><br><span class="line">        <span class="type">String</span> <span class="variable">keyId</span> <span class="operator">=</span> jwt.getKeyId();</span><br><span class="line">        <span class="type">String</span> <span class="variable">audience</span> <span class="operator">=</span> jwt.getAudience().get(<span class="number">0</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">subject</span> <span class="operator">=</span> jwt.getSubject();</span><br><span class="line"></span><br><span class="line">        <span class="type">PublicKey</span> <span class="variable">publicKey</span> <span class="operator">=</span> getApplePublicKey(keyId);</span><br><span class="line">        <span class="type">JwtParser</span> <span class="variable">jwtParser</span> <span class="operator">=</span> Jwts.parser().setSigningKey(publicKey);</span><br><span class="line">        <span class="comment">// 官方文档说明描述到，由 Apple ID Server 签发的 token 信息，其 iss 是固定值 https://appleid.apple.com</span></span><br><span class="line">        jwtParser.requireIssuer(<span class="string">&quot;https://appleid.apple.com&quot;</span>);</span><br><span class="line">        <span class="comment">// 这里检查 aud 是来自指定 App 发起的授权</span></span><br><span class="line">        jwtParser.requireAudience(audience);</span><br><span class="line">        <span class="comment">// 这个检查一般来说会使用客户端传来的 user 做 sub 的检查依据，但我自己的实现就没考虑这么多了。</span></span><br><span class="line">        <span class="comment">// 建议在 APP 向后端服务器发起登录调用时，安全起见，除开 code 授权码之外，也把 user 传来，因为客户端收到的 user 一定是 Apple ID Server 回传的合法值。</span></span><br><span class="line">        jwtParser.requireSubject(subject);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Jws&lt;Claims&gt; jws = jwtParser.parseClaimsJws(identityToken);</span><br><span class="line">            <span class="comment">// 检查 JWS 里是否存在 auth_time ，理由嘛我不知道，但我看大多数文档里大家都是这么检查的 :(</span></span><br><span class="line">            <span class="keyword">return</span> jws != <span class="literal">null</span> &amp;&amp; jws.getBody().containsKey(<span class="string">&quot;auth_time&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.error(e.getLocalizedMessage(), e);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>只要我们对<code>id_token</code>的检查通过，整个授权流程基本就算完成了，后端服务器就能正确获取到 user 信息，从而进行我们自己的第三方登录&#x2F;注册流程。</p>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Apple</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>记录一下本地搭建 Kafka 的一些命令</title>
+    <url>/2023/08/30/2023-08-30-SetupKafkaInLocalMachine/</url>
+    <content><![CDATA[<p>简单记录一下本地搭建 Kafka 用到的命令。</p>
+<p>利用 Docker 在本地搭建单机版 Kafka。</p>
+<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/.zookeeper/data</span><br><span class="line">mkdir -p ~/.zookeeper/datalog</span><br><span class="line">docker run -d --privileged=true --restart=always --name=zookeeper -p 2181:2181 -v /etc/localtime:/etc/localtime -v ~/.zookeeper/data:/data -v ~/.zookeeper/datalog:/datalog -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
+
+<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/.kafka/data</span><br><span class="line">docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v ~/.kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
+
+<h3 id="关于-KAFKA-ADVERTISED-LISTENERS"><a href="#关于-KAFKA-ADVERTISED-LISTENERS" class="headerlink" title="关于 KAFKA_ADVERTISED_LISTENERS"></a>关于 <code>KAFKA_ADVERTISED_LISTENERS</code></h3><ul>
+<li>如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问</li>
+<li>如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通</li>
+</ul>
+<h3 id="完成上述配置后，重启一下-Kafka"><a href="#完成上述配置后，重启一下-Kafka" class="headerlink" title="完成上述配置后，重启一下 Kafka"></a>完成上述配置后，重启一下 Kafka</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker restart kafka</span><br></pre></td></tr></table></figure>
+
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">    <span class="attr">zookeeper:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">&quot;wurstmeister/zookeeper&quot;</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">zookeeper</span></span><br><span class="line">        <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;2181:2181&quot;</span></span><br><span class="line">        <span class="attr">volumes:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.zookeeper/data:/data</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.zookeeper/datalog:/datalog</span></span><br><span class="line">        <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">kafka:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">&quot;wurstmeister/kafka&quot;</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">kafka</span></span><br><span class="line">        <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;9092:9092&quot;</span></span><br><span class="line">        <span class="attr">volumes:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.kafka/data:/kafka</span></span><br><span class="line">        <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">environment:</span></span><br><span class="line">            <span class="attr">KAFKA_BROKER_ID:</span> <span class="number">0</span></span><br><span class="line">            <span class="attr">KAFKA_AUTO_CREATE_TOPICS_ENABLE:</span> <span class="literal">true</span></span><br><span class="line">            <span class="attr">KAFKA_LOG_RETENTION_HOURS:</span> <span class="number">72</span></span><br><span class="line">            <span class="attr">KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">zookeeper:2181</span></span><br><span class="line">            <span class="attr">KAFKA_LISTENERS:</span> <span class="string">PLAINTEXT://0.0.0.0:9092</span></span><br><span class="line">            <span class="comment"># 如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问</span></span><br><span class="line">            <span class="comment"># 如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通</span></span><br><span class="line">            <span class="attr">KAFKA_ADVERTISED_LISTENERS:</span> <span class="string">PLAINTEXT://localhost:9092</span></span><br><span class="line">        <span class="attr">depends_on:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">zookeeper</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>Kafka</tag>
+        <tag>Zookeeper</tag>
       </tags>
   </entry>
   <entry>
@@ -1402,33 +1429,6 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>记录一下本地搭建 Kafka 的一些命令</title>
-    <url>/2023/08/30/2023-08-30-SetupKafkaInLocalMachine/</url>
-    <content><![CDATA[<p>简单记录一下本地搭建 Kafka 用到的命令。</p>
-<p>利用 Docker 在本地搭建单机版 Kafka。</p>
-<h2 id="拉取镜像"><a href="#拉取镜像" class="headerlink" title="拉取镜像"></a>拉取镜像</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker pull wurstmeister/zookeeper</span><br><span class="line">docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<h2 id="Zookeeper"><a href="#Zookeeper" class="headerlink" title="Zookeeper"></a>Zookeeper</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/.zookeeper/data</span><br><span class="line">mkdir -p ~/.zookeeper/datalog</span><br><span class="line">docker run -d --privileged=true --restart=always --name=zookeeper -p 2181:2181 -v /etc/localtime:/etc/localtime -v ~/.zookeeper/data:/data -v ~/.zookeeper/datalog:/datalog -t wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
-
-<h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/.kafka/data</span><br><span class="line">docker run -d --privileged=true --restart=always --name=kafka -p 9092:9092 -v ~/.kafka/data:/kafka -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092 -e KAFKA_AUTO_CREATE_TOPICS_ENABLE=true -e KAFKA_LOG_RETENTION_HOURS=72 -t wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-
-<h3 id="关于-KAFKA-ADVERTISED-LISTENERS"><a href="#关于-KAFKA-ADVERTISED-LISTENERS" class="headerlink" title="关于 KAFKA_ADVERTISED_LISTENERS"></a>关于 <code>KAFKA_ADVERTISED_LISTENERS</code></h3><ul>
-<li>如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问</li>
-<li>如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通</li>
-</ul>
-<h3 id="完成上述配置后，重启一下-Kafka"><a href="#完成上述配置后，重启一下-Kafka" class="headerlink" title="完成上述配置后，重启一下 Kafka"></a>完成上述配置后，重启一下 Kafka</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">docker restart kafka</span><br></pre></td></tr></table></figure>
-
-<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">version:</span> <span class="string">&quot;3&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="attr">services:</span></span><br><span class="line">    <span class="attr">zookeeper:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">&quot;wurstmeister/zookeeper&quot;</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">zookeeper</span></span><br><span class="line">        <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;2181:2181&quot;</span></span><br><span class="line">        <span class="attr">volumes:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.zookeeper/data:/data</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.zookeeper/datalog:/datalog</span></span><br><span class="line">        <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">kafka:</span></span><br><span class="line">        <span class="attr">image:</span> <span class="string">&quot;wurstmeister/kafka&quot;</span></span><br><span class="line">        <span class="attr">container_name:</span> <span class="string">kafka</span></span><br><span class="line">        <span class="attr">privileged:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">restart:</span> <span class="string">always</span></span><br><span class="line">        <span class="attr">ports:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">&quot;9092:9092&quot;</span></span><br><span class="line">        <span class="attr">volumes:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">~/.kafka/data:/kafka</span></span><br><span class="line">        <span class="attr">tty:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">environment:</span></span><br><span class="line">            <span class="attr">KAFKA_BROKER_ID:</span> <span class="number">0</span></span><br><span class="line">            <span class="attr">KAFKA_AUTO_CREATE_TOPICS_ENABLE:</span> <span class="literal">true</span></span><br><span class="line">            <span class="attr">KAFKA_LOG_RETENTION_HOURS:</span> <span class="number">72</span></span><br><span class="line">            <span class="attr">KAFKA_ZOOKEEPER_CONNECT:</span> <span class="string">zookeeper:2181</span></span><br><span class="line">            <span class="attr">KAFKA_LISTENERS:</span> <span class="string">PLAINTEXT://0.0.0.0:9092</span></span><br><span class="line">            <span class="comment"># 如果有固定的公网 IP，把 localhost 改成公网 IP 可以开启公网访问</span></span><br><span class="line">            <span class="comment"># 如果有固定的局域网 IP，把 localhost 改成局域网 IP，可以保证局域网内互通</span></span><br><span class="line">            <span class="attr">KAFKA_ADVERTISED_LISTENERS:</span> <span class="string">PLAINTEXT://localhost:9092</span></span><br><span class="line">        <span class="attr">depends_on:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">zookeeper</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>guide</category>
-      </categories>
-      <tags>
-        <tag>Kafka</tag>
-        <tag>Zookeeper</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>记录一个配合 Crontab 实现自动部署的脚本</title>
     <url>/2023/12/06/2023-12-06-AutoDeployByCrontab/</url>
     <content><![CDATA[<p>记录一个配合 Linux Crontab 实现的自动定时部署脚本</p>
@@ -1451,6 +1451,40 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       <tags>
         <tag>Linux</tag>
         <tag>Crontab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>为什么说 macOS 无权创建 /data 目录？</title>
+    <url>/2023/12/13/2023-12-13-WhyICannotAccessRootDirInMacOS/</url>
+    <content><![CDATA[<p>先说结论，苹果在 macOS BigSur 后加强了 SIP 政策，新增了<code>系统文件保护</code>的机制，而恰好 <code>/</code> 目录就属于系统文件的部分，所以不允许普通用户直接在这个目录下操作。</p>
+<p>SIP (System Integrity Protection) 是苹果自 OS X 10.11 引入的系统完整性功能，有关 SIP 的介绍可以前往 <a href="https://en.wikipedia.org/wiki/System_Integrity_Protection">System Integrity Protection - Wikipedia</a> 查看，这里不赘述。</p>
+<p>我们仍然可以按照下面介绍的两种办法来扩展用户权限：</p>
+<ol>
+<li>修改 SIP 权限（不安全）<ol>
+<li>打开终端，输入 <code>csrutil status</code>，显示 <code>enabled</code> 表示启用了 SIP，接下来需要禁用 SIP；</li>
+<li>重启 mac，按住 <code>Command (⌘)-R</code>，进入恢复模式；</li>
+<li>点击屏幕左上角实用工具第三栏：终端，打开终端，输入 <code>csrutil disable</code>，重启；</li>
+<li>重启后会发现仍然不能新建文件，会提示 <code>Read-only file system</code>，此时需要重新挂载一下根目录 <code>sudo mount -uw /</code>，重新挂载后即可新建文件夹了，但此次挂载会在电脑重启后失效，即重启后又重新恢复为 <code>Read-only file system</code>；</li>
+</ol>
+</li>
+<li>建立一个映射路径<ol>
+<li>输入命令 <code>sudo vim /etc/synthetic.conf</code>，新建一个配置文件；</li>
+<li>进入到这个文件后，进入 Vim 编辑模式，输入如下内容：<code>export /Users/xxx/Documents/export</code>（举例），前者为需要映射的路径名称，后者为映射后的路径名称（真实的文件路径）<ul>
+<li>需要注意的是，两者之间用 tab 隔开，而不是空格。</li>
+</ul>
+</li>
+<li>给真实路径赋权限 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cd /Users/xxx/Documents/</span><br><span class="line">sudo mkdir export  # 没有则新建目录</span><br><span class="line">sudo chmod -R 777 export</span><br></pre></td></tr></table></figure></li>
+<li>重启电脑，实现功能</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>guide</category>
+      </categories>
+      <tags>
+        <tag>macOS</tag>
+        <tag>Catalina</tag>
       </tags>
   </entry>
   <entry>
@@ -1504,35 +1538,151 @@ HR確定ガシャチケット(招待pt)　→　スターメダルに変更<br>
       </tags>
   </entry>
   <entry>
-    <title>为什么说 macOS 无权创建 /data 目录？</title>
-    <url>/2023/12/13/2023-12-13-WhyICannotAccessRootDirInMacOS/</url>
-    <content><![CDATA[<p>自从 macOS Catalina 版本开始，苹果就开始收缩用户操作文件夹的权限了，但仍然可以按照下面介绍的两种办法来扩展用户权限：</p>
+    <title>基于位的权限功能的设计</title>
+    <url>/2023/12/14/2023-13-14-PermissionOverwrite/</url>
+    <content><![CDATA[<blockquote>
+<p>权限是一种用来赋予或限制用户使用功能的方式，它可以被配置到公会级别或者不同的身份上。另外，身份可以附加给用户，以此来组织化的赋予&#x2F;限制用户在组织内的能力。</p>
+</blockquote>
+<p>上述引言是我对 Discord 开发者文档库中对于 <code>Permissions</code> 的开篇描述的一个提炼。</p>
+<hr>
+<p>这篇文章介绍了基于位 <code>bit</code> 的权限功能的设计，在这个设计中，主要包含了下面列出的要素：</p>
 <ol>
-<li>修改 SIP 权限（不安全）<ol>
-<li>打开终端，输入 <code>csrutil status</code>，显示 <code>enabled</code> 表示启用了 SIP，接下来需要禁用 SIP；</li>
-<li>重启 mac，按住 <code>Command (⌘)-R</code>，进入恢复模式；</li>
-<li>点击屏幕左上角实用工具第三栏：终端，打开终端，输入 <code>csrutil disable</code>，重启；</li>
-<li>重启后会发现仍然不能新建文件，会提示 <code>Read-only file system</code>，此时需要重新挂载一下根目录 <code>sudo mount -uw /</code>，重新挂载后即可新建文件夹了，但此次挂载会在电脑重启后失效，即重启后又重新恢复为 <code>Read-only file system</code>；</li>
+<li>整个权限功能是在一个群体里流转的，不同的群体可以有不同的权限配置；</li>
+<li>权限功能的基础设施，在业务描述上可以称为群 <code>Guild</code>、频道 <code>Channel</code>、身份 <code>Role</code>（后文会围绕这三个名词来介绍功能的设计）；</li>
+<li>权限功能离不开用户，因为最终会被分配到用户 <code>Member</code> 身上；</li>
+<li>权限的集合应该由一系列原子属性来定义，每一位代表了一个独立的、可以原子化的功能，各属性之间不应该也不能出现歧义或重叠。</li>
 </ol>
-</li>
-<li>建立一个映射路径<ol>
-<li>输入命令 <code>sudo vim /etc/synthetic.conf</code>，新建一个配置文件；</li>
-<li>进入到这个文件后，进入 Vim 编辑模式，输入如下内容：<code>export /Users/xxx/Documents/export</code>（举例），前者为需要映射的路径名称，后者为映射后的路径名称（真实的文件路径）<ul>
-<li>需要注意的是，两者之间用 tab 隔开，而不是空格。</li>
+<h2 id="关于位"><a href="#关于位" class="headerlink" title="关于位"></a>关于位</h2><p>【位】是我们整个功能设计的核心，我们使用 <code>位运算</code> 来作为权限归集的运算基础。</p>
+<p>权限的操作涉及到“授予”、“撤除”、“归集”、“检查”四种行为。</p>
+<p>这四种行为映射到位上，可以描述为：</p>
+<ul>
+<li>授予：将位上的某一个位设成 <code>1</code></li>
+<li>撤除：将位上的某一个位设成 <code>0</code></li>
+<li>归集：所有属性或权限值合并得到最终结果</li>
+<li>检查：验证某一位上是 <code>0</code> 还是 <code>1</code>，表示这个属性是 <code>开</code> 还是 <code>关</code></li>
 </ul>
-</li>
-<li>给真实路径赋权限 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cd /Users/xxx/Documents/</span><br><span class="line">sudo mkdir export  # 没有则新建目录</span><br><span class="line">sudo chmod -R 777 export</span><br></pre></td></tr></table></figure></li>
-<li>重启电脑，实现功能</li>
+<p>这里举个例子来表达一下其中一些行为。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 把权限 A（定为 0x40）和权限 B（定为 0x800）归集到一起</span></span><br><span class="line">permissions = <span class="number">0x40</span> | <span class="number">0x800</span>  <span class="comment"># 0x840 -&gt; 2112</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分别检查权限 A 和 B</span></span><br><span class="line">(permissions &amp; <span class="number">0x40</span>) == <span class="number">0x40</span>  <span class="comment"># True</span></span><br><span class="line">(permissions &amp; <span class="number">0x800</span>) == <span class="number">0x800</span>  <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查一个不存在的权限 C（定为 0x2）</span></span><br><span class="line">(permissions &amp; <span class="number">0x2</span>) == <span class="number">0x2</span>  <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 撤除权限 A</span></span><br><span class="line">permissions = permissions &amp; ~<span class="number">0x40</span></span><br><span class="line">(permissions &amp; <span class="number">0x40</span>) == <span class="number">0x40</span>  <span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+
+<p>我们从中可以看到，要实现上面说到的四种行为，我们需要使用位运算中的【或 <code>|</code>】、【与 <code>&amp;</code>】、【取反 <code>~</code>】三种操作。</p>
+<p>实际上，对于这些运算，我们可以不用写的很复杂。我们可以把权限转换成“位置”的思路，那么我们可以抽象出下面的一系列操作，来实现“授予”、“撤除”、“归集”、“检查”四种行为。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="comment">// SetBit 打开/关闭某一个 position 上的属性</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SetBit</span><span class="params">(attr <span class="type">uint64</span>, position <span class="type">int</span>, flag <span class="type">bool</span>)</span></span> <span class="type">uint64</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> position &lt;= <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> attr</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> flag &#123;</span><br><span class="line">		<span class="comment">// set to 1</span></span><br><span class="line">		<span class="keyword">return</span> attr | <span class="type">uint64</span>(<span class="number">1</span>)&lt;&lt;(position<span class="number">-1</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// set to 0</span></span><br><span class="line">		<span class="keyword">return</span> attr &amp; ^(<span class="type">uint64</span>(<span class="number">1</span>) &lt;&lt; (position - <span class="number">1</span>))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetBits 批量的打开/关闭多个 positions 上的属性</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SetBits</span><span class="params">(attr <span class="type">uint64</span>, positions []<span class="type">int</span>, flag <span class="type">bool</span>)</span></span> <span class="type">uint64</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(positions) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> attr</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, position := <span class="keyword">range</span> positions &#123;</span><br><span class="line">		<span class="keyword">if</span> position &lt;= <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		attr = SetBit(attr, position, flag)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> attr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// GetBit 获取 attr 在 position 上的属性是开启的（1）还是关闭的（0）</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetBit</span><span class="params">(attr <span class="type">uint64</span>, position <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	res := (attr &gt;&gt; (position - <span class="number">1</span>)) &amp; <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="type">int</span>(res)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// GetBitFlag 获取 attr 在 position 上的属性是开启的还是关闭的</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetBitFlag</span><span class="params">(attr <span class="type">uint64</span>, position <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	res := GetBit(attr, position)</span><br><span class="line">	<span class="keyword">return</span> res == <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Collect 归集一组权限值，得到最终权限值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Collect</span><span class="params">(attrs []<span class="type">uint64</span>)</span></span> (attr <span class="type">uint64</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(attrs) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	attr = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> attrs &#123;</span><br><span class="line">		attr |= v</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> attr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>上面提到，</p>
+<blockquote>
+<p>权限的集合应该由一系列原子属性来定义，每一位代表了一个独立的、可以原子化的功能</p>
+</blockquote>
+<p>所以属性可以看成用来定义这些功能是不是可以提供给用户使用的开关。</p>
+<p>比如我们可以声明一些这篇文章后文会用到的属性，具体见下表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">位置</th>
+<th align="left">描述</th>
+<th align="left">适用范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Administrator</td>
+<td align="left">1</td>
+<td align="left">允许所有的权限并且绕过权限覆写</td>
+<td align="left">群、身份</td>
+</tr>
+<tr>
+<td align="left">ViewChannel</td>
+<td align="left">2</td>
+<td align="left">允许成员查看频道，包括阅读消息和查看语音频道基本信息</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">SendMessage</td>
+<td align="left">3</td>
+<td align="left">允许成员发送文本消息</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">Connect</td>
+<td align="left">4</td>
+<td align="left">允许成员连接到频道语音</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">Speak</td>
+<td align="left">5</td>
+<td align="left">允许成员说话</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">BanMembers</td>
+<td align="left">6</td>
+<td align="left">允许封禁成员</td>
+<td align="left">群、身份</td>
+</tr>
+</tbody></table>
+<p>这是一个随意声明的属性表单，他不能概括一个业务的全部功能，仅仅只是举例。</p>
+<p>表单里给出的位置，代表了这个属性在权限值的二进制序列中，从右到左数的第 x 个位置。</p>
+<h2 id="实体定义"><a href="#实体定义" class="headerlink" title="实体定义"></a>实体定义</h2><p>有了运算方式和属性，接下来我们来围绕权限功能的基础设施，定义一些实体对象。</p>
+<blockquote>
+<p>注意：所有下文定义的实体都不会提供完整的字段，只列出关键字段。</p>
+</blockquote>
+<p>首先，权限是在一个群里流转的，我们就需要有描述一个群的对象，这里我们会定义一个 <code>Guild</code> 实体：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Guild <span class="keyword">struct</span> &#123;</span><br><span class="line">	Permission <span class="type">string</span> <span class="comment">// 基础权限值（Hex 字符串）</span></span><br><span class="line">	Attr       <span class="type">uint64</span> <span class="comment">// 基础权限值（实值）</span></span><br><span class="line"></span><br><span class="line">	OwnerID <span class="type">int64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *Guild)</span></span> IsOwner(member *Member) <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> member == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> g.OwnerID == member.UserID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Guild</code> 提供了一个群的基本权限配置，它作用于所有在这个群里的成员，作为成员的默认权限配置。<br>在这个实体里，我们定义了字符串类型的 <code>Permission</code> 用来做持久化，另外定义了 <code>Attr</code> 作为数值运算的参数，<code>Attr</code> 是由 <code>Permission</code> 经过进制转换得到的无符号数值。<br>对于一些不支持无符号类型的语言，需要使用数值范围尽可能大的类型去承载。</p>
+<hr>
+<p>接下来，我们定义一个群里会存在多个频道，因为不是所有的用户都喜欢聚集在一个很大的地方来交流，所以这个群里会存在多个附属的频道。<br>这里我们会定义一个 <code>Channel</code> 实体：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Channel <span class="keyword">struct</span> &#123;</span><br><span class="line">	GuildID   <span class="type">int64</span>  <span class="comment">// 关联到某一个群的ID</span></span><br><span class="line">	Allow     <span class="type">string</span> <span class="comment">// 这个频道默认开启的一些权限（Hex 字符串）</span></span><br><span class="line">	AllowAttr <span class="type">uint64</span> <span class="comment">// 这个频道默认开启的一些权限（实值）</span></span><br><span class="line">	Deny      <span class="type">string</span> <span class="comment">// 这个频道默认禁止的一些权限（Hex 字符串）</span></span><br><span class="line">	DenyAttr  <span class="type">uint64</span> <span class="comment">// 这个频道默认禁止的一些权限（实值）</span></span><br><span class="line"></span><br><span class="line">	Rules []*Overwrite</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Channel</code> 提供了频道的基本权限配置，由于 <code>Guild</code> 定义了基本的权限，在频道这一级别需要定义的就稍微有些不同。<br>要在频道里声明权限，因为已经有了基本权限，所以需要明确声明在基本权限之上，有哪些权限是开放的，又有哪些权限是需要禁止的。<br>所以这里我们声明了 <code>Allow</code> 和 <code>Deny</code> 分别描述要开放的权限和要禁止的权限。同理，我们另外定义包含 <code>-Attr</code> 后缀的属性，来作为数值运算的参数。<br>频道里定义的这些权限，同样是作为成员在频道里的默认权限配置，并且覆写群级别的基本权限。</p>
+<hr>
+<p>再接下来，我们回到 <code>Guild</code>。群组里的成员一定会有一些身份，这些身份可能是区分管理员和普通人，可能是给一些头衔名号，也可能是一些 KickStarter 赞助奖励身份等等。<br>假如一个身份是用来授予给一些用户管理群组的能力，那么这个身份一定是声明了额外的权限，授权身份组内的成员使用更多的功能。<br>这里我们会定义一个 <code>Role</code> 实体：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Role <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID         <span class="type">int64</span></span><br><span class="line">	GuildID    <span class="type">int64</span>  <span class="comment">// 关联到某一个群的ID</span></span><br><span class="line">	Permission <span class="type">string</span> <span class="comment">// 基础权限值（Hex 字符串）</span></span><br><span class="line">	Attr       <span class="type">uint64</span> <span class="comment">// 基础权限值（实值）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为身份不会声明禁止成员不能使用哪些功能，并且我们的这套权限功能使用了另外的方式去实现【禁止】的操作，所以 <code>Role</code> 实体只需要定义 <code>Permission</code> 来声明这个身份被授予了哪些权限。<br>同样的，我们额外定义了 <code>Attr</code> 来做数值运算的参数，后续也不再赘述。</p>
+<hr>
+<p>目前为止，我们已经可以实现大多数的逻辑了：</p>
+<ol>
+<li>给群里的所有人分配基本权限</li>
+<li>这个群定义了多种多个频道，并且这些频道有自己的权限分配</li>
+<li>这个群定义了多个身份，这些身份也都配置了不同的权限</li>
+<li>这个群里有很多的成员，其中一部分成员持有各种不同的身份，其他的成员没有持有身份，作为普通成员活跃在这个群里他们能访问的各个频道</li>
 </ol>
-</li>
+<p>似乎还缺了一块最重要的拼图——访问规则</p>
+<h2 id="权限覆写"><a href="#权限覆写" class="headerlink" title="权限覆写"></a>权限覆写</h2><p>这个时候就要介绍整个功能比较核心的部分了，也是实现灵活自由的分配实际访问权限的核心——权限覆写。</p>
+<p>权限覆写是一个可以在频道级别，为不同的角色或个人，配置具体的权限的一个功能。<br>它可以具体到例如限制只允许特定身份的用户访问频道、在频道里与他人互动，亦或者禁止普通人查看频道的内容等等。<br>又或者，它可以允许某几个特定的成员在频道里进行禁言他人、断开他人的语音连接、关闭他人的语音说话功能等等的管理操作。</p>
+<p>首先我们定义一个 <code>Overwrite</code> 实体，它是一条一条的覆写规则：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Overwrite <span class="keyword">struct</span> &#123;</span><br><span class="line">	ChannelID <span class="type">int64</span>  <span class="comment">// 关联到频道的ID</span></span><br><span class="line">	Type      <span class="type">string</span> <span class="comment">// 规则适用的对象类型，它描述了这条规则应该适用于身份还是成员</span></span><br><span class="line">	RelatedID <span class="type">int64</span>  <span class="comment">// 适用对象的ID，它由 Type 定义了关联的ID应该是身份ID还是成员的用户ID</span></span><br><span class="line">	Allow     <span class="type">string</span> <span class="comment">// 这条规则默认开启的一些权限（Hex 字符串）</span></span><br><span class="line">	AllowAttr <span class="type">uint64</span> <span class="comment">// 这条规则默认开启的一些权限（实值）</span></span><br><span class="line">	Deny      <span class="type">string</span> <span class="comment">// 这条规则默认禁止的一些权限（Hex 字符串）</span></span><br><span class="line">	DenyAttr  <span class="type">uint64</span> <span class="comment">// 这条规则默认禁止的一些权限（实值）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从这个结构来看，一条规则需要支持针对身份或者个人去生效，所以需要定义一个对生效目标的关联信息。另外，它于频道的权限定义类似，一条规则需要描述它所关联的对象能够做什么事情，以及不能够做什么事情。</p>
+<p>现在我们已经有了 <code>Guild</code>、<code>Channel</code>、<code>Role</code>、<code>Overwrite</code>，能够定义权限的东西多了起来，并且在这个定义中还产生了例如 <code>Guild -&gt; Member</code>、<code>Role -&gt; Member</code> 等的多种联系。</p>
+<p>这种情况下，我们应该定义一个怎样去应用覆写的【优先级】。所谓优先级，就是为了计算一个成员的最终权限值，我们需要遵守的一个计算顺序。我们需要遵循下列顺序的优先级来计算权限值：</p>
+<ol>
+<li>基于 <code>Guild</code> 获取对于所有人的基本权限</li>
+<li>应用在成员身上的多个身份所【授予】的权限</li>
+<li>频道里默认对于所有人所【禁止】的权限</li>
+<li>频道里默认对于所有人所【允许】的权限</li>
+<li>频道里默认对于特定【身份】所【禁止】的权限</li>
+<li>频道里默认对于特定【身份】所【允许】的权限</li>
+<li>频道里默认对于特定【成员】所【禁止】的权限</li>
+<li>频道里默认对于特定【成员】所【允许】的权限</li>
 </ol>
+<p>遵循这套优先级，我们可以得到下面的伪代码去实现：</p>
+<blockquote>
+<p>注意：在这套伪代码中的计算，可能不会存在太多 bitwise 调用，因为这套计算的大多数部分不属于设置单个属性的开关，而是做复杂的归集操作。</p>
+<p>另外，伪代码里使用到的例如 <code>lo.KeyBy</code> 等方法，来自开源项目 <a href="https://github.com/samber/lo">samber&#x2F;lo</a>，感兴趣的可以查看原项目，我会在引用的地方写上注释说明干了什么事。</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">type</span> Member <span class="keyword">struct</span> &#123;</span><br><span class="line">	UserID <span class="type">int64</span></span><br><span class="line">	Roles  []*Role</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// positions</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Administrator = <span class="number">1</span></span><br><span class="line">	ViewChannel   = <span class="number">2</span></span><br><span class="line">	SendMessage   = <span class="number">3</span></span><br><span class="line">	Connect       = <span class="number">4</span></span><br><span class="line">	Speak         = <span class="number">5</span></span><br><span class="line">	BanMembers    = <span class="number">6</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> All = bitwise.SetBits(<span class="number">0</span>, []<span class="type">int</span>&#123;Administrator, ViewChannel, SendMessage, Connect, Speak, BanMembers&#125;, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// computeBasePermissions 计算基本权限</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computeBasePermissions</span><span class="params">(member *Member, guild *Guild)</span></span> (permission <span class="type">uint64</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> guild.IsOwner(member) &#123;</span><br><span class="line">		<span class="keyword">return</span> All</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	permission = guild.Attr</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(member.Roles) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> permission</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, role := <span class="keyword">range</span> member.Roles &#123;</span><br><span class="line">		permission |= role.Attr</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> bitwise.GetBitFlag(permission, Administrator) &#123;</span><br><span class="line">		<span class="keyword">return</span> All</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> permission</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// computeOverwrites 计算权限覆写</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computeOverwrites</span><span class="params">(basePermission <span class="type">uint64</span>, member *Member, channel *Channel)</span></span> (permission <span class="type">uint64</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> bitwise.GetBitFlag(basePermission, Administrator) &#123;</span><br><span class="line">		<span class="keyword">return</span> All</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	permission = basePermission</span><br><span class="line"></span><br><span class="line">	permission &amp;= ^channel.DenyAttr</span><br><span class="line">	permission |= channel.AllowAttr</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(channel.Rules) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> permission</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 把 channel.Rules 按照 Overwrite.Type 必须满足 role 的过滤条件，找出符合条件的 Overwrite 对象</span></span><br><span class="line">	roleOverwrites := lo.FilterMap(channel.Rules, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite, index <span class="type">int</span>)</span></span> (*Overwrite, <span class="type">bool</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> item, item.Type == <span class="string">&quot;role&quot;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 把 channel.Rules 按照 Overwrite.Type 必须满足 member 的过滤条件，找出符合条件的 Overwrite 对象</span></span><br><span class="line">	memberOverwrites := lo.FilterMap(channel.Rules, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite, index <span class="type">int</span>)</span></span> (*Overwrite, <span class="type">bool</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> item, item.Type == <span class="string">&quot;member&quot;</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 把 roleOverwrites 切片按照 Overwrite.RelatedID 作为 key 转化成 map 结构</span></span><br><span class="line">	roleOverwriteMap := lo.KeyBy(roleOverwrites, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite)</span></span> <span class="type">int64</span> &#123; <span class="keyword">return</span> item.RelatedID &#125;)</span><br><span class="line"></span><br><span class="line">	allow := <span class="type">uint64</span>(<span class="number">0</span>)</span><br><span class="line">	deny := <span class="type">uint64</span>(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(member.Roles) &gt; <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> _, role := <span class="keyword">range</span> member.Roles &#123;</span><br><span class="line">			role := role</span><br><span class="line">			rule, exist := roleOverwriteMap[role.ID]</span><br><span class="line">			<span class="keyword">if</span> exist &#123;</span><br><span class="line">				allow |= rule.AllowAttr</span><br><span class="line">				deny |= rule.DenyAttr</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	permission &amp;= ^deny</span><br><span class="line">	permission |= allow</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 把 memberOverwrites 切片按照 Overwrite.RelatedID 作为 key 转化成 map 结构</span></span><br><span class="line">	memberOverwriteMap := lo.KeyBy(memberOverwrites, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite)</span></span> <span class="type">int64</span> &#123; <span class="keyword">return</span> item.RelatedID &#125;)</span><br><span class="line">	memberRule, exist := memberOverwriteMap[member.UserID]</span><br><span class="line">	<span class="keyword">if</span> exist &#123;</span><br><span class="line">		permission &amp;= ^memberRule.DenyAttr</span><br><span class="line">		permission |= memberRule.AllowAttr</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> permission</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// computePermissions 计算成员的权限值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computePermissions</span><span class="params">(member *Member, channel *Channel, guild *Guild)</span></span> (permission <span class="type">uint64</span>) &#123;</span><br><span class="line">	basePermission := computeBasePermissions(member, guild)</span><br><span class="line">	<span class="keyword">return</span> computeOverwrites(basePermission, member, channel)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此我们已经得到了一个完整的权限功能所需要的所有要素，经过 <code>computePermissions</code> 计算得到的结果，就是某个成员在一个群里的其中一个频道的最终权限；经过 <code>computeBasePermissions</code> 计算得到的结果，就是某个成员在频道之外，在群里的基本权限。</p>
+<p>在做业务权限检查的时候，我们就可以按需调用这两个方法，在得到结果后去判断具体的权限是授权的还是被禁止的，从而实现我们做权限配置的需求。</p>
 ]]></content>
       <categories>
-        <category>guide</category>
+        <category>infrastructure</category>
       </categories>
       <tags>
-        <tag>macOS</tag>
-        <tag>Catalina</tag>
+        <tag>permission</tag>
+        <tag>role</tag>
       </tags>
   </entry>
 </search>

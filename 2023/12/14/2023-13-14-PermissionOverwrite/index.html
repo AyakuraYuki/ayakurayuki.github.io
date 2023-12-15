@@ -5,13 +5,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>为什么说 macOS 无权创建 /data 目录？ - Ayakura Yuki 的小窝</title>
+    <title>基于位的权限功能的设计 - Ayakura Yuki 的小窝</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="AyakuraYuki,"> 
-    <meta name="description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,先说结论，苹果在 macOS BigSur 后加强了 SIP 政策，新增了系统文件保护的机制，而恰好 / 目录就属于系统文件的部分，所以不允许普通用户直接在这个目录下操作。
-SIP (System ,"> 
+    <meta name="description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
+权限是一种用来赋予或限制用户使用功能的方式，它可以被配置到公会级别或者不同的身份上。另外，身份可以附加给用户，以此来组织化的赋予&amp;#x2F;限制用户在组织内的能力。
+
+上述引言是我对 Discor,"> 
     <meta name="author" content="Ayakura Yuki"> 
     <link rel="alternative" href="atom.xml" title="Ayakura Yuki 的小窝" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -19,18 +21,22 @@ SIP (System ,">
     
     
     <meta name="twitter:card" content="summary"/>
-    <meta name="twitter:title" content="为什么说 macOS 无权创建 /data 目录？ - Ayakura Yuki 的小窝"/>
-    <meta name="twitter:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,先说结论，苹果在 macOS BigSur 后加强了 SIP 政策，新增了系统文件保护的机制，而恰好 / 目录就属于系统文件的部分，所以不允许普通用户直接在这个目录下操作。
-SIP (System ,"/>
+    <meta name="twitter:title" content="基于位的权限功能的设计 - Ayakura Yuki 的小窝"/>
+    <meta name="twitter:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
+权限是一种用来赋予或限制用户使用功能的方式，它可以被配置到公会级别或者不同的身份上。另外，身份可以附加给用户，以此来组织化的赋予&amp;#x2F;限制用户在组织内的能力。
+
+上述引言是我对 Discor,"/>
     
     
     
     
     <meta property="og:site_name" content="Ayakura Yuki 的小窝"/>
     <meta property="og:type" content="object"/>
-    <meta property="og:title" content="为什么说 macOS 无权创建 /data 目录？ - Ayakura Yuki 的小窝"/>
-    <meta property="og:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,先说结论，苹果在 macOS BigSur 后加强了 SIP 政策，新增了系统文件保护的机制，而恰好 / 目录就属于系统文件的部分，所以不允许普通用户直接在这个目录下操作。
-SIP (System ,"/>
+    <meta property="og:title" content="基于位的权限功能的设计 - Ayakura Yuki 的小窝"/>
+    <meta property="og:description" content="杂记、博文、游记，这里就是我想到什么说什么的小天地,
+权限是一种用来赋予或限制用户使用功能的方式，它可以被配置到公会级别或者不同的身份上。另外，身份可以附加给用户，以此来组织化的赋予&amp;#x2F;限制用户在组织内的能力。
+
+上述引言是我对 Discor,"/>
     
 <link rel="stylesheet" href="/css/diaspora.css">
 
@@ -44,7 +50,7 @@ SIP (System ,"/>
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="https://blog.ayakurayuki.cc"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">为什么说 macOS 无权创建 /data 目录？</h3>
+    <h3 class="subtitle">基于位的权限功能的设计</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -59,37 +65,151 @@ SIP (System ,"/>
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">为什么说 macOS 无权创建 /data 目录？</h1>
+        <h1 class="title">基于位的权限功能的设计</h1>
         <div class="stuff">
-            <span>十二月 13, 2023</span>
+            <span>十二月 14, 2023</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/Catalina/" rel="tag">Catalina</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/macOS/" rel="tag">macOS</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/permission/" rel="tag">permission</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/role/" rel="tag">role</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <p>先说结论，苹果在 macOS BigSur 后加强了 SIP 政策，新增了<code>系统文件保护</code>的机制，而恰好 <code>/</code> 目录就属于系统文件的部分，所以不允许普通用户直接在这个目录下操作。</p>
-<p>SIP (System Integrity Protection) 是苹果自 OS X 10.11 引入的系统完整性功能，有关 SIP 的介绍可以前往 <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/System_Integrity_Protection">System Integrity Protection - Wikipedia</a> 查看，这里不赘述。</p>
-<p>我们仍然可以按照下面介绍的两种办法来扩展用户权限：</p>
+            <blockquote>
+<p>权限是一种用来赋予或限制用户使用功能的方式，它可以被配置到公会级别或者不同的身份上。另外，身份可以附加给用户，以此来组织化的赋予&#x2F;限制用户在组织内的能力。</p>
+</blockquote>
+<p>上述引言是我对 Discord 开发者文档库中对于 <code>Permissions</code> 的开篇描述的一个提炼。</p>
+<hr>
+<p>这篇文章介绍了基于位 <code>bit</code> 的权限功能的设计，在这个设计中，主要包含了下面列出的要素：</p>
 <ol>
-<li>修改 SIP 权限（不安全）<ol>
-<li>打开终端，输入 <code>csrutil status</code>，显示 <code>enabled</code> 表示启用了 SIP，接下来需要禁用 SIP；</li>
-<li>重启 mac，按住 <code>Command (⌘)-R</code>，进入恢复模式；</li>
-<li>点击屏幕左上角实用工具第三栏：终端，打开终端，输入 <code>csrutil disable</code>，重启；</li>
-<li>重启后会发现仍然不能新建文件，会提示 <code>Read-only file system</code>，此时需要重新挂载一下根目录 <code>sudo mount -uw /</code>，重新挂载后即可新建文件夹了，但此次挂载会在电脑重启后失效，即重启后又重新恢复为 <code>Read-only file system</code>；</li>
+<li>整个权限功能是在一个群体里流转的，不同的群体可以有不同的权限配置；</li>
+<li>权限功能的基础设施，在业务描述上可以称为群 <code>Guild</code>、频道 <code>Channel</code>、身份 <code>Role</code>（后文会围绕这三个名词来介绍功能的设计）；</li>
+<li>权限功能离不开用户，因为最终会被分配到用户 <code>Member</code> 身上；</li>
+<li>权限的集合应该由一系列原子属性来定义，每一位代表了一个独立的、可以原子化的功能，各属性之间不应该也不能出现歧义或重叠。</li>
 </ol>
-</li>
-<li>建立一个映射路径<ol>
-<li>输入命令 <code>sudo vim /etc/synthetic.conf</code>，新建一个配置文件；</li>
-<li>进入到这个文件后，进入 Vim 编辑模式，输入如下内容：<code>export /Users/xxx/Documents/export</code>（举例），前者为需要映射的路径名称，后者为映射后的路径名称（真实的文件路径）<ul>
-<li>需要注意的是，两者之间用 tab 隔开，而不是空格。</li>
+<h2 id="关于位"><a href="#关于位" class="headerlink" title="关于位"></a>关于位</h2><p>【位】是我们整个功能设计的核心，我们使用 <code>位运算</code> 来作为权限归集的运算基础。</p>
+<p>权限的操作涉及到“授予”、“撤除”、“归集”、“检查”四种行为。</p>
+<p>这四种行为映射到位上，可以描述为：</p>
+<ul>
+<li>授予：将位上的某一个位设成 <code>1</code></li>
+<li>撤除：将位上的某一个位设成 <code>0</code></li>
+<li>归集：所有属性或权限值合并得到最终结果</li>
+<li>检查：验证某一位上是 <code>0</code> 还是 <code>1</code>，表示这个属性是 <code>开</code> 还是 <code>关</code></li>
 </ul>
-</li>
-<li>给真实路径赋权限 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /Users/xxx/Documents/</span><br><span class="line">sudo mkdir export  # 没有则新建目录</span><br><span class="line">sudo chmod -R 777 export</span><br></pre></td></tr></table></figure></li>
-<li>重启电脑，实现功能</li>
+<p>这里举个例子来表达一下其中一些行为。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把权限 A（定为 0x40）和权限 B（定为 0x800）归集到一起</span></span><br><span class="line">permissions = <span class="number">0x40</span> | <span class="number">0x800</span>  <span class="comment"># 0x840 -&gt; 2112</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分别检查权限 A 和 B</span></span><br><span class="line">(permissions &amp; <span class="number">0x40</span>) == <span class="number">0x40</span>  <span class="comment"># True</span></span><br><span class="line">(permissions &amp; <span class="number">0x800</span>) == <span class="number">0x800</span>  <span class="comment"># True</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 检查一个不存在的权限 C（定为 0x2）</span></span><br><span class="line">(permissions &amp; <span class="number">0x2</span>) == <span class="number">0x2</span>  <span class="comment"># False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 撤除权限 A</span></span><br><span class="line">permissions = permissions &amp; ~<span class="number">0x40</span></span><br><span class="line">(permissions &amp; <span class="number">0x40</span>) == <span class="number">0x40</span>  <span class="comment"># False</span></span><br></pre></td></tr></table></figure>
+
+<p>我们从中可以看到，要实现上面说到的四种行为，我们需要使用位运算中的【或 <code>|</code>】、【与 <code>&amp;</code>】、【取反 <code>~</code>】三种操作。</p>
+<p>实际上，对于这些运算，我们可以不用写的很复杂。我们可以把权限转换成“位置”的思路，那么我们可以抽象出下面的一系列操作，来实现“授予”、“撤除”、“归集”、“检查”四种行为。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// SetBit 打开/关闭某一个 position 上的属性</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SetBit</span><span class="params">(attr <span class="type">uint64</span>, position <span class="type">int</span>, flag <span class="type">bool</span>)</span></span> <span class="type">uint64</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> position &lt;= <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> attr</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> flag &#123;</span><br><span class="line">		<span class="comment">// set to 1</span></span><br><span class="line">		<span class="keyword">return</span> attr | <span class="type">uint64</span>(<span class="number">1</span>)&lt;&lt;(position<span class="number">-1</span>)</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// set to 0</span></span><br><span class="line">		<span class="keyword">return</span> attr &amp; ^(<span class="type">uint64</span>(<span class="number">1</span>) &lt;&lt; (position - <span class="number">1</span>))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// SetBits 批量的打开/关闭多个 positions 上的属性</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">SetBits</span><span class="params">(attr <span class="type">uint64</span>, positions []<span class="type">int</span>, flag <span class="type">bool</span>)</span></span> <span class="type">uint64</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(positions) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> attr</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, position := <span class="keyword">range</span> positions &#123;</span><br><span class="line">		<span class="keyword">if</span> position &lt;= <span class="number">0</span> &#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		attr = SetBit(attr, position, flag)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> attr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// GetBit 获取 attr 在 position 上的属性是开启的（1）还是关闭的（0）</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetBit</span><span class="params">(attr <span class="type">uint64</span>, position <span class="type">int</span>)</span></span> <span class="type">int</span> &#123;</span><br><span class="line">	res := (attr &gt;&gt; (position - <span class="number">1</span>)) &amp; <span class="number">1</span></span><br><span class="line">	<span class="keyword">return</span> <span class="type">int</span>(res)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// GetBitFlag 获取 attr 在 position 上的属性是开启的还是关闭的</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GetBitFlag</span><span class="params">(attr <span class="type">uint64</span>, position <span class="type">int</span>)</span></span> <span class="type">bool</span> &#123;</span><br><span class="line">	res := GetBit(attr, position)</span><br><span class="line">	<span class="keyword">return</span> res == <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Collect 归集一组权限值，得到最终权限值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Collect</span><span class="params">(attrs []<span class="type">uint64</span>)</span></span> (attr <span class="type">uint64</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(attrs) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">	&#125;</span><br><span class="line">	attr = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> _, v := <span class="keyword">range</span> attrs &#123;</span><br><span class="line">		attr |= v</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> attr</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>上面提到，</p>
+<blockquote>
+<p>权限的集合应该由一系列原子属性来定义，每一位代表了一个独立的、可以原子化的功能</p>
+</blockquote>
+<p>所以属性可以看成用来定义这些功能是不是可以提供给用户使用的开关。</p>
+<p>比如我们可以声明一些这篇文章后文会用到的属性，具体见下表：</p>
+<table>
+<thead>
+<tr>
+<th align="left">属性</th>
+<th align="left">位置</th>
+<th align="left">描述</th>
+<th align="left">适用范围</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Administrator</td>
+<td align="left">1</td>
+<td align="left">允许所有的权限并且绕过权限覆写</td>
+<td align="left">群、身份</td>
+</tr>
+<tr>
+<td align="left">ViewChannel</td>
+<td align="left">2</td>
+<td align="left">允许成员查看频道，包括阅读消息和查看语音频道基本信息</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">SendMessage</td>
+<td align="left">3</td>
+<td align="left">允许成员发送文本消息</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">Connect</td>
+<td align="left">4</td>
+<td align="left">允许成员连接到频道语音</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">Speak</td>
+<td align="left">5</td>
+<td align="left">允许成员说话</td>
+<td align="left">频道</td>
+</tr>
+<tr>
+<td align="left">BanMembers</td>
+<td align="left">6</td>
+<td align="left">允许封禁成员</td>
+<td align="left">群、身份</td>
+</tr>
+</tbody></table>
+<p>这是一个随意声明的属性表单，他不能概括一个业务的全部功能，仅仅只是举例。</p>
+<p>表单里给出的位置，代表了这个属性在权限值的二进制序列中，从右到左数的第 x 个位置。</p>
+<h2 id="实体定义"><a href="#实体定义" class="headerlink" title="实体定义"></a>实体定义</h2><p>有了运算方式和属性，接下来我们来围绕权限功能的基础设施，定义一些实体对象。</p>
+<blockquote>
+<p>注意：所有下文定义的实体都不会提供完整的字段，只列出关键字段。</p>
+</blockquote>
+<p>首先，权限是在一个群里流转的，我们就需要有描述一个群的对象，这里我们会定义一个 <code>Guild</code> 实体：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Guild <span class="keyword">struct</span> &#123;</span><br><span class="line">	Permission <span class="type">string</span> <span class="comment">// 基础权限值（Hex 字符串）</span></span><br><span class="line">	Attr       <span class="type">uint64</span> <span class="comment">// 基础权限值（实值）</span></span><br><span class="line"></span><br><span class="line">	OwnerID <span class="type">int64</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(g *Guild)</span></span> IsOwner(member *Member) <span class="type">bool</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> member == <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> g.OwnerID == member.UserID</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Guild</code> 提供了一个群的基本权限配置，它作用于所有在这个群里的成员，作为成员的默认权限配置。<br>在这个实体里，我们定义了字符串类型的 <code>Permission</code> 用来做持久化，另外定义了 <code>Attr</code> 作为数值运算的参数，<code>Attr</code> 是由 <code>Permission</code> 经过进制转换得到的无符号数值。<br>对于一些不支持无符号类型的语言，需要使用数值范围尽可能大的类型去承载。</p>
+<hr>
+<p>接下来，我们定义一个群里会存在多个频道，因为不是所有的用户都喜欢聚集在一个很大的地方来交流，所以这个群里会存在多个附属的频道。<br>这里我们会定义一个 <code>Channel</code> 实体：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Channel <span class="keyword">struct</span> &#123;</span><br><span class="line">	GuildID   <span class="type">int64</span>  <span class="comment">// 关联到某一个群的ID</span></span><br><span class="line">	Allow     <span class="type">string</span> <span class="comment">// 这个频道默认开启的一些权限（Hex 字符串）</span></span><br><span class="line">	AllowAttr <span class="type">uint64</span> <span class="comment">// 这个频道默认开启的一些权限（实值）</span></span><br><span class="line">	Deny      <span class="type">string</span> <span class="comment">// 这个频道默认禁止的一些权限（Hex 字符串）</span></span><br><span class="line">	DenyAttr  <span class="type">uint64</span> <span class="comment">// 这个频道默认禁止的一些权限（实值）</span></span><br><span class="line"></span><br><span class="line">	Rules []*Overwrite</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Channel</code> 提供了频道的基本权限配置，由于 <code>Guild</code> 定义了基本的权限，在频道这一级别需要定义的就稍微有些不同。<br>要在频道里声明权限，因为已经有了基本权限，所以需要明确声明在基本权限之上，有哪些权限是开放的，又有哪些权限是需要禁止的。<br>所以这里我们声明了 <code>Allow</code> 和 <code>Deny</code> 分别描述要开放的权限和要禁止的权限。同理，我们另外定义包含 <code>-Attr</code> 后缀的属性，来作为数值运算的参数。<br>频道里定义的这些权限，同样是作为成员在频道里的默认权限配置，并且覆写群级别的基本权限。</p>
+<hr>
+<p>再接下来，我们回到 <code>Guild</code>。群组里的成员一定会有一些身份，这些身份可能是区分管理员和普通人，可能是给一些头衔名号，也可能是一些 KickStarter 赞助奖励身份等等。<br>假如一个身份是用来授予给一些用户管理群组的能力，那么这个身份一定是声明了额外的权限，授权身份组内的成员使用更多的功能。<br>这里我们会定义一个 <code>Role</code> 实体：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Role <span class="keyword">struct</span> &#123;</span><br><span class="line">	ID         <span class="type">int64</span></span><br><span class="line">	GuildID    <span class="type">int64</span>  <span class="comment">// 关联到某一个群的ID</span></span><br><span class="line">	Permission <span class="type">string</span> <span class="comment">// 基础权限值（Hex 字符串）</span></span><br><span class="line">	Attr       <span class="type">uint64</span> <span class="comment">// 基础权限值（实值）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为身份不会声明禁止成员不能使用哪些功能，并且我们的这套权限功能使用了另外的方式去实现【禁止】的操作，所以 <code>Role</code> 实体只需要定义 <code>Permission</code> 来声明这个身份被授予了哪些权限。<br>同样的，我们额外定义了 <code>Attr</code> 来做数值运算的参数，后续也不再赘述。</p>
+<hr>
+<p>目前为止，我们已经可以实现大多数的逻辑了：</p>
+<ol>
+<li>给群里的所有人分配基本权限</li>
+<li>这个群定义了多种多个频道，并且这些频道有自己的权限分配</li>
+<li>这个群定义了多个身份，这些身份也都配置了不同的权限</li>
+<li>这个群里有很多的成员，其中一部分成员持有各种不同的身份，其他的成员没有持有身份，作为普通成员活跃在这个群里他们能访问的各个频道</li>
 </ol>
-</li>
+<p>似乎还缺了一块最重要的拼图——访问规则</p>
+<h2 id="权限覆写"><a href="#权限覆写" class="headerlink" title="权限覆写"></a>权限覆写</h2><p>这个时候就要介绍整个功能比较核心的部分了，也是实现灵活自由的分配实际访问权限的核心——权限覆写。</p>
+<p>权限覆写是一个可以在频道级别，为不同的角色或个人，配置具体的权限的一个功能。<br>它可以具体到例如限制只允许特定身份的用户访问频道、在频道里与他人互动，亦或者禁止普通人查看频道的内容等等。<br>又或者，它可以允许某几个特定的成员在频道里进行禁言他人、断开他人的语音连接、关闭他人的语音说话功能等等的管理操作。</p>
+<p>首先我们定义一个 <code>Overwrite</code> 实体，它是一条一条的覆写规则：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Overwrite <span class="keyword">struct</span> &#123;</span><br><span class="line">	ChannelID <span class="type">int64</span>  <span class="comment">// 关联到频道的ID</span></span><br><span class="line">	Type      <span class="type">string</span> <span class="comment">// 规则适用的对象类型，它描述了这条规则应该适用于身份还是成员</span></span><br><span class="line">	RelatedID <span class="type">int64</span>  <span class="comment">// 适用对象的ID，它由 Type 定义了关联的ID应该是身份ID还是成员的用户ID</span></span><br><span class="line">	Allow     <span class="type">string</span> <span class="comment">// 这条规则默认开启的一些权限（Hex 字符串）</span></span><br><span class="line">	AllowAttr <span class="type">uint64</span> <span class="comment">// 这条规则默认开启的一些权限（实值）</span></span><br><span class="line">	Deny      <span class="type">string</span> <span class="comment">// 这条规则默认禁止的一些权限（Hex 字符串）</span></span><br><span class="line">	DenyAttr  <span class="type">uint64</span> <span class="comment">// 这条规则默认禁止的一些权限（实值）</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从这个结构来看，一条规则需要支持针对身份或者个人去生效，所以需要定义一个对生效目标的关联信息。另外，它于频道的权限定义类似，一条规则需要描述它所关联的对象能够做什么事情，以及不能够做什么事情。</p>
+<p>现在我们已经有了 <code>Guild</code>、<code>Channel</code>、<code>Role</code>、<code>Overwrite</code>，能够定义权限的东西多了起来，并且在这个定义中还产生了例如 <code>Guild -&gt; Member</code>、<code>Role -&gt; Member</code> 等的多种联系。</p>
+<p>这种情况下，我们应该定义一个怎样去应用覆写的【优先级】。所谓优先级，就是为了计算一个成员的最终权限值，我们需要遵守的一个计算顺序。我们需要遵循下列顺序的优先级来计算权限值：</p>
+<ol>
+<li>基于 <code>Guild</code> 获取对于所有人的基本权限</li>
+<li>应用在成员身上的多个身份所【授予】的权限</li>
+<li>频道里默认对于所有人所【禁止】的权限</li>
+<li>频道里默认对于所有人所【允许】的权限</li>
+<li>频道里默认对于特定【身份】所【禁止】的权限</li>
+<li>频道里默认对于特定【身份】所【允许】的权限</li>
+<li>频道里默认对于特定【成员】所【禁止】的权限</li>
+<li>频道里默认对于特定【成员】所【允许】的权限</li>
 </ol>
+<p>遵循这套优先级，我们可以得到下面的伪代码去实现：</p>
+<blockquote>
+<p>注意：在这套伪代码中的计算，可能不会存在太多 bitwise 调用，因为这套计算的大多数部分不属于设置单个属性的开关，而是做复杂的归集操作。</p>
+<p>另外，伪代码里使用到的例如 <code>lo.KeyBy</code> 等方法，来自开源项目 <a target="_blank" rel="noopener" href="https://github.com/samber/lo">samber&#x2F;lo</a>，感兴趣的可以查看原项目，我会在引用的地方写上注释说明干了什么事。</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Member <span class="keyword">struct</span> &#123;</span><br><span class="line">	UserID <span class="type">int64</span></span><br><span class="line">	Roles  []*Role</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// positions</span></span><br><span class="line"><span class="keyword">const</span> (</span><br><span class="line">	Administrator = <span class="number">1</span></span><br><span class="line">	ViewChannel   = <span class="number">2</span></span><br><span class="line">	SendMessage   = <span class="number">3</span></span><br><span class="line">	Connect       = <span class="number">4</span></span><br><span class="line">	Speak         = <span class="number">5</span></span><br><span class="line">	BanMembers    = <span class="number">6</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> All = bitwise.SetBits(<span class="number">0</span>, []<span class="type">int</span>&#123;Administrator, ViewChannel, SendMessage, Connect, Speak, BanMembers&#125;, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// computeBasePermissions 计算基本权限</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computeBasePermissions</span><span class="params">(member *Member, guild *Guild)</span></span> (permission <span class="type">uint64</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> guild.IsOwner(member) &#123;</span><br><span class="line">		<span class="keyword">return</span> All</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	permission = guild.Attr</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(member.Roles) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> permission</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> _, role := <span class="keyword">range</span> member.Roles &#123;</span><br><span class="line">		permission |= role.Attr</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> bitwise.GetBitFlag(permission, Administrator) &#123;</span><br><span class="line">		<span class="keyword">return</span> All</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> permission</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// computeOverwrites 计算权限覆写</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computeOverwrites</span><span class="params">(basePermission <span class="type">uint64</span>, member *Member, channel *Channel)</span></span> (permission <span class="type">uint64</span>) &#123;</span><br><span class="line">	<span class="keyword">if</span> bitwise.GetBitFlag(basePermission, Administrator) &#123;</span><br><span class="line">		<span class="keyword">return</span> All</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	permission = basePermission</span><br><span class="line"></span><br><span class="line">	permission &amp;= ^channel.DenyAttr</span><br><span class="line">	permission |= channel.AllowAttr</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(channel.Rules) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> permission</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 把 channel.Rules 按照 Overwrite.Type 必须满足 role 的过滤条件，找出符合条件的 Overwrite 对象</span></span><br><span class="line">	roleOverwrites := lo.FilterMap(channel.Rules, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite, index <span class="type">int</span>)</span></span> (*Overwrite, <span class="type">bool</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> item, item.Type == <span class="string">&quot;role&quot;</span></span><br><span class="line">	&#125;)</span><br><span class="line">	<span class="comment">// 把 channel.Rules 按照 Overwrite.Type 必须满足 member 的过滤条件，找出符合条件的 Overwrite 对象</span></span><br><span class="line">	memberOverwrites := lo.FilterMap(channel.Rules, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite, index <span class="type">int</span>)</span></span> (*Overwrite, <span class="type">bool</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> item, item.Type == <span class="string">&quot;member&quot;</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 把 roleOverwrites 切片按照 Overwrite.RelatedID 作为 key 转化成 map 结构</span></span><br><span class="line">	roleOverwriteMap := lo.KeyBy(roleOverwrites, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite)</span></span> <span class="type">int64</span> &#123; <span class="keyword">return</span> item.RelatedID &#125;)</span><br><span class="line"></span><br><span class="line">	allow := <span class="type">uint64</span>(<span class="number">0</span>)</span><br><span class="line">	deny := <span class="type">uint64</span>(<span class="number">0</span>)</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(member.Roles) &gt; <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> _, role := <span class="keyword">range</span> member.Roles &#123;</span><br><span class="line">			role := role</span><br><span class="line">			rule, exist := roleOverwriteMap[role.ID]</span><br><span class="line">			<span class="keyword">if</span> exist &#123;</span><br><span class="line">				allow |= rule.AllowAttr</span><br><span class="line">				deny |= rule.DenyAttr</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	permission &amp;= ^deny</span><br><span class="line">	permission |= allow</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 把 memberOverwrites 切片按照 Overwrite.RelatedID 作为 key 转化成 map 结构</span></span><br><span class="line">	memberOverwriteMap := lo.KeyBy(memberOverwrites, <span class="function"><span class="keyword">func</span><span class="params">(item *Overwrite)</span></span> <span class="type">int64</span> &#123; <span class="keyword">return</span> item.RelatedID &#125;)</span><br><span class="line">	memberRule, exist := memberOverwriteMap[member.UserID]</span><br><span class="line">	<span class="keyword">if</span> exist &#123;</span><br><span class="line">		permission &amp;= ^memberRule.DenyAttr</span><br><span class="line">		permission |= memberRule.AllowAttr</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> permission</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// computePermissions 计算成员的权限值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">computePermissions</span><span class="params">(member *Member, channel *Channel, guild *Guild)</span></span> (permission <span class="type">uint64</span>) &#123;</span><br><span class="line">	basePermission := computeBasePermissions(member, guild)</span><br><span class="line">	<span class="keyword">return</span> computeOverwrites(basePermission, member, channel)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此我们已经得到了一个完整的权限功能所需要的所有要素，经过 <code>computePermissions</code> 计算得到的结果，就是某个成员在一个群里的其中一个频道的最终权限；经过 <code>computeBasePermissions</code> 计算得到的结果，就是某个成员在频道之外，在群里的基本权限。</p>
+<p>在做业务权限检查的时候，我们就可以按需调用这两个方法，在得到结果后去判断具体的权限是授权的还是被禁止的，从而实现我们做权限配置的需求。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
