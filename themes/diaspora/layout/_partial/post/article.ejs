@@ -1,0 +1,43 @@
+<div class="article">
+    <div class='main'>
+        <h1 class="title"><%- page.title %></h1>
+        <div class="stuff">
+            <span><%- page.date.locale("zh-cn").format("MMMM DD, YYYY") %></span>
+            <%- partial('_partial/post/tag', {post: page}) %>
+        </div>
+        <div class="content markdown">
+            <%- page.content %>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="<%- theme.autoplay || page.autoplay || "false" %>">
+                <source type="audio/mpeg" src="<%- page.mp3 %>">
+            </audio>
+            <% if (page.mp3 == '' | page.mp3 == null){%>
+                <ul id="audio-list" style="display:none">
+                    <% for (var i in theme.mp3){ %>
+                        <% if (theme.mp3[i].indexOf('http') == 0){%>
+                            <li title="<%- i %>" data-url="<%- theme.mp3[i] %>"></li>
+                        <%} else {%>
+                            <li title="<%- i %>" data-url="<%- config.root + theme.mp3[i] %>"></li>
+                        <%}%>
+                    <%}%>
+                </ul>
+            <%}%>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <div class="content markdown">
+            <h5>友情链接</h5>
+            <p><a href="https://www.aliyun.com/daily-act/ecs/activity_selection?userCode=dqnzm5fj">阿里云 - 云服务器 精选特惠</a></p>
+            <p><a href="https://www.aliyun.com/activity/new?userCode=dqnzm5fj">阿里云 - 新人福利</a></p>
+        </div>
+        <%- partial('gitalk', {post: page}) %>
+    </div>
+    <% if (theme.TOC == true){ %>
+        <div class="side">
+			<%- toc(page.content, {list_number: true}) %>
+        </div>
+    <%}%>
+</div>
+

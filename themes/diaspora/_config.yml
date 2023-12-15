@@ -1,0 +1,568 @@
+# 头部菜单，title: link
+menu:
+    首页: /
+    分类: /categories
+    标签: /tags
+    归档: /archives
+    关于: /whoami
+
+# 是否显示目录
+TOC: false
+
+# 网站关键字
+keywords: AyakuraYuki
+
+# 是否自动播放音乐
+autoplay: true
+
+# 默认音乐（随机播放）
+mp3:
+    - https://link.hhtjim.com/163/33516503.mp3
+    - https://link.hhtjim.com/163/33516502.mp3
+    - https://link.hhtjim.com/163/26459368.mp3
+    - https://link.hhtjim.com/163/28918094.mp3
+    - https://link.hhtjim.com/163/28308736.mp3
+    - https://link.hhtjim.com/163/468490737.mp3
+    - https://link.hhtjim.com/163/451126544.mp3
+    - https://link.hhtjim.com/163/404543135.mp3
+    - https://link.hhtjim.com/163/686931.mp3
+    - https://link.hhtjim.com/163/27582605.mp3
+    - https://link.hhtjim.com/163/2104632099.mp3
+    - https://link.hhtjim.com/163/1865222528.mp3
+    - https://link.hhtjim.com/163/1907015019.mp3
+    - https://link.hhtjim.com/163/2099015478.mp3
+    - https://link.hhtjim.com/163/2008371473.mp3
+    - https://link.hhtjim.com/163/2085833516.mp3
+    - https://link.hhtjim.com/163/1404871829.mp3
+    - https://link.hhtjim.com/163/1297750291.mp3
+    - https://link.hhtjim.com/163/1313052962.mp3
+    - https://link.hhtjim.com/163/2020332513.mp3
+    - https://link.hhtjim.com/163/2005230849.mp3
+    - https://link.hhtjim.com/163/22645093.mp3
+    - https://link.hhtjim.com/163/1384327049.mp3
+    - https://link.hhtjim.com/163/2085836728.mp3
+    - https://link.hhtjim.com/163/2069005111.mp3
+    - https://link.hhtjim.com/163/450224803.mp3
+    - https://link.hhtjim.com/163/22654536.mp3
+    - https://link.hhtjim.com/163/1465014937.mp3
+    - https://link.hhtjim.com/163/1850441824.mp3
+    - https://link.hhtjim.com/163/551340988.mp3
+    - https://link.hhtjim.com/163/1984857808.mp3
+    - https://link.hhtjim.com/163/1986639897.mp3
+    - https://link.hhtjim.com/163/1955843550.mp3
+    - https://link.hhtjim.com/163/1804909629.mp3
+    - https://link.hhtjim.com/163/1500462577.mp3
+    - https://link.hhtjim.com/163/1972641406.mp3
+    - https://link.hhtjim.com/163/2035913457.mp3
+    - https://link.hhtjim.com/163/2021363063.mp3
+    - https://link.hhtjim.com/163/1904022482.mp3
+    - https://link.hhtjim.com/163/1904022463.mp3
+    - https://link.hhtjim.com/163/1904022473.mp3
+    - https://link.hhtjim.com/163/1999309795.mp3
+    - https://link.hhtjim.com/163/1999305166.mp3
+    - https://link.hhtjim.com/163/500392612.mp3
+    - https://link.hhtjim.com/163/1841240903.mp3
+    - https://link.hhtjim.com/163/2020880863.mp3
+    - https://link.hhtjim.com/163/423118227.mp3
+    - https://link.hhtjim.com/163/22723864.mp3
+    - https://link.hhtjim.com/163/793740.mp3
+    - https://link.hhtjim.com/163/520458378.mp3
+    - https://link.hhtjim.com/163/449769042.mp3
+    - https://link.hhtjim.com/163/1980973710.mp3
+    - https://link.hhtjim.com/163/1958736117.mp3
+    - https://link.hhtjim.com/163/1958737942.mp3
+    - https://link.hhtjim.com/163/749647.mp3
+    - https://link.hhtjim.com/163/744722.mp3
+    - https://link.hhtjim.com/163/30870899.mp3
+    - https://link.hhtjim.com/163/2004839961.mp3
+    - https://link.hhtjim.com/163/561307122.mp3
+    - https://link.hhtjim.com/163/26431616.mp3
+    - https://link.hhtjim.com/163/28971379.mp3
+    - https://link.hhtjim.com/163/558754068.mp3
+    - https://link.hhtjim.com/163/1449599104.mp3
+    - https://link.hhtjim.com/163/1870510466.mp3
+    - https://link.hhtjim.com/163/30569532.mp3
+    - https://link.hhtjim.com/163/1924884381.mp3
+    - https://link.hhtjim.com/163/1918841505.mp3
+    - https://link.hhtjim.com/163/1955153372.mp3
+    - https://link.hhtjim.com/163/425280120.mp3
+    - https://link.hhtjim.com/163/28308735.mp3
+    - https://link.hhtjim.com/163/28814876.mp3
+    - https://link.hhtjim.com/163/27580519.mp3
+    - https://link.hhtjim.com/163/744967.mp3
+    - https://link.hhtjim.com/163/30569527.mp3
+    - https://link.hhtjim.com/163/750905.mp3
+    - https://link.hhtjim.com/163/1834129483.mp3
+    - https://link.hhtjim.com/163/1917045512.mp3
+    - https://link.hhtjim.com/163/1921647147.mp3
+    - https://link.hhtjim.com/163/1824358789.mp3
+    - https://link.hhtjim.com/163/33861454.mp3
+    - https://link.hhtjim.com/163/1892822514.mp3
+    - https://link.hhtjim.com/163/1886749619.mp3
+    - https://link.hhtjim.com/163/1893377827.mp3
+    - https://link.hhtjim.com/163/1837711414.mp3
+    - https://link.hhtjim.com/163/1902821823.mp3
+    - https://link.hhtjim.com/163/1905000143.mp3
+    - https://link.hhtjim.com/163/1886751583.mp3
+    - https://link.hhtjim.com/163/1887056113.mp3
+    - https://link.hhtjim.com/163/1847255990.mp3
+    - https://link.hhtjim.com/163/1893308333.mp3
+    - https://link.hhtjim.com/163/557579321.mp3
+    - https://link.hhtjim.com/163/738427.mp3
+    - https://link.hhtjim.com/163/1374221428.mp3
+    - https://link.hhtjim.com/163/40729292.mp3
+    - https://link.hhtjim.com/163/1892668318.mp3
+    - https://link.hhtjim.com/163/646913.mp3
+    - https://link.hhtjim.com/163/1892470945.mp3
+    - https://link.hhtjim.com/163/1192812.mp3
+    - https://link.hhtjim.com/163/1323977125.mp3
+    - https://link.hhtjim.com/163/4937720.mp3
+    - https://link.hhtjim.com/163/32737684.mp3
+    - https://link.hhtjim.com/163/26107975.mp3
+    - https://link.hhtjim.com/163/744932.mp3
+    - https://link.hhtjim.com/163/5105677.mp3
+    - https://link.hhtjim.com/163/461433535.mp3
+    - https://link.hhtjim.com/163/744960.mp3
+    - https://link.hhtjim.com/163/32803111.mp3
+    - https://link.hhtjim.com/163/437802377.mp3
+    - https://link.hhtjim.com/163/850502.mp3
+    - https://link.hhtjim.com/163/32235280.mp3
+    - https://link.hhtjim.com/163/459717323.mp3
+    - https://link.hhtjim.com/163/1862479259.mp3
+    - https://link.hhtjim.com/163/28941658.mp3
+    - https://link.hhtjim.com/163/28178210.mp3
+    - https://link.hhtjim.com/163/850775.mp3
+    - https://link.hhtjim.com/163/28178209.mp3
+    - https://link.hhtjim.com/163/40729723.mp3
+    - https://link.hhtjim.com/163/833066.mp3
+    - https://link.hhtjim.com/163/450222749.mp3
+    - https://link.hhtjim.com/163/22785073.mp3
+    - https://link.hhtjim.com/163/849603.mp3
+    - https://link.hhtjim.com/163/1301674241.mp3
+    - https://link.hhtjim.com/163/865025.mp3
+    - https://link.hhtjim.com/163/22750771.mp3
+    - https://link.hhtjim.com/163/1306498257.mp3
+    - https://link.hhtjim.com/163/36190037.mp3
+    - https://link.hhtjim.com/163/785200.mp3
+    - https://link.hhtjim.com/163/732209.mp3
+    - https://link.hhtjim.com/163/1833625379.mp3
+    - https://link.hhtjim.com/163/526468582.mp3
+    - https://link.hhtjim.com/163/369265.mp3
+    - https://link.hhtjim.com/163/2923186.mp3
+    - https://link.hhtjim.com/163/22733413.mp3
+    - https://link.hhtjim.com/163/730727.mp3
+    - https://link.hhtjim.com/163/27709044.mp3
+    - https://link.hhtjim.com/163/1491208655.mp3
+    - https://link.hhtjim.com/163/1836078157.mp3
+    - https://link.hhtjim.com/163/1401248183.mp3
+    - https://link.hhtjim.com/163/1396561141.mp3
+    - https://link.hhtjim.com/163/41672757.mp3
+    - https://link.hhtjim.com/163/1810067388.mp3
+    - https://link.hhtjim.com/163/412327427.mp3
+    - https://link.hhtjim.com/163/593621.mp3
+    - https://link.hhtjim.com/163/26135815.mp3
+    - https://link.hhtjim.com/163/443291336.mp3
+    - https://link.hhtjim.com/163/1491208647.mp3
+    - https://link.hhtjim.com/163/515143072.mp3
+    - https://link.hhtjim.com/163/1399441026.mp3
+    - https://link.hhtjim.com/163/1356537558.mp3
+    - https://link.hhtjim.com/163/1398575490.mp3
+    - https://link.hhtjim.com/163/1298504813.mp3
+    - https://link.hhtjim.com/163/1321848058.mp3
+    - https://link.hhtjim.com/163/1301573948.mp3
+    - https://link.hhtjim.com/163/1356119838.mp3
+    - https://link.hhtjim.com/163/1401040013.mp3
+    - https://link.hhtjim.com/163/1404469236.mp3
+    - https://link.hhtjim.com/163/1813827678.mp3
+    - https://link.hhtjim.com/163/22753344.mp3
+    - https://link.hhtjim.com/163/1440867211.mp3
+    - https://link.hhtjim.com/163/1382794922.mp3
+    - https://link.hhtjim.com/163/1390640629.mp3
+    - https://link.hhtjim.com/163/1301573950.mp3
+    - https://link.hhtjim.com/163/1342949573.mp3
+    - https://link.hhtjim.com/163/1810055411.mp3
+    - https://link.hhtjim.com/163/450400215.mp3
+    - https://link.hhtjim.com/163/1433315250.mp3
+    - https://link.hhtjim.com/163/1407566490.mp3
+    - https://link.hhtjim.com/163/1813516900.mp3
+    - https://link.hhtjim.com/163/1446245131.mp3
+    - https://link.hhtjim.com/163/1317407941.mp3
+    - https://link.hhtjim.com/163/1468875966.mp3
+    - https://link.hhtjim.com/163/477854260.mp3
+    - https://link.hhtjim.com/163/1351240456.mp3
+    - https://link.hhtjim.com/163/1395338963.mp3
+    - https://link.hhtjim.com/163/1432169641.mp3
+    - https://link.hhtjim.com/163/1466303986.mp3
+    - https://link.hhtjim.com/163/1299557936.mp3
+    - https://link.hhtjim.com/163/1350129460.mp3
+    - https://link.hhtjim.com/163/1379821181.mp3
+    - https://link.hhtjim.com/163/1469826888.mp3
+    - https://link.hhtjim.com/163/428203072.mp3
+    - https://link.hhtjim.com/163/34367059.mp3
+    - https://link.hhtjim.com/163/1371721171.mp3
+    - https://link.hhtjim.com/163/22765951.mp3
+    - https://link.hhtjim.com/163/525122032.mp3
+    - https://link.hhtjim.com/163/474739761.mp3
+    - https://link.hhtjim.com/163/1458087676.mp3
+    - https://link.hhtjim.com/163/33291727.mp3
+    - https://link.hhtjim.com/163/28360849.mp3
+    - https://link.hhtjim.com/163/498321773.mp3
+    - https://link.hhtjim.com/163/640068.mp3
+    - https://link.hhtjim.com/163/442589034.mp3
+    - https://link.hhtjim.com/163/1347630432.mp3
+    - https://link.hhtjim.com/163/775653.mp3
+    - https://link.hhtjim.com/163/22651636.mp3
+    - https://link.hhtjim.com/163/498880661.mp3
+    - https://link.hhtjim.com/163/817723.mp3
+    - https://link.hhtjim.com/163/1365933510.mp3
+    - https://link.hhtjim.com/163/640866.mp3
+    - https://link.hhtjim.com/163/1342954499.mp3
+    - https://link.hhtjim.com/163/34179228.mp3
+    - https://link.hhtjim.com/163/471554811.mp3
+    - https://link.hhtjim.com/163/1342949564.mp3
+    - https://link.hhtjim.com/163/28445602.mp3
+    - https://link.hhtjim.com/163/425684779.mp3
+    - https://link.hhtjim.com/163/1352840033.mp3
+    - https://link.hhtjim.com/163/803048.mp3
+    - https://link.hhtjim.com/163/22805112.mp3
+    - https://link.hhtjim.com/163/640545.mp3
+    - https://link.hhtjim.com/163/4899152.mp3
+    - https://link.hhtjim.com/163/478384.mp3
+    - https://link.hhtjim.com/163/857176.mp3
+    - https://link.hhtjim.com/163/29713218.mp3
+    - https://link.hhtjim.com/163/448316041.mp3
+    - https://link.hhtjim.com/163/32803294.mp3
+    - https://link.hhtjim.com/163/1368324900.mp3
+    - https://link.hhtjim.com/163/571073131.mp3
+    - https://link.hhtjim.com/163/40729223.mp3
+    - https://link.hhtjim.com/163/28684025.mp3
+    - https://link.hhtjim.com/163/34509272.mp3
+    - https://link.hhtjim.com/163/565890090.mp3
+    - https://link.hhtjim.com/163/1306163092.mp3
+    - https://link.hhtjim.com/163/499018.mp3
+    - https://link.hhtjim.com/163/4898497.mp3
+    - https://link.hhtjim.com/163/525063503.mp3
+    - https://link.hhtjim.com/163/611868.mp3
+    - https://link.hhtjim.com/163/543988578.mp3
+    - https://link.hhtjim.com/163/487527980.mp3
+    - https://link.hhtjim.com/163/1361188105.mp3
+    - https://link.hhtjim.com/163/453268068.mp3
+    - https://link.hhtjim.com/163/4939764.mp3
+    - https://link.hhtjim.com/163/479441420.mp3
+    - https://link.hhtjim.com/163/25806118.mp3
+    - https://link.hhtjim.com/163/407862870.mp3
+    - https://link.hhtjim.com/163/622458.mp3
+    - https://link.hhtjim.com/163/477332351.mp3
+    - https://link.hhtjim.com/163/463268158.mp3
+    - https://link.hhtjim.com/163/1341138517.mp3
+    - https://link.hhtjim.com/163/32046764.mp3
+    - https://link.hhtjim.com/163/1306507053.mp3
+    - https://link.hhtjim.com/163/471761735.mp3
+    - https://link.hhtjim.com/163/557584114.mp3
+    - https://link.hhtjim.com/163/624670.mp3
+    - https://link.hhtjim.com/163/536623501.mp3
+    - https://link.hhtjim.com/163/577438.mp3
+    - https://link.hhtjim.com/163/411500258.mp3
+    - https://link.hhtjim.com/163/28193400.mp3
+    - https://link.hhtjim.com/163/406846048.mp3
+    - https://link.hhtjim.com/163/29498682.mp3
+    - https://link.hhtjim.com/163/547973475.mp3
+    - https://link.hhtjim.com/163/1306507269.mp3
+    - https://link.hhtjim.com/163/1320097223.mp3
+    - https://link.hhtjim.com/163/419596411.mp3
+    - https://link.hhtjim.com/163/658318.mp3
+    - https://link.hhtjim.com/163/441835870.mp3
+    - https://link.hhtjim.com/163/400876507.mp3
+    - https://link.hhtjim.com/163/484249882.mp3
+    - https://link.hhtjim.com/163/27785995.mp3
+    - https://link.hhtjim.com/163/27785952.mp3
+    - https://link.hhtjim.com/163/27901184.mp3
+    - https://link.hhtjim.com/163/582005.mp3
+    - https://link.hhtjim.com/163/1351607470.mp3
+    - https://link.hhtjim.com/163/29307195.mp3
+    - https://link.hhtjim.com/163/454231899.mp3
+    - https://link.hhtjim.com/163/610061.mp3
+    - https://link.hhtjim.com/163/505665802.mp3
+    - https://link.hhtjim.com/163/1335390116.mp3
+    - https://link.hhtjim.com/163/1315821092.mp3
+    - https://link.hhtjim.com/163/399552336.mp3
+    - https://link.hhtjim.com/163/776782.mp3
+    - https://link.hhtjim.com/163/488388942.mp3
+    - https://link.hhtjim.com/163/26101849.mp3
+    - https://link.hhtjim.com/163/543612338.mp3
+    - https://link.hhtjim.com/163/511634603.mp3
+    - https://link.hhtjim.com/163/676568.mp3
+    - https://link.hhtjim.com/163/549484811.mp3
+    - https://link.hhtjim.com/163/428375160.mp3
+    - https://link.hhtjim.com/163/3939265.mp3
+    - https://link.hhtjim.com/163/4344553.mp3
+    - https://link.hhtjim.com/163/3939119.mp3
+    - https://link.hhtjim.com/163/514543705.mp3
+    - https://link.hhtjim.com/163/668526.mp3
+    - https://link.hhtjim.com/163/461858804.mp3
+    - https://link.hhtjim.com/163/432509390.mp3
+    - https://link.hhtjim.com/163/480409956.mp3
+    - https://link.hhtjim.com/163/1349262474.mp3
+    - https://link.hhtjim.com/163/34696849.mp3
+    - https://link.hhtjim.com/163/30841216.mp3
+    - https://link.hhtjim.com/163/1302953068.mp3
+    - https://link.hhtjim.com/163/432486474.mp3
+    - https://link.hhtjim.com/163/522529482.mp3
+    - https://link.hhtjim.com/163/423058145.mp3
+    - https://link.hhtjim.com/163/33715196.mp3
+    - https://link.hhtjim.com/163/471799.mp3
+    - https://link.hhtjim.com/163/450222764.mp3
+    - https://link.hhtjim.com/163/413831435.mp3
+    - https://link.hhtjim.com/163/26260384.mp3
+    - https://link.hhtjim.com/163/33715610.mp3
+    - https://link.hhtjim.com/163/560144.mp3
+    - https://link.hhtjim.com/163/28378006.mp3
+    - https://link.hhtjim.com/163/587211.mp3
+    - https://link.hhtjim.com/163/812531.mp3
+    - https://link.hhtjim.com/163/28445574.mp3
+    - https://link.hhtjim.com/163/820665.mp3
+    - https://link.hhtjim.com/163/27580227.mp3
+    - https://link.hhtjim.com/163/435166264.mp3
+    - https://link.hhtjim.com/163/421203775.mp3
+    - https://link.hhtjim.com/163/32803290.mp3
+    - https://link.hhtjim.com/163/33378324.mp3
+    - https://link.hhtjim.com/163/812673.mp3
+    - https://link.hhtjim.com/163/28445546.mp3
+    - https://link.hhtjim.com/163/26116002.mp3
+    - https://link.hhtjim.com/163/29979976.mp3
+    - https://link.hhtjim.com/163/32358447.mp3
+    - https://link.hhtjim.com/163/574919996.mp3
+    - https://link.hhtjim.com/163/26116001.mp3
+    - https://link.hhtjim.com/163/28875033.mp3
+    - https://link.hhtjim.com/163/550483.mp3
+    - https://link.hhtjim.com/163/469073339.mp3
+    - https://link.hhtjim.com/163/541499348.mp3
+    - https://link.hhtjim.com/163/536098169.mp3
+    - https://link.hhtjim.com/163/499009.mp3
+    - https://link.hhtjim.com/163/1309901145.mp3
+    - https://link.hhtjim.com/163/30431360.mp3
+    - https://link.hhtjim.com/163/28178158.mp3
+    - https://link.hhtjim.com/163/1321424521.mp3
+    - https://link.hhtjim.com/163/36493000.mp3
+    - https://link.hhtjim.com/163/496617538.mp3
+    - https://link.hhtjim.com/163/411236802.mp3
+    - https://link.hhtjim.com/163/26092656.mp3
+    - https://link.hhtjim.com/163/460839654.mp3
+    - https://link.hhtjim.com/163/407000247.mp3
+    - https://link.hhtjim.com/163/29897558.mp3
+    - https://link.hhtjim.com/163/550138130.mp3
+    - https://link.hhtjim.com/163/417613605.mp3
+    - https://link.hhtjim.com/163/699893.mp3
+    - https://link.hhtjim.com/163/501291909.mp3
+    - https://link.hhtjim.com/163/4931484.mp3
+    - https://link.hhtjim.com/163/31967337.mp3
+    - https://link.hhtjim.com/163/611923.mp3
+    - https://link.hhtjim.com/163/1317457906.mp3
+    - https://link.hhtjim.com/163/22730168.mp3
+    - https://link.hhtjim.com/163/666122.mp3
+    - https://link.hhtjim.com/163/838303.mp3
+    - https://link.hhtjim.com/163/536098015.mp3
+    - https://link.hhtjim.com/163/1316563356.mp3
+    - https://link.hhtjim.com/163/566435442.mp3
+    - https://link.hhtjim.com/163/610149.mp3
+    - https://link.hhtjim.com/163/455345170.mp3
+    - https://link.hhtjim.com/163/419238092.mp3
+    - https://link.hhtjim.com/163/503127102.mp3
+    - https://link.hhtjim.com/163/530986958.mp3
+    - https://link.hhtjim.com/163/618325.mp3
+    - https://link.hhtjim.com/163/22645576.mp3
+    - https://link.hhtjim.com/163/419254423.mp3
+    - https://link.hhtjim.com/163/30039302.mp3
+    - https://link.hhtjim.com/163/426026778.mp3
+    - https://link.hhtjim.com/163/578090.mp3
+    - https://link.hhtjim.com/163/562594166.mp3
+    - https://link.hhtjim.com/163/542792596.mp3
+    - https://link.hhtjim.com/163/22675918.mp3
+    - https://link.hhtjim.com/163/489970645.mp3
+    - https://link.hhtjim.com/163/676198.mp3
+    - https://link.hhtjim.com/163/22701855.mp3
+    - https://link.hhtjim.com/163/28160062.mp3
+    - https://link.hhtjim.com/163/20789751.mp3
+    - https://link.hhtjim.com/163/450222919.mp3
+    - https://link.hhtjim.com/163/561094746.mp3
+    - https://link.hhtjim.com/163/667076.mp3
+    - https://link.hhtjim.com/163/36496419.mp3
+    - https://link.hhtjim.com/163/29785407.mp3
+    - https://link.hhtjim.com/163/32450268.mp3
+    - https://link.hhtjim.com/163/26217033.mp3
+    - https://link.hhtjim.com/163/769950.mp3
+    - https://link.hhtjim.com/163/425280305.mp3
+    - https://link.hhtjim.com/163/418602555.mp3
+    - https://link.hhtjim.com/163/476323636.mp3
+    - https://link.hhtjim.com/163/477839693.mp3
+    - https://link.hhtjim.com/163/26103161.mp3
+    - https://link.hhtjim.com/163/760037.mp3
+    - https://link.hhtjim.com/163/469272730.mp3
+    - https://link.hhtjim.com/163/467952146.mp3
+    - https://link.hhtjim.com/163/4940455.mp3
+    - https://link.hhtjim.com/163/28977795.mp3
+    - https://link.hhtjim.com/163/417833623.mp3
+    - https://link.hhtjim.com/163/424262056.mp3
+    - https://link.hhtjim.com/163/40915404.mp3
+    - https://link.hhtjim.com/163/40915405.mp3
+    - https://link.hhtjim.com/163/666443.mp3
+    - https://link.hhtjim.com/163/35090707.mp3
+    - https://link.hhtjim.com/163/27538415.mp3
+    - https://link.hhtjim.com/163/22703777.mp3
+    - https://link.hhtjim.com/163/441835219.mp3
+    - https://link.hhtjim.com/163/28828613.mp3
+    - https://link.hhtjim.com/163/460319.mp3
+    - https://link.hhtjim.com/163/29758025.mp3
+    - https://link.hhtjim.com/163/28660405.mp3
+    - https://link.hhtjim.com/163/449578849.mp3
+    - https://link.hhtjim.com/163/811721.mp3
+    - https://link.hhtjim.com/163/38358219.mp3
+    - https://link.hhtjim.com/163/514774419.mp3
+    - https://link.hhtjim.com/163/537854163.mp3
+    - https://link.hhtjim.com/163/537854242.mp3
+    - https://link.hhtjim.com/163/537854209.mp3
+    - https://link.hhtjim.com/163/528338969.mp3
+    - https://link.hhtjim.com/163/38689090.mp3
+    - https://link.hhtjim.com/163/550573.mp3
+    - https://link.hhtjim.com/163/516653091.mp3
+    - https://link.hhtjim.com/163/666395.mp3
+    - https://link.hhtjim.com/163/453749183.mp3
+    - https://link.hhtjim.com/163/26259014.mp3
+    - https://link.hhtjim.com/163/29593225.mp3
+    - https://link.hhtjim.com/163/476081899.mp3
+    - https://link.hhtjim.com/163/476638472.mp3
+    - https://link.hhtjim.com/163/529824966.mp3
+    - https://link.hhtjim.com/163/496869422.mp3
+    - https://link.hhtjim.com/163/525241744.mp3
+    - https://link.hhtjim.com/163/525240742.mp3
+    - https://link.hhtjim.com/163/402073800.mp3
+    - https://link.hhtjim.com/163/419254422.mp3
+    - https://link.hhtjim.com/163/26584165.mp3
+    - https://link.hhtjim.com/163/28863070.mp3
+    - https://link.hhtjim.com/163/26101820.mp3
+    - https://link.hhtjim.com/163/19394361.mp3
+    - https://link.hhtjim.com/163/650501.mp3
+    - https://link.hhtjim.com/163/650499.mp3
+    - https://link.hhtjim.com/163/614089.mp3
+    - https://link.hhtjim.com/163/614083.mp3
+    - https://link.hhtjim.com/163/29043459.mp3
+    - https://link.hhtjim.com/163/27901843.mp3
+    - https://link.hhtjim.com/163/23666762.mp3
+    - https://link.hhtjim.com/163/27244060.mp3
+    - https://link.hhtjim.com/163/26339871.mp3
+    - https://link.hhtjim.com/163/25773411.mp3
+    - https://link.hhtjim.com/163/28370757.mp3
+    - https://link.hhtjim.com/163/31134451.mp3
+    - https://link.hhtjim.com/163/30621778.mp3
+    - https://link.hhtjim.com/163/30621781.mp3
+    - https://link.hhtjim.com/163/31140522.mp3
+    - https://link.hhtjim.com/163/16686600.mp3
+    - https://link.hhtjim.com/163/666150.mp3
+    - https://link.hhtjim.com/163/30841187.mp3
+    - https://link.hhtjim.com/163/30590965.mp3
+    - https://link.hhtjim.com/163/30621776.mp3
+    - https://link.hhtjim.com/163/624751.mp3
+    - https://link.hhtjim.com/163/22757115.mp3
+    - https://link.hhtjim.com/163/29379272.mp3
+    - https://link.hhtjim.com/163/558173.mp3
+    - https://link.hhtjim.com/163/22677433.mp3
+    - https://link.hhtjim.com/163/28063243.mp3
+    - https://link.hhtjim.com/163/830019.mp3
+    - https://link.hhtjim.com/163/28258450.mp3
+    - https://link.hhtjim.com/163/22645035.mp3
+    - https://link.hhtjim.com/163/4975665.mp3
+    - https://link.hhtjim.com/163/296955.mp3
+    - https://link.hhtjim.com/163/26115345.mp3
+    - https://link.hhtjim.com/163/860372.mp3
+    - https://link.hhtjim.com/163/832975.mp3
+    - https://link.hhtjim.com/163/832978.mp3
+    - https://link.hhtjim.com/163/832982.mp3
+    - https://link.hhtjim.com/163/832988.mp3
+    - https://link.hhtjim.com/163/832991.mp3
+    - https://link.hhtjim.com/163/832994.mp3
+    - https://link.hhtjim.com/163/832997.mp3
+    - https://link.hhtjim.com/163/833000.mp3
+    - https://link.hhtjim.com/163/833002.mp3
+
+# 首页封面图, 为空时取文章的cover作为封面(注意跨域问题,建议使用同源图片)
+welcome_cover: /img/welcome-cover.jpg
+
+# 默认文章封面图（随机调用,支持外链）
+cover:
+    - /img/welcome-cover.jpg
+    - /img/cover-nier-automata-1.jpg
+    - /img/cover-nier-automata-2.jpg
+    - /img/picture-00001.png
+
+# 链接(可选:facebook,twitter,github,wechat,email)
+links:
+    facebook: /
+    twitter: https://twitter.com/AyakuraYukiP
+    github: https://github.com/AyakuraYuki
+#  wechat:
+#  email:
+
+# 备案
+beian:
+    # 是否显示备案信息
+    enable: true
+    # 是否在主页面最底下显示备案信息(虽然丑，但是完全满足规定要求)
+    enableFooter: false
+    # 备案号
+    beianInfo: 桂ICP备17008484号
+    # 链接地址
+    link: https://beian.miit.gov.cn/
+
+# 是否显示Twitter分享卡片图像(图像尺寸要求：1200*600，creatorid不需要带@符号。注意：链接必须是完整url，否则Twitter将无法读取图片信息）
+twitterpic:
+    enable: false
+    src: https://bangdream.moe/img/ident.png
+    creatorid: yourtwitteridhere
+
+# 是否使用mathjax
+mathjax: true
+
+
+# 是否关闭默认滚动条
+scrollbar: true
+
+# 本地搜索,请将索引文件放在网站根目录,或修改主题js文件的path值
+local_search:
+    # 是否启用
+    enable: true
+
+# 是否显示 一言(hitokoto)
+hitokoto: true
+
+# Gitalk 评论插件（https://github.com/gitalk/gitalk）
+gitalk:
+    # 是否启用评论功能
+    enable: false
+    # 是否自动展开评论框
+    autoExpand: false
+    # 应用编号
+    clientID: ''
+    # 应用秘钥
+    clientSecret: ''
+    # issue仓库名
+    repo: ''
+    # Github名
+    owner: ''
+    # Github名
+    admin: [ '' ]
+    # Ensure uniqueness and length less than 50
+    id: location.pathname
+    # Facebook-like distraction free mode
+    distractionFreeMode: false
+
+# 要使用google_analytics进行统计的话，这里需要配置ID
+google_analytics: G-WY5NF40F3Z
+
+# 百度统计
+baidu_tongji: 849815d0f4e3e368be4f98681a16a5cd
+
+# 网站ico
+favicon: /img/favicon.png
+
+# rss文件
+rss: atom.xml

@@ -1,0 +1,12 @@
+.idea/
+*.iml
+package.json
+node_modules
+package-lock.json
+yarn.lock
+.gitignore
+.prettierignore
+.prettierrc
+docs/.vuepress/
+theme-vdoing/
+utils/

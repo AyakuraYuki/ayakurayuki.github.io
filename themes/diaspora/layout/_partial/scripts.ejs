@@ -1,0 +1,12 @@
+<% if (theme.gitalk.enable){ %><%- js(['//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js'])%><%}%>
+<%- js(['//lib.baomitu.com/jquery/1.8.3/jquery.min.js', 'js/plugin.js', 'js/typed.js', 'js/diaspora.js'])%>
+<%- partial('photoswipe') %>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?849815d0f4e3e368be4f98681a16a5cd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
