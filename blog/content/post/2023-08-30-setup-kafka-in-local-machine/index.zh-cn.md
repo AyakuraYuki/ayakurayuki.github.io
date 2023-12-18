@@ -1,9 +1,7 @@
 ---
 title: 记录一下本地搭建 Kafka 的一些命令
-description: 
-date: 2023-08-30
+date: 2023-08-30 17:10:00
 slug: 2023-08-30-setup-kafka-in-local-machine
-image:
 categories:
     - guide
 tags:

@@ -1,9 +1,7 @@
 ---
 title: 利用 Helm 在 Kubernetes 部署无状态的 Apollo 配置中心
-description: 
-date: 2022-04-02
+date: 2022-04-02 18:49:00
 slug: 2022-04-02-apollo-in-kubernetes
-image:
 categories:
     - guide
 tags:

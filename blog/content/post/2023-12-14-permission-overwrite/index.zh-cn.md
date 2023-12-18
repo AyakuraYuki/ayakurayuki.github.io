@@ -1,9 +1,8 @@
 ---
 title: 基于位的权限功能的设计
 description: 利用位运算和权限覆写规则实现的多层权限配置功能
-date: 2023-12-14
+date: 2023-12-14 15:34:00
 slug: 2023-12-14-permission-overwrite
-image:
 categories:
     - infrastructure
 tags:

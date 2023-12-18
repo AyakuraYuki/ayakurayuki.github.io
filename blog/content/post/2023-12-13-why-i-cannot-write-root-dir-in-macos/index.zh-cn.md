@@ -1,9 +1,8 @@
 ---
 title: 为什么说 macOS 无权创建 /data 目录？
 description: 关于 SIP 和如何解决的简单说明
-date: 2023-12-13
+date: 2023-12-13 16:07:00
 slug: 2023-12-13-why-i-cannot-write-root-dir-in-macos
-image:
 categories:
     - guide
 tags:

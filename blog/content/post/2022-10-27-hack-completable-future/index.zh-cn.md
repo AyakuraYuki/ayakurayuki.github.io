@@ -1,9 +1,8 @@
 ---
 title: 优雅使用CompletableFuture的正确姿势
 description: 一个在 JDK 16 以前还可以用的反射调优 ForkJoinPool 的实现
-date: 2022-10-27
+date: 2022-10-27 11:10:00
 slug: 2022-10-27-hack-completable-future
-image:
 categories:
     - guide
 tags:

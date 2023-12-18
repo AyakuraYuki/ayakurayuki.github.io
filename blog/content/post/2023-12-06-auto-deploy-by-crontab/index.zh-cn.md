@@ -1,9 +1,8 @@
 ---
 title: 记录一个配合 Crontab 实现自动部署的脚本
 description: 用定时拉取的方法实现服务器更新服务到最新提交的代码的需求
-date: 2023-12-06
+date: 2023-12-06 17:50:00
 slug: 2023-12-06-auto-deploy-by-crontab
-image:
 categories:
     - guide
 tags:

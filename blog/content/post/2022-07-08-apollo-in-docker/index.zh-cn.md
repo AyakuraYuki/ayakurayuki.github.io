@@ -1,9 +1,7 @@
 ---
 title: 在 Docker 部署 Apollo 的正确姿势
-description: 
-date: 2022-07-08
+date: 2022-07-08 18:07:00
 slug: 2022-07-08-apollo-in-docker
-image:
 categories:
     - guide
 tags:

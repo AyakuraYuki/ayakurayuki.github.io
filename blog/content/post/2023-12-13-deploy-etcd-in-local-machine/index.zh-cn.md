@@ -1,7 +1,7 @@
 ---
 title: 本机部署 etcd 的小记
 description: 利用 supervisor 配置成服务
-date: 2023-12-13
+date: 2023-12-13 15:44:00
 slug: 2023-12-13-deploy-etcd-in-local-machine
 image: etcd-hero.png
 categories:
