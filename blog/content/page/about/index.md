@@ -1,5 +1,7 @@
 ---
-title: About
+title: "About"
+layout: "about"
+slug: "about"
 menu:
     main:
         weight: -90
