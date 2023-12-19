@@ -1,7 +1,7 @@
 baseurl: https://blog.ayakurayuki.cc/
 languageCode: zh-cn
 theme: hugo-theme-stack
-paginate: 5
+paginate: 10
 title: Ayakura Yuki 的小窝
 
 languages:
@@ -64,7 +64,7 @@ params:
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
-        enabled: true
+        enabled: false
         provider: disqus
 
         disqusjs:
