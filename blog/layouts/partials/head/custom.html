@@ -1,0 +1,8 @@
+<!-- require APlayer -->
+<!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">-->
+{{ $style := resources.Get "css/APlayer.min.css" }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
