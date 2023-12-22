@@ -6,3 +6,23 @@
 
 <!-- require MetingJS -->
 <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
+<!-- firebase cloud messaging -->
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js'
+  import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js'
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  const firebaseConfig = {
+    apiKey: 'AIzaSyDmViA1m9CSg7ebeTYO2Fx7DTagejVlUi8',
+    authDomain: 'ayblog.firebaseapp.com',
+    projectId: 'ayblog',
+    storageBucket: 'ayblog.appspot.com',
+    messagingSenderId: '548951104807',
+    appId: '1:548951104807:web:d6d08628ffec9fcfa1dd02',
+    measurementId: 'G-BBDPJ76W7G',
+  }
+
+  const app = initializeApp(firebaseConfig)
+  const analytics = getAnalytics(app)
+</script>
