@@ -1,5 +1,5 @@
 ---
-title: Maven pom.xml 的一些配置小记
+title: Maven的一些配置小记
 description: 记录一些有用的插件、依赖
 date: 2024-01-17 10:44:50
 slug: 2024-01-17-maven-pom-notes
