@@ -5,8 +5,8 @@ slug: 2017-05-16-spring-boot-config
 categories:
     - guide
 tags:
-    - Java
-    - Spring
+    - java
+    - spring
 ---
 
 > Spring Boot 其实可以不需要配置就能运行，但实际的实现过程中，我们还是需要给它写一些配置，准确的说，是给包含第三方依赖的环境编写配置。

@@ -5,8 +5,8 @@ slug: 2019-11-15-fix-gpg-sign-failed-prob
 categories:
     - guide
 tags:
-    - Git
-    - GPG
+    - git
+    - gpg
 image: cover.png
 ---
 

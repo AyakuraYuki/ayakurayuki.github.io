@@ -5,8 +5,8 @@ slug: 2017-11-02-cg5th-ssa-in-hk
 categories:
     - life
 tags:
-    - IM@S
-    - CinderellaGirls
+    - im@s
+    - cinderella girls
 image: 6.png
 ---
 

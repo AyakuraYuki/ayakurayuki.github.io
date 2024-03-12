@@ -5,7 +5,7 @@ slug: 2017-09-14-as-project-folders
 categories:
     - guide
 tags:
-    - Android
+    - android
 ---
 
 > 使用 Android Studio 2.3 版开发的 Android 项目文件结构说明

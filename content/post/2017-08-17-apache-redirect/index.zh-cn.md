@@ -6,8 +6,8 @@ slug: 2017-08-17-apache-redirect
 categories:
     - guide
 tags:
-    - Java
-    - Spring
+    - java
+    - spring
 ---
 
 > 记录自己对万网解析和 Apache 端口转发的理解

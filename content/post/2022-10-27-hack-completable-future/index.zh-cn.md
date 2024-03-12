@@ -6,7 +6,7 @@ slug: 2022-10-27-hack-completable-future
 categories:
     - guide
 tags:
-    - Java
+    - java
 ---
 
 > 利用反射优化 `ForkJoinPool` 让 `CompletableFuture` 用起来更舒服

@@ -5,8 +5,8 @@ slug: 2017-09-14-ml-border-function
 categories:
     - guide
 tags:
-    - Python
-    - Discord
+    - python
+    - discord
 ---
 
 # Code

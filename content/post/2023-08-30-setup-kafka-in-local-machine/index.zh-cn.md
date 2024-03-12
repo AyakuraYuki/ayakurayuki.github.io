@@ -5,8 +5,8 @@ slug: 2023-08-30-setup-kafka-in-local-machine
 categories:
     - guide
 tags:
-    - Kafka
-    - Zookeeper
+    - kafka
+    - zookeeper
 ---
 
 简单记录一下本地搭建 Kafka 用到的命令。

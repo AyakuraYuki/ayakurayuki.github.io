@@ -5,8 +5,8 @@ slug: 2017-05-14-ssm-generator
 categories:
     - project
 tags:
-    - Java
-    - Spring
+    - java
+    - spring
 ---
 
 # [SSMGenerator](https://github.com/AyakuraYuki/SSMGenerator)

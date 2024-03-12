@@ -5,8 +5,8 @@ slug: 2017-05-15-simple-spring-boot-crud
 categories:
     - project
 tags:
-    - Java
-    - Spring
+    - java
+    - spring
 ---
 
 # SimpleSpringBootCRUD

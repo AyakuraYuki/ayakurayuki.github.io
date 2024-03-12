@@ -5,9 +5,9 @@ slug: 2022-04-02-apollo-in-kubernetes
 categories:
     - guide
 tags:
-    - Kubernetes
-    - Helm
-    - Apollo
+    - kubernetes
+    - helm
+    - apollo
 ---
 
 > 采用 K8S 无状态模式部署 Apollo 配置中心，可以利用 Helm 安装，本文给出部署 Apollo 配置中心的步骤说明。

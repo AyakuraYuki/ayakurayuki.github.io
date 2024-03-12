@@ -4,7 +4,7 @@ description = 'Linux系统高并发最大连接、文件数调优配置'
 date = 2024-01-24T15:45:15+08:00
 slug = '2024-01-24-tweak-linux-limits'
 categories = ['guide']
-tags = ['Linux', 'Network']
+tags = ['linux', 'network']
 +++
 
 ## 网络内核调参

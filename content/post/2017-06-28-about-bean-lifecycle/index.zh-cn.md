@@ -5,8 +5,8 @@ slug: 2017-06-28-about-bean-lifecycle
 categories:
     - guide
 tags:
-    - Java
-    - Spring
+    - java
+    - spring
 ---
 
 > 记录有关 Spring Bean 生命周期的过程

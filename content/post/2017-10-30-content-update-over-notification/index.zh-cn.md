@@ -5,8 +5,8 @@ slug: 2017-10-30-content-update-over-notification
 categories:
     - notification
 tags:
-    - IM@S
-    - MillionLive
+    - im@s
+    - million live
 ---
 
 # グリマスコンテンツ更新終了のお知らせ

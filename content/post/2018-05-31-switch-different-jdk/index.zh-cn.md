@@ -5,9 +5,9 @@ slug: 2018-05-31-switch-different-jdk
 categories:
     - guide
 tags:
-    - macOS
-    - Java
-    - JDK
+    - macos
+    - java
+    - jdk
 ---
 
 > 新版 macOS 的 JDK 切换似乎有些，不那么直接？这就仁者见仁了。

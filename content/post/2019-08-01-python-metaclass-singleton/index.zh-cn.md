@@ -5,7 +5,7 @@ slug: 2019-08-01-python-metaclass-singleton
 categories:
     - guide
 tags:
-    - Python
+    - python
     - design pattern
 ---
 

@@ -5,7 +5,7 @@ slug: 2019-08-27-dd-monitor
 categories:
     - project
 tags:
-    - Python
+    - python
 ---
 
 # dd_monitor

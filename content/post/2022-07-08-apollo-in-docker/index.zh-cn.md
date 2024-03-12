@@ -5,8 +5,8 @@ slug: 2022-07-08-apollo-in-docker
 categories:
     - guide
 tags:
-    - Docker
-    - Apollo
+    - docker
+    - apollo
 ---
 
 > 本文介绍了利用 Docker 部署 Apollo 配置中心的操作步骤。

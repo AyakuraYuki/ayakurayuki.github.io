@@ -5,7 +5,7 @@ slug: 2018-01-31-json-in-swift
 categories:
     - guide
 tags:
-    - Swift
+    - swift
 ---
 
 > 记录使用 SwiftyJSON 和 HandyJSON 在 Swift 4 中处理 JSON 文件的过程

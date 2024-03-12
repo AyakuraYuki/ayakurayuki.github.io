@@ -5,7 +5,7 @@ slug: 2021-03-03-analysis-of-discord-bot-oauth
 categories:
     - guide
 tags:
-    - Discord
+    - discord
 image: cover-discord-bot.png
 ---
 

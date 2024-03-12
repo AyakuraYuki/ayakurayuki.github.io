@@ -6,7 +6,7 @@ slug: 2023-12-06-auto-deploy-by-crontab
 categories:
     - guide
 tags:
-    - Linux
+    - linux
     - crontab
 ---
 

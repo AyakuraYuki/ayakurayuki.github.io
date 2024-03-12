@@ -5,8 +5,8 @@ slug: 2017-10-19-content-storage-app
 categories:
     - guide
 tags:
-    - Java
-    - Spring
+    - java
+    - spring
 ---
 
 > 泛用型个人内容存储，采用两步验证来验证用户

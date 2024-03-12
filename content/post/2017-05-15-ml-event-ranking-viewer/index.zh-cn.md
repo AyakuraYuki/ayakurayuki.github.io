@@ -5,9 +5,9 @@ slug: 2017-05-15-ml-event-ranking-viewer
 categories:
     - project
 tags:
-    - Java
-    - Swing
-    - IM@S
+    - java
+    - swing
+    - im@s
 ---
 
 # Million Live Event Ranking Viewer

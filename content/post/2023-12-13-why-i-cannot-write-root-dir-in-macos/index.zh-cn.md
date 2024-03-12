@@ -6,7 +6,7 @@ slug: 2023-12-13-why-i-cannot-write-root-dir-in-macos
 categories:
     - guide
 tags:
-    - macOS
+    - macos
     - BigSur
 ---
 

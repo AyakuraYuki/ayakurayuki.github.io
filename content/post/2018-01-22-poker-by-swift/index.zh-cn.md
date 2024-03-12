@@ -5,7 +5,7 @@ slug: 2018-01-22-poker-by-swift
 categories:
     - guide
 tags:
-    - Swift
+    - swift
 ---
 
 > 使用 Swift Playground 创建的一个程序，可以创建一套含 52 张的扑克牌，并按照花色和牌号排序。

@@ -4,7 +4,7 @@ description = '记录一些有用的插件、依赖'
 date = 2024-01-17T10:44:50+08:00
 slug = '2024-01-17-maven-config'
 categories = ['guide']
-tags = ['Maven', 'Java']
+tags = ['java', 'maven']
 +++
 
 > 所有的插件版本均截至笔记编写日期 2024-01-17 时我所使用的版本，按需更新
