@@ -39,7 +39,7 @@ func rotateImage(img image.Image, zoomWidth, zoomHeight int, angle float64) imag
 
 ## 给图片增加圆角遮罩
 
-在前一篇文章 [Golang 绘制圆角遮罩]({{ < relref "content/post/2024-11-11-go-draw-rounded-rectangle/index.zh-cn.md" > }}) 中我们介绍了两种
+在前一篇文章 [Golang 绘制圆角遮罩](../2024-11-11-go-draw-rounded-rectangle/) 中我们介绍了两种
 用于绘制圆角遮罩的方法，我们采取其中一种比较简单易懂的来实现。
 
 要实现圆角遮罩，需要定义几个参数：
