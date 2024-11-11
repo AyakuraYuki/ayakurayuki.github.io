@@ -48,7 +48,7 @@ params:
         lastUpdated: 2006-01-02 15:04:05
 
     sidebar:
-        emoji: 🍥
+        emoji: 🍎
         subtitle: 有好东西？来点来点！
         avatar:
             enabled: true
