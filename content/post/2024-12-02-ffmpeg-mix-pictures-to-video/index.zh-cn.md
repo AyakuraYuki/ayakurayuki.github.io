@@ -158,3 +158,102 @@ ffmpeg -y \
 - `-map 4:a`：从第 5 个流选择音频轨道加入编码，因为流的编号从 0 开始，所以这里写作 `4:a`
 - `-c:a aac`：指定了音频编码器
 - `-shortest`：这个参数可以在视频和音频中找到最短的那个流，整体输出视频的时长由最短的流决定
+
+## 用例其一：抽帧
+
+> 这一小节主要参考了 [FFmpeg 抽帧指南 · Hanaasagi](https://blog.dreamfever.me/posts/2024-06-16-ffmpeg-extract-frames/#%E6%8A%BD%E5%8F%96%E5%85%B3%E9%94%AE%E5%B8%A7) 的文章内容，建议阅读原文。
+
+视频抽帧有多种抽法，这里记录几个。
+
+### 抽取首帧
+
+```shell
+ffmpeg -i input.mp4 -frames:v 1 -update 1 -y frame.png
+```
+
+- `-frames:v 1`：指定抽取一个视频帧
+- `-update 1`：更新现有的输出文件，而不是新建文件
+
+如果想要输出 jpg 图片，可以用：
+
+```shell
+ffmpeg -i input.mp4 -frames:v 1 -qscale:v 2 -update 1 -y frame.jpg
+```
+
+- `-qscale:v 2`：设置输出图像的质量参数。不同的编码器，参数不一样，以 mp4 来说，允许的范围是 `[1, 31]`，`1` 是最高质量，`31` 是最低质量，质量与文件大小正相关，质量越好文件越大，反之亦然。
+
+### 抽取自定义区间
+
+结合 `-ss` 或者任意可以选择时间段的参数，理论上都可以实现自定义区间抽帧。
+
+```shell
+ffmpeg -ss 00:00:30 -i input.mp4 -frames:v 1 -qscale:v 2 -update 1 -y frame.jpg
+```
+
+- `-ss 00:00:30`：指定从视频的 30 秒开始抽一帧
+
+### 抽取尾帧
+
+```shell
+ffmpeg -sseof -1 -i input.mp4 -qscale:v 2 -update 1 -y frame.jpg
+```
+
+- `-sseof`：选择从视频末尾往前指定偏移时间处理，`sseof` 是 `start seek from end of file` 的缩写
+
+### 过滤黑帧
+
+过滤黑帧是使用过滤器实现的功能，一般用到 `blackframe` 和 `metadata` 过滤器来实现。
+
+```shell
+ffmpeg -ss 00:00:30 -i input.mp4 \
+    -vf "blackframe=amount=0:threshold=32,metadata=select:key=lavfi.blackframe.pblack:value=50:function=less" \
+    -qscale:v 2 -update 1 -y frame.jpg
+```
+
+- `blackframe`：这个过滤器输出检测到的帧的编号、黑色程度百分比，导出到元数据的 `lavfi.blackframe.pblack`，可以利用两个参数做筛选：
+    - `amount`：必须低于阈值的像素的百分比，默认是 `98`，范围是 `[0, 100]`
+    - `threshold`（别名 `thresh`）：被认为是黑色的像素值的阈值，默认是 `32`，范围是 `[0, 255]`
+- `metadata`：这个过滤器可以按元数据摘取帧，这里读取 `lavfi.blackframe.pblack` 并挑选值小于 `50` 的数据
+
+### 抽取关键帧
+
+关键帧 `Keyframe` 是视频编码中的一种特殊帧，也称为I帧 `Intra-frame`。
+在视频压缩中，视频帧通常分为三种类型：I帧、P帧 `Predicted frame` 和B帧 `Bi-directional predicted frame`。
+
+- 关键帧（I帧）：关键帧是视频序列中的重要帧，它不依赖于其他帧来进行解码，而是独立编码的完整图像帧。在视频解码时，解码器可以通过解码一个关键帧来独立地显示该帧，无需任何其他帧的信息。因此，关键帧对于视频的快速随机访问非常重要，比如拖动进度条到任意时间点或者快速跳转到视频的某一部分。
+- 预测帧（P帧）：预测帧依赖于前一个关键帧或预测帧进行解码，它只包含与前一帧之间的差异信息（运动向量、变化的像素等）。解码器需要先解码前一帧或预测帧，然后应用差异信息来生成预测帧的完整图像。
+- 双向预测帧（B帧）：双向预测帧依赖于前后两个关键帧或预测帧进行解码，它包含了与前一帧和后一帧之间的差异信息。解码器需要先解码前一帧和后一帧，然后应用这些差异信息来生成双向预测帧的完整图像。
+
+关键帧通常出现在视频的场景切换、运动剧烈变化或者时间间隔较长的位置，它们帮助视频解码器恢复完整图像并确保视频的质量和稳定性。视频编码器会根据一定的策略和算法自动选择关键帧的位置，以便在保证视频质量的同时尽可能地减小视频文件的大小。
+
+关键帧的类型为 `I`，可以直接通过 `select` 进行提取：
+
+```shell
+ffmpeg -i input.mp4 -vf "select=eq(pict_type\,I)" -vsync vfr -f image2 ./frames/frame_%04d.png
+```
+
+对于 `P帧` 或者 `B帧`，只要把上面 `select` 表达式的 `I` 改成对应的类型即可：
+
+- `P帧`: `P`
+- `B帧`: `B`
+
+### 均匀抽帧
+
+每秒抽一帧？用 `-r` 参数实现。
+
+```shell
+ffmpeg -i input.mp4 -r 1 -f image2 ./frames/frame_%04d.png
+```
+
+- `-r 1`：每一秒取一次视频帧
+
+### 转场抽帧
+
+转场抽帧依靠 `select` 来检查场景变化，在帧间按照变化程度找出超过变化阈值的帧。
+
+```shell
+ffmpeg -i input.mp4 -vf "select='gt(scene,0.25)'" -vsync vfr -y ./frames/frame_%04d.png
+```
+
+- `select='gt(scene,0.25)'`：利用 `select` 过滤器，通过 `scene` 场景检测器计算帧与帧之间的差异，当差异超过 0.25 则认为场景发生了变化，则当作转场帧捕获导出
+
