@@ -1,7 +1,9 @@
 baseurl: https://blog.ayakurayuki.cc/
 languageCode: zh-cn
 theme: hugo-theme-stack
-paginate: 10
+#paginate: 10
+pagination:
+    pagerSize: 10
 title: Ayakura Yuki 的小窝
 
 languages:
