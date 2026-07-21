@@ -1,5 +1,5 @@
 baseurl: https://blog.ayakurayuki.cc/
-languageCode: zh-cn
+locale: zh-cn
 theme: hugo-theme-stack
 #paginate: 10
 pagination:
