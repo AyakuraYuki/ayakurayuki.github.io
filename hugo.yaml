@@ -8,7 +8,7 @@ title: Ayakura Yuki 的小窝
 
 languages:
     zh-cn:
-        languageName: 中文
+        label: 中文
         title: Ayakura Yuki 的小窝
         weight: 2
         params:
