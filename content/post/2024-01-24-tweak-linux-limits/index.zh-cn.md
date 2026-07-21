@@ -9,11 +9,98 @@ tags = ['linux', 'network']
 
 ## 网络内核调参
 
-### 目标文件
+- `/etc/sysctl.conf`
 
-`/etc/sysctl.conf`
+```shell
+# --- 基础 ---
+vm.swappiness = 10
+fs.file-max = 1048576
+fs.nr_open = 2097152
 
-### 内容
+# --- 邻居表 / ARP ---
+net.ipv4.neigh.default.gc_stale_time = 120
+net.ipv4.conf.all.rp_filter = 2
+net.ipv4.conf.default.rp_filter = 2
+net.ipv4.conf.default.arp_announce = 2
+net.ipv4.conf.all.arp_announce = 2
+
+# --- TCP 基础 ---
+net.ipv4.tcp_max_tw_buckets = 65000
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_abort_on_overflow = 1
+net.ipv4.tcp_synack_retries = 2
+net.ipv4.tcp_syn_retries = 3
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.tcp_keepalive_time = 1200
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.tcp_timestamps = 1
+net.ipv4.tcp_max_syn_backlog = 262144
+net.ipv4.ip_local_port_range = 1024 65000
+
+# --- 缓冲区 ---
+net.ipv4.tcp_rmem = 4096 87380 16777216
+net.ipv4.tcp_wmem = 4096 65536 16777216
+net.core.rmem_default = 262144
+net.core.wmem_default = 262144
+net.core.rmem_max = 26214400
+net.core.wmem_max = 26214400
+net.core.optmem_max = 16777216
+
+# --- 队列 / 拥塞控制 ---
+net.core.netdev_max_backlog = 262144
+net.core.somaxconn = 262144
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+
+# --- IPv6：如无需求可保留关闭，但建议评估 ---
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+kernel.sysrq = 0
+```
+
+---
+
+配置中，拥塞控制使用了 BBR + fq 模块，要确认服务器是否支持，可以用下面的命令检查：
+
+```shell
+uname -r
+lsmod | grep bbr
+modinfo tcp_bbr
+```
+
+`modinfo tcp_bbr` 如果能查到信息，说明内核确实带了这个模块，只是没加载。
+
+尝试直接加载：
+
+```shell
+sudo modprobe tcp_bbr
+sysctl net.ipv4.tcp_available_congestion_control
+```
+
+如果这时候输出变成了 reno cubic bbr，那就说明模块加载成功了，接下来只要两步：
+
+1. 让它开机自动加载：
+
+```shell
+echo "tcp_bbr" | sudo tee /etc/modules-load.d/bbr.conf
+```
+
+2. 再应用 sysctl 里的两行（之前建议的配置里已经包含）：
+
+```shell
+net.core.default_qdisc = fq
+net.ipv4.tcp_congestion_control = bbr
+```
+
+`fq` 这个 qdisc（`sch_fq`）通常也是内置的，不需要额外处理，正常情况下直接 `sysctl -p` 生效就行，可以用 `tc qdisc show` 或者设置后看 `sysctl` 有没有报错来确认。
+
+---
+
+> 以下内容不适用于2017年后的内核版本，仅保留以作参考
+
+- `/etc/sysctl.conf`
 
 ```shell
 vm.swappiness = 0
@@ -56,11 +143,7 @@ kernel.sysrq = 1
 
 ## 进程数调整
 
-### 目标文件
-
-`/etc/security/limits.conf`
-
-### 内容
+- `/etc/security/limits.conf`
 
 ```shell
 # /etc/security/limits.conf
@@ -117,11 +200,7 @@ root           hard    nofile         1048576
 
 ## systemd 配置调整
 
-### 目标文件
-
-`/etc/systemd/system.conf`
-
-### 内容
+- `/etc/systemd/system.conf`
 
 ```shell
 #  This file is part of systemd.
