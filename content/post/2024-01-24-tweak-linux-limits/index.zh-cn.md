@@ -12,9 +12,17 @@ tags = ['linux', 'network']
 - `/etc/sysctl.conf`
 
 ```shell
-# --- 基础 ---
+# --- 内存 ---
+# Web 服务器尽量不换页
 vm.swappiness = 10
-fs.file-max = 1048576
+# 脏页回写更平滑,避免突发 IO 卡顿
+vm.dirty_ratio = 15
+vm.dirty_background_ratio = 5
+# ES/JVM 类应用常需要
+vm.max_map_count = 262144
+
+# --- 文件句柄 ---
+fs.file-max = 2097152
 fs.nr_open = 2097152
 
 # --- 邻居表 / ARP ---
@@ -31,11 +39,15 @@ net.ipv4.tcp_abort_on_overflow = 1
 net.ipv4.tcp_synack_retries = 2
 net.ipv4.tcp_syn_retries = 3
 net.ipv4.tcp_fin_timeout = 30
-net.ipv4.tcp_keepalive_time = 1200
 net.ipv4.tcp_tw_reuse = 1
 net.ipv4.tcp_timestamps = 1
 net.ipv4.tcp_max_syn_backlog = 262144
 net.ipv4.ip_local_port_range = 1024 65000
+
+# --- TCP Keepalive ---
+net.ipv4.tcp_keepalive_time = 1200
+net.ipv4.tcp_keepalive_intvl = 30
+net.ipv4.tcp_keepalive_probes = 5
 
 # --- 缓冲区 ---
 net.ipv4.tcp_rmem = 4096 87380 16777216
