@@ -3,18 +3,348 @@
   "repository": "https://github.com/LBEILC/RhineLabUI",
   "commit": "e3137770bac38044988e3a67973397b7c1e31b96",
   "recordedOn": "2026-09-09",
-  "status": "baseline-only; runtime and models are not yet integrated",
+  "status": "stage-2 runtime snapshot; production PWA disabled; blog adapter is separate",
   "policy": "Do not fetch main during blog builds. Code, model assets and reproducible Blender sources must be upgraded and validated together.",
   "importedFiles": [
     {
-      "source": "public/fonts/MiSans-Regular.woff2",
-      "destination": "site/static/fonts/MiSans-Regular.woff2",
-      "sha256": "d704c1a932c0bd7e8a071d276cd81c0ed0c9fecfa26ac234f4bed0559fe1cb2d"
+      "source": "AGENTS.md",
+      "destination": "site/vendor/rhine/AGENTS.md",
+      "sha256": "bbedd7db301ac95cb2c66ff021b8523a4e248ae0fbe9f0ec9874553e257dbca9"
+    },
+    {
+      "source": "DESIGN.md",
+      "destination": "site/vendor/rhine/DESIGN.md",
+      "sha256": "493191e70b7b330dd22568c0db516114101ed1785534b621db51ae2ff3351655"
+    },
+    {
+      "source": "LICENSE",
+      "destination": "site/vendor/rhine/LICENSE",
+      "sha256": "b42f104f4b3687773c76efbf990c1ab7b306a8c59035958c0b886dfbbcf2cd91"
+    },
+    {
+      "source": "art/archive-assembly.blend",
+      "destination": "site/vendor/rhine/art/archive-assembly.blend",
+      "sha256": "111d073c1014f99a41c36082f9dc004fb5a18d9f68809341b76cb8de279f9470"
+    },
+    {
+      "source": "art/archive-studio.png",
+      "destination": "site/vendor/rhine/art/archive-studio.png",
+      "sha256": "05f627f2698cbfc64e87ee95445b556a01b39012043dea735e2895a379c478c8"
+    },
+    {
+      "source": "art/build_archive.py",
+      "destination": "site/vendor/rhine/art/build_archive.py",
+      "sha256": "eca7395e91edebd340bec02df57fdab4bb28c47a4842854b5ce1d3a8d37ae533"
+    },
+    {
+      "source": "art/build_assembly.py",
+      "destination": "site/vendor/rhine/art/build_assembly.py",
+      "sha256": "4db194b5ecfabbfe33aa1d30f40be99599defd78b5e7f99f7533346ab56ebc9a"
+    },
+    {
+      "source": "art/clear_reference_details.py",
+      "destination": "site/vendor/rhine/art/clear_reference_details.py",
+      "sha256": "448b54b0da8c9280a100cdb4894f0147785c66f91c781c9b2abb40ad6283cf4c"
+    },
+    {
+      "source": "art/internal_architecture.py",
+      "destination": "site/vendor/rhine/art/internal_architecture.py",
+      "sha256": "3a770abd6e128d9067ef86f93a7cc050e64175e5fc9e6f412734d126e753d89a"
+    },
+    {
+      "source": "art/rhine-archive.blend",
+      "destination": "site/vendor/rhine/art/rhine-archive.blend",
+      "sha256": "7ddfe3bfdd0d8100ddb78236cfb5b2953049b33aaaef380ef1f4014f0f3c588d"
+    },
+    {
+      "source": "art/setup_studio.py",
+      "destination": "site/vendor/rhine/art/setup_studio.py",
+      "sha256": "35465befe10330d94e172255bf07b0055fbf2b4d667d50483b1a25b4318d4e9f"
+    },
+    {
+      "source": "art/shell_reference_details.py",
+      "destination": "site/vendor/rhine/art/shell_reference_details.py",
+      "sha256": "b7ba74060923df62e44fe718ea3d321c893db811d6a3eb6acd254832d81787df"
+    },
+    {
+      "source": "content/README.md",
+      "destination": "site/vendor/rhine/content/README.md",
+      "sha256": "6e519a182ea68103ef8d29da56700f218ec62148700f3a3c59a584afbf4dc367"
+    },
+    {
+      "source": "content/archives.json",
+      "destination": "site/vendor/rhine/content/archives.json",
+      "sha256": "ba02edfb5899acda74284c59a8baf11568e181bc82cddf6eadc72513050a2981"
+    },
+    {
+      "source": "package-lock.json",
+      "destination": "site/vendor/rhine/package-lock.json",
+      "sha256": "f7fcb89381148186899056f51b4eb41c87698f12918c75af25434eac3ab6ecc7"
+    },
+    {
+      "source": "package.json",
+      "destination": "site/vendor/rhine/package.json",
+      "sha256": "ba8d501f385a07f3950f3cdd504f29f9c27649105224ac475c9f19f80a51614a"
+    },
+    {
+      "source": "src/appearance.ts",
+      "destination": "site/vendor/rhine/src/appearance.ts",
+      "sha256": "7c8b0ac254ec40c630f7d22d044d8492503ceb7d88783b9fffdd73f2cdc49c57"
+    },
+    {
+      "source": "src/archive-lighting.ts",
+      "destination": "site/vendor/rhine/src/archive-lighting.ts",
+      "sha256": "fc14af44039728419a0338770e13774697b6eea20ce61abc59e76b99f0c0d349"
+    },
+    {
+      "source": "src/archive-loop.ts",
+      "destination": "site/vendor/rhine/src/archive-loop.ts",
+      "sha256": "90fd248f1651d340b674e103f96a58031581d79ac5ec622b902eeef54cfa2760"
+    },
+    {
+      "source": "src/asset-url.ts",
+      "destination": "site/vendor/rhine/src/asset-url.ts",
+      "sha256": "d8eebd5c0b08d9541cc6aa92e7bc4f492b3cc69626e298cd1f74fed72ce1ce4d"
+    },
+    {
+      "source": "src/audio-settings.ts",
+      "destination": "site/vendor/rhine/src/audio-settings.ts",
+      "sha256": "11bebafaef198f9a6b90072c48e1f07a1af81df6115a5a96bdad2e98185c0edb"
+    },
+    {
+      "source": "src/audio.ts",
+      "destination": "site/vendor/rhine/src/audio.ts",
+      "sha256": "75931d7194ec6cb8e7d09f85f4269e76c83b2c70b0e2bcd7a6652998a37fa3c8"
+    },
+    {
+      "source": "src/boot-logo-tracks.ts",
+      "destination": "site/vendor/rhine/src/boot-logo-tracks.ts",
+      "sha256": "dd1ea3e2162af2f88818099a5539ed092f1aaccf47d7a3f1b04ef80e2a887405"
+    },
+    {
+      "source": "src/boot-motion.ts",
+      "destination": "site/vendor/rhine/src/boot-motion.ts",
+      "sha256": "047d768d1952c83abe1a8352a859fb31aac09751f176975c1174885587597bdd"
+    },
+    {
+      "source": "src/boot-orbit-tracks.ts",
+      "destination": "site/vendor/rhine/src/boot-orbit-tracks.ts",
+      "sha256": "179285daf9f62ebcd4da2a33fb7b5ae6da92c900714cd91c5aafdda58927a953"
+    },
+    {
+      "source": "src/boot-tracks.ts",
+      "destination": "site/vendor/rhine/src/boot-tracks.ts",
+      "sha256": "6d6fd116d22a27b96899d692656af904a9f18d7406f44ebec0417cf3acd0141e"
+    },
+    {
+      "source": "src/boot.ts",
+      "destination": "site/vendor/rhine/src/boot.ts",
+      "sha256": "9b30d7aeba48f65f01a769a9fc1517e589ce92ff534618be60b1430985d056a6"
+    },
+    {
+      "source": "src/brand.ts",
+      "destination": "site/vendor/rhine/src/brand.ts",
+      "sha256": "36f88bda7e6d92338245581613585a75c58982669a30a5751bf8f6614143525a"
+    },
+    {
+      "source": "src/data.ts",
+      "destination": "site/vendor/rhine/src/data.ts",
+      "sha256": "aad8e8b1786a88255943359535a1cc26c8ddb9696bb27b055c32e917154494e3"
+    },
+    {
+      "source": "src/decryption.css",
+      "destination": "site/vendor/rhine/src/decryption.css",
+      "sha256": "ea95ab1ccb18fbbec6884d5b22a4297bd3a46ab4ac3b68e8258122fbe4f3d45d"
+    },
+    {
+      "source": "src/decryption.ts",
+      "destination": "site/vendor/rhine/src/decryption.ts",
+      "sha256": "e0ad3554df74d8b0cc8ca8e84f2084e842d60824a5b6177daea9b81804684ec1"
+    },
+    {
+      "source": "src/document-decryption.css",
+      "destination": "site/vendor/rhine/src/document-decryption.css",
+      "sha256": "a644842b67cbe335085e39d1e88d06e6033b7130977cdf2b5e011dcbd7b3649f"
+    },
+    {
+      "source": "src/document-decryption.ts",
+      "destination": "site/vendor/rhine/src/document-decryption.ts",
+      "sha256": "b2e2ab077bd18fb4d88ac32f0f56314d84d95d2f9127dae9fb11825a3499ee86"
+    },
+    {
+      "source": "src/glass-reveal.ts",
+      "destination": "site/vendor/rhine/src/glass-reveal.ts",
+      "sha256": "26a16d2b4ad9447390f53e0956b8691001e12182827e68a713e9cb40598db513"
+    },
+    {
+      "source": "src/html.ts",
+      "destination": "site/vendor/rhine/src/html.ts",
+      "sha256": "2ba5ade6bdeef34d5328844bf2b4190c3cefe3d81f90cc78e85ea0abd81d2fad"
+    },
+    {
+      "source": "src/inspection-overlay.ts",
+      "destination": "site/vendor/rhine/src/inspection-overlay.ts",
+      "sha256": "384d21c258c26b6427f74850abb1b2c36c6c0873d307d39f2c390f5f0411db62"
+    },
+    {
+      "source": "src/internal-optics.ts",
+      "destination": "site/vendor/rhine/src/internal-optics.ts",
+      "sha256": "51001ae8df1a5050fb14214058ff21e7a957b0dc5e97207eb8e87c6b2ffddc21"
+    },
+    {
+      "source": "src/main.ts",
+      "destination": "site/vendor/rhine/src/main.ts",
+      "sha256": "f017e0503c1df946e20d201f870c13540d93643340c6b8e998b3a1b2181db384"
+    },
+    {
+      "source": "src/model-viewer.ts",
+      "destination": "site/vendor/rhine/src/model-viewer.ts",
+      "sha256": "8b2310181e857abe99a7cc074fa60dc88663ff802b91e37dc466753db4459abf"
+    },
+    {
+      "source": "src/motion.ts",
+      "destination": "site/vendor/rhine/src/motion.ts",
+      "sha256": "60c4bbef70f34f69e36ff60aa631b3b88b2eb42a6e9b431b6af3c6fd69eb744e"
+    },
+    {
+      "source": "src/pwa.ts",
+      "destination": "site/vendor/rhine/src/pwa.ts",
+      "sha256": "70a3d62541b2c793dae7b62b56269133d907545b0df20f19e4211f2f7aa42fee"
+    },
+    {
+      "source": "src/quality-renderer.ts",
+      "destination": "site/vendor/rhine/src/quality-renderer.ts",
+      "sha256": "2a48656eb105ea0f4ddfa70dc9a9f4a823388883e874e311c53f9905f599bf49"
+    },
+    {
+      "source": "src/quality-settings.css",
+      "destination": "site/vendor/rhine/src/quality-settings.css",
+      "sha256": "ef3398d7ee3ce5906cb954a4f6ddc53f0eae2547e5c4daa2249e2c096df1090b"
+    },
+    {
+      "source": "src/quality-settings.ts",
+      "destination": "site/vendor/rhine/src/quality-settings.ts",
+      "sha256": "df6a16ca5af38a6b781ec9c060bb70924c6bdd6fedb660e1d74c9b8dd3e7600b"
+    },
+    {
+      "source": "src/render-quality.ts",
+      "destination": "site/vendor/rhine/src/render-quality.ts",
+      "sha256": "862758c9e4c1c272ba10f44c2c58746b53b62ac42d2d7d8776eca0fc349118de"
+    },
+    {
+      "source": "src/responsive.css",
+      "destination": "site/vendor/rhine/src/responsive.css",
+      "sha256": "62e7f7143be8ca76fb3cfb0a57a1775c5aca3a9a276a4fc3a17ae4439fa178d7"
+    },
+    {
+      "source": "src/scene.ts",
+      "destination": "site/vendor/rhine/src/scene.ts",
+      "sha256": "c129850d94bf3cafde352e2f152371b6d441b3adcb5cacda4adf61f41a08bdb9"
+    },
+    {
+      "source": "src/style.css",
+      "destination": "site/vendor/rhine/src/style.css",
+      "sha256": "b47ac30a2c5f81fa2cf4bfcfeb2bfd1cd35a9c6fe709f981da93b88c8ba0a9ba"
+    },
+    {
+      "source": "src/typing-rhythm.ts",
+      "destination": "site/vendor/rhine/src/typing-rhythm.ts",
+      "sha256": "842c6995bf85743210b82f0186770afacc9a0418bce7fe79acde8e2058ee0cf6"
+    },
+    {
+      "source": "src/typing-samples.ts",
+      "destination": "site/vendor/rhine/src/typing-samples.ts",
+      "sha256": "c3692433e5dd34dc4b65b78b149932ee6132250c0120254f996a4a9ec94599a8"
+    },
+    {
+      "source": "src/ui-transitions.ts",
+      "destination": "site/vendor/rhine/src/ui-transitions.ts",
+      "sha256": "82ad8d06394659949dfe4e5005ea55b5e8d2e660c4d3c05d39dfcc1a37a57753"
+    },
+    {
+      "source": "src/viewer-camera.ts",
+      "destination": "site/vendor/rhine/src/viewer-camera.ts",
+      "sha256": "b64a944133caaa2aabba70def79dd532530d3b9f8ce6ae0738f11d54576f4d08"
+    },
+    {
+      "source": "src/viewport-layout.ts",
+      "destination": "site/vendor/rhine/src/viewport-layout.ts",
+      "sha256": "b9c751a4b9860c22b0c9a32b271c1b6630f42ff18b30496ce8bd1507bc9a55da"
+    },
+    {
+      "source": "src/vite-env.d.ts",
+      "destination": "site/vendor/rhine/src/vite-env.d.ts",
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    },
+    {
+      "source": "public/assets/archive-assembly.glb",
+      "destination": "site/static/assets/archive-assembly.glb",
+      "sha256": "d411170676f55a327c286e67e462f98b446667811c725318bab85657eaee06ec"
+    },
+    {
+      "source": "public/assets/archive-cassette.glb",
+      "destination": "site/static/assets/archive-cassette.glb",
+      "sha256": "dda42b9b3b471d11c69820a64084d254a64b27761287ab0e35dd8387ec0a0bed"
+    },
+    {
+      "source": "public/audio/README.md",
+      "destination": "site/static/audio/README.md",
+      "sha256": "21842877cb3b71649ec5b4def829dc52b216cf47bc66b9df9478a4b6608675cd"
+    },
+    {
+      "source": "public/audio/atmosphere.ogg",
+      "destination": "site/static/audio/atmosphere.ogg",
+      "sha256": "a7c18ef30f096cae6056ca2db284f820a925fc4e7383bd2bf57f78cd9401dbcf"
+    },
+    {
+      "source": "public/audio/motif.ogg",
+      "destination": "site/static/audio/motif.ogg",
+      "sha256": "3503d692874e626112bcfb077d89239653eb28713182b6468b862d7f22572162"
+    },
+    {
+      "source": "public/audio/observatory-preview.mp3",
+      "destination": "site/static/audio/observatory-preview.mp3",
+      "sha256": "a4277399b284515bdfba03741b4a7d05c37e1a5650a3270c083496aa88eef3c3"
+    },
+    {
+      "source": "public/audio/pulse.ogg",
+      "destination": "site/static/audio/pulse.ogg",
+      "sha256": "fd8d82990d9eea07e83430042f1f3b772c6e07319f28561426122b49536fc012"
+    },
+    {
+      "source": "public/audio/score.json",
+      "destination": "site/static/audio/score.json",
+      "sha256": "479860ea01240da7ea3053fc841b55f53cb4c259d61a9741676f68b4ebc4060c"
+    },
+    {
+      "source": "public/audio/typing-preview.wav",
+      "destination": "site/static/audio/typing-preview.wav",
+      "sha256": "89eb2ed9de5da1ca0cce7332ad736c46a7677cee14a09c066f96c58b4c25b5ff"
+    },
+    {
+      "source": "public/audio/typing-source.json",
+      "destination": "site/static/audio/typing-source.json",
+      "sha256": "f5e2196eb8fd4110c66d20dca842de0e70f9f3166e50a0ea67ce9ce3ea289aa4"
     },
     {
       "source": "public/fonts/MiSans-Bold.woff2",
       "destination": "site/static/fonts/MiSans-Bold.woff2",
       "sha256": "1c5a7515b61bc82baaa2e2c2fdae2032479fb9a99e09d4d021dc17314fc5939b"
+    },
+    {
+      "source": "public/fonts/MiSans-Demibold.woff2",
+      "destination": "site/static/fonts/MiSans-Demibold.woff2",
+      "sha256": "7afe3737efaf6a137db0ef4857fbe4033a8802756485ebc7f008e96a4bdedcf2"
+    },
+    {
+      "source": "public/fonts/MiSans-Light.woff2",
+      "destination": "site/static/fonts/MiSans-Light.woff2",
+      "sha256": "2d1502a1cf0e41917844b512fb64be547cfb737e593d0da782c6b6762ea71c33"
+    },
+    {
+      "source": "public/fonts/MiSans-Regular.woff2",
+      "destination": "site/static/fonts/MiSans-Regular.woff2",
+      "sha256": "d704c1a932c0bd7e8a071d276cd81c0ed0c9fecfa26ac234f4bed0559fe1cb2d"
     },
     {
       "source": "public/fonts/MiSans-license.pdf",
@@ -25,6 +355,16 @@
       "source": "public/fonts/NOTICE.txt",
       "destination": "site/static/fonts/NOTICE.txt",
       "sha256": "bab668563c9b8c26f7637bf90bb3288f1fa0f97327afb1d60142fd5f12d28c69"
+    },
+    {
+      "source": "public/licenses/rolling-number.txt",
+      "destination": "site/static/licenses/rolling-number.txt",
+      "sha256": "4994c24b5bbb85529407e8cd0211efcf819236899d2c911cbdb18c00f231273a"
+    },
+    {
+      "source": "LICENSE",
+      "destination": "site/static/licenses/rhine-runtime-MIT.txt",
+      "sha256": "b42f104f4b3687773c76efbf990c1ab7b306a8c59035958c0b886dfbbcf2cd91"
     }
   ],
   "files": [

@@ -1,6 +1,6 @@
-# Rhine 博客迁移 · 第一阶段
+# Rhine 博客迁移 · 第二阶段
 
-本分支将旧博客的文章组织方式与 Hugo 分开：继续使用原 Markdown 目录，新增一个不依赖 Hugo 或 Stack 的 Astro 静态阅读入口。**这是迁移预览，不是正式博客切换；三维阵列尚未接入。**
+本分支将旧博客的文章组织方式与 Hugo 分开：继续使用原 Markdown 目录，新增一个不依赖 Hugo 或 Stack 的 Astro 静态阅读入口。**这是迁移预览，不是正式博客切换。第一阶段已验收，第二阶段接入三维浏览与文章预览。**
 
 ## 本地运行
 
@@ -30,8 +30,10 @@ PLAYWRIGHT_CHANNEL=chrome npm run test:browser
 
 测试自行管理 4328 端口上的静态服务；运行浏览器测试前先停止手工预览。
 
-## 本阶段提供
+## 已提供
 
+- 五列三维首页、抽取后的文章预览、独立模型查看器、收藏与按文章 ID 的往返恢复。
+- `/posts/` 为普通索引，`/` 为三维入口；第一次可看开场，减少动态效果或返回时直接恢复。
 - 38 篇旧文章的静态阅读页；31 篇 YAML、7 篇 TOML front matter。
 - 保留 `content/post/<bundle>/index.zh-cn.md` 与 `/p/:slug/`。
 - 日期无时区时明确解释为 Asia/Shanghai，不依赖 CI 时区。
@@ -44,12 +46,12 @@ PLAYWRIGHT_CHANNEL=chrome npm run test:browser
 
 ## 还没有做
 
-- 五列三维阵列、抽取预览、完整阅读过渡、三维状态恢复。
-- 收藏、全文检索、分类/标签独立页面、年份归档、RSS、sitemap、关于/链接页面迁移。
+- 完整阅读进出过渡、精确滚动/摄像机往返恢复及实机性能校准。
+- 全文检索、分类/标签独立页面、年份归档、RSS、sitemap、关于/链接页面迁移。
 - 新站 PWA、缓存升级策略、手机实机性能校准。
 - 生产切换与真正的上游升级演练。
 
-首页只有普通文章索引，不是以“假的三维画面”代替后续集成。
+首页是实时 Three.js 场景，不使用视频代替三维；普通索引仍可随时进入。第二阶段的边界、实现与限制见 `migration/STAGE-2.md`。
 
 ## 文件职责
 
@@ -62,13 +64,14 @@ PLAYWRIGHT_CHANNEL=chrome npm run test:browser
 | `migration/legacy-headings.json` | 从现有本地旧输出观察到的锚点，不宣称是线上快照 |
 | `migration/legacy-anchor-redirects.json` | 已删小节的显式兼容决策 |
 | `migration/INTEGRATION.md` | 上游接入边界和升级规则 |
-| `migration/VERIFICATION.md` | 本次验收及限制 |
+| `migration/VERIFICATION.md` | 第一阶段验收及限制 |
+| `migration/STAGE-2.md` | 三维接入边界与第二阶段验证 |
 
 ## 继续写作
 
 迁移期间旧 `hugo` 写作分支仍是权威源，不在两个分支维护两份文章。新增/修改文章先在原分支完成，再审查内容差异并同步到迁移分支；涉及旧源文件修改时需明确更新基线。新增文章不要求改代码、凑满八篇、填写三维编号或人工维护 JSON。
 
-当前语言契约是 `index.zh-cn.md`。现有分类可以直接使用；新增分类会在普通索引中自动出现，但将来如何归入五个三维展示分区需在站点配置中决定。`description`、封面、标签可缺省；`title`、`date`、`slug`、非空 `categories` 必填。`draft: true` 或未来 `publishDate` 会同时排除文章页面和文章附件。
+当前语言契约是 `index.zh-cn.md`。现有分类可以直接使用；新增分类会在普通索引中自动出现；三维分区按配置顺序匹配，未匹配分类暂归入技术笔记，后续可调整映射配置。`description`、封面、标签可缺省；`title`、`date`、`slug`、非空 `categories` 必填。`draft: true` 或未来 `publishDate` 会同时排除文章页面和文章附件。
 
 文章路径和收藏身份不共用排序序号：初始 ID 为 `post:<bundle-folder>`，可显式填写 `id`；正文地址由 `slug` 决定。改变目录或 slug 应作为有链接迁移影响的变更处理。
 

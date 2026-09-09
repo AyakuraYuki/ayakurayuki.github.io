@@ -19,7 +19,8 @@ const next = all[position + 1]?.data;
 <SiteLayout title={p.title} description={p.description} article>
   <main id="page-main" class="reader-layout">
     <aside class="reader-sidebar">
-      <a class="back-link" href="/">← 返回文章索引</a>
+      <a class="back-link" href="/posts/">← 返回文章索引</a>
+      <a class="back-link archive-return" href="/" data-archive-return>↖ 返回三维档案库</a>
       <p class="eyebrow">DOCUMENT / {String(position + 1).padStart(3, '0')}</p>
       {toc.length > 0 && <nav class="toc" aria-label="文章目录"><h2>CONTENTS <span>文章目录</span></h2><ol>{toc.map(h => <li class={`depth-${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav>}
       <a class="top-link" href="#page-main">返回顶部 ↑</a>
@@ -35,7 +36,7 @@ const next = all[position + 1]?.data;
       </header>
       {toc.length > 0 && <details class="mobile-toc"><summary>文章目录 <span>{toc.length} SECTIONS</span></summary><nav aria-label="移动端文章目录"><ol>{toc.map(h => <li class={`depth-${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav></details>}
       <div class="prose"><Content /></div>
-      <footer class="article-footer"><p class="eyebrow">END OF DOCUMENT</p><a href="/">返回全部档案 ↗</a></footer>
+      <footer class="article-footer"><p class="eyebrow">END OF DOCUMENT</p><a href="/posts/">返回全部档案 ↗</a></footer>
       <nav class="adjacent-posts" aria-label="相邻文章">
         {previous ? <a href={previous.href}><small>← 较新文章</small><span>{previous.title}</span></a> : <span></span>}
         {next && <a href={next.href}><small>较早文章 →</small><span>{next.title}</span></a>}
@@ -44,6 +45,16 @@ const next = all[position + 1]?.data;
   </main>
 </SiteLayout>
 <script>
+  import { SESSION_KEY } from '../../../archive/state';
+  const id = document.querySelector<HTMLElement>('[data-post-id]')?.dataset.postId;
+  try {
+    const state = JSON.parse(sessionStorage.getItem(SESSION_KEY) ?? 'null');
+    if (state?.selectedId !== id) {
+      const link = document.querySelector<HTMLAnchorElement>('[data-archive-return]');
+      if (link) link.href = '/?post=' + encodeURIComponent(location.pathname.split('/')[2]);
+    }
+  } catch {}
+
   // Tables have their own scroll region; never squeeze the whole document to fit a wide table.
   document.querySelectorAll('.prose table').forEach(table => {
     const wrapper = document.createElement('div'); wrapper.className = 'table-scroll'; wrapper.tabIndex = 0;

@@ -5,14 +5,14 @@ const posts = await getCollection('posts');
 ---
 <SiteLayout title="迁移进度">
   <main id="page-main" class="migration-page">
-    <a class="back-link" href="/">← 返回文章索引</a>
-    <p class="eyebrow">MIGRATION LOG / PHASE 01</p>
+    <a class="back-link" href="/posts/">← 返回文章索引</a>
+    <p class="eyebrow">MIGRATION LOG / PHASE 02</p>
     <h1>先保留内容，<br />再连接新的界面。</h1>
-    <p class="migration-lead">这是独立开发分支的阅读预览，不是正式博客，也不是最终三维首页。</p>
+    <p class="migration-lead">这是独立开发分支的阅读预览，不是正式博客，也不是最终正式发布版本。</p>
     <ol class="milestones">
-      <li><span>01</span><div><h2>旧文章兼容与静态阅读 <b>当前阶段</b></h2><p>直接读取原来的 Markdown 目录，兼容 YAML / TOML，保留文章路径与随文资源。目前收录 {posts.length} 篇已发布文章。</p></div></li>
-      <li><span>02</span><div><h2>五列三维入口与文章预览</h2><p>固定使用经过验证的 RhineLabUI 版本，再接入不等长的分类和真实文章。模型、动效与 PWA 尚未在本站启用。</p></div></li>
-      <li><span>03</span><div><h2>阅读过渡与移动端体验</h2><p>完善目录、状态恢复、浏览器导航与降级阅读；本阶段只提供基础排版与响应式阅读。</p></div></li>
+      <li><span>01</span><div><h2>旧文章兼容与静态阅读 <b>已验收</b></h2><p>直接读取原来的 Markdown 目录，兼容 YAML / TOML，保留文章路径与随文资源。目前收录 {posts.length} 篇已发布文章。</p></div></li>
+      <li><span>02</span><div><h2>五列三维入口与文章预览 <b>当前阶段</b></h2><p>固定使用经过验证的 RhineLabUI 版本，再接入不等长的分类和真实文章。已接入原模型、阵列、抽取和独立查看器；PWA 仍未启用。</p></div></li>
+      <li><span>03</span><div><h2>阅读过渡与移动端体验</h2><p>完善目录、状态恢复、浏览器导航与降级阅读；目前已提供基础阅读与返回选档，完整过渡与实机校准留待此阶段。</p></div></li>
       <li><span>04</span><div><h2>上游升级演练与正式发布</h2><p>先测试一次上游更新与回退，再单独确认生产切换。当前没有生产部署权限或自动发布步骤。</p></div></li>
     </ol>
     <div class="migration-boundary"><strong>保持不变</strong><p>原文章与附件、Hugo 配置和发布工作流、RhineLabUI 当前工作目录。</p></div>

@@ -11,7 +11,7 @@ test("index filters, search and normal article links work", async ({
 }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto("/");
+  await page.goto("/posts/");
   await expect(page.locator(".post-row:visible")).toHaveCount(count);
   await page.getByRole("button", { name: /项目档案/ }).click();
   await expect(page.locator(".post-row:visible")).toHaveCount(projectCount);
@@ -104,6 +104,14 @@ test("preview has no service worker or third-party runtime requests", async ({
     ),
   ).toBe(0);
   expect(outside).toEqual([]);
+  const resources = await page.evaluate(() =>
+    performance.getEntriesByType("resource").map((entry) => entry.name),
+  );
+  expect(
+    resources.some(
+      (url) => /\.(glb|ogg)(?:\?|$)/.test(url) || /\/main\.[^/]+\.js/.test(url),
+    ),
+  ).toBe(false);
 });
 
 test("historical fragments and native table scroll remain usable", async ({

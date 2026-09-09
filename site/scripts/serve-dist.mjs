@@ -25,6 +25,9 @@ const mime = {
   ".ico": "image/x-icon",
   ".woff2": "font/woff2",
   ".pdf": "application/pdf",
+  ".glb": "model/gltf-binary",
+  ".ogg": "audio/ogg",
+  ".mp3": "audio/mpeg",
 };
 const within = (file) => file.startsWith(root + path.sep) || file === root;
 const server = createServer(async (request, response) => {

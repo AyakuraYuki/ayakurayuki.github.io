@@ -1,66 +1,55 @@
 ---
-import { getCollection } from 'astro:content';
-import SiteLayout from '../layouts/SiteLayout.astro';
-import PostList from '../components/PostList.astro';
-import { lanes } from '../lib/posts';
-const posts = (await getCollection('posts')).map(p => p.data).sort((a, b) => b.date.localeCompare(a.date) || a.slug.localeCompare(b.slug));
-const otherCategories = [...new Set(posts.flatMap(p => p.categories))].filter(id => !lanes.some(l => l.id === id));
-const filters = [...lanes, ...otherCategories.map(id => ({ id, label: id, en: id.toUpperCase() }))];
+import { getCollection, render } from 'astro:content';
+import type { ArchivePost } from '../archive/catalog';
+const entries = (await getCollection('posts')).sort((a, b) => b.data.date.localeCompare(a.data.date) || a.data.slug.localeCompare(b.data.slug));
+const posts: ArchivePost[] = await Promise.all(entries.map(async entry => {
+  const { headings } = await render(entry);
+  const p = entry.data;
+  return { id: entry.id, slug: p.slug, title: p.title, description: p.description, dateLabel: p.dateLabel,
+    categories: p.categories, tags: p.tags, href: p.href, readingMinutes: p.readingMinutes,
+    headings: headings.map(h => ({ depth: h.depth, slug: h.slug, text: h.text })) };
+}));
+const payload = JSON.stringify(posts).replace(/</g, '\\u003c');
 ---
-<SiteLayout>
-  <main id="page-main" class="index-layout">
-    <aside class="index-sidebar">
-      <p class="eyebrow">ARCHIVE DIRECTORY / 01</p>
-      <h1>把思考<br />留成档案<span class="title-point">.</span></h1>
-      <p class="index-intro">技术笔记、项目与生活。<br />仍然是原来的文章，换一种方式阅读。</p>
-      <div class="archive-total"><strong>{String(posts.length).padStart(2, '0')}</strong><span>篇文章<br /><span class="archive-years">{posts.at(-1)?.dateLabel.slice(0, 4)} — {posts[0]?.dateLabel.slice(0, 4)}</span></span></div>
-      <section class="category-section" aria-labelledby="category-label">
-        <h2 id="category-label" class="eyebrow">COLLECTION / 分类</h2>
-        <div class="category-filter" role="group" aria-label="按分类筛选">
-          <button data-filter="all" aria-pressed="true"><span>全部档案</span><b>{posts.length}</b></button>
-          {filters.map((lane, i) => <button data-filter={lane.id} aria-pressed="false"><span><small>{String(i + 1).padStart(2, '0')}</small>{lane.label}</span><b>{posts.filter(p => p.categories.includes(lane.id)).length}</b></button>)}
-        </div>
-      </section>
-      <a class="phase-note" href="/migration/"><span>第一阶段 · 内容兼容</span><p>三维阵列尚未接入。<br />这里先验证旧文章能完整阅读。</p><span aria-hidden="true">→</span></a>
-    </aside>
-    <section class="index-content" aria-label="全部文章">
-      <div class="list-toolbar"><span class="eyebrow">POST INDEX</span><span id="result-count" role="status" aria-live="polite">{posts.length} RECORDS</span></div>
-      <label class="search-box"><span>⌕</span><input type="search" id="post-search" placeholder="搜索标题、摘要或标签…" aria-label="搜索标题、摘要或标签" autocomplete="off" /><kbd>/</kbd></label>
-      <noscript><p class="no-script-note">JavaScript 未启用，以下全部文章仍可直接阅读。分类筛选与即时搜索需启用 JavaScript。</p></noscript>
-      <PostList posts={posts} />
-      <div id="empty-results" class="empty-results" hidden><strong>没有匹配的档案</strong><p>试试其他关键词，或清除筛选条件。</p><button id="reset-search">清除筛选 →</button></div>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#e8e5e1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content="Ayakura Yuki 的文章档案：通过五列三维档案浏览技术笔记、项目和生活记录。" />
+    <title>Ayakura Yuki 的小窝 · 三维文章档案</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={new URL('/', Astro.site)} />
+  </head>
+  <body>
+    <main id="viewport"><div id="stage"></div></main>
+    <section id="archive-fallback" aria-label="普通文章阅读入口">
+      <h1>Ayakura Yuki 的文章档案</h1>
+      <p>正在连接三维档案库；无需等待，也可以直接阅读文章。</p>
+      <a href="/posts/">进入普通文章索引 →</a>
+      <ul>{posts.map(post => <li><a href={post.href}>{post.title}</a></li>)}</ul>
     </section>
-  </main>
-</SiteLayout>
-<script>
-  const search = document.querySelector<HTMLInputElement>('#post-search')!;
-  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
-  const rows = [...document.querySelectorAll<HTMLElement>('.post-row')];
-  let category = 'all';
-  function filter() {
-    const query = search.value.trim().toLocaleLowerCase();
-    let count = 0;
-    for (const row of rows) {
-      row.hidden = !(category === 'all' || JSON.parse(row.dataset.categories!).includes(category)) || !row.dataset.search!.includes(query);
-      if (!row.hidden) count++;
-    }
-    document.querySelector('#result-count')!.textContent = `${count} RECORDS`;
-    (document.querySelector('#empty-results') as HTMLElement).hidden = count > 0;
-    buttons.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === category)));
-    try { sessionStorage.setItem('rhine-blog:index-filter:v1', JSON.stringify({ category, query: search.value })); } catch {}
-  }
-  buttons.forEach(b => b.addEventListener('click', () => { category = b.dataset.filter!; filter(); }));
-  search.addEventListener('input', filter);
-  document.querySelector('#reset-search')!.addEventListener('click', () => { category = 'all'; search.value = ''; filter(); search.focus(); });
-  try {
-    const saved = JSON.parse(sessionStorage.getItem('rhine-blog:index-filter:v1') ?? 'null');
-    if (saved && typeof saved.query === 'string') {
-      category = buttons.some(b => b.dataset.filter === saved.category) ? saved.category : 'all'; search.value = saved.query; filter();
-    }
-  } catch {}
-  document.addEventListener('keydown', event => {
-    if (event.key === '/' && !(event.target instanceof HTMLInputElement) && !(event.target instanceof HTMLTextAreaElement) && !(event.target instanceof HTMLElement && event.target.isContentEditable)) {
-      event.preventDefault(); search.focus();
-    }
-  });
-</script>
+    <a class="archive-plain-link" href="/posts/">普通文章索引 ↗</a>
+    <script is:inline id="blog-archive-data" type="application/json" set:html={payload}></script>
+    <script>
+      const fallback = document.getElementById('archive-fallback')!;
+      const viewport = document.getElementById('viewport')!;
+      const fail = () => {
+        fallback.hidden = false; viewport.hidden = true;
+        document.body.classList.add('archive-failed');
+        fallback.querySelector('p')!.textContent = '三维界面暂时不可用，以下文章仍可直接阅读。';
+      };
+      import('../archive/main').then(() => { fallback.hidden = true; }).catch(error => { console.error('Archive initialization failed', error); fail(); });
+    </script>
+    <style is:global>
+      #archive-fallback{max-width:900px;margin:40px auto;padding:28px;font:16px/1.9 MiSans,system-ui,sans-serif;color:#25271e}
+      #archive-fallback a{color:inherit;text-decoration:underline}
+      #archive-fallback li{margin-bottom:8px}
+      body.archive-failed{overflow:auto;background:#e8e5e1}
+      [hidden]{display:none!important}
+    </style>
+    <noscript><style>#viewport{display:none}body{margin:0;background:#e8e5e1}.archive-plain-link{display:none}</style></noscript>
+  </body>
+</html>

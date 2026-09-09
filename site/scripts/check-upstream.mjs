@@ -1,3 +1,4 @@
+import { adapterPatch } from "./adapter-patch.mjs";
 import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import { execFileSync } from "node:child_process";
@@ -6,6 +7,14 @@ const root = new URL("../../", import.meta.url);
 const lock = JSON.parse(
   await readFile(new URL("migration/rhine-upstream.lock.json", root), "utf8"),
 );
+const recordedPatch = await readFile(
+  new URL("migration/rhine-adapter.patch", root),
+  "utf8",
+);
+if (adapterPatch() !== recordedPatch)
+  throw new Error(
+    "Blog adapter diff changed. Review and refresh migration/rhine-adapter.patch explicitly; never overwrite vendor/rhine.",
+  );
 let checked = 0;
 for (const file of lock.importedFiles) {
   const bytes = await readFile(new URL(file.destination, root));
@@ -34,5 +43,5 @@ if (source) {
   );
 }
 console.log(
-  `Imported files verified: ${checked}. Runtime/models remain pending stage 2; builds do not read the upstream checkout.`,
+  `Imported files verified: ${checked}. Pinned runtime/models and reviewed adapter patch verified; builds do not read the upstream checkout.`,
 );

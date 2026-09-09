@@ -1099,3 +1099,6 @@ img {
     margin-left: 10px;
   }
 }
+
+.archive-return{display:block;width:fit-content;margin-top:-22px;margin-bottom:30px;color:var(--muted)}
+@media(max-width:760px){.reader-sidebar>.archive-return{display:inline-block;margin:0 0 26px 20px;font-size:10px}}

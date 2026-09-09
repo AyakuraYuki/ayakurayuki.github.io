@@ -1,0 +1,860 @@
+diff --git a/vendor/rhine/src/main.ts b/src/archive/main.ts
+index f85003c..c7d2094 100644
+--- a/vendor/rhine/src/main.ts
++++ b/src/archive/main.ts
+@@ -1,22 +1,33 @@
+-import { InspectionOverlay } from "./inspection-overlay";
+-import { DocumentDecryption } from "./document-decryption";
+-import "./document-decryption.css";
+-import "./decryption.css";
+-import { escapeHtml } from "./html";
+-import { normalizeQuality, qualityPresets, type QualityPreset, type RenderQuality } from "./render-quality";
+-import { qualityMarkup, syncQualityUI } from "./quality-settings";
++import { InspectionOverlay } from "../../vendor/rhine/src/inspection-overlay";
++import { DocumentDecryption } from "../../vendor/rhine/src/document-decryption";
++import "../../vendor/rhine/src/document-decryption.css";
++import "../../vendor/rhine/src/decryption.css";
++import { escapeHtml } from "../../vendor/rhine/src/html";
++import { normalizeQuality, qualityPresets, type QualityPreset, type RenderQuality } from "../../vendor/rhine/src/render-quality";
++import { qualityMarkup, syncQualityUI } from "../../vendor/rhine/src/quality-settings";
+ import "@kitlangton/rolling-number/styles.css";
+-import "./style.css";
+-import "./quality-settings.css";
+-import "./responsive.css";
+-import { viewportLayout } from "./viewport-layout";
+-import { assetUrl } from "./asset-url";
+-import { initPwa, pwaSettingsMarkup } from "./pwa";
++import "../../vendor/rhine/src/style.css";
++import "../../vendor/rhine/src/quality-settings.css";
++import "../../vendor/rhine/src/responsive.css";
++import { viewportLayout } from "../../vendor/rhine/src/viewport-layout";
++import { assetUrl } from "../../vendor/rhine/src/asset-url";
++import { tickWindow } from "./catalog";
++import { restoreSession, readStorage, SESSION_KEY, SAVED_KEY, SETTINGS_KEY } from "./state";
++import { Lifetime } from "./lifetime";
++import "./archive.css";
++const lifetime = new Lifetime();
++const onDocument = <K extends keyof DocumentEventMap>(type: K, callback: (event: DocumentEventMap[K]) => void) => lifetime.listen(document, type, callback as EventListener);
++const onWindow = <K extends keyof WindowEventMap>(type: K, callback: (event: WindowEventMap[K]) => void) => lifetime.listen(window, type, callback as EventListener);
++const restored = restoreSession(readStorage(sessionStorage, SESSION_KEY, null), records, columnFiles);
++const requestedSlug = new URLSearchParams(location.search).get("post");
++const requestedIndex = records.findIndex(r => r.slug === requestedSlug && !r.empty);
++let paused = false;
++let animationFrame = 0;
+ import { createRollingNumber, createRollingText } from "@kitlangton/rolling-number";
+ import { ArchiveScene } from "./scene";
+ import { ModelViewer } from "./model-viewer";
+-import { ContentTransition, SurfaceTransition } from "./ui-transitions";
+-import { BootSequence } from "./boot";
++import { ContentTransition, SurfaceTransition } from "../../vendor/rhine/src/ui-transitions";
++import { BootSequence } from "../../vendor/rhine/src/boot";
+ import { wrap, type ArchiveNavigation } from "./archive-loop";
+ import {
+   records,
+@@ -25,12 +36,12 @@ import {
+   columnFiles,
+   fileLocation,
+ } from "./data";
+-import { TerminalAudio } from "./audio";
+-import { audioSettingsMarkup } from "./audio-settings";
++import { TerminalAudio } from "../../vendor/rhine/src/audio";
++import { audioSettingsMarkup } from "../../vendor/rhine/src/audio-settings";
+ 
+ const $ = <T extends HTMLElement = HTMLElement>(selector: string) =>
+   document.querySelector<T>(selector)!;
+-import { logo, brandHeading } from "./brand";
++import { logo, brandHeading } from "../../vendor/rhine/src/brand";
+ 
+ $("#stage").innerHTML = `
+   <div id="three-scene" class="three-scene"></div>
+@@ -39,7 +50,7 @@ $("#stage").innerHTML = `
+   <header class="brand">${brandHeading}</header>
+   <nav class="system-nav" aria-label="系统导航">
+     <button data-action="search"><span class="nav-glyph">⌕</span> ARCHIVE INDEX <span class="key">/</span></button>
+-    <button data-action="saved" aria-label="查看收藏档案" title="收藏档案">＋ SAVED <span id="saved-count">00</span></button>
++    <button data-action="saved" aria-label="查看收藏文章" title="收藏档案">＋ SAVED <span id="saved-count">00</span></button>
+     <button class="settings-button" data-action="settings" aria-label="系统设置" title="系统设置"><span class="settings-glyph" aria-hidden="true">◷</span><span class="settings-label">设置</span></button>
+   </nav>
+   <button id="skip" class="skip" data-action="skip">ENTER SYSTEM <span>↗</span></button>
+@@ -63,11 +74,11 @@ $("#stage").innerHTML = `
+   </section>
+   <section id="detail-ui" class="detail-ui" aria-label="档案内容" hidden>
+     <button class="back-button" data-action="back">← <span>ARCHIVE OVERVIEW</span><small>ESC</small></button>
+-    <div class="object-caption"><span id="object-id">NO.001</span><div>INTERNAL DATABASE</div><small>DRAG TO INSPECT <span>↔</span></small><button class="viewer-open" data-action="model-viewer">360° 查看文档模型 <span>↗</span></button></div>
++    <div class="object-caption"><span id="object-id">NO.001</span><div>INTERNAL DATABASE</div><small>DRAG TO INSPECT <span>↔</span></small><button class="viewer-open" data-action="model-viewer">360° 查看档案模型 <span>↗</span></button></div>
+     <article id="detail-content" class="detail-content"></article>
+   </section>
+   <div class="powered">POWERED BY <b>RHINE LAB</b><i></i></div>
+-  <footer class="system-footer"><span><i class="status-light"></i> SESSION AUTHORIZED</span><span>JOYCE MOORE <i>／</i> <span id="clock">00:00:00</span></span><button data-action="replay" title="重播启动流程">REINITIALIZE ↗</button></footer>
++  <footer class="system-footer"><span><i class="status-light"></i> SESSION AUTHORIZED</span><span>AYAKURA YUKI <i>／</i> <span id="clock">00:00:00</span></span><a class="plain-index" href="/posts/">普通文章索引 ↗</a></footer>
+   <div id="pwa-update-notice" class="pwa-update-notice" role="status" hidden><span>新版本已就绪</span><button data-pwa-action="update">更新并重启 ↻</button></div>
+   <div id="modal-root"></div><div id="toast" class="toast" role="status"></div>
+   <div id="loading" class="loading"><div class="loading-mark">${logo}</div><span>CONNECTING TO INTERNAL DATABASE</span><i></i></div>
+@@ -82,7 +93,7 @@ $("#viewport").insertAdjacentHTML("beforeend", '<button class="mobile-entry" dat
+ 
+ type Mode = "boot" | "archive" | "detail";
+ let mode: Mode = "boot",
+-  selected = 0,
++  selected = requestedIndex >= 0 ? requestedIndex : restored.selected,
+   bootStart = 0,
+   lastStep = "",
+   ready = false;
+@@ -97,7 +108,7 @@ let frozenTime =
+     : null;
+ if (reviewParams.get("review") === "1") {
+   $("#stage").dataset.review = "true";
+-  window.addEventListener("message", (event) => {
++  onWindow("message", (event) => {
+     if (
+       event.origin !== location.origin ||
+       event.source !== window.parent ||
+@@ -126,11 +137,12 @@ function readLocal<T>(key: string, fallback: T): T {
+     return fallback;
+   }
+ }
+-const saved = new Set<string>(readLocal<string[]>("rhine-saved", []));
+-const storedPrefs = readLocal<Partial<{ sound: boolean; music: boolean; soundVolume: number; musicVolume: number; reduced: boolean; quality: boolean; rendering: RenderQuality }>>("rhine-settings", {});
++const savedValue = readLocal<unknown>(SAVED_KEY, []);
++const saved = new Set<string>((Array.isArray(savedValue) ? savedValue : []).filter(id => typeof id === "string" && records.some(r => r.id === id && !r.empty)));
++const storedPrefs = readLocal<Partial<{ sound: boolean; music: boolean; soundVolume: number; musicVolume: number; reduced: boolean; quality: boolean; rendering: RenderQuality }>>(SETTINGS_KEY, {});
+ const prefs = {
+-  sound: true,
+-  music: storedPrefs.sound ?? true,
++  sound: false,
++  music: false,
+   soundVolume: .55,
+   musicVolume: .5,
+   reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
+@@ -192,7 +204,7 @@ let audioPreview = false, audioPreviewRequest = 0;
+ let scene: ArchiveScene;
+ let viewer: ModelViewer | undefined;
+ const accessLog: { id: string; time: string }[] = [];
+-const columnMemory = archiveColumns.map((_, lane) => columnFiles(lane)[0]);
++const columnMemory = restored.memory;
+ function recordAccess() {
+   accessLog.unshift({
+     id: records[selected].id,
+@@ -201,7 +213,7 @@ function recordAccess() {
+ }
+ function saveAudioPrefs() {
+   try {
+-    localStorage.setItem("rhine-settings", JSON.stringify(prefs));
++    localStorage.setItem(SETTINGS_KEY, JSON.stringify(prefs));
+   } catch {}
+   audio.configure(prefs);
+ }
+@@ -255,24 +267,24 @@ function fit() {
+   }
+   updateQualitySummary();
+   // Re-measure line covers and tab underline after wrapping changes.
+-  requestAnimationFrame(() => {
++  lifetime.frame(() => {
+     documentDecryption.refresh();
+     const tab = document.querySelector<HTMLElement>(".detail-tabs button.active");
+     const indicator = document.querySelector<HTMLElement>(".tab-indicator");
+     if (tab && indicator) indicator.style.transform = `translateX(${tab.offsetLeft}px) scaleX(${tab.offsetWidth})`;
+   });
+ }
+-window.addEventListener("resize", fit);
+-window.visualViewport?.addEventListener("resize", fit);
+-window.visualViewport?.addEventListener("scroll", fit);
+-matchMedia("(pointer: coarse)").addEventListener("change", fit);
++onWindow("resize", fit);
++if (window.visualViewport) lifetime.listen(window.visualViewport, "resize", fit);
++if (window.visualViewport) lifetime.listen(window.visualViewport, "scroll", fit);
++lifetime.listen(matchMedia("(pointer: coarse)"), "change", fit);
+ fit();
+-$("#file-ticks").innerHTML = columnFiles(fileLocation(selected).lane)
+-  .map(
+-    (index) => `<button data-select="${index}"></button>`,
+-  )
+-  .join("");
++$("#file-ticks").innerHTML = Array.from({ length: 8 }, () => '<button></button>').join("");
+ const fileTicks = [...$("#file-ticks").querySelectorAll<HTMLButtonElement>("button")];
++function remember() {
++  if (mode === "boot") return;
++  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify({ version: 1, selectedId: records[selected].id, memory: columnMemory.map(i => records[i].id), mode })); } catch {}
++}
+ 
+ function setMode(next: Mode) {
+   const previousMode = mode;
+@@ -308,6 +320,13 @@ function setMode(next: Mode) {
+   }
+   $("#detail-ui").inert = next !== "detail" || Boolean(modal);
+   scene?.setMode(next === "boot" ? "hidden" : next);
++  if (previousMode === "boot" && next !== "boot") {
++    scene?.select(selected);
++    // Selection resets decryption. A direct detail entry must start it after
++    // switching from the reference slot to the article's actual cell.
++    if (next === "detail") scene?.setMode("detail");
++  }
++  if (next !== "boot") remember();
+   if (next !== "boot") {
+     bootSequence.reset();
+     $(".file-title").firstChild!.textContent = "FILE NUMBER: ";
+@@ -320,7 +339,8 @@ function setMode(next: Mode) {
+   }
+ }
+ function select(index: number, navigation?: ArchiveNavigation) {
+-  selected = (index + records.length) % records.length;
++  if (!Number.isInteger(index) || !records[index]) return;
++  selected = index;
+   columnMemory[fileLocation(selected).lane] = selected;
+   if (mode === "detail") setMode("archive");
+   activeTab = "overview";
+@@ -331,7 +351,7 @@ function select(index: number, navigation?: ArchiveNavigation) {
+ }
+ function stepFile(direction: number) {
+   const files = columnFiles(fileLocation(selected).lane);
+-  if (files.length < 2) return;
++  if (records[selected].empty) return;
+   select(
+     files[(files.indexOf(selected) + direction + files.length) % files.length],
+     { axis: "row", direction },
+@@ -356,19 +376,19 @@ function updateSelection(navigation?: ArchiveNavigation) {
+         : "down"
+       : "auto";
+   selectedCode.update({
+-    value: Number(r.id.slice(2)),
++    value: Number(r.code.slice(2)),
+     animated: !prefs.reduced && mode === "archive",
+     direction,
+   });
+   fileCounter.update({
+-    value: files.indexOf(selected) + 1,
++    value: records[selected].empty ? 0 : files.indexOf(selected) + 1,
+     animated: !prefs.reduced && mode === "archive",
+     direction:
+       navigation && "axis" in navigation && navigation.axis === "row"
+         ? direction
+         : "auto",
+   });
+-  $(".count-total").textContent = String(files.length).padStart(2, "0");
++  $(".count-total").textContent = String(records[selected].empty ? 0 : files.length).padStart(2, "0");
+   columnCounter.update({
+     value: lane + 1,
+     animated: !prefs.reduced && mode === "archive",
+@@ -380,14 +400,23 @@ function updateSelection(navigation?: ArchiveNavigation) {
+   columnTitle.update({ text: archiveColumns[lane], animated: !prefs.reduced && mode === "archive" });
+   $<HTMLButtonElement>('[data-action="column-prev"]').disabled = false;
+   $<HTMLButtonElement>('[data-action="column-next"]').disabled = false;
++  const windowFiles = records[selected].empty ? [] : tickWindow(files, selected);
+   fileTicks.forEach((button, slot) => {
+-    const index = files[slot], record = records[index];
++    const index = windowFiles[slot];
++    button.hidden = index === undefined;
++    if (index === undefined) { delete button.dataset.select; return; }
++    const record = records[index];
+     button.dataset.select = String(index);
+-    button.setAttribute("aria-label", `选择档案 ${record.id} ${record.title}`);
+-    button.title = `${record.id} · ${record.title}`;
++    button.setAttribute("aria-label", `选择文章 ${record.code} ${record.title}`);
++    button.title = `${record.code} · ${record.title}`;
+     button.classList.toggle("selected", index === selected);
+     button.setAttribute("aria-pressed", String(index === selected));
+   });
++  $<HTMLButtonElement>(".read-file").disabled = records[selected].empty;
++  $(".read-file").firstChild!.textContent = records[selected].empty ? "EMPTY COLLECTION " : "PREVIEW POST ";
++  $("#stage").dataset.postId = records[selected].id;
++  $("#stage").dataset.postSlug = records[selected].slug;
++  remember();
+   $("#saved-count").textContent = String(saved.size).padStart(2, "0");
+ }
+ function replayBoot(forcePreview = false) {
+@@ -401,12 +430,11 @@ function replayBootAfterModal(forcePreview: boolean) {
+   setMode(prefs.reduced && !forcePreview ? "archive" : "boot");
+   audio.restartBoot();
+   scene.select(0);
+-  selected = 0;
+   updateSelection();
+   if (!forcePreview) audio.play("ui-tick");
+ }
+ function openFile() {
+-  if (!ready) return;
++  if (!ready || records[selected].empty) return;
+   closeModal(() => {
+     setMode("detail");
+     audio.play("open");
+@@ -417,13 +445,13 @@ function toggleSaved() {
+   if (saved.has(id)) saved.delete(id);
+   else saved.add(id);
+   try {
+-    localStorage.setItem("rhine-saved", JSON.stringify([...saved]));
++    localStorage.setItem(SAVED_KEY, JSON.stringify([...saved]));
+   } catch {}
+   $("#saved-count").textContent = String(saved.size).padStart(2, "0");
+   const button = $<HTMLButtonElement>('[data-action="bookmark"]');
+   const added = saved.has(id);
+-  button.firstChild!.textContent = added ? "− REMOVE FROM SAVED" : "＋ SAVE ARCHIVE";
+-  button.querySelector("span")!.textContent = added ? "已收藏" : "收藏档案";
++  button.firstChild!.textContent = added ? "− SAVED" : "＋ SAVE";
++  button.querySelector("span")!.textContent = added ? "已收藏" : "收藏";
+   button.setAttribute("aria-pressed", String(added));
+   bookmarkFeedback?.cancel();
+   if (!prefs.reduced) bookmarkFeedback = button.animate(
+@@ -436,18 +464,19 @@ function toggleSaved() {
+ function renderDetail() {
+   tabTransition.cancel();
+   const r = records[selected];
+-  $("#object-id").textContent = "NO." + String(selected + 1).padStart(3, "0");
++  $("#object-id").textContent = "NO." + r.code.slice(2);
+   $("#detail-content").innerHTML = `
+-  <div class="detail-kicker"><span>FILE ${r.id}</span><span>${escapeHtml(r.clearance)}</span></div>
+-  <h2>${escapeHtml(r.en)}</h2><div class="detail-title-cn">${escapeHtml(r.title)}<span>${escapeHtml(r.category)}</span></div>
+-  <div class="detail-rule"></div>
+-  <dl class="metadata"><div><dt>DEPARTMENT / 科室</dt><dd>${escapeHtml(r.department)}</dd></div><div><dt>COLLECTION / 编目范围</dt><dd>${escapeHtml(r.date)}</dd></div><div><dt>RELATED / 相关人物</dt><dd>${escapeHtml(r.lead)}</dd></div><div><dt>STATUS / 状态</dt><dd><i></i>${r.clearance === "RESTRICTED" ? "目录访问" : "已归档 · 可读取"}</dd></div></dl>
+-  <div class="detail-tabs" role="tablist"><button id="tab-overview" class="active" role="tab" aria-controls="tab-panel" aria-selected="true" data-tab="overview">01 <span>概述</span></button><button id="tab-notes" role="tab" aria-controls="tab-panel" aria-selected="false" data-tab="notes">02 <span>研究记录</span></button><button id="tab-history" role="tab" aria-controls="tab-panel" aria-selected="false" data-tab="history">03 <span>访问日志</span></button><i class="tab-indicator" aria-hidden="true"></i></div>
+-  <div id="tab-panel" class="tab-panel" role="tabpanel">${overview()}</div>
+-  <div class="detail-actions"><button class="solid-button" data-action="bookmark">${saved.has(r.id) ? "− REMOVE FROM SAVED" : "＋ SAVE ARCHIVE"}<span>${saved.has(r.id) ? "已收藏" : "收藏档案"}</span></button><a class="export-button" href="${assetUrl(`archives/RHINE-LAB-${r.id}.txt`)}" download="RHINE-LAB-${r.id}.txt" aria-label="导出 ${r.id} 档案">EXPORT <span>↓</span></a></div>
+-  <div class="detail-footnote"><a href="${escapeHtml(r.source)}" target="_blank" rel="noopener">设定参考 ↗</a><span>${String(selected + 1).padStart(3, "0")} / ${String(records.length).padStart(3, "0")}</span></div>`;
++    <div class="post-preview-body"><div class="detail-kicker"><span>POST ${r.code}</span><span>PUBLIC ARCHIVE</span></div>
++    <h2 class="post-preview-title">${escapeHtml(r.title)}</h2>
++    <div class="detail-title-cn">${escapeHtml(r.en)}<span>${escapeHtml(r.category)}</span></div>
++    <div class="detail-rule"></div>
++    <dl class="metadata"><div><dt>PUBLISHED / 发布日期</dt><dd>${escapeHtml(r.date)}</dd></div><div><dt>READING / 阅读时长</dt><dd>约 ${r.readingMinutes} 分钟</dd></div><div class="post-tags"><dt>TAGS / 标签</dt><dd>${escapeHtml(r.lead)}</dd></div></dl>
++    <div class="detail-tabs" role="tablist"><button id="tab-overview" class="active" role="tab" aria-controls="tab-panel" aria-selected="true" data-tab="overview">01 <span>文章摘要</span></button><button id="tab-notes" role="tab" aria-controls="tab-panel" aria-selected="false" data-tab="notes">02 <span>文章目录</span></button><button id="tab-history" role="tab" aria-controls="tab-panel" aria-selected="false" data-tab="history">03 <span>相关档案</span></button><i class="tab-indicator" aria-hidden="true"></i></div>
++    <div id="tab-panel" class="tab-panel" role="tabpanel"></div>
++    <div class="detail-footnote"><a href="/posts/">普通文章索引 ↗</a><button data-action="copy-post">复制文章链接</button><span>${r.code} / ${records.filter(r => !r.empty).length} POSTS</span></div></div>
++    <div class="detail-actions post-actions"><a class="solid-button read-post" data-read-post href="${escapeHtml(r.href)}">READ DOCUMENT <span>阅读全文 ↗</span></a><button class="export-button" data-action="bookmark" aria-pressed="${saved.has(r.id)}">${saved.has(r.id) ? "− SAVED" : "＋ SAVE"}<span>${saved.has(r.id) ? "已收藏" : "收藏"}</span></button></div>
++`;
+   $("#detail-content").setAttribute("tabindex", "-1");
+-  $('[data-action="bookmark"]').setAttribute("aria-pressed", String(saved.has(r.id)));
+   documentDecryption.reset($("#detail-content"), prefs.reduced || scene.decryptionFrame.phase === "clear");
+   setTab(activeTab, false);
+ }
+@@ -455,47 +484,30 @@ function overview() {
+   return `<div class="panel-label">ABSTRACT / 摘要</div><p>${escapeHtml(records[selected].abstract)}</p>`;
+ }
+ function setTab(tab: string, sound = true) {
+-  if (sound && tab === activeTab) return;
++  if (!["overview", "notes", "history"].includes(tab) || (sound && tab === activeTab)) return;
+   activeTab = tab;
+-  document.querySelectorAll("[data-tab]").forEach((b) => {
+-    const active = (b as HTMLElement).dataset.tab === tab;
+-    b.classList.toggle("active", active);
+-    b.setAttribute("aria-selected", String(active));
+-    b.setAttribute("tabindex", active ? "0" : "-1");
++  document.querySelectorAll<HTMLElement>("[data-tab]").forEach(button => {
++    const active = button.dataset.tab === tab;
++    button.classList.toggle("active", active); button.setAttribute("aria-selected", String(active)); button.tabIndex = active ? 0 : -1;
+   });
+   const r = records[selected];
+-  const tabButton = $<HTMLButtonElement>(`[data-tab="${tab}"]`);
+-  const indicator = $(".tab-indicator");
+-  indicator.style.transition = sound ? "" : "none";
+-  indicator.style.transform = `translateX(${tabButton.offsetLeft}px) scaleX(${tabButton.offsetWidth})`;
+-  $("#tab-panel").setAttribute("aria-labelledby", tabButton.id);
+-  $("#tab-panel").innerHTML =
+-    tab === "overview"
+-      ? overview()
+-      : tab === "notes"
+-        ? `<div class="panel-label">RESEARCH NOTES / 研究记录</div><ol class="research-notes">${r.findings.map((f, i) => `<li><span>${String(i + 1).padStart(2, "0")}</span>${escapeHtml(f)}</li>`).join("")}</ol>`
+-        : `<div class="panel-label">ACCESS LOG / 本次访问</div>${accessLog
+-            .filter((entry) => entry.id === r.id)
+-            .slice(0, 4)
+-            .map(
+-              (entry) =>
+-                `<div class="log-row"><span>${entry.time}</span><span>JOYCE MOORE</span><b>READ AUTHORIZED</b></div>`,
+-            )
+-            .join(
+-              "",
+-            )}<p class="log-note">本次会话已通过身份验证。档案内容以当前终端可访问范围展示。</p>`;
++  const button = $<HTMLButtonElement>(`[data-tab="${tab}"]`);
++  $(".tab-indicator").style.transform = `translateX(${button.offsetLeft}px) scaleX(${button.offsetWidth})`;
++  $("#tab-panel").setAttribute("aria-labelledby", button.id);
++  $("#tab-panel").innerHTML = tab === "overview" ? overview() : tab === "notes"
++    ? `<div class="panel-label">CONTENTS / 文章目录</div>${r.headings.length ? '<ol class="preview-toc">' + r.headings.filter(h => h.depth <= 3).map(h => `<li><a data-read-post href="${escapeHtml(r.href)}#${encodeURIComponent(h.slug)}">${escapeHtml(h.text)}</a></li>`).join('') + '</ol>' : '<p>这是一篇没有分节标题的短文，可以直接阅读全文。</p>'}`
++    : `<div class="panel-label">RELATED POSTS / 相关档案</div><ol class="preview-toc">${records.map((record, index) => ({record, index})).filter(({record}) => !record.empty && record.id !== r.id && (record.lane === r.lane || record.tags.some(t => r.tags.includes(t)))).slice(0, 5).map(({record,index}) => `<li><button data-result="${index}">${escapeHtml(record.title)} ↗</button></li>`).join('') || '<li>暂时没有相关档案。</li>'}</ol>`;
+   $("#tab-panel").scrollTop = 0;
+   documentDecryption.refresh();
+-  if (sound) {
+-    tabTransition.reveal($("#tab-panel"), prefs.reduced);
+-    audio.play("ui-tick");
+-  }
++  tabTransition.reveal($("#tab-panel"), prefs.reduced);
++  if (sound) audio.play("ui-tick");
+ }
++
+ function notify(message: string) {
+   clearTimeout(toastTimer);
+   $("#toast").textContent = message;
+   $("#toast").classList.add("visible");
+-  toastTimer = setTimeout(() => $("#toast").classList.remove("visible"), 2600);
++  toastTimer = lifetime.timeout(() => $("#toast").classList.remove("visible"), 2600);
+ }
+ 
+ function openModal(kind: NonNullable<typeof modal>) {
+@@ -547,11 +559,11 @@ function renderModal() {
+   if (modal === "settings") updateQualitySummary();
+   if (modal !== "settings") {
+     renderResults();
+-    requestAnimationFrame(() => {
++    lifetime.frame(() => {
+       if (backdrop.isConnected && !modalClosing) $("#archive-search").focus();
+     });
+   } else
+-    requestAnimationFrame(() => {
++    lifetime.frame(() => {
+       if (backdrop.isConnected && !modalClosing) $('[data-action="close-modal"]').focus();
+     });
+   $("#modal-root")
+@@ -565,9 +577,9 @@ function renderResults() {
+     .map((r, i) => ({ r, i }))
+     .filter(
+       ({ r }) =>
+-        (modal !== "saved" || saved.has(r.id)) &&
++        !r.empty && (modal !== "saved" || saved.has(r.id)) &&
+         (filter === "全部档案" || r.category === filter) &&
+-        `${r.id} ${r.title} ${r.en} ${r.department} ${r.lead}`
++        `${r.code} ${r.title} ${r.en} ${r.department} ${r.lead} ${r.abstract}`
+           .toLowerCase()
+           .includes(searchQuery.toLowerCase()),
+     );
+@@ -575,7 +587,7 @@ function renderResults() {
+     ? results
+         .map(
+           ({ r, i }) =>
+-            `<button class="result-row" data-result="${i}"><span class="result-name"><b>${r.id}</b><span>${escapeHtml(r.title)}<small>${escapeHtml(r.en)}</small></span>${saved.has(r.id) ? "<i>＋</i>" : ""}</span><span>${escapeHtml(r.department)}</span><span>${r.clearance === "RESTRICTED" ? "CATALOG ONLY" : "AUTHORIZED"} <i>↗</i></span></button>`,
++            `<button class="result-row" data-result="${i}"><span class="result-name"><b>${r.code}</b><span>${escapeHtml(r.title)}<small>${escapeHtml(r.en)}</small></span>${saved.has(r.id) ? "<i>＋</i>" : ""}</span><span>${escapeHtml(r.department)}</span><span>${r.clearance === "RESTRICTED" ? "CATALOG ONLY" : "AUTHORIZED"} <i>↗</i></span></button>`,
+         )
+         .join("")
+     : `<div class="empty-results"><span>∅</span><strong>${modal === "saved" && !searchQuery ? "尚无收藏档案" : "没有匹配的档案"}</strong><p>${modal === "saved" && !searchQuery ? "读取档案时，选择 SAVE ARCHIVE 将其保存在此处。" : "尝试其他名称、档案编号，或切换科室分类。"}</p><button data-action="reset-search">${modal === "saved" ? "查看全部档案 →" : "重置检索 →"}</button></div>`;
+@@ -595,10 +607,10 @@ function motionSettingsMarkup() {
+     : "当前使用完整动效。"}</p>${prefs.reduced ? '<button data-action="enable-motion">启用完整动效并重播 ↻</button>' : ""}</div>`;
+ }
+ function settingsMarkup() {
+-  return `<h2>SYSTEM SETTINGS<small>终端偏好设置</small></h2><p class="settings-intro">JOYCE MOORE <span>·</span> SESSION AUTHORIZED</p><div class="settings-list">${audioSettingsMarkup(prefs)}<label><div><strong>REDUCED MOTION</strong><span>跳过开机动画，简化选档、镜头和文字动效</span></div><input type="checkbox" data-pref="reduced" ${prefs.reduced ? "checked" : ""}/><i class="toggle"></i></label></div>${motionSettingsMarkup()}${qualityMarkup(prefs.rendering)}${pwaSettingsMarkup()}<div class="settings-shortcuts"><span>KEYBOARD CONTROLS</span><p><kbd>←</kbd><kbd>→</kbd> 切列 <kbd>↑</kbd><kbd>↓</kbd> 选档 <kbd>ENTER</kbd> 读取 <kbd>/</kbd> 检索 <kbd>ESC</kbd> 返回</p></div><div class="settings-bottom">${document.fullscreenEnabled ? '<button data-action="fullscreen">FULLSCREEN <span>↗</span></button>' : ''}<button data-action="restart">REINITIALIZE SYSTEM <span>↻</span></button></div><div class="modal-bottom"><span>ANALYSIS OS / 1.0 · 使用 MiSans 字体（小米） <a href="${assetUrl("fonts/MiSans-license.pdf")}" target="_blank" rel="noopener">字体许可</a></span><span>POWERED BY RHINE LAB</span></div>`;
++  return `<h2>SYSTEM SETTINGS<small>终端偏好设置</small></h2><p class="settings-intro">AYAKURA YUKI <span>·</span> SESSION AUTHORIZED</p><div class="settings-list">${audioSettingsMarkup(prefs)}<label><div><strong>REDUCED MOTION</strong><span>跳过开机动画，简化选档、镜头和文字动效</span></div><input type="checkbox" data-pref="reduced" ${prefs.reduced ? "checked" : ""}/><i class="toggle"></i></label></div>${motionSettingsMarkup()}${qualityMarkup(prefs.rendering)}<div class="settings-shortcuts"><span>KEYBOARD CONTROLS</span><p><kbd>←</kbd><kbd>→</kbd> 切列 <kbd>↑</kbd><kbd>↓</kbd> 选档 <kbd>ENTER</kbd> 读取 <kbd>/</kbd> 检索 <kbd>ESC</kbd> 返回</p></div><div class="settings-bottom">${document.fullscreenEnabled ? '<button data-action="fullscreen">FULLSCREEN <span>↗</span></button>' : ''}<button data-action="restart">REINITIALIZE SYSTEM <span>↻</span></button></div><div class="modal-bottom"><span>ANALYSIS OS / 1.0 · 使用 MiSans 字体（小米） <a href="${assetUrl("fonts/MiSans-license.pdf")}" target="_blank" rel="noopener">字体许可</a></span><span>POWERED BY RHINE LAB</span></div>`;
+ }
+ 
+-document.addEventListener("input", (e) => {
++onDocument("input", (e) => {
+   const slider = e.target as HTMLInputElement;
+   if (slider.dataset.quality) {
+     const output = document.querySelector<HTMLOutputElement>(`[data-quality-output="${slider.dataset.quality}"]`);
+@@ -615,7 +627,7 @@ document.addEventListener("input", (e) => {
+     renderResults();
+   }
+ });
+-document.addEventListener("change", (e) => {
++onDocument("change", (e) => {
+   const el = e.target as HTMLInputElement;
+   if (el.id === "quality-preset" && Object.hasOwn(qualityPresets, el.value)) {
+     prefs.rendering = { ...qualityPresets[el.value as QualityPreset] };
+@@ -633,7 +645,7 @@ document.addEventListener("change", (e) => {
+     audio.play("confirm");
+   }
+ });
+-document.addEventListener("click", (e) => {
++onDocument("click", (e) => {
+   if (modalClosing) return;
+   const el = (e.target as Element).closest<HTMLElement>("button");
+   if (!el) return;
+@@ -667,6 +679,10 @@ document.addEventListener("click", (e) => {
+     return;
+   }
+   const action = el.dataset.action;
++  if (action === "copy-post") {
++    void navigator.clipboard.writeText(new URL(records[selected].href, location.origin).href)
++      .then(() => notify("文章链接已复制")).catch(() => notify("复制失败，请在阅读全文后复制地址栏链接"));
++  }
+   if (action === "sound-preview") audio.play("confirm");
+   if (action === "skip") {
+     setMode("archive");
+@@ -686,7 +702,7 @@ document.addEventListener("click", (e) => {
+     viewer.setQuality(prefs.rendering);
+     scene.finishDecryption();
+     viewer.open(
+-      records[selected].id,
++      records[selected].code,
+       records[selected].title,
+       () => scene.createAssemblyModel(),
+       prefs.reduced,
+@@ -725,13 +741,13 @@ document.addEventListener("click", (e) => {
+         .catch(() => notify("请使用浏览器的全屏快捷键 F11"));
+   }
+ });
+-document.addEventListener("keydown", (e) => {
++onDocument("keydown", (e) => {
+   if (viewer?.isOpen) return;
+   if (modalClosing) {
+     e.preventDefault();
+     return;
+   }
+-  const typing = e.target instanceof HTMLInputElement;
++  const typing = e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || Boolean((e.target as HTMLElement)?.isContentEditable);
+   if (e.key === "Escape") {
+     if (modal) closeModal();
+     else if (mode === "detail" || (mode === "boot" && ready)) { const sound = mode === "detail" ? "back" : "ui-tick"; setMode("archive"); audio.play(sound); }
+@@ -773,15 +789,15 @@ document.addEventListener("keydown", (e) => {
+     if (mode === "boot") setMode("archive");
+     openModal("search");
+   }
+-  if (e.key === "ArrowLeft" && mode !== "boot") {
++  if (e.key === "ArrowLeft" && mode === "archive") {
+     e.preventDefault();
+     stepColumn(-1);
+   }
+-  if (e.key === "ArrowRight" && mode !== "boot") {
++  if (e.key === "ArrowRight" && mode === "archive") {
+     e.preventDefault();
+     stepColumn(1);
+   }
+-  if (["ArrowUp", "ArrowDown"].includes(e.key) && mode !== "boot") {
++  if (["ArrowUp", "ArrowDown"].includes(e.key) && mode === "archive") {
+     e.preventDefault();
+     stepFile(e.key === "ArrowUp" ? -1 : 1);
+   }
+@@ -850,7 +866,7 @@ function bootFrame(t: number) {
+     lift = ease((t - 26) / 1.8),
+     zoom = 0.55 * ease((t - 27.3) / 1.65) + 0.45 * ease((t - 29.0) / 5.0);
+   if (t >= 35) {
+-    setMode("detail");
++    setMode("archive");
+     return undefined;
+   }
+   return { reveal, lift, zoom, time: t };
+@@ -864,7 +880,8 @@ let lastTime = 0,
+   frameStart = performance.now(),
+   fps = 0;
+ function frame(ms: number) {
+-  if (document.hidden) { requestAnimationFrame(frame); return; }
++  if (paused || lifetime.disposed) return;
++  if (document.hidden) { animationFrame = lifetime.frame(frame); return; }
+   const time = ms / 1000;
+   const cinema =
+     mode === "boot" && ready
+@@ -878,7 +895,7 @@ function frame(ms: number) {
+     $("#detail-content").style.opacity = String(scene.detailVisibility);
+     $("#detail-content").style.transform =
+       `translateY(${(1 - scene.detailVisibility) * 18}px)`;
+-    $("#detail-content").inert = scene.detailVisibility < 0.1;
++    $("#detail-content").inert = scene.detailVisibility < 0.1 || Boolean(modal) || Boolean(viewer?.isOpen);
+     if (pendingDetailFocus && scene.detailVisibility >= 0.1 && !modal && !viewer?.isOpen) {
+       $("#detail-content").focus({ preventScroll: true });
+       pendingDetailFocus = false;
+@@ -899,7 +916,7 @@ function frame(ms: number) {
+     $("#three-scene").dataset.fps = String(Math.round(fps));
+     $("#three-scene").dataset.renderStats = JSON.stringify(scene?.getStats());
+   }
+-  requestAnimationFrame(frame);
++  animationFrame = lifetime.frame(frame);
+ }
+ async function start() {
+   try {
+@@ -909,7 +926,8 @@ async function start() {
+       document.fonts.load("400 20px MiSans"),
+       document.fonts.load("700 20px MiSans"),
+     ]);
+-    scene.select(selected);
++    if (lifetime.disposed) { scene.dispose(); return; }
++    scene.select(0);
+     scene.onSelect = (i, cell) => {
+       if (mode !== "archive" || modal || viewer?.isOpen) return;
+       select(i, cell ? { cell } : undefined);
+@@ -929,7 +947,7 @@ async function start() {
+       }
+       const animated = !prefs.reduced && mode === "archive";
+       hoverCode.update({
+-        value: Number(records[i].id.slice(2)),
++        value: Number(records[i].code.slice(2)),
+         animated: !label.hidden && animated,
+       });
+       hoverTitle.update({ text: records[i].title, animated: !label.hidden && animated });
+@@ -940,24 +958,29 @@ async function start() {
+     };
+     savePrefs();
+     ready = true;
++    document.querySelector(".archive-plain-link")?.remove();
+     bootStart = performance.now() / 1000;
+     setMode("boot");
+-    select(0);
++    scene.select(0);
++    updateSelection();
+     $("#loading").classList.add("loaded");
+-    setTimeout(() => $("#loading").remove(), 600);
++    lifetime.timeout(() => $("#loading").remove(), 600);
+     const params = new URLSearchParams(location.search);
+-    if (params.get("scene") === "archive") setMode("archive");
+-    if (params.get("scene") === "detail") setMode("detail");
++    if (restored.restored || params.get("scene") === "archive" || requestedIndex >= 0) setMode("archive");
++    if ((restored.restored && restored.mode === "detail") || requestedIndex >= 0) openFile();
++    if (params.get("scene") === "detail") openFile();
+     bootStart -= params.has("time") ? Number(params.get("time")) : 1.76;
+     // Let the loading veil finish before the first reference letter appears.
+     if (!params.has("time")) bootStart += 0.6;
+-    if (prefs.reduced && !params.has("time")) setMode("archive");
+-    requestAnimationFrame(frame);
+-    void initPwa(notify);
++    if (prefs.reduced && !params.has("time") && mode === "boot") setMode("archive");
++    animationFrame = lifetime.frame(frame);
++
+   } catch (error) {
++    if (lifetime.disposed) return;
++    scene?.dispose(); audio.dispose();
+     console.error(error);
+     $("#loading").innerHTML =
+-      '<div class="error-state"><strong>CONNECTION INTERRUPTED</strong><p>三维档案资源未能载入。请确认浏览器已启用硬件加速，然后重新连接。</p><button onclick="location.reload()">RECONNECT →</button></div>';
++      '<div class="error-state"><strong>CONNECTION INTERRUPTED</strong><p>三维档案资源未能载入。请确认浏览器已启用硬件加速，然后重新连接。</p><button onclick="location.reload()">重试 →</button><a class="archive-error-reader" href="/posts/">直接阅读全部文章 ↗</a></div>';
+   }
+ }
+ updateSelection();
+@@ -989,6 +1012,8 @@ Object.assign(window, {
+     archive: () => setMode("archive"),
+     detail: () => openFile(),
+     select: (i: number) => select(i),
++    navigate: (axis: "row" | "lane", direction: number) => { if (axis === "row") stepFile(direction); else stepColumn(direction); },
++    dispose: () => dispose(),
+     stats: () => ({
+       ...scene?.getStats(),
+       fps: Math.round(fps),
+@@ -997,9 +1022,35 @@ Object.assign(window, {
+       motion: { reduced: prefs.reduced, systemReduced: matchMedia("(prefers-reduced-motion: reduce)").matches },
+       bootTime: mode === "boot" ? (frozenTime ?? performance.now() / 1000 - bootStart) + 5 : null,
+       selected: records[selected].id,
++      selectedCode: records[selected].code,
++      selectedSlug: records[selected].slug,
++      columnCounts: archiveColumns.map((_, lane) => columnFiles(lane).filter(i => !records[i].empty).length),
++      columnMemory: columnMemory.map(i => records[i].id),
++      modal,
++      viewerOpen: Boolean(viewer?.isOpen),
++      disposed: lifetime.disposed,
+       saved: [...saved],
+       audio: audio.stats(),
+     }),
+   },
+ });
+-if (import.meta.hot) import.meta.hot.dispose(() => audio.dispose());
++function dispose() {
++  if (lifetime.disposed) return;
++  paused = true; lifetime.dispose();
++  detailTransition.dispose(); modalTransition?.dispose(); tabTransition.cancel(); bookmarkFeedback?.cancel();
++  rollingTitles.forEach(title => title.destroy());
++  [fileCounter, columnCounter, selectedCode, hoverCode].forEach(number => number.destroy());
++  viewer?.dispose(); scene?.dispose(); audio.dispose();
++}
++onDocument("click", event => {
++  const link = (event.target as Element).closest<HTMLAnchorElement>("a[data-read-post]");
++  if (link) remember(); // Normal anchors support modifier-click and independent static routes.
++});
++onWindow("pagehide", event => {
++  remember(); paused = true; cancelAnimationFrame(animationFrame);
++  if (!event.persisted) dispose();
++});
++onWindow("pageshow", event => {
++  if (event.persisted && !lifetime.disposed) { paused = false; fit(); animationFrame = lifetime.frame(frame); }
++});
++if (import.meta.hot) import.meta.hot.dispose(dispose);
+diff --git a/vendor/rhine/src/scene.ts b/src/archive/scene.ts
+index 23cbbc6..87c6d13 100644
+--- a/vendor/rhine/src/scene.ts
++++ b/src/archive/scene.ts
+@@ -1,18 +1,20 @@
+ import * as THREE from "three";
+ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+-import { createArchiveLighting, type LightingLook } from "./archive-lighting";
++import { createArchiveLighting, type LightingLook } from "../../vendor/rhine/src/archive-lighting";
+ import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+ import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+ import { SSAOPass } from "three/addons/postprocessing/SSAOPass.js";
+ import { OutputPass } from "three/addons/postprocessing/OutputPass.js";
+ import { BokehPass } from "three/addons/postprocessing/BokehPass.js";
+ import { SMAAPass } from "three/addons/postprocessing/SMAAPass.js";
+-import { normalizeQuality, type RenderQuality } from "./render-quality";
+-import { applyTextureQuality, resizeQuality } from "./quality-renderer";
+-import { CardAppearance } from "./appearance";
+-import { configureInternalOptics } from "./internal-optics";
+-import { DecryptionController } from "./decryption";
+-import { fileAtSlot, fileLocation } from "./data";
++import { normalizeQuality, type RenderQuality } from "../../vendor/rhine/src/render-quality";
++import { applyTextureQuality, resizeQuality } from "../../vendor/rhine/src/quality-renderer";
++import { CardAppearance } from "../../vendor/rhine/src/appearance";
++import { configureInternalOptics } from "../../vendor/rhine/src/internal-optics";
++import { DecryptionController } from "../../vendor/rhine/src/decryption";
++import { records, fileLocation } from "./data";
++import { fileAtSlot, fileLocation as referenceLocation } from "../../vendor/rhine/src/data";
++import { disposeObject } from "./dispose";
+ import {
+   cellKey,
+   sameCell,
+@@ -27,9 +29,9 @@ import {
+   type ArchiveCell,
+   type ArchiveNavigation,
+ } from "./archive-loop";
+-import { labelMarkSvg } from "./brand";
+-import { archiveFraming, swipeDirection } from "./viewport-layout";
+-import { assetUrl as publicAsset } from "./asset-url";
++import { labelMarkSvg } from "../../vendor/rhine/src/brand";
++import { archiveFraming, swipeDirection } from "../../vendor/rhine/src/viewport-layout";
++import { assetUrl as publicAsset } from "../../vendor/rhine/src/asset-url";
+ import {
+   archiveWave,
+   extraction,
+@@ -42,7 +44,7 @@ import {
+   cinematicField,
+   INSPECTION_LIFT,
+   returnStep,
+-} from "./motion";
++} from "../../vendor/rhine/src/motion";
+ 
+ const ease = (t: number) => {
+   t = THREE.MathUtils.clamp(t, 0, 1);
+@@ -95,6 +97,8 @@ export class ArchiveScene {
+   private pulses: { row: number; lane: number; time: number }[] = [];
+   private pendingPulse: ArchiveCell | null = null;
+   private selectedSlot = 76;
++  private selectedIndex = 0;
++  private disposed = false;
+   private detail = 0;
+   private targetDetail = 0;
+   private reveal = 0;
+@@ -203,6 +207,7 @@ export class ArchiveScene {
+     const gltf = await new GLTFLoader().loadAsync(
+       assetUrl,
+     );
++    if (this.disposed) { disposeObject(gltf.scene); throw new Error("Archive scene disposed during loading"); }
+     gltf.scene.updateMatrixWorld(true);
+     const meshes: THREE.Mesh[] = [];
+     gltf.scene.traverse((o) => {
+@@ -430,7 +435,8 @@ export class ArchiveScene {
+     if (mode !== "archive") this.pendingPulse = null;
+     this.looping = mode !== "hidden";
+     if (!this.looping) {
+-      const canonical = fileLocation(fileAtSlot(this.selectedSlot));
++      const canonical = referenceLocation(0);
++      this.selectedSlot = canonical.slot;
+       this.selectedCell = { lane: canonical.lane, row: canonical.row };
+       this.coordinateOrigin = { lane: 0, row: 0 };
+       for (const old of this.outgoing) {
+@@ -533,10 +539,11 @@ export class ArchiveScene {
+   }
+   select(index: number, navigation?: ArchiveNavigation) {
+     this.lastInteraction = this.clock;
+-    const next = fileLocation(index).slot;
+-    const canonical = fileLocation(index);
++    this.selectedIndex = index;
++    const canonical = this.looping ? fileLocation(index) : referenceLocation(0);
++    const next = canonical.slot;
+     const cell = this.looping
+-      ? selectionCell(index, this.selectedCell, navigation)
++      ? selectionCell(index, this.selectedCell, navigation, this.coordinateOrigin)
+       : { lane: canonical.lane, row: canonical.row };
+     const changed = !sameCell(cell, this.selectedCell);
+     if (this.looping && changed && this.loaded && this.lift.value > 0.0001) {
+@@ -591,7 +598,7 @@ export class ArchiveScene {
+       this.pendingPulse = this.looping ? { ...cell } : null;
+     } else this.emitPulse(cell);
+     this.targetRotation = 0;
+-    this.drawLabel(index);
++    this.drawLabel(this.looping ? index : 0);
+   }
+   private emitPulse(cell: ArchiveCell) {
+     this.pulses.push({ ...cell, time: this.clock });
+@@ -612,7 +619,7 @@ export class ArchiveScene {
+     c.fillText("INTERNAL DATABASE", 25, 174);
+     c.fillStyle = "#171713";
+     c.font = "bold 130px MiSans";
+-    c.fillText("NO." + String(index + 1).padStart(3, "0"), 22, 360);
++    c.fillText("NO." + (this.looping ? records[index].code.slice(2) : "001"), 22, 360);
+     c.fillRect(782, 32, 221, 39);
+     c.fillStyle = "#eee9de";
+     c.font = "24px MiSans";
+@@ -718,8 +725,8 @@ export class ArchiveScene {
+       this.onHover?.(
+         hit
+           ? hit.instanceId !== undefined
+-            ? fileAtCell(this.cells[hit.instanceId])
+-            : fileAtSlot(this.selectedSlot)
++            ? fileAtCell(this.cells[hit.instanceId], this.coordinateOrigin)
++            : this.looping ? this.selectedIndex : fileAtSlot(this.selectedSlot)
+           : null,
+       );
+     });
+@@ -753,8 +760,8 @@ export class ArchiveScene {
+       if (hit)
+         this.onSelect?.(
+           hit.instanceId !== undefined
+-            ? fileAtCell(this.cells[hit.instanceId])
+-            : fileAtSlot(this.selectedSlot),
++            ? fileAtCell(this.cells[hit.instanceId], this.coordinateOrigin)
++            : this.looping ? this.selectedIndex : fileAtSlot(this.selectedSlot),
+           hit.instanceId !== undefined
+             ? { ...this.cells[hit.instanceId] }
+             : { ...this.selectedCell },
+@@ -780,7 +787,7 @@ export class ArchiveScene {
+     const dt = Math.min(time - this.last || 0.016, 0.05);
+     this.last = time;
+     this.clock = time;
+-    if (!this.loaded) return;
++    if (!this.loaded || this.disposed) return;
+     const blend = 1 - Math.exp(-dt * (this.reduced ? 35 : 2.8));
+     this.reveal = cinematic
+       ? cinematic.reveal
+@@ -1289,7 +1296,9 @@ export class ArchiveScene {
+       pulses: this.pulses.map((pulse) => ({ ...pulse })),
+       referenceTime: Math.round((this.scanTime + 5) * 100) / 100,
+       selectedSlot: this.selectedSlot,
+-      selectedLane: Math.floor(this.selectedSlot / 32),
++      selectedLane: this.looping ? records[this.selectedIndex].lane : Math.floor(this.selectedSlot / 32),
++      selectedPostId: this.looping ? records[this.selectedIndex].id : null,
++      selectedMappedIndex: this.looping ? fileAtCell(this.selectedCell, this.coordinateOrigin) : null,
+       selectedCell: { ...this.selectedCell },
+       coordinateOrigin: { ...this.coordinateOrigin },
+       poolBounds: {
+@@ -1325,4 +1334,15 @@ export class ArchiveScene {
+       rail: Math.round(this.rail.value * 1000) / 1000,
+     };
+   }
++  dispose() {
++    if (this.disposed) return;
++    this.disposed = true;
++    this.onSelect = this.onHover = this.onNavigate = undefined;
++    this.composer.passes.forEach(pass => pass.dispose());
++    this.composer.dispose();
++    disposeObject(this.scene);
++    this.assemblyTemplate?.then(template => disposeObject(template)).catch(() => {});
++    this.renderer.dispose(); this.renderer.forceContextLoss(); this.renderer.domElement.remove();
++    this.scene.clear(); this.instances = []; this.outgoing = []; this.loaded = false;
++  }
+ }
+diff --git a/vendor/rhine/src/model-viewer.ts b/src/archive/model-viewer.ts
+index 3452ee3..30b856b 100644
+--- a/vendor/rhine/src/model-viewer.ts
++++ b/src/archive/model-viewer.ts
+@@ -1,14 +1,15 @@
++import { disposeObject } from "./dispose";
+ import * as THREE from "three";
+ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+-import { createArchiveLighting } from "./archive-lighting";
+-import { damp } from "./motion";
+-import { ViewerCameraMotion } from "./viewer-camera";
+-import { normalizeQuality, type RenderQuality } from "./render-quality";
++import { createArchiveLighting } from "../../vendor/rhine/src/archive-lighting";
++import { damp } from "../../vendor/rhine/src/motion";
++import { ViewerCameraMotion } from "../../vendor/rhine/src/viewer-camera";
++import { normalizeQuality, type RenderQuality } from "../../vendor/rhine/src/render-quality";
+ import {
+   applyTextureQuality,
+   createViewerPipeline,
+   resizeQuality,
+-} from "./quality-renderer";
++} from "../../vendor/rhine/src/quality-renderer";
+ 
+ const PARTS = [
+   { id: "fasteners", label: "紧固件", en: "FASTENERS", depth: 2.75 },
+@@ -595,4 +596,15 @@ export class ModelViewer {
+       })),
+     });
+   }
++  dispose() {
++    this.transitionId++;
++    this.request++;
++    this.transitions.forEach(animation => animation.cancel());
++    this.isOpen = false;
++    this.source?.dispose(); this.source = undefined;
++    this.controls.dispose();
++    this.pipeline.composer.passes.forEach(pass => pass.dispose());
++    this.pipeline.composer.dispose(); disposeObject(this.scene);
++    this.renderer.dispose(); this.renderer.forceContextLoss(); this.root.remove();
++  }
+ }

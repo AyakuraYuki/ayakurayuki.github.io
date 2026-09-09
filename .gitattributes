@@ -1,0 +1,5 @@
+# Pinned upstream snapshots must retain their original bytes, including whitespace.
+site/vendor/rhine/** -text -whitespace
+site/static/** -text
+# Unified diff context contains intentional single-space lines.
+migration/rhine-adapter.patch -text -whitespace

@@ -1,0 +1,194 @@
+/* Blog-only layout adjustments. Upstream colors, shaders, camera and motion stay intact. */
+.archive-plain-link {
+  position: fixed;
+  right: 22px;
+  bottom: 18px;
+  z-index: 90;
+  font:
+    11px MiSans,
+    sans-serif;
+  color: #37382d;
+  background: #e8e5e1e8;
+  border: 1px solid #bcb7ab;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+.archive-error-reader {
+  display: block;
+  margin: 20px auto;
+  color: #24261d;
+  text-decoration: underline;
+  pointer-events: auto;
+}
+#stage .post-preview-title {
+  font-size: 32px;
+  line-height: 1.5;
+  letter-spacing: -0.6px;
+  margin: 20px 0 10px;
+  overflow-wrap: anywhere;
+}
+#stage .detail-title-cn {
+  font-size: 12px;
+  letter-spacing: 0.9px;
+}
+#stage .metadata {
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+}
+#stage .post-tags {
+  grid-column: 1/-1;
+}
+#stage .post-tags dd {
+  font-size: 12px;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+#stage .post-actions {
+  display: flex;
+  gap: 18px;
+  align-items: stretch;
+}
+#stage .post-actions .read-post {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  min-width: 0;
+  padding: 18px 20px;
+}
+#stage .post-actions .export-button {
+  padding: 8px 6px;
+  min-width: 72px;
+}
+#stage .post-actions .export-button > span {
+  display: block;
+}
+#stage .preview-toc {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0;
+}
+#stage .preview-toc li {
+  margin-bottom: 12px;
+  font:
+    13px/1.7 MiSans,
+    sans-serif;
+}
+#stage .preview-toc a,
+#stage .preview-toc button {
+  color: #545248;
+  text-decoration: none;
+  text-align: left;
+}
+#stage .preview-toc a:hover,
+#stage .preview-toc button:hover {
+  color: #191c16;
+  text-decoration: underline;
+}
+#stage .detail-footnote button {
+  font-size: 10px;
+  color: #716c60;
+}
+#stage .read-file:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+#stage .file-summary {
+  max-width: 740px;
+}
+#stage #selected-title {
+  max-width: 670px;
+}
+#stage[data-layout="portrait"] .post-preview-title {
+  font-size: 22px;
+  line-height: 1.6;
+}
+#stage[data-layout="portrait"] .post-actions .read-post {
+  padding: 15px 14px;
+  font-size: 11px;
+}
+#stage[data-layout="portrait"] .post-actions .read-post span {
+  font-size: 12px;
+}
+#stage[data-layout="portrait"] #selected-title {
+  max-width: 100%;
+}
+#stage[data-layout="portrait"] .post-tags dd {
+  font-size: 11px;
+}
+@media (max-width: 760px) {
+  .archive-plain-link {
+    bottom: 9px;
+    right: 10px;
+    padding: 7px 9px;
+    font-size: 10px;
+    z-index: 90;
+  }
+}
+
+#stage .post-actions .export-button {
+  width: 112px;
+  min-width: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 11px;
+}
+#stage .post-actions .export-button > span {
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+#stage .post-actions .read-post > span {
+  font-size: 12px;
+}
+#stage .plain-index {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: auto;
+}
+#stage[data-layout="portrait"] .post-actions {
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+  padding-top: 10px;
+  background: rgba(232, 229, 225, 0.97);
+  border-top: 1px solid #c3beb4;
+}
+#stage[data-layout="portrait"] .tab-panel {
+  height: auto;
+  min-height: 130px;
+  max-height: none;
+  overflow: visible;
+}
+
+#stage .viewer-heading {
+  min-width: 0;
+  max-width: calc(100% - 360px);
+}
+#stage .viewer-heading h2 {
+  overflow-wrap: anywhere;
+  line-height: 1.45;
+}
+#stage[data-layout="portrait"] .viewer-heading {
+  width: 100%;
+  max-width: 100%;
+}
+#stage[data-layout="portrait"] .viewer-heading h2 {
+  font-size: 15px;
+  line-height: 1.45;
+  max-height: 44px;
+  overflow: hidden;
+}
+#stage[data-layout="portrait"] .viewer-heading p {
+  margin-top: 4px;
+}
+
+/* Separate scroll and action regions: no text can sit underneath the buttons. */
+#stage[data-layout="portrait"] .detail-content { display:flex; flex-direction:column; overflow:hidden; padding-bottom:0; }
+#stage[data-layout="portrait"] .post-preview-body { flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; padding-bottom:16px; }
+#stage[data-layout="portrait"] .post-actions { position:static; flex:none; z-index:auto; padding:10px 0 0; margin:0; background:#e8e5e1; }

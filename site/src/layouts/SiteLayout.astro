@@ -29,8 +29,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
         <span class="wordmark-last">ANALYSIS <b>OS</b></span>
       </a>
       <nav class="top-nav" aria-label="主导航">
-        <a href="/" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>文章索引 <span>↗</span></a>
-        <a href="/migration/">迁移进度 <span>01 / 04</span></a>
+        <a href="/posts/" aria-current={Astro.url.pathname === '/posts/' ? 'page' : undefined}>文章索引 <span>↗</span></a>
+        <a href="/migration/">迁移进度 <span>02 / 04</span></a>
       </nav>
     </header>
     <slot />
