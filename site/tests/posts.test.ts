@@ -65,27 +65,22 @@ test("bad metadata fails explicitly rather than corrupting routes", () => {
     /shortcodes/,
   );
 });
-test("existing corpus: all formats, stable routes and every bundled attachment", async () => {
-  const baseline = JSON.parse(
-    await readFile("../migration/content-baseline.json", "utf8"),
-  );
-  const originalSources = new Set(
-    baseline.files.map((f: { path: string }) => f.path),
-  );
-  const posts = (
-    await readPosts(undefined, new Date("2026-09-09T00:00:00Z"))
-  ).filter((p) => originalSources.has(p.source));
-  assert.equal(posts.length, 38);
-  assert.equal(posts.filter((p) => p.format === "yaml").length, 31);
-  assert.equal(posts.filter((p) => p.format === "toml").length, 7);
-  assert.equal(posts.filter((p) => p.categories.includes("guide")).length, 29);
-  assert.equal((await bundleAssets(posts)).length, 25);
-  assert.equal(posts[0].slug, "2025-12-01-high-concurrency-overselling-issue");
-  assert.ok(
-    posts.every(
-      (p) => !p.body.startsWith("+++") && !p.body.startsWith("---\ntitle:"),
-    ),
-  );
+test("published corpus has valid metadata, unique URLs and intact authored attachments", async () => {
+  const posts = await readPosts();
+  assert.equal(new Set(posts.map((p) => p.id)).size, posts.length);
+  assert.equal(new Set(posts.map((p) => p.href)).size, posts.length);
+  for (const post of posts) {
+    assert.equal(post.href, `/p/${post.slug}/`);
+    assert.ok(["yaml", "toml"].includes(post.format));
+    assert.ok(Number.isFinite(Date.parse(post.date)));
+    assert.ok(
+      !post.body.startsWith("+++") && !post.body.startsWith("---\ntitle:"),
+    );
+  }
+  const assets = await bundleAssets(posts);
+  assert.equal(new Set(assets.map((a) => a.route)).size, assets.length);
+  for (const asset of assets)
+    assert.ok((await readFile(asset.source)).length > 0);
 });
 test("new posts need no code edits; unpublished posts and their attachments stay out", async () => {
   const root = await mkdtemp(path.join(os.tmpdir(), "rhine-posts-"));

@@ -1,11 +1,14 @@
 import { defineConfig } from "astro/config";
+import { buildSettings, siteIdentity } from "./build-settings.mjs";
+const build = buildSettings();
 
 export default defineConfig({
-  site: "https://blog.ayakurayuki.cc",
+  site: siteIdentity.origin,
   output: "static",
   trailingSlash: "always",
   publicDir: "./static",
-  outDir: "./dist",
+  outDir: `./${build.outDir}`,
+  vite: { define: { __BLOG_RELEASE__: JSON.stringify(build.release) } },
   // Compatibility-first: keep authored image bytes and GIF animation unchanged.
   image: { service: { entrypoint: "astro/assets/services/noop" } },
   devToolbar: { enabled: false },

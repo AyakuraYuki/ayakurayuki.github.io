@@ -4,7 +4,12 @@ import { readFile, stat, realpath } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 const root = await realpath(
-  fileURLToPath(new URL("../dist/", import.meta.url)),
+  fileURLToPath(
+    new URL(
+      process.argv.includes("--release") ? "../dist-release/" : "../dist/",
+      import.meta.url,
+    ),
+  ),
 );
 const portArgument = process.argv.indexOf("--port");
 const port = Number(portArgument >= 0 ? process.argv[portArgument + 1] : 4328);
@@ -15,6 +20,7 @@ const mime = {
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
   ".json": "application/json",
+  ".xml": "application/xml; charset=utf-8",
   ".txt": "text/plain; charset=utf-8",
   ".png": "image/png",
   ".jpg": "image/jpeg",
@@ -76,7 +82,7 @@ const server = createServer(async (request, response) => {
 });
 server.listen(port, "127.0.0.1", () =>
   console.log(
-    `Migration preview: http://127.0.0.1:${port}/ (static, local-only, no deployment)`,
+    `Blog local server: http://127.0.0.1:${port}/ (static, local-only, no deployment)`,
   ),
 );
 for (const signal of ["SIGINT", "SIGTERM"])

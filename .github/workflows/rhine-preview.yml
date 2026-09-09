@@ -1,4 +1,4 @@
-name: Rhine blog migration checks (no deployment)
+name: Blog checks (no deployment)
 
 on:
   push:
@@ -12,6 +12,7 @@ on:
         "static/**",
         "migration/**",
         ".github/workflows/rhine-preview.yml",
+        ".github/workflows/blog-release.yml",
       ]
   workflow_dispatch:
 
@@ -32,6 +33,7 @@ jobs:
     env:
       ASTRO_TELEMETRY_DISABLED: "1"
       TZ: Asia/Shanghai
+      ARCHIVE_TEST_RENDERING: software
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, verified 2026-09-09
         with:
@@ -45,15 +47,18 @@ jobs:
         run: npm install --global npm@11.19.0
       - run: npm ci --no-audit --no-fund
       - run: npm run verify
+      - run: npm run verify:release
       - run: npx --no-install playwright install --with-deps chromium
       - run: npm run test:browser
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
-          name: rhine-preview-${{ github.sha }}
+          name: blog-checks-${{ github.sha }}
           path: |
             site/dist/
+            site/dist-release/
             site/.cache/output-report.json
+            site/.cache/release-output-report.json
             site/test-results/
           include-hidden-files: true
           retention-days: 14

@@ -1,4 +1,11 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro';
 ---
-<SiteLayout title="未找到档案"><main id="page-main" class="migration-page"><p class="eyebrow">404 / RECORD NOT FOUND</p><h1>没有找到这份档案。</h1><p>文章可能尚未迁入此预览，或链接存在拼写错误。</p><a class="back-link" href="/">← 返回文章索引</a></main></SiteLayout>
+<SiteLayout title="未找到档案" noindex>
+  <main id="page-main" class="message-page">
+    <p class="eyebrow">404 / RECORD NOT FOUND</p>
+    <h1>没有找到这份档案。</h1>
+    <p>链接可能已经失效，或地址存在拼写错误。</p>
+    <a class="back-link" href="/posts/">← 返回文章索引</a>
+  </main>
+</SiteLayout>

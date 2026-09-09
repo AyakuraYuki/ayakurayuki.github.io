@@ -292,11 +292,16 @@ test.describe("three-dimensional blog integration", () => {
     await page.locator("[data-action=skip]:visible").first().click();
     expect((await state(page)).mode).toBe("archive");
   });
-  test("direct detail entry decrypts after leaving the reference slot", async ({page}) => {
-    await page.goto('/?scene=detail');
-    await page.waitForFunction(() => (window as any).rhine?.stats().decryption.phase === 'clear', {}, {timeout:60000});
-    await expect(page.locator('.read-post')).toBeVisible();
-    expect((await state(page)).mode).toBe('detail');
+  test("direct detail entry decrypts after leaving the reference slot", async ({
+    page,
+  }) => {
+    await page.goto("/?scene=detail");
+    await page.waitForFunction(
+      () => (window as any).rhine?.stats().decryption.phase === "clear",
+      {},
+      { timeout: 60000 },
+    );
+    await expect(page.locator(".read-post")).toBeVisible();
+    expect((await state(page)).mode).toBe("detail");
   });
-
 });

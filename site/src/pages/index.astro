@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import { robots, siteIdentity } from '../lib/site-meta';
 import type { ArchivePost } from '../archive/catalog';
 const entries = (await getCollection('posts')).sort((a, b) => b.data.date.localeCompare(a.data.date) || a.data.slug.localeCompare(b.data.slug));
 const posts: ArchivePost[] = await Promise.all(entries.map(async entry => {
@@ -17,9 +18,15 @@ const payload = JSON.stringify(posts).replace(/</g, '\\u003c');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#e8e5e1" />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content={robots} />
     <meta name="description" content="Ayakura Yuki 的文章档案：通过五列三维档案浏览技术笔记、项目和生活记录。" />
     <title>Ayakura Yuki 的小窝 · 三维文章档案</title>
+    <meta property="og:title" content={siteIdentity.title} />
+    <meta property="og:description" content={siteIdentity.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={new URL('/', Astro.site)} />
+    <meta property="og:site_name" content={siteIdentity.title} />
+    <link rel="alternate" type="application/rss+xml" title={siteIdentity.title} href="/index.xml" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href={new URL('/', Astro.site)} />
   </head>

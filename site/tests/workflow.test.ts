@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { parse } from "yaml";
 
-test("migration workflow cannot deploy Pages and keeps dependencies pinned", async () => {
+test("regular CI cannot deploy Pages and keeps dependencies pinned", async () => {
   const workflow = parse(
     await readFile("../.github/workflows/rhine-preview.yml", "utf8"),
   );
@@ -27,4 +27,40 @@ test("migration workflow cannot deploy Pages and keeps dependencies pinned", asy
   }))
     assert.match(String(version), /^\d+\.\d+\.\d+$/);
   assert.equal(pkg.private, true);
+});
+
+test("release workflow is manual, exact-commit gated, and publish defaults to false", async () => {
+  const workflow = parse(
+    await readFile("../.github/workflows/blog-release.yml", "utf8"),
+  );
+  assert.deepEqual(Object.keys(workflow.on), ["workflow_dispatch"]);
+  assert.equal(workflow.on.workflow_dispatch.inputs.publish.default, false);
+  assert.equal(
+    workflow.on.workflow_dispatch.inputs.expected_commit.required,
+    true,
+  );
+  assert.deepEqual(workflow.permissions, { contents: "read" });
+  assert.equal(workflow.jobs.deploy.needs, "build");
+  assert.match(workflow.jobs.deploy.if, /inputs.publish/);
+  assert.match(
+    workflow.jobs.deploy.if,
+    /inputs.confirmation == 'blog.ayakurayuki.cc'/,
+  );
+  assert.equal(workflow.jobs.deploy.environment.name, "github-pages");
+  assert.equal(workflow.jobs.deploy.permissions.pages, "write");
+  assert.equal(workflow.concurrency["cancel-in-progress"], false);
+  assert.ok(
+    workflow.jobs.build.steps.some(
+      (s: any) => s.run === "npm run verify:release",
+    ),
+  );
+  assert.ok(
+    workflow.jobs.build.steps.some(
+      (s: any) =>
+        s.run === "npm run test:browser" && s.env.SITE_BUILD === "production",
+    ),
+  );
+  for (const job of Object.values(workflow.jobs) as any[])
+    for (const step of job.steps)
+      if (step.uses) assert.match(step.uses, /@[a-f0-9]{40}$/);
 });

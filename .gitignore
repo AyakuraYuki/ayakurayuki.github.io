@@ -45,3 +45,11 @@ site/dist/
 site/playwright-report/
 site/test-results/
 site/.cache/
+
+# Release artifacts are isolated from local/CI preview output.
+site/dist-release/
+
+# Preserve upstream audio source/notes outside the published static directory.
+!site/vendor/rhine/public/
+!site/vendor/rhine/public/audio/
+!site/vendor/rhine/public/audio/**

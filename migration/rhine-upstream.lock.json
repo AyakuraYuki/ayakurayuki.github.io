@@ -288,7 +288,7 @@
     },
     {
       "source": "public/audio/README.md",
-      "destination": "site/static/audio/README.md",
+      "destination": "site/vendor/rhine/public/audio/README.md",
       "sha256": "21842877cb3b71649ec5b4def829dc52b216cf47bc66b9df9478a4b6608675cd"
     },
     {
@@ -303,7 +303,7 @@
     },
     {
       "source": "public/audio/observatory-preview.mp3",
-      "destination": "site/static/audio/observatory-preview.mp3",
+      "destination": "site/vendor/rhine/public/audio/observatory-preview.mp3",
       "sha256": "a4277399b284515bdfba03741b4a7d05c37e1a5650a3270c083496aa88eef3c3"
     },
     {
@@ -313,17 +313,17 @@
     },
     {
       "source": "public/audio/score.json",
-      "destination": "site/static/audio/score.json",
+      "destination": "site/vendor/rhine/public/audio/score.json",
       "sha256": "479860ea01240da7ea3053fc841b55f53cb4c259d61a9741676f68b4ebc4060c"
     },
     {
       "source": "public/audio/typing-preview.wav",
-      "destination": "site/static/audio/typing-preview.wav",
+      "destination": "site/vendor/rhine/public/audio/typing-preview.wav",
       "sha256": "89eb2ed9de5da1ca0cce7332ad736c46a7677cee14a09c066f96c58b4c25b5ff"
     },
     {
       "source": "public/audio/typing-source.json",
-      "destination": "site/static/audio/typing-source.json",
+      "destination": "site/vendor/rhine/public/audio/typing-source.json",
       "sha256": "f5e2196eb8fd4110c66d20dca842de0e70f9f3166e50a0ea67ce9ce3ea289aa4"
     },
     {

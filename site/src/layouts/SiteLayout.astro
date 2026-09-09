@@ -1,7 +1,8 @@
 ---
 import '../styles/site.css';
-interface Props { title?: string; description?: string; article?: boolean; }
-const { title, description = 'Ayakura Yuki 的个人文章档案。技术笔记、项目与生活记录。', article = false } = Astro.props;
+import { robots, siteIdentity } from '../lib/site-meta';
+interface Props { title?: string; description?: string; article?: boolean; noindex?: boolean; }
+const { title, description = 'Ayakura Yuki 的个人文章档案。技术笔记、项目与生活记录。', article = false, noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
@@ -11,12 +12,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title ? `${title} — Ayakura Yuki 的小窝` : 'Ayakura Yuki 的小窝 · 个人档案'}</title>
     <meta name="description" content={description} />
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content={noindex ? "noindex, follow" : robots} />
     <meta name="theme-color" content="#e8e5e1" />
     <meta property="og:title" content={title ?? 'Ayakura Yuki 的小窝'} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={article ? 'article' : 'website'} />
-    <link rel="canonical" href={canonical} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    {!noindex && <meta property="og:url" content={canonical} />}
+    <meta property="og:site_name" content={siteIdentity.title} />
+    <meta property="og:locale" content="zh_CN" />
+    <link rel="alternate" type="application/rss+xml" title={siteIdentity.title} href="/index.xml" />
     <link rel="icon" href="/favicon.ico" />
     <slot name="head" />
   </head>
@@ -30,13 +35,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       </a>
       <nav class="top-nav" aria-label="主导航">
         <a href="/posts/" aria-current={Astro.url.pathname === '/posts/' ? 'page' : undefined}>文章索引 <span>↗</span></a>
-        <a href="/migration/">迁移进度 <span>02 / 04</span></a>
+        <a href="/">三维档案 <span>↗</span></a>
       </nav>
     </header>
     <slot />
     <footer class="site-footer">
       <span>© 2017–2026 AYAKURA YUKI</span>
-      <span class="preview-label"><i></i> 迁移预览 · 非正式站点</span>
+      <a href="/index.xml" class="rss-link">RSS 订阅 ↗</a>
       <a href="/fonts/MiSans-license.pdf">MiSans 字体许可 ↗</a>
     </footer>
   </body>

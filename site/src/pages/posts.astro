@@ -12,7 +12,7 @@ const filters = [...lanes, ...otherCategories.map(id => ({ id, label: id, en: id
     <aside class="index-sidebar">
       <p class="eyebrow">ARCHIVE DIRECTORY / 01</p>
       <h1>把思考<br />留成档案<span class="title-point">.</span></h1>
-      <p class="index-intro">技术笔记、项目与生活。<br />仍然是原来的文章，换一种方式阅读。</p>
+      <p class="index-intro">技术笔记、项目与生活。<br />记录实践，也记录思考。</p>
       <div class="archive-total"><strong>{String(posts.length).padStart(2, '0')}</strong><span>篇文章<br /><span class="archive-years">{posts.at(-1)?.dateLabel.slice(0, 4)} — {posts[0]?.dateLabel.slice(0, 4)}</span></span></div>
       <section class="category-section" aria-labelledby="category-label">
         <h2 id="category-label" class="eyebrow">COLLECTION / 分类</h2>
@@ -21,7 +21,6 @@ const filters = [...lanes, ...otherCategories.map(id => ({ id, label: id, en: id
           {filters.map((lane, i) => <button data-filter={lane.id} aria-pressed="false"><span><small>{String(i + 1).padStart(2, '0')}</small>{lane.label}</span><b>{posts.filter(p => p.categories.includes(lane.id)).length}</b></button>)}
         </div>
       </section>
-      <a class="phase-note" href="/migration/"><span>普通阅读索引</span><p>也可以从首页的三维阵列<br />浏览与预览这些文章。</p><span aria-hidden="true">→</span></a>
     </aside>
     <section class="index-content" aria-label="全部文章">
       <div class="list-toolbar"><span class="eyebrow">POST INDEX</span><span id="result-count" role="status" aria-live="polite">{posts.length} RECORDS</span></div>

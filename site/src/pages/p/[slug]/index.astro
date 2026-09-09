@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { absoluteUrl, jsonForHtml, siteIdentity } from '../../../lib/site-meta';
 import { categoryLabel } from '../../../lib/posts';
 export async function getStaticPaths() {
   return (await getCollection('posts')).map(post => ({ params: { slug: post.data.slug }, props: { post } }));
@@ -17,6 +18,18 @@ const previous = all[position - 1]?.data;
 const next = all[position + 1]?.data;
 ---
 <SiteLayout title={p.title} description={p.description} article>
+  <Fragment slot="head">
+    <meta property="article:published_time" content={p.date} />
+    {p.lastmod && <meta property="article:modified_time" content={p.lastmod} />}
+    {p.image && <meta property="og:image" content={absoluteUrl(p.image)} />}
+    <script is:inline type="application/ld+json" set:html={jsonForHtml({
+      '@context': 'https://schema.org', '@type': 'BlogPosting', headline: p.title,
+      description: p.description, datePublished: p.date, dateModified: p.lastmod ?? p.date,
+      url: absoluteUrl(p.href), mainEntityOfPage: absoluteUrl(p.href), inLanguage: p.language,
+      author: { '@type': 'Person', name: siteIdentity.author },
+      ...(p.image ? {image: absoluteUrl(p.image)} : {}),
+    })} />
+  </Fragment>
   <main id="page-main" class="reader-layout">
     <aside class="reader-sidebar">
       <a class="back-link" href="/posts/">← 返回文章索引</a>

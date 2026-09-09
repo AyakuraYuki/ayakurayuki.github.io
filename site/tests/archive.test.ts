@@ -1,6 +1,5 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readPosts } from "../src/lib/posts.ts";
 import {
   makeCatalog,
   tickWindow,
@@ -8,10 +7,27 @@ import {
 } from "../src/archive/catalog.ts";
 import { createLoop, visibleCell, cellKey, wrap } from "../src/archive/loop.ts";
 import { restoreSession } from "../src/archive/state.ts";
-const input = (await readPosts()).map((p) => ({
-  ...p,
-  headings: [],
-})) as ArchivePost[];
+// Fixed algorithm fixture, independent from day-to-day authored content.
+const input: ArchivePost[] = [
+  "guide",
+  "project",
+  "infrastructure",
+  "life",
+  "notification",
+].flatMap((category, lane) =>
+  Array.from({ length: [29, 6, 1, 1, 1][lane] }, (_, i) => ({
+    id: `fixture:${lane}:${i}`,
+    slug: `fixture-${lane}-${i}`,
+    title: `Fixture ${lane}/${i}`,
+    description: "Test document",
+    dateLabel: "2024-01-01",
+    categories: [category],
+    tags: [],
+    href: `/p/fixture-${lane}-${i}/`,
+    readingMinutes: 1,
+    headings: [],
+  })),
+);
 const catalog = makeCatalog(input);
 const loop = createLoop(catalog);
 

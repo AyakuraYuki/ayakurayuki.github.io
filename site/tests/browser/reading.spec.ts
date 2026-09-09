@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { buildSettings } from "../../build-settings.mjs";
 import { readPosts } from "../../src/lib/posts";
 const corpus = await readPosts();
 const count = corpus.length;
@@ -96,7 +97,7 @@ test("preview has no service worker or third-party runtime requests", async ({
   await page.goto("/p/2025-12-01-high-concurrency-overselling-issue/");
   await expect(page.locator("meta[name=robots]")).toHaveAttribute(
     "content",
-    "noindex, nofollow",
+    buildSettings().robots,
   );
   expect(
     await page.evaluate(

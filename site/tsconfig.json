@@ -8,5 +8,5 @@
     "tests/**/*.ts",
     "playwright.config.ts"
   ],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules", "dist-release"]
 }
