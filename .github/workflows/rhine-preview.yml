@@ -48,7 +48,21 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - run: npm run verify
       - run: npm run verify:release
-      - run: npx --no-install playwright install --with-deps chromium
+      - name: Install browser dependencies (bounded retries)
+        timeout-minutes: 6
+        shell: bash
+        run: |
+          for attempt in 1 2 3; do
+            if npx --no-install playwright install --with-deps chromium; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "Browser dependency setup failed (attempt $attempt); retrying once the runner/network settles."
+              sleep 15
+            fi
+          done
+          echo "Browser dependency setup failed after 3 attempts. Tests and deployment are blocked."
+          exit 1
       - run: npm run test:browser
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
