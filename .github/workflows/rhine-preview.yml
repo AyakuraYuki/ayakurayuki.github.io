@@ -53,7 +53,7 @@ jobs:
         shell: bash
         run: |
           for attempt in 1 2 3; do
-            if npx --no-install playwright install --with-deps chromium; then
+            if npx --no-install playwright install --with-deps chromium 2>&1 | tee "$RUNNER_TEMP/browser-setup.log"; then
               exit 0
             fi
             if [ "$attempt" -lt 3 ]; then
@@ -62,6 +62,14 @@ jobs:
             fi
           done
           echo "Browser dependency setup failed after 3 attempts. Tests and deployment are blocked."
+          python3 - "$RUNNER_TEMP/browser-setup.log" <<'PYLOG'
+          import pathlib, re, sys
+          lines = pathlib.Path(sys.argv[1]).read_text(errors='replace').splitlines()
+          errors = [line for line in lines if re.search(r'error|failed|^E:', line, re.I)]
+          message = '\n'.join((errors or lines)[-12:])[-3000:]
+          message = message.replace('%', '%25').replace('\r', '%0D').replace('\n', '%0A')
+          print('::error title=Browser dependency setup::' + message)
+          PYLOG
           exit 1
       - run: npm run test:browser
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
