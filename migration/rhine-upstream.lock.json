@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/LBEILC/RhineLabUI",
+  "commit": "e3137770bac38044988e3a67973397b7c1e31b96",
+  "recordedOn": "2026-09-09",
+  "status": "baseline-only; runtime and models are not yet integrated",
+  "policy": "Do not fetch main during blog builds. Code, model assets and reproducible Blender sources must be upgraded and validated together.",
+  "importedFiles": [
+    {
+      "source": "public/fonts/MiSans-Regular.woff2",
+      "destination": "site/static/fonts/MiSans-Regular.woff2",
+      "sha256": "d704c1a932c0bd7e8a071d276cd81c0ed0c9fecfa26ac234f4bed0559fe1cb2d"
+    },
+    {
+      "source": "public/fonts/MiSans-Bold.woff2",
+      "destination": "site/static/fonts/MiSans-Bold.woff2",
+      "sha256": "1c5a7515b61bc82baaa2e2c2fdae2032479fb9a99e09d4d021dc17314fc5939b"
+    },
+    {
+      "source": "public/fonts/MiSans-license.pdf",
+      "destination": "site/static/fonts/MiSans-license.pdf",
+      "sha256": "4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86"
+    },
+    {
+      "source": "public/fonts/NOTICE.txt",
+      "destination": "site/static/fonts/NOTICE.txt",
+      "sha256": "bab668563c9b8c26f7637bf90bb3288f1fa0f97327afb1d60142fd5f12d28c69"
+    }
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 14295,
+      "sha256": "bbedd7db301ac95cb2c66ff021b8523a4e248ae0fbe9f0ec9874553e257dbca9"
+    },
+    {
+      "path": "DESIGN.md",
+      "bytes": 34896,
+      "sha256": "493191e70b7b330dd22568c0db516114101ed1785534b621db51ae2ff3351655"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1063,
+      "sha256": "b42f104f4b3687773c76efbf990c1ab7b306a8c59035958c0b886dfbbcf2cd91"
+    },
+    {
+      "path": "art/archive-assembly.blend",
+      "bytes": 4857544,
+      "sha256": "111d073c1014f99a41c36082f9dc004fb5a18d9f68809341b76cb8de279f9470"
+    },
+    {
+      "path": "art/archive-studio.png",
+      "bytes": 1223529,
+      "sha256": "05f627f2698cbfc64e87ee95445b556a01b39012043dea735e2895a379c478c8"
+    },
+    {
+      "path": "art/build_archive.py",
+      "bytes": 11306,
+      "sha256": "eca7395e91edebd340bec02df57fdab4bb28c47a4842854b5ce1d3a8d37ae533"
+    },
+    {
+      "path": "art/build_assembly.py",
+      "bytes": 3264,
+      "sha256": "4db194b5ecfabbfe33aa1d30f40be99599defd78b5e7f99f7533346ab56ebc9a"
+    },
+    {
+      "path": "art/clear_reference_details.py",
+      "bytes": 2879,
+      "sha256": "448b54b0da8c9280a100cdb4894f0147785c66f91c781c9b2abb40ad6283cf4c"
+    },
+    {
+      "path": "art/internal_architecture.py",
+      "bytes": 6340,
+      "sha256": "3a770abd6e128d9067ef86f93a7cc050e64175e5fc9e6f412734d126e753d89a"
+    },
+    {
+      "path": "art/rhine-archive.blend",
+      "bytes": 5624941,
+      "sha256": "7ddfe3bfdd0d8100ddb78236cfb5b2953049b33aaaef380ef1f4014f0f3c588d"
+    },
+    {
+      "path": "art/setup_studio.py",
+      "bytes": 1399,
+      "sha256": "35465befe10330d94e172255bf07b0055fbf2b4d667d50483b1a25b4318d4e9f"
+    },
+    {
+      "path": "art/shell_reference_details.py",
+      "bytes": 4079,
+      "sha256": "b7ba74060923df62e44fe718ea3d321c893db811d6a3eb6acd254832d81787df"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 40547,
+      "sha256": "f7fcb89381148186899056f51b4eb41c87698f12918c75af25434eac3ab6ecc7"
+    },
+    {
+      "path": "package.json",
+      "bytes": 989,
+      "sha256": "ba8d501f385a07f3950f3cdd504f29f9c27649105224ac475c9f19f80a51614a"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-001.txt",
+      "bytes": 860,
+      "sha256": "9fda95b79d5372e8264a0b293850582d759a7d76566fcec0a901a659f20b5d80"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-002.txt",
+      "bytes": 868,
+      "sha256": "31475824b241ecfd0704435fb5fd27b758e154f1d5c6b56bee531df386d8a1dd"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-003.txt",
+      "bytes": 799,
+      "sha256": "58782188b51b24ba7a57fabc987108d0a0e7182b01edb535481aa51fb65c77bd"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-004.txt",
+      "bytes": 813,
+      "sha256": "d5b442509fefad60e99e5700a02983714c9900fcd668b6e0bc2daad448657f39"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-005.txt",
+      "bytes": 842,
+      "sha256": "456f8987eb013a86aadccef59e078f8ecddf03cf3c333a70236534e8d37d6fc5"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-006.txt",
+      "bytes": 831,
+      "sha256": "eda86119a10f540126a412e69d6e4781b80671dcc7f7ab341c7886efaba52eaf"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-007.txt",
+      "bytes": 779,
+      "sha256": "2b287b78fe52991e2db2321bbccd34eaa218440f82fe86706b42abe67d3615a0"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-008.txt",
+      "bytes": 823,
+      "sha256": "af33c488acf150d9027ccf96c5ca6fd63771e51832107eea16f1d41cd1b97919"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-009.txt",
+      "bytes": 835,
+      "sha256": "fff2abf3d878a01c74eb0c1257981e6daf90e9c40904551b5124200328297098"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-010.txt",
+      "bytes": 818,
+      "sha256": "f5059b40cb34b4ce70f18f2c697bb9d08c0f2c2a5d6efebf014204bc3ab92b89"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-011.txt",
+      "bytes": 799,
+      "sha256": "0293644198cc60896a02957c81e5ddee78e31ada4397e6fd2722bdebe73c3561"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-012.txt",
+      "bytes": 838,
+      "sha256": "a1d326324dc419625c401bac81b316b95699beb3fdbae600261b5b22bccd0ed5"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-013.txt",
+      "bytes": 840,
+      "sha256": "1a3b5250dc4395d9dbfd16389cac032dd3fada0bad55f39d6f91b1c73e6f5764"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-014.txt",
+      "bytes": 831,
+      "sha256": "edad5ee16671b1cd86953367e8cecaf8663c3a3ac8f345cde7d781178c2717fc"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-015.txt",
+      "bytes": 807,
+      "sha256": "de8b7d0c69fffa4d75474f8eb7707e9715f28506746bbb7644e39dd3552bf51b"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-016.txt",
+      "bytes": 844,
+      "sha256": "0a69d432ca59de6fae38c5cf92a2f9f40551524bac1d4db0d23abdb925da15ae"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-017.txt",
+      "bytes": 837,
+      "sha256": "1f2d6f40d76b4b60a40d32fb501b7087ca5bf28c2212eb9a565533e7eff96b4f"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-018.txt",
+      "bytes": 833,
+      "sha256": "204a44c9628d158011b42d99777df7b861225da2bdbbc40fa9935b7ec9eeed04"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-019.txt",
+      "bytes": 767,
+      "sha256": "c006c8571bb9c1db353ff7d5672cc1b4530d508576a7f5694c243c81d6b7a59d"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-020.txt",
+      "bytes": 806,
+      "sha256": "6188373ef44fc7f313c10e4dacb7eab9fe8908dfa9551136b46bd1f146b0b54d"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-021.txt",
+      "bytes": 832,
+      "sha256": "74ccc437b5b4934247c0dfe8048e3b32cf28f550fb9c27cd1cccbedbbbbe871f"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-022.txt",
+      "bytes": 818,
+      "sha256": "823269da2ef1743b035c672a60b09c344e2409dfc66f3917d2feafedd7378fd5"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-023.txt",
+      "bytes": 826,
+      "sha256": "e6dcb23395cdce7a92948b822464959761bcf4305e492eb8f5e4728cd7c1269e"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-024.txt",
+      "bytes": 815,
+      "sha256": "86a0d7f2890d81196e0c9fc8a45c7c900d285a06cd1ef39b66c83d2f912606b6"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-025.txt",
+      "bytes": 804,
+      "sha256": "cfc8bd8efe826387d07ab5bfa3d49cc1bfe1e051ec78d04c46e4f180d04968f6"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-026.txt",
+      "bytes": 798,
+      "sha256": "a4c46569652bfb04a23f699bd9a91fe15d11843fb9f705747639a41ba41013ad"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-027.txt",
+      "bytes": 782,
+      "sha256": "f81ef4a3da8ff1b692d63a2aa970869d0b0228f19fa01fbbf692466d52cb95bb"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-028.txt",
+      "bytes": 781,
+      "sha256": "11319a1d9c147b60ed0d0d85e210a2b06d15028de2d6b290e921767a0771cb1a"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-029.txt",
+      "bytes": 806,
+      "sha256": "a93250b82f2a0d81b263460e524ef1a816675f6afc9d4501970b64c6c7697180"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-030.txt",
+      "bytes": 847,
+      "sha256": "50a453b5d94015a7286d6312f1335e91683ab981341e63a8cf39985f1dddaffe"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-031.txt",
+      "bytes": 805,
+      "sha256": "f4a400b64fee4080c38d16adabd96e67f40937ff2cdcaeb043fce66944a425ca"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-032.txt",
+      "bytes": 788,
+      "sha256": "2482e87ce1995d28de18e1eec7f6b9dbbd70e0706ea94a4bbb522b60a03be50c"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-033.txt",
+      "bytes": 832,
+      "sha256": "df76c72a21bdc4cba875777e60a5e51f13975ae5d52901b99b4212b76e61c51c"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-034.txt",
+      "bytes": 837,
+      "sha256": "db9afb89ed94c5c69c8c09a2db8b38908aa005770d0a042cf1ad85e48eb9b412"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-035.txt",
+      "bytes": 818,
+      "sha256": "f8ca0a09636f0816929c103371b46c3d0b52105907dad70d1a9fe7fa004ffbe9"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-036.txt",
+      "bytes": 834,
+      "sha256": "3512adf0bd2b6b1899bff758bcc4561fde975a64af4740fdb71646a6f5bbf957"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-037.txt",
+      "bytes": 809,
+      "sha256": "697060cab6dabc09508b6faefed235030360b7ba757123dfb29f0b4ed0a8a416"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-038.txt",
+      "bytes": 821,
+      "sha256": "6f2ff6289fc9f3ea9738ce5af56236dcb859e33323c19ec8d274a7a038546191"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-039.txt",
+      "bytes": 815,
+      "sha256": "1bf2b9a6f0c1983d6e28f8a5842b960ebed25ae61fc2ac46191ef56a30132e6d"
+    },
+    {
+      "path": "public/archives/RHINE-LAB-X-040.txt",
+      "bytes": 824,
+      "sha256": "e0d2210e0183f0776a3ed6c164eb95ec86b72f58669b2c951e0f849a8f6b833d"
+    },
+    {
+      "path": "public/assets/archive-assembly.glb",
+      "bytes": 3343744,
+      "sha256": "d411170676f55a327c286e67e462f98b446667811c725318bab85657eaee06ec"
+    },
+    {
+      "path": "public/assets/archive-cassette.glb",
+      "bytes": 3565116,
+      "sha256": "dda42b9b3b471d11c69820a64084d254a64b27761287ab0e35dd8387ec0a0bed"
+    },
+    {
+      "path": "public/audio/README.md",
+      "bytes": 949,
+      "sha256": "21842877cb3b71649ec5b4def829dc52b216cf47bc66b9df9478a4b6608675cd"
+    },
+    {
+      "path": "public/audio/atmosphere.ogg",
+      "bytes": 537407,
+      "sha256": "a7c18ef30f096cae6056ca2db284f820a925fc4e7383bd2bf57f78cd9401dbcf"
+    },
+    {
+      "path": "public/audio/motif.ogg",
+      "bytes": 674580,
+      "sha256": "3503d692874e626112bcfb077d89239653eb28713182b6468b862d7f22572162"
+    },
+    {
+      "path": "public/audio/observatory-preview.mp3",
+      "bytes": 1281645,
+      "sha256": "a4277399b284515bdfba03741b4a7d05c37e1a5650a3270c083496aa88eef3c3"
+    },
+    {
+      "path": "public/audio/pulse.ogg",
+      "bytes": 371667,
+      "sha256": "fd8d82990d9eea07e83430042f1f3b772c6e07319f28561426122b49536fc012"
+    },
+    {
+      "path": "public/audio/score.json",
+      "bytes": 533,
+      "sha256": "479860ea01240da7ea3053fc841b55f53cb4c259d61a9741676f68b4ebc4060c"
+    },
+    {
+      "path": "public/audio/typing-preview.wav",
+      "bytes": 192044,
+      "sha256": "89eb2ed9de5da1ca0cce7332ad736c46a7677cee14a09c066f96c58b4c25b5ff"
+    },
+    {
+      "path": "public/audio/typing-source.json",
+      "bytes": 711,
+      "sha256": "f5e2196eb8fd4110c66d20dca842de0e70f9f3166e50a0ea67ce9ce3ea289aa4"
+    },
+    {
+      "path": "public/favicon.svg",
+      "bytes": 295,
+      "sha256": "c495851e461b6e24687eced8e517b2dad0f93bdc3a61f9a7d575ce0e31182513"
+    },
+    {
+      "path": "public/fonts/MiSans-Bold.woff2",
+      "bytes": 5081104,
+      "sha256": "1c5a7515b61bc82baaa2e2c2fdae2032479fb9a99e09d4d021dc17314fc5939b"
+    },
+    {
+      "path": "public/fonts/MiSans-Demibold.woff2",
+      "bytes": 4994364,
+      "sha256": "7afe3737efaf6a137db0ef4857fbe4033a8802756485ebc7f008e96a4bdedcf2"
+    },
+    {
+      "path": "public/fonts/MiSans-Light.woff2",
+      "bytes": 4810368,
+      "sha256": "2d1502a1cf0e41917844b512fb64be547cfb737e593d0da782c6b6762ea71c33"
+    },
+    {
+      "path": "public/fonts/MiSans-Regular.woff2",
+      "bytes": 4858624,
+      "sha256": "d704c1a932c0bd7e8a071d276cd81c0ed0c9fecfa26ac234f4bed0559fe1cb2d"
+    },
+    {
+      "path": "public/fonts/MiSans-license.pdf",
+      "bytes": 79535,
+      "sha256": "4a93a27cd2bd81b3b5ecfd0a853144a876fa26938a93a68443c67d74172fcb86"
+    },
+    {
+      "path": "public/fonts/NOTICE.txt",
+      "bytes": 325,
+      "sha256": "bab668563c9b8c26f7637bf90bb3288f1fa0f97327afb1d60142fd5f12d28c69"
+    },
+    {
+      "path": "public/icons/app-icon.svg",
+      "bytes": 507,
+      "sha256": "a8f184c878802c50f7f3d07c858f66bb301567403ef97aef94260bbe1f710d8e"
+    },
+    {
+      "path": "public/icons/apple-touch-icon.png",
+      "bytes": 3667,
+      "sha256": "5558b02fb639a92adb8c213235a2fcafe9a5e9387e8366be5ca346d741fede4b"
+    },
+    {
+      "path": "public/icons/icon-192.png",
+      "bytes": 3939,
+      "sha256": "baab35064ab3a1769518ecb5f2541baf8faae50dea0939d6be504903ce520939"
+    },
+    {
+      "path": "public/icons/icon-512.png",
+      "bytes": 14610,
+      "sha256": "4e83d12839591921d045cf836c5185bbc8aca2d5f2a5a3cb67a9f5a5ac762ab9"
+    },
+    {
+      "path": "public/icons/icon-maskable-512.png",
+      "bytes": 14610,
+      "sha256": "4e83d12839591921d045cf836c5185bbc8aca2d5f2a5a3cb67a9f5a5ac762ab9"
+    },
+    {
+      "path": "public/licenses/rolling-number.txt",
+      "bytes": 1068,
+      "sha256": "4994c24b5bbb85529407e8cd0211efcf819236899d2c911cbdb18c00f231273a"
+    },
+    {
+      "path": "public/manifest.webmanifest",
+      "bytes": 625,
+      "sha256": "32ecc6788074a0bb53f7ef022913e370018b82e8639db472fed237a79868cc07"
+    },
+    {
+      "path": "public/update.html",
+      "bytes": 1854,
+      "sha256": "efb6b1ef5b22a38ed7ba8a728c80dd07c51730cbe27049d65b628b9e71fed2dc"
+    },
+    {
+      "path": "public/update.js",
+      "bytes": 2057,
+      "sha256": "fd5be7d2e373e77709f654474621d49ccafa6db2f2c9e449236d54bee996aff1"
+    },
+    {
+      "path": "src/appearance.ts",
+      "bytes": 7238,
+      "sha256": "7c8b0ac254ec40c630f7d22d044d8492503ceb7d88783b9fffdd73f2cdc49c57"
+    },
+    {
+      "path": "src/archive-lighting.ts",
+      "bytes": 1273,
+      "sha256": "fc14af44039728419a0338770e13774697b6eea20ce61abc59e76b99f0c0d349"
+    },
+    {
+      "path": "src/archive-loop.ts",
+      "bytes": 2454,
+      "sha256": "90fd248f1651d340b674e103f96a58031581d79ac5ec622b902eeef54cfa2760"
+    },
+    {
+      "path": "src/asset-url.ts",
+      "bytes": 180,
+      "sha256": "d8eebd5c0b08d9541cc6aa92e7bc4f492b3cc69626e298cd1f74fed72ce1ce4d"
+    },
+    {
+      "path": "src/audio-settings.ts",
+      "bytes": 1005,
+      "sha256": "11bebafaef198f9a6b90072c48e1f07a1af81df6115a5a96bdad2e98185c0edb"
+    },
+    {
+      "path": "src/audio.ts",
+      "bytes": 18501,
+      "sha256": "75931d7194ec6cb8e7d09f85f4269e76c83b2c70b0e2bcd7a6652998a37fa3c8"
+    },
+    {
+      "path": "src/boot-logo-tracks.ts",
+      "bytes": 3724,
+      "sha256": "dd1ea3e2162af2f88818099a5539ed092f1aaccf47d7a3f1b04ef80e2a887405"
+    },
+    {
+      "path": "src/boot-motion.ts",
+      "bytes": 4192,
+      "sha256": "047d768d1952c83abe1a8352a859fb31aac09751f176975c1174885587597bdd"
+    },
+    {
+      "path": "src/boot-orbit-tracks.ts",
+      "bytes": 4835,
+      "sha256": "179285daf9f62ebcd4da2a33fb7b5ae6da92c900714cd91c5aafdda58927a953"
+    },
+    {
+      "path": "src/boot-tracks.ts",
+      "bytes": 7402,
+      "sha256": "6d6fd116d22a27b96899d692656af904a9f18d7406f44ebec0417cf3acd0141e"
+    },
+    {
+      "path": "src/boot.ts",
+      "bytes": 10025,
+      "sha256": "9b30d7aeba48f65f01a769a9fc1517e589ce92ff534618be60b1430985d056a6"
+    },
+    {
+      "path": "src/brand.ts",
+      "bytes": 1620,
+      "sha256": "36f88bda7e6d92338245581613585a75c58982669a30a5751bf8f6614143525a"
+    },
+    {
+      "path": "src/data.ts",
+      "bytes": 1077,
+      "sha256": "aad8e8b1786a88255943359535a1cc26c8ddb9696bb27b055c32e917154494e3"
+    },
+    {
+      "path": "src/decryption.css",
+      "bytes": 647,
+      "sha256": "ea95ab1ccb18fbbec6884d5b22a4297bd3a46ab4ac3b68e8258122fbe4f3d45d"
+    },
+    {
+      "path": "src/decryption.ts",
+      "bytes": 5709,
+      "sha256": "e0ad3554df74d8b0cc8ca8e84f2084e842d60824a5b6177daea9b81804684ec1"
+    },
+    {
+      "path": "src/document-decryption.css",
+      "bytes": 390,
+      "sha256": "a644842b67cbe335085e39d1e88d06e6033b7130977cdf2b5e011dcbd7b3649f"
+    },
+    {
+      "path": "src/document-decryption.ts",
+      "bytes": 4184,
+      "sha256": "b2e2ab077bd18fb4d88ac32f0f56314d84d95d2f9127dae9fb11825a3499ee86"
+    },
+    {
+      "path": "src/glass-reveal.ts",
+      "bytes": 2248,
+      "sha256": "26a16d2b4ad9447390f53e0956b8691001e12182827e68a713e9cb40598db513"
+    },
+    {
+      "path": "src/html.ts",
+      "bytes": 405,
+      "sha256": "2ba5ade6bdeef34d5328844bf2b4190c3cefe3d81f90cc78e85ea0abd81d2fad"
+    },
+    {
+      "path": "src/inspection-overlay.ts",
+      "bytes": 2259,
+      "sha256": "384d21c258c26b6427f74850abb1b2c36c6c0873d307d39f2c390f5f0411db62"
+    },
+    {
+      "path": "src/internal-optics.ts",
+      "bytes": 2054,
+      "sha256": "51001ae8df1a5050fb14214058ff21e7a957b0dc5e97207eb8e87c6b2ffddc21"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 46206,
+      "sha256": "f017e0503c1df946e20d201f870c13540d93643340c6b8e998b3a1b2181db384"
+    },
+    {
+      "path": "src/model-viewer.ts",
+      "bytes": 22599,
+      "sha256": "8b2310181e857abe99a7cc074fa60dc88663ff802b91e37dc466753db4459abf"
+    },
+    {
+      "path": "src/motion.ts",
+      "bytes": 4307,
+      "sha256": "60c4bbef70f34f69e36ff60aa631b3b88b2eb42a6e9b431b6af3c6fd69eb744e"
+    },
+    {
+      "path": "src/pwa.ts",
+      "bytes": 5099,
+      "sha256": "70a3d62541b2c793dae7b62b56269133d907545b0df20f19e4211f2f7aa42fee"
+    },
+    {
+      "path": "src/quality-renderer.ts",
+      "bytes": 2472,
+      "sha256": "2a48656eb105ea0f4ddfa70dc9a9f4a823388883e874e311c53f9905f599bf49"
+    },
+    {
+      "path": "src/quality-settings.css",
+      "bytes": 2332,
+      "sha256": "ef3398d7ee3ce5906cb954a4f6ddc53f0eae2547e5c4daa2249e2c096df1090b"
+    },
+    {
+      "path": "src/quality-settings.ts",
+      "bytes": 4416,
+      "sha256": "df6a16ca5af38a6b781ec9c060bb70924c6bdd6fedb660e1d74c9b8dd3e7600b"
+    },
+    {
+      "path": "src/render-quality.ts",
+      "bytes": 3956,
+      "sha256": "862758c9e4c1c272ba10f44c2c58746b53b62ac42d2d7d8776eca0fc349118de"
+    },
+    {
+      "path": "src/responsive.css",
+      "bytes": 20127,
+      "sha256": "62e7f7143be8ca76fb3cfb0a57a1775c5aca3a9a276a4fc3a17ae4439fa178d7"
+    },
+    {
+      "path": "src/scene.ts",
+      "bytes": 49760,
+      "sha256": "c129850d94bf3cafde352e2f152371b6d441b3adcb5cacda4adf61f41a08bdb9"
+    },
+    {
+      "path": "src/style.css",
+      "bytes": 38724,
+      "sha256": "b47ac30a2c5f81fa2cf4bfcfeb2bfd1cd35a9c6fe709f981da93b88c8ba0a9ba"
+    },
+    {
+      "path": "src/typing-rhythm.ts",
+      "bytes": 919,
+      "sha256": "842c6995bf85743210b82f0186770afacc9a0418bce7fe79acde8e2058ee0cf6"
+    },
+    {
+      "path": "src/typing-samples.ts",
+      "bytes": 14792,
+      "sha256": "c3692433e5dd34dc4b65b78b149932ee6132250c0120254f996a4a9ec94599a8"
+    },
+    {
+      "path": "src/ui-transitions.ts",
+      "bytes": 2854,
+      "sha256": "82ad8d06394659949dfe4e5005ea55b5e8d2e660c4d3c05d39dfcc1a37a57753"
+    },
+    {
+      "path": "src/viewer-camera.ts",
+      "bytes": 2890,
+      "sha256": "b64a944133caaa2aabba70def79dd532530d3b9f8ce6ae0738f11d54576f4d08"
+    },
+    {
+      "path": "src/viewport-layout.ts",
+      "bytes": 1994,
+      "sha256": "b9c751a4b9860c22b0c9a32b271c1b6630f42ff18b30496ce8bd1507bc9a55da"
+    },
+    {
+      "path": "src/vite-env.d.ts",
+      "bytes": 38,
+      "sha256": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5"
+    }
+  ]
+}

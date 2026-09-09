@@ -1,0 +1,560 @@
+{
+  "schemaVersion": 1,
+  "repository": "https://github.com/AyakuraYuki/ayakurayuki.github.io",
+  "commit": "28dedf388d90b4155eef85c489507aedba3a6427",
+  "branch": "hugo",
+  "recordedOn": "2026-09-09",
+  "policy": "Existing source bytes are frozen during migration; additions are allowed. Refresh this manifest only after an explicitly reviewed content sync.",
+  "files": [
+    {
+      "path": ".github/workflows/hugo.yaml",
+      "bytes": 2095,
+      "sha256": "6b917a44654804b7a826e7fba7cfcabdc94a27df1786a43fa3f2d7d37dada122"
+    },
+    {
+      "path": ".gitmodules",
+      "bytes": 123,
+      "sha256": "28b8c589b0049ac8eaaf988079d4e6080f41df62c27a81d59565531b9cc40a0f"
+    },
+    {
+      "path": "CNAME",
+      "bytes": 19,
+      "sha256": "8cb96a8ee480eefaf8ccf4160843bb186ca10882774e9edbae476798f39e6bf9"
+    },
+    {
+      "path": "archetypes/default.md",
+      "bytes": 102,
+      "sha256": "951f4610584e8066baa7981f4c73db0e01645429a3c787bf63b91c61191c0cc0"
+    },
+    {
+      "path": "assets/css/APlayer.min.css",
+      "bytes": 15407,
+      "sha256": "8eb821afd7dd161a26d28c7fa9d3d345a11d2ad6a5e2179ef395add008c5124a"
+    },
+    {
+      "path": "assets/img/avatar.png",
+      "bytes": 18617,
+      "sha256": "3746db7a2c1cf3c6fdcbb2a3a9ec0b2be14e073d1da480cc6d7f1777f21f84e8"
+    },
+    {
+      "path": "content/_index.md",
+      "bytes": 102,
+      "sha256": "3b164a997d2f2c29d14c36f09d56bfe208261bf3ceb8e2d1e759ff4344bca0c2"
+    },
+    {
+      "path": "content/_index.zh-cn.md",
+      "bytes": 104,
+      "sha256": "b3b4dc7dacc22eca782c4f626f8954b7fa684b669c6a2e3be9878ef73d8edc9f"
+    },
+    {
+      "path": "content/page/about/index.md",
+      "bytes": 1536,
+      "sha256": "cadae849783c231504ca9ce9cc14fd0d0af74fb1eab77298e569259d22cbad2e"
+    },
+    {
+      "path": "content/page/about/index.zh-cn.md",
+      "bytes": 2452,
+      "sha256": "aecdfd6b386dcf9babab81b50bf6eacb587cb1a3046af53b6ce6da52a5888b89"
+    },
+    {
+      "path": "content/page/archives/index.md",
+      "bytes": 159,
+      "sha256": "89d28e2427df76247988f4e532098c3661d1cf673b3e3f5dffd9432328e9c444"
+    },
+    {
+      "path": "content/page/archives/index.zh-cn.md",
+      "bytes": 157,
+      "sha256": "39160f710b7daf7a20840cc56a624ab0578d7816cc2f707520426cfafab45b82"
+    },
+    {
+      "path": "content/page/links/index.md",
+      "bytes": 1249,
+      "sha256": "7dbd10919a9d257db16a17a4641919e3e4729dba161053ff29b092ec491b5194"
+    },
+    {
+      "path": "content/page/links/index.zh-cn.md",
+      "bytes": 1250,
+      "sha256": "27b1b040c731e11362a60d55d2db478868df744bdce7efd8fd5334165378c8c5"
+    },
+    {
+      "path": "content/page/links/jetbrains-variant-2.png",
+      "bytes": 151679,
+      "sha256": "a871fe1eec7bfe6bf946ed101a1701754db33e928a86b5ce5eed51c85c88e25b"
+    },
+    {
+      "path": "content/page/search/index.md",
+      "bytes": 164,
+      "sha256": "4069bc33e9cb98361b5ca6dca3e691610bd1fc2f8b4f421dcfece858df47c6e5"
+    },
+    {
+      "path": "content/page/search/index.zh-cn.md",
+      "bytes": 165,
+      "sha256": "e8959c98a20dbc8a1da98574f8985e21cad026e92242b9cfa786ab327cdd7fb4"
+    },
+    {
+      "path": "content/post/2017-05-14-ssm-generator/index.zh-cn.md",
+      "bytes": 770,
+      "sha256": "b0c38fb010df3dde8f8265124c7d69f0da7fb03512d6d87cadb8cb433b8f4966"
+    },
+    {
+      "path": "content/post/2017-05-15-ml-event-ranking-viewer/index.zh-cn.md",
+      "bytes": 2303,
+      "sha256": "da94b98e0ce4107fdb3467d2b14002063649c59a5a10a101c2a87c8839d1a660"
+    },
+    {
+      "path": "content/post/2017-05-15-simple-spring-boot-crud/index.zh-cn.md",
+      "bytes": 402,
+      "sha256": "549e746793b668327c0d5db532565142dca4d594f271f0c70b6cc0d33fe4ff63"
+    },
+    {
+      "path": "content/post/2017-05-16-spring-boot-config/index.zh-cn.md",
+      "bytes": 9232,
+      "sha256": "a1f5e490d92eb5b11e67a8d3d12e13c8d82116878e8b9f6b124f961ad8c8adb6"
+    },
+    {
+      "path": "content/post/2017-06-03-coderator-develop-note/index.zh-cn.md",
+      "bytes": 6997,
+      "sha256": "8b25064bd60849c605f0639ba877a100f48dbdeb1972e3ca5a5106ecc4e3d1df"
+    },
+    {
+      "path": "content/post/2017-06-03-coderator/index.zh-cn.md",
+      "bytes": 2004,
+      "sha256": "efc698b3a6f2fac528dae778c13cfe0de1f7d18a26610a5ea8c680053d7db6e2"
+    },
+    {
+      "path": "content/post/2017-06-28-about-bean-lifecycle/index.zh-cn.md",
+      "bytes": 1531,
+      "sha256": "851763f24932de3a458790764fe9566cfcd654f6ac8ccb0794e4354f28c1c17a"
+    },
+    {
+      "path": "content/post/2017-08-17-apache-redirect/index.zh-cn.md",
+      "bytes": 4792,
+      "sha256": "54e88300de966297f0e3ba6e11659eee6cb76a9b8a9f0e67c83dc619106f3dfb"
+    },
+    {
+      "path": "content/post/2017-09-14-as-project-folders/1.png",
+      "bytes": 13064,
+      "sha256": "734b882704624bc23135fc61215e392e06d7955ff0810965630d677feddeac7d"
+    },
+    {
+      "path": "content/post/2017-09-14-as-project-folders/2.png",
+      "bytes": 5245,
+      "sha256": "d60c17fb334170836b153da5ce11c84218d0ca8b049af48fbcbba07d2c2b584a"
+    },
+    {
+      "path": "content/post/2017-09-14-as-project-folders/3.png",
+      "bytes": 2203,
+      "sha256": "2c89616cf011a1dc831505813bd85eabbf6e844b054b9edf3b7cd2c294baec09"
+    },
+    {
+      "path": "content/post/2017-09-14-as-project-folders/index.zh-cn.md",
+      "bytes": 5808,
+      "sha256": "cdceb87ea2f4131f8096208e8a01ceb17401c6f9900f52ab0a9072da6054df75"
+    },
+    {
+      "path": "content/post/2017-09-14-ml-border-function/index.zh-cn.md",
+      "bytes": 2700,
+      "sha256": "350e82f7ce2bebfba5814f33f665d4c10f9ad2bb80838ac529f36e2091e45e18"
+    },
+    {
+      "path": "content/post/2017-10-19-content-storage-app/index.zh-cn.md",
+      "bytes": 1770,
+      "sha256": "ddfcd90c1849dd2207d15444028f53ea499b71e8ef75a96b553a7e65f4e05a89"
+    },
+    {
+      "path": "content/post/2017-10-30-content-update-over-notification/index.zh-cn.md",
+      "bytes": 9085,
+      "sha256": "c60a02fbb8c7e474479983dd11464fc39d9956d06f75b04d36303d3a80bcef4f"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/1.png",
+      "bytes": 515078,
+      "sha256": "229160737f1b39dcb579cc19f4cc8c7451d8883de28dab16c5e91fea88cca7ce"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/2.png",
+      "bytes": 537295,
+      "sha256": "83b92706bdcf893431ab1ccb0caa27784a86a848d620eca551531d67219a4e66"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/3.png",
+      "bytes": 361247,
+      "sha256": "a0b7eab3b0674df0da47a8b05eb212e4493aff63d844fcfa0e7e2527873b585b"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/4.png",
+      "bytes": 979646,
+      "sha256": "168e607b4747b2f534afa2744a493301a2ccfc747f9331a41b8e9e3c42144367"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/5.png",
+      "bytes": 748978,
+      "sha256": "306f1e7cf9274cdd7a1804a17648080bfbe703916b487aa22dcbdacb9fbb69b0"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/6.png",
+      "bytes": 587739,
+      "sha256": "52c28bddb5da302fc473c973544c0d542a9d1059caa16f78b2e5fcf5aa26a9a1"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/7.png",
+      "bytes": 889394,
+      "sha256": "c08d68658a35f19522c73bc5639f8cb1450d7a9ab0f6990573d84f2c8f4800d7"
+    },
+    {
+      "path": "content/post/2017-11-02-cg5th-ssa-in-hk/index.zh-cn.md",
+      "bytes": 496,
+      "sha256": "2f50d547cb3ab681c5120a9a8ebf6429e00318bb7298c31915eeca450d851d6d"
+    },
+    {
+      "path": "content/post/2018-01-22-poker-by-swift/index.zh-cn.md",
+      "bytes": 2573,
+      "sha256": "5e9c67e25e8531e76170be1498a2578eeccf5a1fac1bb903147a4b0e8d4518d0"
+    },
+    {
+      "path": "content/post/2018-01-31-json-in-swift/1.png",
+      "bytes": 117520,
+      "sha256": "c7285f7ed3970ac7e759a3a3a3c48f1c81838837efc1250176d235e88ed51c74"
+    },
+    {
+      "path": "content/post/2018-01-31-json-in-swift/2.png",
+      "bytes": 321488,
+      "sha256": "9f6b752a4f8a03d08194d9f7a515a9b3ecb8fc2db5e05b8656f854c695821acc"
+    },
+    {
+      "path": "content/post/2018-01-31-json-in-swift/3.png",
+      "bytes": 447002,
+      "sha256": "f2828f22fd60f0c44006f9df439c4526d3b256b21bece15838207184faa8da4e"
+    },
+    {
+      "path": "content/post/2018-01-31-json-in-swift/4.gif",
+      "bytes": 1215949,
+      "sha256": "f071d51eeb760184d3f56fa28c46ae22a045b082f8a6d44baeac7032cb5e91c6"
+    },
+    {
+      "path": "content/post/2018-01-31-json-in-swift/index.zh-cn.md",
+      "bytes": 6345,
+      "sha256": "c538ffe5dd591e34d28f2b2b7d48b4851d0b2f7bda806e3a8acee0e736a61235"
+    },
+    {
+      "path": "content/post/2018-02-26-regex/1.png",
+      "bytes": 40171,
+      "sha256": "50089cb607bedac6fd90a0704645963d58583ab5b717ee32263c9145994dd94a"
+    },
+    {
+      "path": "content/post/2018-02-26-regex/2.png",
+      "bytes": 39843,
+      "sha256": "e39158dc17ab59f852e41ec2022efa5e7e72b156d806a722163e55020b880481"
+    },
+    {
+      "path": "content/post/2018-02-26-regex/3.png",
+      "bytes": 34317,
+      "sha256": "fc06c700cdeaecbea3f0f8a6c9fe682422e45ac089df2af91e6f9063f5089470"
+    },
+    {
+      "path": "content/post/2018-02-26-regex/4.png",
+      "bytes": 43245,
+      "sha256": "f8fe482d5fea36041841557a85c1c478096da387327ff5425d0327fd127b286a"
+    },
+    {
+      "path": "content/post/2018-02-26-regex/5.png",
+      "bytes": 166866,
+      "sha256": "1d6623c4e8e11fbffdbdababcc914be1811acd4da6677b6190f51967d2e0905e"
+    },
+    {
+      "path": "content/post/2018-02-26-regex/index.zh-cn.md",
+      "bytes": 2600,
+      "sha256": "949dd9e8de2ec7c4a0337fe157d93e0a98da7e331d70a17bd4c946f91c999242"
+    },
+    {
+      "path": "content/post/2018-05-25-invite-code/index.zh-cn.md",
+      "bytes": 6008,
+      "sha256": "11f354da18a7bf57cb5d3cb66d880081a24f300d31b1004c61aca00cb29b1720"
+    },
+    {
+      "path": "content/post/2018-05-31-switch-different-jdk/index.zh-cn.md",
+      "bytes": 4830,
+      "sha256": "0026e9e4ff30b5bf556b4d681c9e104026cf8798c303717a9bbc42b4f015c4fa"
+    },
+    {
+      "path": "content/post/2019-08-01-python-metaclass-singleton/index.zh-cn.md",
+      "bytes": 2728,
+      "sha256": "a1f775bd656991dc1fb84dcc1f89dddd770019b33d02e6d1be6f0850cb41f8f0"
+    },
+    {
+      "path": "content/post/2019-08-27-dd-monitor/index.zh-cn.md",
+      "bytes": 1550,
+      "sha256": "f97afbefc0d717576aa085b96115fa6f4cab060779264ae9a8d871d2ef534e05"
+    },
+    {
+      "path": "content/post/2019-11-15-fix-gpg-sign-failed-prob/cover.png",
+      "bytes": 18250,
+      "sha256": "40370377ea2c1597038d170a61c0d2aa09128a7561026bfcaf208461a33d8f0a"
+    },
+    {
+      "path": "content/post/2019-11-15-fix-gpg-sign-failed-prob/index.zh-cn.md",
+      "bytes": 2264,
+      "sha256": "06daf6bdcd49184decdf0f5b6aafc22ba853a92cbc6ebc45a6199b77c3029fba"
+    },
+    {
+      "path": "content/post/2020-11-24-sign-in-with-apple/01.jpeg",
+      "bytes": 84730,
+      "sha256": "6d5085bb4c6662b03091fbbfb0f00a418850fbfa6d76be46040593c52fa2a3a7"
+    },
+    {
+      "path": "content/post/2020-11-24-sign-in-with-apple/cover.jpg",
+      "bytes": 375530,
+      "sha256": "474c31eb15f1e1ab2d4f8c11b4113b72574283a245cdfb2c2eb719f7e18666d1"
+    },
+    {
+      "path": "content/post/2020-11-24-sign-in-with-apple/index.zh-cn.md",
+      "bytes": 15001,
+      "sha256": "0f6e1d078b8989d143c90910361aebd16a22ff4285cb3090235aa8841f424337"
+    },
+    {
+      "path": "content/post/2021-03-03-analysis-of-discord-bot-oauth/cover-discord-bot.png",
+      "bytes": 1950364,
+      "sha256": "946bd6bbdf9eb65cca9bfffc80ddb02ff39607caecaa5938be50456a5f34829f"
+    },
+    {
+      "path": "content/post/2021-03-03-analysis-of-discord-bot-oauth/index.zh-cn.md",
+      "bytes": 4703,
+      "sha256": "63bed3cfcd3fd8751632507cda1cb5094b53cc18b2e3ef8271917100d70df8a7"
+    },
+    {
+      "path": "content/post/2022-04-02-apollo-in-kubernetes/index.zh-cn.md",
+      "bytes": 6022,
+      "sha256": "8c06bb38fc4cbf55755f8337782468f0cef9b47ca961a06c366c8256aa119129"
+    },
+    {
+      "path": "content/post/2022-07-08-apollo-in-docker/index.zh-cn.md",
+      "bytes": 27646,
+      "sha256": "a247e30df086f832ef67ffdd4f230879ed53afacf039842e582cc935b640ba78"
+    },
+    {
+      "path": "content/post/2022-10-27-hack-completable-future/index.zh-cn.md",
+      "bytes": 8275,
+      "sha256": "b8036f63a739b174cccec589cc1cde178b4130a2a44cb290ee271ded4a23c008"
+    },
+    {
+      "path": "content/post/2023-08-30-setup-kafka-in-local-machine/index.zh-cn.md",
+      "bytes": 2562,
+      "sha256": "fcbe753309624fd8364808940c9795c5de62832f7f069cffe479a7ecc81fbc97"
+    },
+    {
+      "path": "content/post/2023-12-06-auto-deploy-by-crontab/crontab-guru-image.png",
+      "bytes": 106595,
+      "sha256": "5b0eea3926c40cf7b4a0e3f605d0333af334c58844afb41e949e2e480b634b75"
+    },
+    {
+      "path": "content/post/2023-12-06-auto-deploy-by-crontab/index.zh-cn.md",
+      "bytes": 3329,
+      "sha256": "62d1396e951974ec8d327bf64736bbaa22df8dcf62c84b3d977c0f69dd9daf17"
+    },
+    {
+      "path": "content/post/2023-12-13-deploy-etcd-in-local-machine/etcd-hero.png",
+      "bytes": 34202,
+      "sha256": "637ab1b034ac5d53b924b389d44ec4cb7a9c6834445abcec5bd936c7d9e1ca28"
+    },
+    {
+      "path": "content/post/2023-12-13-deploy-etcd-in-local-machine/index.zh-cn.md",
+      "bytes": 5287,
+      "sha256": "f3e044d47ee355fd00f4fd929e4f188c7b8a07339b1f605f3ee9f64437cef913"
+    },
+    {
+      "path": "content/post/2023-12-13-why-i-cannot-write-root-dir-in-macos/index.zh-cn.md",
+      "bytes": 2068,
+      "sha256": "f427c001c6823ea54c8e15c7f66896bcd8a35cca4e4514d8eab613410937ddd4"
+    },
+    {
+      "path": "content/post/2023-12-14-permission-overwrite/index.zh-cn.md",
+      "bytes": 15380,
+      "sha256": "8c1bcac525403e3b21a512dd2a113c4171974991c48e5c6447f9613cff375fe8"
+    },
+    {
+      "path": "content/post/2024-01-17-maven-config/index.zh-cn.md",
+      "bytes": 4575,
+      "sha256": "869152965e2a0de01c5cbdf5b34baca9f04e3ea2ce3149422d57f4bcf401cc3f"
+    },
+    {
+      "path": "content/post/2024-01-24-tweak-linux-limits/index.zh-cn.md",
+      "bytes": 8301,
+      "sha256": "f9009952871326279dcbff06ddd0c2428449dc7b67ea626202aebce2fbb78cde"
+    },
+    {
+      "path": "content/post/2024-03-12-nginx-in-ubuntu/index.zh-cn.md",
+      "bytes": 6525,
+      "sha256": "13f39200e7047d20124b57a5a53a4ccd94f015c1b0cb798caa6e84465941fd79"
+    },
+    {
+      "path": "content/post/2024-11-11-go-draw-image-tips/index.zh-cn.md",
+      "bytes": 5414,
+      "sha256": "30bc8dc116d169292ed5cf5cb4dcace2b0b82cebc006b854bd8709dd96a6b3bc"
+    },
+    {
+      "path": "content/post/2024-11-11-go-draw-rounded-rectangle/index.zh-cn.md",
+      "bytes": 2702,
+      "sha256": "b37469d99aac9605053df1f0debbe596e2c8dbb3bf8e5aad6524c139e13d6ca7"
+    },
+    {
+      "path": "content/post/2024-12-02-ffmpeg-mix-pictures-to-video/index.zh-cn.md",
+      "bytes": 12530,
+      "sha256": "9f9ec5723a4d256de93c0b6879408cc0fea5965254d10f7634564031275191f5"
+    },
+    {
+      "path": "content/post/2025-12-01-high-concurrency-overselling-issue/index.zh-cn.md",
+      "bytes": 8335,
+      "sha256": "48886b7fc61423829e5e73e579c4f9f55055e7c7a9bce2d93502d9c64d84086b"
+    },
+    {
+      "path": "hugo.yaml",
+      "bytes": 5308,
+      "sha256": "11164efb6959634ac0d78b21479be50e5c4ea15dbd0f26e06f91aa72479b3672"
+    },
+    {
+      "path": "layouts/_markup/render-codeblock-mermaid.html",
+      "bytes": 108,
+      "sha256": "a0399cab3432e4648c239a771f9f66064648effd87817b5ff13fcb89796fb163"
+    },
+    {
+      "path": "layouts/partials/aplayer.html",
+      "bytes": 207,
+      "sha256": "074ad0cbba14170dec113eab2a0ae2b19e33285367f94a5a13b2326e387616c3"
+    },
+    {
+      "path": "layouts/partials/footer/custom.html",
+      "bytes": 321,
+      "sha256": "a1916084cd0067a9a6449e00d9bb10f133d5e0065ec757e111e0d7f361478700"
+    },
+    {
+      "path": "layouts/partials/head/custom.html",
+      "bytes": 401,
+      "sha256": "56e1cfa5b22003ca9b9f26203b7f76ab5db3ddbc8961d62d096226915f7071df"
+    },
+    {
+      "path": "static/favicon.ico",
+      "bytes": 4286,
+      "sha256": "7058f6973b9368bd08b393410ddc87dac4bc349b95eefd26caa4a148b54fb60c"
+    },
+    {
+      "path": "static/jetbrains/datagrip_logos/LICENSE.txt",
+      "bytes": 690,
+      "sha256": "d7944457d611615104e07c7b28ec248ba309c22008d1c8e5d148112375a9188d"
+    },
+    {
+      "path": "static/jetbrains/datagrip_logos/boxshot.png",
+      "bytes": 124770,
+      "sha256": "ffa10aaedfe972308fcde8872989106bbc3918faf4ef691c1b024d199ac89e6b"
+    },
+    {
+      "path": "static/jetbrains/datagrip_logos/logo-text-CMYK.pdf",
+      "bytes": 797665,
+      "sha256": "e257b2e927afeb8e5dcf9ed2a723991c1ac9fc67c7df82ba467f043ddb0c6ba9"
+    },
+    {
+      "path": "static/jetbrains/datagrip_logos/logo-text.png",
+      "bytes": 45331,
+      "sha256": "eaab422061eb07ac25fa4365986b238bf77c0fa4f9db49ea7028c8dedb63eddd"
+    },
+    {
+      "path": "static/jetbrains/datagrip_logos/logo-text.svg",
+      "bytes": 2878,
+      "sha256": "5eb28279af96b0285369490b3d4ad3a50dca0c099cf246a05aa0b8ebbaac549c"
+    },
+    {
+      "path": "static/jetbrains/datagrip_logos/logo.png",
+      "bytes": 170297,
+      "sha256": "11f1d63ce7d8933b59d0e9d416d78b9002895836d90dd1ec0704a12f463874b3"
+    },
+    {
+      "path": "static/jetbrains/datagrip_logos/logo.svg",
+      "bytes": 2708,
+      "sha256": "ce805bc6c4e81e68c53baf14dc8c83190ee0e7fea6ea52edf1d43bc3bb029d41"
+    },
+    {
+      "path": "static/jetbrains/intellij-idea_logos/LICENSE.txt",
+      "bytes": 690,
+      "sha256": "d7944457d611615104e07c7b28ec248ba309c22008d1c8e5d148112375a9188d"
+    },
+    {
+      "path": "static/jetbrains/intellij-idea_logos/boxshot.png",
+      "bytes": 147232,
+      "sha256": "22bb25fe98399ffee920bb7022bbfc95ec88d63ba46b63ff3d18959372ac5103"
+    },
+    {
+      "path": "static/jetbrains/intellij-idea_logos/logo-text-CMYK.pdf",
+      "bytes": 794283,
+      "sha256": "4c535a78a6626d3a76ebf07e447864779b0fb24a77e5141604356eec04f4f375"
+    },
+    {
+      "path": "static/jetbrains/intellij-idea_logos/logo-text.png",
+      "bytes": 43420,
+      "sha256": "7e63ee98ae2eef991a2a81c46df683ce9cb7b699b5e2cb9152db9d3712883bd3"
+    },
+    {
+      "path": "static/jetbrains/intellij-idea_logos/logo-text.svg",
+      "bytes": 2606,
+      "sha256": "73cfbb702df5921615743c6cd58a6bec5dd9801b7cfa87344177c22d1cdf22a8"
+    },
+    {
+      "path": "static/jetbrains/intellij-idea_logos/logo.png",
+      "bytes": 186349,
+      "sha256": "29cc9ec44470a1ad417bbe63e7033d265dcfacbb77d675c4ff48acce77b9771d"
+    },
+    {
+      "path": "static/jetbrains/intellij-idea_logos/logo.svg",
+      "bytes": 3783,
+      "sha256": "bb95f8e2193c7d428dd5c5e24851919e7739b66c0a3afdc8feb19f72d71121b9"
+    },
+    {
+      "path": "static/jetbrains/variant-2_logos/LICENSE.txt",
+      "bytes": 690,
+      "sha256": "d7944457d611615104e07c7b28ec248ba309c22008d1c8e5d148112375a9188d"
+    },
+    {
+      "path": "static/jetbrains/variant-2_logos/jetbrains-variant-2.png",
+      "bytes": 151679,
+      "sha256": "a871fe1eec7bfe6bf946ed101a1701754db33e928a86b5ce5eed51c85c88e25b"
+    },
+    {
+      "path": "static/jetbrains/variant-2_logos/jetbrains-variant-2.svg",
+      "bytes": 3590,
+      "sha256": "d1f6644739f81f53b607cb84e4f29ec9c8f2001b8c9d0f9b8d7fb18193390daf"
+    },
+    {
+      "path": "static/jetbrains/webstorm_logos/LICENSE.txt",
+      "bytes": 690,
+      "sha256": "d7944457d611615104e07c7b28ec248ba309c22008d1c8e5d148112375a9188d"
+    },
+    {
+      "path": "static/jetbrains/webstorm_logos/boxshot.png",
+      "bytes": 143311,
+      "sha256": "8e5be23f08b7f117acfbfa9c0982abd5701e97312eb6ddb6957eabee61f15b35"
+    },
+    {
+      "path": "static/jetbrains/webstorm_logos/logo-text-CMYK.pdf",
+      "bytes": 797407,
+      "sha256": "f1c5023afde52958c812962f8b6423fd80576cd5f55feb86cf0518037ca8d893"
+    },
+    {
+      "path": "static/jetbrains/webstorm_logos/logo-text.png",
+      "bytes": 77048,
+      "sha256": "77e6e05669675bdffa42d2cfa4479b32b1304cc018183e023083f8e859ee2715"
+    },
+    {
+      "path": "static/jetbrains/webstorm_logos/logo-text.svg",
+      "bytes": 3049,
+      "sha256": "1a01e0341781f4042484b3d44b15b098871156625d86ada656195ce23c95b0f6"
+    },
+    {
+      "path": "static/jetbrains/webstorm_logos/logo.png",
+      "bytes": 179797,
+      "sha256": "db586f02a51ae957d2d62387f1f938b4644ac9883d8b10880120ca3e068a382b"
+    },
+    {
+      "path": "static/jetbrains/webstorm_logos/logo.svg",
+      "bytes": 2174,
+      "sha256": "722e2be472f3143b900bc768b98b470aa66c4b402a856e78d0c3dbff16495529"
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { categoryLabel } from '../../../lib/posts';
+export async function getStaticPaths() {
+  return (await getCollection('posts')).map(post => ({ params: { slug: post.data.slug }, props: { post } }));
+}
+interface Props { post: CollectionEntry<'posts'> }
+const { post } = Astro.props;
+const p = post.data;
+const { Content, headings } = await render(post);
+const toc = headings.filter(h => h.depth >= 2 && h.depth <= 4);
+const all = (await getCollection('posts')).sort((a, b) => b.data.date.localeCompare(a.data.date) || a.data.slug.localeCompare(b.data.slug));
+const position = all.findIndex(item => item.id === post.id);
+const previous = all[position - 1]?.data;
+const next = all[position + 1]?.data;
+---
+<SiteLayout title={p.title} description={p.description} article>
+  <main id="page-main" class="reader-layout">
+    <aside class="reader-sidebar">
+      <a class="back-link" href="/">← 返回文章索引</a>
+      <p class="eyebrow">DOCUMENT / {String(position + 1).padStart(3, '0')}</p>
+      {toc.length > 0 && <nav class="toc" aria-label="文章目录"><h2>CONTENTS <span>文章目录</span></h2><ol>{toc.map(h => <li class={`depth-${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav>}
+      <a class="top-link" href="#page-main">返回顶部 ↑</a>
+    </aside>
+    <article class="reader-document" data-post-id={post.id}>
+      <header class="article-header">
+        <div class="article-kicker"><span>{p.categories.map(categoryLabel).join(' / ')}</span><span>PERSONAL ARCHIVE</span></div>
+        <h1>{p.title}</h1>
+        {p.description && <p class="article-summary">{p.description}</p>}
+        <div class="article-meta"><time datetime={p.date}>{p.dateLabel}</time><span>约 {p.readingMinutes} 分钟</span>{p.lastmod && <span>更新 {p.lastmod.slice(0, 10)}</span>}</div>
+        <div class="article-tags">{p.tags.map(tag => <span>#{tag}</span>)}</div>
+        {p.image && <img class="article-cover" src={p.image} alt={`${p.title} · 封面`} decoding="async" />}
+      </header>
+      {toc.length > 0 && <details class="mobile-toc"><summary>文章目录 <span>{toc.length} SECTIONS</span></summary><nav aria-label="移动端文章目录"><ol>{toc.map(h => <li class={`depth-${h.depth}`}><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol></nav></details>}
+      <div class="prose"><Content /></div>
+      <footer class="article-footer"><p class="eyebrow">END OF DOCUMENT</p><a href="/">返回全部档案 ↗</a></footer>
+      <nav class="adjacent-posts" aria-label="相邻文章">
+        {previous ? <a href={previous.href}><small>← 较新文章</small><span>{previous.title}</span></a> : <span></span>}
+        {next && <a href={next.href}><small>较早文章 →</small><span>{next.title}</span></a>}
+      </nav>
+    </article>
+  </main>
+</SiteLayout>
+<script>
+  // Tables have their own scroll region; never squeeze the whole document to fit a wide table.
+  document.querySelectorAll('.prose table').forEach(table => {
+    const wrapper = document.createElement('div'); wrapper.className = 'table-scroll'; wrapper.tabIndex = 0;
+    wrapper.setAttribute('role', 'region'); wrapper.setAttribute('aria-label', '表格，可横向滚动');
+    table.before(wrapper); wrapper.append(table);
+  });
+  document.querySelectorAll<HTMLElement>('.prose pre').forEach(pre => {
+    pre.tabIndex = 0; pre.setAttribute('aria-label', '代码块，可横向滚动');
+    const wrapper = document.createElement('div'); wrapper.className = 'code-block';
+    pre.before(wrapper); wrapper.append(pre);
+    const button = document.createElement('button'); button.className = 'copy-code'; button.textContent = '复制代码';
+    button.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(pre.querySelector('code')?.textContent ?? pre.textContent ?? ''); button.textContent = '已复制'; }
+      catch { button.textContent = '请手动选择复制'; }
+      setTimeout(() => { button.textContent = '复制代码'; }, 1800);
+    });
+    wrapper.append(button);
+  });
+</script>

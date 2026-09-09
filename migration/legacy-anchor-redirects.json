@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "reason": "The observed local Hugo output predates the current Markdown. These six deleted subheadings redirect to their still-existing containing sections; no removed prose is restored and sources remain unchanged.",
+  "posts": {
+    "2024-01-24-tweak-linux-limits": {
+      "目标文件": "网络内核调参",
+      "内容": "网络内核调参",
+      "目标文件-1": "进程数调整",
+      "内容-1": "进程数调整",
+      "目标文件-2": "systemd-配置调整",
+      "内容-2": "systemd-配置调整"
+    }
+  }
+}

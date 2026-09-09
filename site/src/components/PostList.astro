@@ -1,0 +1,19 @@
+---
+import { categoryLabel } from '../lib/posts';
+interface Item { id: string; title: string; href: string; date: string; dateLabel: string; categories: string[]; tags: string[]; description: string; }
+interface Props { posts: Item[] }
+const { posts } = Astro.props;
+---
+<ol class="post-list">
+  {posts.map((post, index) => (
+    <li class="post-row" data-categories={JSON.stringify(post.categories)} data-search={`${post.title} ${post.description} ${post.tags.join(' ')}`.toLocaleLowerCase()}>
+      <span class="row-no" aria-hidden="true">{String(index + 1).padStart(3, '0')}</span>
+      <div class="row-body">
+        <div class="row-meta"><time datetime={post.date}>{post.dateLabel}</time><span>{post.categories.map(categoryLabel).join(' / ')}</span></div>
+        <h2><a href={post.href}>{post.title}<span class="row-arrow" aria-hidden="true">↗</span></a></h2>
+        <p>{post.description}</p>
+        <div class="row-tags">{post.tags.slice(0, 5).map(tag => <span>#{tag}</span>)}</div>
+      </div>
+    </li>
+  ))}
+</ol>

@@ -1,0 +1,1215 @@
+{
+  "schemaVersion": 1,
+  "source": "Read-only observation of the existing local Hugo public/p output on 2026-09-09; not a fresh Hugo build or evidence of the live deployment.",
+  "posts": {
+    "2017-05-14-ssm-generator": {
+      "htmlSha256": "acae462b40639f80f6d5aecb0b43046ce0236ffd3bbd34bad7472ec8e77b05b4",
+      "headings": [
+        {
+          "id": "ssmgenerator",
+          "text": "SSMGenerator"
+        },
+        {
+          "id": "支持",
+          "text": "支持"
+        },
+        {
+          "id": "bugs",
+          "text": "Bugs"
+        },
+        {
+          "id": "获取模板",
+          "text": "获取模板"
+        }
+      ]
+    },
+    "2017-05-15-ml-event-ranking-viewer": {
+      "htmlSha256": "dd651721be3b11a7fff18402cf424aab34e945e263fa2621dede045b17980201",
+      "headings": [
+        {
+          "id": "million-live-event-ranking-viewer",
+          "text": "Million Live Event Ranking Viewer"
+        },
+        {
+          "id": "开发工具及项目环境",
+          "text": "开发工具及项目环境"
+        },
+        {
+          "id": "使用技术",
+          "text": "使用技术"
+        },
+        {
+          "id": "使用说明",
+          "text": "使用说明"
+        },
+        {
+          "id": "参与测试",
+          "text": "参与测试？"
+        },
+        {
+          "id": "已知问题",
+          "text": "已知问题"
+        },
+        {
+          "id": "关于-configproperties-的说明",
+          "text": "关于 config.properties 的说明："
+        }
+      ]
+    },
+    "2017-05-15-simple-spring-boot-crud": {
+      "htmlSha256": "bf223b22b3a026bef80450c3234d982025a0cb51398a6e1e17c50aac0a414fe8",
+      "headings": [
+        {
+          "id": "simplespringbootcrud",
+          "text": "SimpleSpringBootCRUD"
+        }
+      ]
+    },
+    "2017-05-16-spring-boot-config": {
+      "htmlSha256": "e182718643404aaf1c9e9eb37173dcc1864ee6dc10b84537c1945ecb73dfbfdd",
+      "headings": [
+        {
+          "id": "maven---pomxml",
+          "text": "Maven - pom.xml"
+        },
+        {
+          "id": "environment---applicationyml",
+          "text": "Environment - application.yml"
+        },
+        {
+          "id": "mybatis---bean--mapping-xml",
+          "text": "MyBatis - bean & mapping xml"
+        },
+        {
+          "id": "数据源配置---代码分析",
+          "text": "数据源配置 - 代码分析"
+        },
+        {
+          "id": "类注解",
+          "text": "类注解"
+        },
+        {
+          "id": "getdatasource",
+          "text": "getDataSource()"
+        },
+        {
+          "id": "getsqlsessionfactory",
+          "text": "getSqlSessionFactory()"
+        },
+        {
+          "id": "gettransactionmanager",
+          "text": "getTransactionManager()"
+        },
+        {
+          "id": "mappingxml",
+          "text": "Mapping.xml"
+        }
+      ]
+    },
+    "2017-06-03-coderator": {
+      "htmlSha256": "dd3da3838e006a1444dbd13365eeadaa917a1d6c08d7d69f87d2584118416b11",
+      "headings": [
+        {
+          "id": "coderator",
+          "text": "CodErator"
+        },
+        {
+          "id": "环境与依赖",
+          "text": "环境与依赖"
+        },
+        {
+          "id": "使用目标",
+          "text": "使用目标"
+        },
+        {
+          "id": "javaee",
+          "text": "JavaEE"
+        },
+        {
+          "id": "csharp",
+          "text": "CSharp"
+        },
+        {
+          "id": "支持功能",
+          "text": "支持功能"
+        },
+        {
+          "id": "开发路线",
+          "text": "开发路线"
+        },
+        {
+          "id": "现存问题",
+          "text": "现存问题"
+        }
+      ]
+    },
+    "2017-06-03-coderator-develop-note": {
+      "htmlSha256": "e68aad03761bcf8ecee5dd9bcbeeb1f8ec381e7736f602bdc7531112fc1af911",
+      "headings": [
+        {
+          "id": "关于项目的启发",
+          "text": "关于项目的启发"
+        },
+        {
+          "id": "开发设计",
+          "text": "开发设计"
+        },
+        {
+          "id": "然而",
+          "text": "然而。。。"
+        },
+        {
+          "id": "所以",
+          "text": "所以！"
+        },
+        {
+          "id": "设计中出现的需求",
+          "text": "设计中出现的需求"
+        },
+        {
+          "id": "对于上述设计和需求我采用了以下支持",
+          "text": "对于上述设计和需求，我采用了以下支持"
+        },
+        {
+          "id": "程序使用过程中可能会出现的搞事操作与处理办法",
+          "text": "程序使用过程中可能会出现的搞事操作与处理办法"
+        },
+        {
+          "id": "对于数据的处理",
+          "text": "对于数据的处理"
+        }
+      ]
+    },
+    "2017-06-28-about-bean-lifecycle": {
+      "htmlSha256": "d471ef570f444f9db247e714397d5b41a5885f0563f84f680b6f8c9b4b22d427",
+      "headings": [
+        {
+          "id": "生命周期过程描述",
+          "text": "生命周期过程描述"
+        },
+        {
+          "id": "创建",
+          "text": "创建"
+        },
+        {
+          "id": "关闭",
+          "text": "关闭"
+        },
+        {
+          "id": "相关内容",
+          "text": "相关内容"
+        },
+        {
+          "id": "bean-实例化和生命周期行为控制",
+          "text": "Bean 实例化和生命周期行为控制"
+        },
+        {
+          "id": "beanpostprocessor",
+          "text": "BeanPostProcessor"
+        }
+      ]
+    },
+    "2017-08-17-apache-redirect": {
+      "htmlSha256": "26d18215f45ad6bbbce0938f7750d5a261a120aa569826bcf3d2c93a08e7b64c",
+      "headings": [
+        {
+          "id": "域名配置浅记",
+          "text": "域名配置浅记"
+        },
+        {
+          "id": "端口转发",
+          "text": "端口转发"
+        },
+        {
+          "id": "前期工作",
+          "text": "前期工作"
+        },
+        {
+          "id": "配置虚拟服务器转发前的准备",
+          "text": "配置虚拟服务器转发前的准备"
+        },
+        {
+          "id": "servername",
+          "text": "ServerName"
+        },
+        {
+          "id": "proxypass-与-proxypassreverse",
+          "text": "ProxyPass 与 ProxyPassReverse"
+        },
+        {
+          "id": "documentroot",
+          "text": "DocumentRoot"
+        },
+        {
+          "id": "directory",
+          "text": "Directory"
+        },
+        {
+          "id": "配置转发",
+          "text": "配置转发"
+        },
+        {
+          "id": "将-apache-本身配置为图片服务器的场景",
+          "text": "将 Apache 本身配置为图片服务器的场景"
+        },
+        {
+          "id": "另一种配置apache-本身也作为图片服务器但多做了一层转发尚待查证",
+          "text": "另一种配置，Apache 本身也作为图片服务器，但多做了一层转发，尚待查证"
+        }
+      ]
+    },
+    "2017-09-14-as-project-folders": {
+      "htmlSha256": "a83bb9be423aab588b1101fbbe681f66798a4da979c8fca0cd3cae9585efb4a3",
+      "headings": [
+        {
+          "id": "demo",
+          "text": "/Demo"
+        },
+        {
+          "id": "gradle",
+          "text": "/gradle"
+        },
+        {
+          "id": "idea--demoiml",
+          "text": "/.idea & Demo.iml"
+        },
+        {
+          "id": "gradle-1",
+          "text": "/.gradle"
+        },
+        {
+          "id": "gitignore",
+          "text": ".gitignore"
+        },
+        {
+          "id": "buildgradle",
+          "text": "build.gradle"
+        },
+        {
+          "id": "settingsgradle",
+          "text": "settings.gradle"
+        },
+        {
+          "id": "gradleproperties",
+          "text": "gradle.properties"
+        },
+        {
+          "id": "localproperties",
+          "text": "local.properties"
+        },
+        {
+          "id": "gradlew--gradlewbat",
+          "text": "gradlew & gradlew.bat"
+        },
+        {
+          "id": "app",
+          "text": "/app"
+        },
+        {
+          "id": "build",
+          "text": "/build"
+        },
+        {
+          "id": "libs",
+          "text": "/libs"
+        },
+        {
+          "id": "gitignore-1",
+          "text": ".gitignore"
+        },
+        {
+          "id": "appiml",
+          "text": "app.iml"
+        },
+        {
+          "id": "buildgradle-1",
+          "text": "build.gradle"
+        },
+        {
+          "id": "proguard-rulespro",
+          "text": "proguard-rules.pro"
+        },
+        {
+          "id": "appsrc或称src",
+          "text": "/app/src（或称/src）"
+        },
+        {
+          "id": "androidtest",
+          "text": "/androidTest"
+        },
+        {
+          "id": "test",
+          "text": "/test"
+        },
+        {
+          "id": "main",
+          "text": "/main"
+        },
+        {
+          "id": "java",
+          "text": "/java"
+        },
+        {
+          "id": "res",
+          "text": "/res"
+        },
+        {
+          "id": "drawable",
+          "text": "/drawable"
+        },
+        {
+          "id": "mipmap",
+          "text": "/mipmap"
+        },
+        {
+          "id": "values",
+          "text": "/values"
+        },
+        {
+          "id": "layout",
+          "text": "/layout"
+        },
+        {
+          "id": "androidmanifestxml",
+          "text": "AndroidManifest.xml"
+        },
+        {
+          "id": "核心文件",
+          "text": "核心文件"
+        },
+        {
+          "id": "androidmanifestxml-1",
+          "text": "AndroidManifest.xml"
+        },
+        {
+          "id": "layoutactivity_mainxml",
+          "text": "layout/activity_main.xml"
+        },
+        {
+          "id": "ccayakurayukidemomainactivity",
+          "text": "cc.ayakurayuki.demo.MainActivity"
+        }
+      ]
+    },
+    "2017-09-14-ml-border-function": {
+      "htmlSha256": "f687b2f87dfbc5d072343ceba7dca66b429b9ba3ab1bdae17f69386106f5c477",
+      "headings": [
+        {
+          "id": "code",
+          "text": "Code"
+        }
+      ]
+    },
+    "2017-10-19-content-storage-app": {
+      "htmlSha256": "d44f67e538e902f2f52e7557473f522a0323e89e821a88841d4c795d6699be7b",
+      "headings": [
+        {
+          "id": "环境--environment",
+          "text": "环境 / Environment"
+        },
+        {
+          "id": "特性--feature",
+          "text": "特性 / Feature"
+        },
+        {
+          "id": "使用用户",
+          "text": "使用：用户"
+        },
+        {
+          "id": "使用开发者",
+          "text": "使用：开发者"
+        },
+        {
+          "id": "clone",
+          "text": "clone"
+        },
+        {
+          "id": "导入",
+          "text": "导入"
+        },
+        {
+          "id": "修改配置文件",
+          "text": "修改配置文件"
+        },
+        {
+          "id": "执行程序",
+          "text": "执行程序"
+        },
+        {
+          "id": "special-thanks-to",
+          "text": "Special Thanks to"
+        },
+        {
+          "id": "built-by",
+          "text": "Built by"
+        }
+      ]
+    },
+    "2017-10-30-content-update-over-notification": {
+      "htmlSha256": "9d5c06f82292c11a1fddc0fcf56d3d35b40a747248ec0270c6d5bc2ad17be569",
+      "headings": [
+        {
+          "id": "グリマスコンテンツ更新終了のお知らせ",
+          "text": "グリマスコンテンツ更新終了のお知らせ"
+        }
+      ]
+    },
+    "2017-11-02-cg5th-ssa-in-hk": {
+      "htmlSha256": "01081f96edd69bceeb076dbef959fc01cad3de6ea978ff10be08934794514840",
+      "headings": []
+    },
+    "2018-01-22-poker-by-swift": {
+      "htmlSha256": "7cf3526c0ac2042c6d21c4e83e8bff1d50cd4f7d82c8e1c0ef1699f059d1fdf4",
+      "headings": []
+    },
+    "2018-01-31-json-in-swift": {
+      "htmlSha256": "3212555ee1864f01771a5c7bd3f1d609bd6c5345e6cf88e3ac0e49f1e020da67",
+      "headings": [
+        {
+          "id": "引",
+          "text": "引"
+        },
+        {
+          "id": "存在了问题",
+          "text": "存在了问题"
+        },
+        {
+          "id": "找到问题出个解法",
+          "text": "找到问题，出个解法"
+        },
+        {
+          "id": "swiftyjson-和-handyjson",
+          "text": "SwiftyJSON 和 HandyJSON"
+        },
+        {
+          "id": "jsondata-data",
+          "text": "JSON(data: data)"
+        },
+        {
+          "id": "class-city-handyjson",
+          "text": "class City: HandyJSON"
+        },
+        {
+          "id": "应用范例",
+          "text": "应用范例"
+        },
+        {
+          "id": "citycodejson",
+          "text": "CityCode.json"
+        },
+        {
+          "id": "weatherswift",
+          "text": "Weather.swift"
+        }
+      ]
+    },
+    "2018-02-26-regex": {
+      "htmlSha256": "68ef39475fdcf9cf5117363116ffd87a24a263a70809b57599a6bc0bbfcb07b6",
+      "headings": [
+        {
+          "id": "手机号码",
+          "text": "手机号码"
+        },
+        {
+          "id": "第一种",
+          "text": "第一种"
+        },
+        {
+          "id": "第二种",
+          "text": "第二种"
+        },
+        {
+          "id": "mac-地址",
+          "text": "MAC 地址"
+        },
+        {
+          "id": "密码强度",
+          "text": "密码强度"
+        },
+        {
+          "id": "域名解析",
+          "text": "域名解析"
+        },
+        {
+          "id": "媒体文件后缀判断",
+          "text": "媒体文件后缀判断"
+        },
+        {
+          "id": "python-logging-in-ideolog-plugin",
+          "text": "Python logging in Ideolog plugin"
+        }
+      ]
+    },
+    "2018-05-25-invite-code": {
+      "htmlSha256": "03f6417c395d9fb7a98d1ffe2fbcbf4bdc9a76ff603c1008f1a5ca09015f461f",
+      "headings": [
+        {
+          "id": "引",
+          "text": "引"
+        },
+        {
+          "id": "述",
+          "text": "述"
+        },
+        {
+          "id": "验",
+          "text": "验"
+        },
+        {
+          "id": "研",
+          "text": "研"
+        }
+      ]
+    },
+    "2018-05-31-switch-different-jdk": {
+      "htmlSha256": "c3dbf0bc1f212f120f3511b76a7e184e1e33f81a3bc5c6cedd168cd29849fc96",
+      "headings": [
+        {
+          "id": "引",
+          "text": "引"
+        },
+        {
+          "id": "背景",
+          "text": "背景"
+        },
+        {
+          "id": "java-home",
+          "text": "Java Home"
+        },
+        {
+          "id": "怎么做",
+          "text": "怎么做"
+        }
+      ]
+    },
+    "2019-08-01-python-metaclass-singleton": {
+      "htmlSha256": "c3ef4bed71902463563c28ea985144a57d1238fcf7b5d7c0b681a013dfb72cd2",
+      "headings": [
+        {
+          "id": "引入模块",
+          "text": "引入模块"
+        },
+        {
+          "id": "装饰器我倒是喜欢理解成注解谁叫我之前写-java-的",
+          "text": "装饰器（我倒是喜欢理解成注解，谁叫我之前写 Java 的）"
+        },
+        {
+          "id": "线程锁实现线程安全的单例",
+          "text": "线程锁实现线程安全的单例"
+        },
+        {
+          "id": "__new__实现",
+          "text": "__new__实现"
+        },
+        {
+          "id": "metaclass元类",
+          "text": "metaclass元类"
+        }
+      ]
+    },
+    "2019-08-27-dd-monitor": {
+      "htmlSha256": "1bcd97ba1d3e471194fbb2f5735691b266e5ede6d57106e59288835c41aa3565",
+      "headings": [
+        {
+          "id": "dd_monitor",
+          "text": "dd_monitor"
+        },
+        {
+          "id": "environment",
+          "text": "Environment"
+        }
+      ]
+    },
+    "2019-11-15-fix-gpg-sign-failed-prob": {
+      "htmlSha256": "40d266f5a98bdbfe9dc6c45a864e1015fcb56142c4756ad41c930ea03c9811df",
+      "headings": []
+    },
+    "2020-11-24-sign-in-with-apple": {
+      "htmlSha256": "038383374db8278088995779c116522eda04e41bd1bdc012527dec9a2bc0f7c8",
+      "headings": [
+        {
+          "id": "引",
+          "text": "引"
+        },
+        {
+          "id": "背景",
+          "text": "背景"
+        },
+        {
+          "id": "怎么做",
+          "text": "怎么做"
+        },
+        {
+          "id": "动手",
+          "text": "动手？"
+        },
+        {
+          "id": "好可以动手了",
+          "text": "好，可以动手了"
+        },
+        {
+          "id": "请求和验证",
+          "text": "请求和验证"
+        },
+        {
+          "id": "检查返回值的有效性",
+          "text": "检查返回值的有效性"
+        }
+      ]
+    },
+    "2021-03-03-analysis-of-discord-bot-oauth": {
+      "htmlSha256": "53d88201f99dfddc532251c05af259cc8ce0304f1ae8ae9d108a8a616b7fd9e6",
+      "headings": [
+        {
+          "id": "引",
+          "text": "引"
+        },
+        {
+          "id": "关于-discord-bot",
+          "text": "关于 Discord Bot"
+        },
+        {
+          "id": "bots是怎么运作的",
+          "text": "Bots是怎么运作的？"
+        },
+        {
+          "id": "后续",
+          "text": "后续"
+        },
+        {
+          "id": "关键点",
+          "text": "关键点"
+        }
+      ]
+    },
+    "2022-04-02-apollo-in-kubernetes": {
+      "htmlSha256": "98a988319b2cbf6f232af8e6cd7c1ae6bc478376e431e59d752dda8bdbe8f442",
+      "headings": [
+        {
+          "id": "安装工具",
+          "text": "安装工具"
+        },
+        {
+          "id": "初始化数据库",
+          "text": "初始化数据库"
+        },
+        {
+          "id": "准备文件",
+          "text": "准备文件"
+        },
+        {
+          "id": "部署",
+          "text": "部署"
+        }
+      ]
+    },
+    "2022-07-08-apollo-in-docker": {
+      "htmlSha256": "db66c80f7434aa7a2ffd9b2afd7bce21ae31310dd3330fe6a57d15b430e61788",
+      "headings": [
+        {
+          "id": "安装工具",
+          "text": "安装工具"
+        },
+        {
+          "id": "建立内部网络",
+          "text": "建立内部网络"
+        },
+        {
+          "id": "部署-mysql",
+          "text": "部署 MySQl"
+        },
+        {
+          "id": "创建-apollo-数据库",
+          "text": "创建 Apollo 数据库"
+        },
+        {
+          "id": "部署-apollo",
+          "text": "部署 Apollo"
+        },
+        {
+          "id": "apollo-configservice",
+          "text": "apollo-configservice"
+        },
+        {
+          "id": "apollo-adminservice",
+          "text": "apollo-adminservice"
+        },
+        {
+          "id": "apollo-portal",
+          "text": "apollo-portal"
+        },
+        {
+          "id": "假如你需要更改端口",
+          "text": "假如你需要更改端口"
+        },
+        {
+          "id": "如果你要从-19-迁移到-20",
+          "text": "如果你要从 1.9 迁移到 2.0"
+        },
+        {
+          "id": "可选的检查脏数据",
+          "text": "（可选的）检查脏数据"
+        },
+        {
+          "id": "创建新的字段",
+          "text": "创建新的字段"
+        },
+        {
+          "id": "按顺序升级服务",
+          "text": "按顺序升级服务"
+        },
+        {
+          "id": "创建-unique-索引",
+          "text": "创建 Unique 索引"
+        },
+        {
+          "id": "结语",
+          "text": "结语"
+        }
+      ]
+    },
+    "2022-10-27-hack-completable-future": {
+      "htmlSha256": "b155301352aa7b7af3dcdc2c7c5d53cb79209a8d27561de9f77b15179bfbb225",
+      "headings": []
+    },
+    "2023-08-30-setup-kafka-in-local-machine": {
+      "htmlSha256": "156d1526038958aeb87c207f621cec894cc916fa5634460094e1af7cd944218c",
+      "headings": [
+        {
+          "id": "拉取镜像",
+          "text": "拉取镜像"
+        },
+        {
+          "id": "zookeeper",
+          "text": "Zookeeper"
+        },
+        {
+          "id": "kafka",
+          "text": "Kafka"
+        },
+        {
+          "id": "关于-kafka_advertised_listeners",
+          "text": "关于 KAFKA_ADVERTISED_LISTENERS"
+        },
+        {
+          "id": "完成上述配置后重启一下-kafka",
+          "text": "完成上述配置后，重启一下 Kafka"
+        },
+        {
+          "id": "docker-compose",
+          "text": "docker-compose"
+        }
+      ]
+    },
+    "2023-12-06-auto-deploy-by-crontab": {
+      "htmlSha256": "28562531fac7c45e1f82dd6a8d7c5b5908918edad8f600952cfec90368450b1e",
+      "headings": [
+        {
+          "id": "crontab-部分",
+          "text": "Crontab 部分"
+        },
+        {
+          "id": "命令部分",
+          "text": "命令部分"
+        }
+      ]
+    },
+    "2023-12-13-deploy-etcd-in-local-machine": {
+      "htmlSha256": "0c4a28b7973a292f5cb9519841d1abe1a97aee93ddb7354997e35aba5c549a72",
+      "headings": [
+        {
+          "id": "事前准备",
+          "text": "事前准备"
+        },
+        {
+          "id": "大致步骤",
+          "text": "大致步骤"
+        }
+      ]
+    },
+    "2023-12-13-why-i-cannot-write-root-dir-in-macos": {
+      "htmlSha256": "d21f12776258aaf15c8f852bd561b1ce086644fc656f2b6785d3dd76651aeddd",
+      "headings": []
+    },
+    "2023-12-14-permission-overwrite": {
+      "htmlSha256": "457ceb8277df1a263937e1dd5e414930853ea208a644be6cf4926e863007a197",
+      "headings": [
+        {
+          "id": "关于位",
+          "text": "关于位"
+        },
+        {
+          "id": "属性",
+          "text": "属性"
+        },
+        {
+          "id": "实体定义",
+          "text": "实体定义"
+        },
+        {
+          "id": "权限覆写",
+          "text": "权限覆写"
+        }
+      ]
+    },
+    "2024-01-17-maven-config": {
+      "htmlSha256": "e2f5db616b4c7095b5eeb83c9fa3e9fdc9818c11658ed34fc44d1dc2f6801d6e",
+      "headings": [
+        {
+          "id": "源码类",
+          "text": "源码类"
+        },
+        {
+          "id": "maven-source-plugin",
+          "text": "maven-source-plugin"
+        },
+        {
+          "id": "maven-javadoc-plugin",
+          "text": "maven-javadoc-plugin"
+        },
+        {
+          "id": "编译保障类",
+          "text": "编译保障类"
+        },
+        {
+          "id": "maven-surefire-plugin",
+          "text": "maven-surefire-plugin"
+        },
+        {
+          "id": "maven-failsafe-plugin",
+          "text": "maven-failsafe-plugin"
+        },
+        {
+          "id": "gpg签名",
+          "text": "GPG签名"
+        },
+        {
+          "id": "开发环境版本检查",
+          "text": "开发环境版本检查"
+        }
+      ]
+    },
+    "2024-01-24-tweak-linux-limits": {
+      "htmlSha256": "045c0d8d219ecc2f719b33d71ec2ed7876b9912f1e137a29c250e5d6f8ccf72b",
+      "headings": [
+        {
+          "id": "网络内核调参",
+          "text": "网络内核调参"
+        },
+        {
+          "id": "目标文件",
+          "text": "目标文件"
+        },
+        {
+          "id": "内容",
+          "text": "内容"
+        },
+        {
+          "id": "进程数调整",
+          "text": "进程数调整"
+        },
+        {
+          "id": "目标文件-1",
+          "text": "目标文件"
+        },
+        {
+          "id": "内容-1",
+          "text": "内容"
+        },
+        {
+          "id": "systemd-配置调整",
+          "text": "systemd 配置调整"
+        },
+        {
+          "id": "目标文件-2",
+          "text": "目标文件"
+        },
+        {
+          "id": "内容-2",
+          "text": "内容"
+        }
+      ]
+    },
+    "2024-03-12-nginx-in-ubuntu": {
+      "htmlSha256": "46be42bd0c509ad45851cb7919cd44b2053d5832c2943146da2926ba5241b7f0",
+      "headings": [
+        {
+          "id": "利用-apk-依赖管理工具",
+          "text": "利用 apk 依赖管理工具"
+        },
+        {
+          "id": "事前准备",
+          "text": "事前准备"
+        },
+        {
+          "id": "添加新仓库",
+          "text": "添加新仓库"
+        },
+        {
+          "id": "安装-nginx",
+          "text": "安装 nginx"
+        },
+        {
+          "id": "手动编译安装",
+          "text": "手动编译安装"
+        },
+        {
+          "id": "准备目录",
+          "text": "准备目录"
+        },
+        {
+          "id": "pcre2",
+          "text": "pcre2"
+        },
+        {
+          "id": "zlib",
+          "text": "zlib"
+        },
+        {
+          "id": "openssl",
+          "text": "openssl"
+        },
+        {
+          "id": "正式构建-nginx",
+          "text": "正式构建 nginx"
+        },
+        {
+          "id": "设为-systemd-服务",
+          "text": "设为 systemd 服务"
+        }
+      ]
+    },
+    "2024-11-11-go-draw-image-tips": {
+      "htmlSha256": "d28d562aba2b217bf55cf799b176b04a306145f5cafe94ba1c92490ae168eda2",
+      "headings": [
+        {
+          "id": "缩小并旋转图片",
+          "text": "缩小并旋转图片"
+        },
+        {
+          "id": "给图片增加圆角遮罩",
+          "text": "给图片增加圆角遮罩"
+        },
+        {
+          "id": "给图片加上外边框渐变阴影",
+          "text": "给图片加上外边框渐变阴影"
+        },
+        {
+          "id": "进阶",
+          "text": "进阶"
+        },
+        {
+          "id": "对一张图改圆角加阴影再旋转",
+          "text": "对一张图改圆角，加阴影，再旋转"
+        }
+      ]
+    },
+    "2024-11-11-go-draw-rounded-rectangle": {
+      "htmlSha256": "e7ddd95bd9b931adbd4b3584b6ffc2dd3b8075ee493712c57db1cd4625194d5a",
+      "headings": [
+        {
+          "id": "drawroundedrectangle",
+          "text": "DrawRoundedRectangle"
+        },
+        {
+          "id": "路径处理法",
+          "text": "路径处理法"
+        }
+      ]
+    },
+    "2024-12-02-ffmpeg-mix-pictures-to-video": {
+      "htmlSha256": "ec670d7c722cea7fb7510709758722703f32e3819e2a9fb1e0ae16b1b9dde279",
+      "headings": [
+        {
+          "id": "用例其一有几张近似169的图片合成视频",
+          "text": "用例其一：有几张近似16:9的图片合成视频"
+        },
+        {
+          "id": "首先是合成出视频",
+          "text": "首先是合成出视频"
+        },
+        {
+          "id": "接下来是加入转场",
+          "text": "接下来是加入转场"
+        },
+        {
+          "id": "图片缩放后会有黑边用原图高斯模糊作为背景",
+          "text": "图片缩放后会有黑边，用原图高斯模糊作为背景"
+        },
+        {
+          "id": "最后添加一个循环播放的音频",
+          "text": "最后添加一个循环播放的音频"
+        },
+        {
+          "id": "用例其一抽帧",
+          "text": "用例其一：抽帧"
+        },
+        {
+          "id": "抽取首帧",
+          "text": "抽取首帧"
+        },
+        {
+          "id": "抽取自定义区间",
+          "text": "抽取自定义区间"
+        },
+        {
+          "id": "抽取尾帧",
+          "text": "抽取尾帧"
+        },
+        {
+          "id": "过滤黑帧",
+          "text": "过滤黑帧"
+        },
+        {
+          "id": "抽取关键帧",
+          "text": "抽取关键帧"
+        },
+        {
+          "id": "均匀抽帧",
+          "text": "均匀抽帧"
+        },
+        {
+          "id": "转场抽帧",
+          "text": "转场抽帧"
+        }
+      ]
+    },
+    "2025-12-01-high-concurrency-overselling-issue": {
+      "htmlSha256": "b49f8837f301e54eb7998226d38899d9ddceaca2509b2da2577392f49de374a4",
+      "headings": [
+        {
+          "id": "核心矛盾为什么超卖难解决",
+          "text": "核心矛盾：为什么超卖难解决？"
+        },
+        {
+          "id": "1-数据库无符号字段超卖的最后防线",
+          "text": "1: 数据库无符号字段——超卖的“最后防线”"
+        },
+        {
+          "id": "技术原理",
+          "text": "技术原理"
+        },
+        {
+          "id": "要点",
+          "text": "要点"
+        },
+        {
+          "id": "适用场景",
+          "text": "适用场景"
+        },
+        {
+          "id": "2-悲观锁强一致性的性能杀手",
+          "text": "2: 悲观锁——强一致性的性能杀手"
+        },
+        {
+          "id": "技术原理-1",
+          "text": "技术原理"
+        },
+        {
+          "id": "要点-1",
+          "text": "要点"
+        },
+        {
+          "id": "适用场景-1",
+          "text": "适用场景"
+        },
+        {
+          "id": "3-乐观锁cas中低并发的平衡之选",
+          "text": "3: 乐观锁（CAS）——中低并发的“平衡之选”"
+        },
+        {
+          "id": "技术原理-2",
+          "text": "技术原理"
+        },
+        {
+          "id": "要点-2",
+          "text": "要点"
+        },
+        {
+          "id": "适用场景-2",
+          "text": "适用场景"
+        },
+        {
+          "id": "4-redis队列瞬时高流量的削峰处理",
+          "text": "4: Redis队列——瞬时高流量的削峰处理"
+        },
+        {
+          "id": "技术原理-3",
+          "text": "技术原理"
+        },
+        {
+          "id": "预热阶段",
+          "text": "预热阶段"
+        },
+        {
+          "id": "下单阶段",
+          "text": "下单阶段"
+        },
+        {
+          "id": "要点-3",
+          "text": "要点"
+        },
+        {
+          "id": "适用场景-3",
+          "text": "适用场景"
+        },
+        {
+          "id": "5-redis-lua脚本原子性的终极保障",
+          "text": "5: Redis Lua脚本——原子性的“终极保障”"
+        },
+        {
+          "id": "技术原理-4",
+          "text": "技术原理"
+        },
+        {
+          "id": "要点-4",
+          "text": "要点"
+        },
+        {
+          "id": "适用场景-4",
+          "text": "适用场景"
+        },
+        {
+          "id": "6-分布式锁跨服务的一致屏障",
+          "text": "6: 分布式锁——跨服务的“一致屏障”"
+        },
+        {
+          "id": "技术原理-5",
+          "text": "技术原理"
+        },
+        {
+          "id": "要点-5",
+          "text": "要点"
+        },
+        {
+          "id": "适用场景-5",
+          "text": "适用场景"
+        },
+        {
+          "id": "7-分段锁解决高热key的分治手段",
+          "text": "7: 分段锁——解决高热Key的分治手段"
+        },
+        {
+          "id": "技术原理-6",
+          "text": "技术原理"
+        },
+        {
+          "id": "分片初始化",
+          "text": "分片初始化"
+        },
+        {
+          "id": "选分片下单",
+          "text": "选分片下单"
+        },
+        {
+          "id": "要点-6",
+          "text": "要点"
+        },
+        {
+          "id": "适用场景-6",
+          "text": "适用场景"
+        }
+      ]
+    }
+  }
+}

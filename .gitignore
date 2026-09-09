@@ -38,3 +38,10 @@ themes
 resources
 
 assets/jsconfig.json
+
+# Isolated Astro migration; legacy Hugo public/ remains untouched.
+site/.astro/
+site/dist/
+site/playwright-report/
+site/test-results/
+site/.cache/
