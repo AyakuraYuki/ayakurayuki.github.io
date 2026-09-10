@@ -10,7 +10,7 @@
 ## 实现与维护约定
 - 日常文章源继续为根目录 `content/post/<bundle>/index.zh-cn.md` 及随文附件。兼容 YAML / TOML；不得为了适配新框架批量改写源文件或重编号。
 - Astro 应用只位于 `site/`，静态输出为 `site/dist/`。不得把 Hugo 的根目录 `public/` 当作新站静态输入。
-- 保留原 Hugo 配置、工作流、CNAME 与主题引用。未经单独确认，不合并迁移到发布分支，不修改默认分支、域名、Pages 设置，不触发生产发布。
+- 用户于 2026-09-10 确认清理不再使用的 Hugo Stack 主题。当前 Astro 不依赖主题；已移除 themes/hugo-theme-stack 子模块与 .gitmodules，保留旧 Hugo 配置、工作流及 CNAME 作历史参考。旧 Hugo 构建必须先恢复匹配主题；当前发布只用 blog-release.yml。未经单独确认，不合并到发布分支、不修改默认分支/域名/Pages 设置、不触发生产发布。
 - 不使用第三方博客主题或前端 / 动效 Skill；保留原生 TypeScript 和既有三维实现方向。阅读层与三维场景分离。
 - RhineLabUI 的上游版本与文件校验值由 `migration/rhine-upstream.lock.json` 记录。普通博客构建不得拉取上游 main 或依赖另一个正在变化的工作目录。
 - 已接入固定版本运行时、模型、声音与字体；PWA 仍未启用。vendor/rhine 保持原样，博客适配在 site/src/archive，派生文件差异由 migration/rhine-adapter.patch 校验。模型资源及源脚本一起锁定，不将第三方资产自动视为 MIT。
@@ -19,3 +19,9 @@
 - 修改后在 `site/` 运行 `npm run verify`。浏览器验证为 `npm run test:browser`；本地可设置 `PLAYWRIGHT_CHANNEL=chrome` 使用系统 Chrome 的独立无头实例。不得把 Chromium 手机尺寸模拟说成 iPhone / Safari 实机验证。
 - `check:baseline` / `verify:baseline` 保留首次切换时的历史源文件审计，不阻止日常文章修订。普通 verify 检查当前内容语义与输出；不能让构建自动重建旧基线掩盖变化。
 - 首次发布前已在 Edge 核对 Pages 使用 GitHub Actions、域名为 `blog.ayakurayuki.cc`、HTTPS 已开启，`github-pages` 环境允许 `hugo` / `master`。这是当时的配置快照，不是部署成功证明；执行新发布前仍核对实际状态。操作见 RELEASE.md。
+
+## 删除审批约束
+
+- 用户明确要求：每一条删除命令都须单独审批。执行前列明命令目标与影响，逐条请求，不合并多个删除命令，不使用脚本、通配批量清理、构建清理或测试清理绕过。
+- `git rm`、`rm`、删除本地配置节、移除 Git 元数据均适用；某条被拒绝/执行失败后，变更参数重试也须重新审批。非删除的备份与检查不构成删除授权。
+- 本次保留 `.git/modules/themes/hugo-theme-stack` 及 `site/.cache/theme-removal-2026-09-10/` 的完整备份，不自行进一步清除。详见 `migration/THEME-REMOVAL.md`。
