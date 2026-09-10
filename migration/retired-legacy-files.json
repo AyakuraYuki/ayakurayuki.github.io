@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-10",
+  "historicalBranch": "hugo",
+  "historicalCommit": "10a1baf436663ca4915e88da495fbc517cdbc9ed",
+  "cleanupBase": "55cfce48be87f7f129e337929dd6c94a07d055a0",
+  "policy": "Original content-baseline.json remains immutable. Listed files are expected absent in the new blog branch; a changed checksum or reappearing retired file still fails the audit.",
+  "files": [
+    {
+      "path": ".github/workflows/hugo.yaml",
+      "bytes": 2095,
+      "sha256": "6b917a44654804b7a826e7fba7cfcabdc94a27df1786a43fa3f2d7d37dada122",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "hugo.yaml",
+      "bytes": 5308,
+      "sha256": "11164efb6959634ac0d78b21479be50e5c4ea15dbd0f26e06f91aa72479b3672",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "archetypes/default.md",
+      "bytes": 102,
+      "sha256": "951f4610584e8066baa7981f4c73db0e01645429a3c787bf63b91c61191c0cc0",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "layouts/partials/aplayer.html",
+      "bytes": 207,
+      "sha256": "074ad0cbba14170dec113eab2a0ae2b19e33285367f94a5a13b2326e387616c3",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "layouts/partials/head/custom.html",
+      "bytes": 401,
+      "sha256": "56e1cfa5b22003ca9b9f26203b7f76ab5db3ddbc8961d62d096226915f7071df",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "layouts/partials/footer/custom.html",
+      "bytes": 321,
+      "sha256": "a1916084cd0067a9a6449e00d9bb10f133d5e0065ec757e111e0d7f361478700",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "layouts/_markup/render-codeblock-mermaid.html",
+      "bytes": 108,
+      "sha256": "a0399cab3432e4648c239a771f9f66064648effd87817b5ff13fcb89796fb163",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "assets/css/APlayer.min.css",
+      "bytes": 15407,
+      "sha256": "8eb821afd7dd161a26d28c7fa9d3d345a11d2ad6a5e2179ef395add008c5124a",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "data/external.yaml",
+      "bytes": 1141,
+      "sha256": "5e46da0c80884c141b04895710dd7f18b1118b1740e469dcf167831d23ab2dfd",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "robots.txt",
+      "bytes": 665,
+      "sha256": "5f1cb9c4ac70a7321702a9296b1b25a1e066f0671c4c7c14e982058651c73c12",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": "simple-instruction.txt",
+      "bytes": 441,
+      "sha256": "0ef58102f748095f35313877099034cc0c4eabe02f9b75783d48748e89b66f89",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": ".hugo_build.lock",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "bytes": 125,
+      "sha256": "8fc82ff9867a682ca786f411eafc7d7e4ab37b6c466409637231b80c1ca8541d",
+      "reason": "Unused Hugo/Stack configuration, template, integration or root-only automation; individually approved removal."
+    },
+    {
+      "path": ".gitmodules",
+      "bytes": 123,
+      "sha256": "28b8c589b0049ac8eaaf988079d4e6080f41df62c27a81d59565531b9cc40a0f",
+      "reason": "Theme submodule removal approved in the preceding task; see THEME-REMOVAL.md."
+    }
+  ]
+}

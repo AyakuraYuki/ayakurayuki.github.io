@@ -1,29 +1,12 @@
 import { readFile } from "node:fs/promises";
-import { createHash } from "node:crypto";
+import { auditBaseline } from "./baseline-audit.mjs";
 const root = new URL("../../", import.meta.url);
-const manifest = JSON.parse(
-  await readFile(new URL("migration/content-baseline.json", root), "utf8"),
-);
-const failures = [];
-for (const entry of manifest.files) {
-  try {
-    const bytes = await readFile(new URL(entry.path, root));
-    if (
-      bytes.length !== entry.bytes ||
-      createHash("sha256").update(bytes).digest("hex") !== entry.sha256
-    )
-      failures.push(entry.path);
-  } catch {
-    failures.push(`${entry.path} (missing)`);
-  }
-}
-if (failures.length) {
-  console.error(
-    "Migration baseline changed. Review content sync explicitly; never auto-refresh this manifest.\n" +
-      failures.join("\n"),
-  );
+const original = JSON.parse(await readFile(new URL("migration/content-baseline.json", root), "utf8"));
+const retired = JSON.parse(await readFile(new URL("migration/retired-legacy-files.json", root), "utf8"));
+const report = await auditBaseline(original, retired, path => readFile(new URL(path, root)));
+if (report.failures.length) {
+  console.error("Historical baseline audit failed. Review real content changes; never auto-refresh the original manifest.\n" + report.failures.join("\n"));
   process.exitCode = 1;
-} else
-  console.log(
-    `Baseline intact: ${manifest.files.length} legacy content/config/asset files; no original bytes changed.`,
-  );
+} else {
+  console.log(`Historical audit passed: ${report.preserved} original files unchanged; ${report.retiredFromBaseline} original legacy entries intentionally removed (${report.retiredTotal} documented retired files absent).`);
+}
