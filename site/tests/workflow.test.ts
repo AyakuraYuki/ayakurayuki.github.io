@@ -8,7 +8,8 @@ test("regular CI cannot deploy Pages and keeps dependencies pinned", async () =>
     await readFile("../.github/workflows/rhine-preview.yml", "utf8"),
   );
   assert.deepEqual(workflow.permissions, { contents: "read" });
-  assert.deepEqual(workflow.on.push.branches, ["codex/rhine-blog"]);
+  assert.deepEqual(workflow.on.push.branches, ["rhine-blog", "codex/rhine-blog"]);
+  assert.deepEqual(workflow.on.pull_request.branches, ["rhine-blog", "codex/rhine-blog"]);
   for (const job of Object.values(workflow.jobs) as Array<
     Record<string, any>
   >) {
@@ -41,6 +42,14 @@ test("release workflow is manual, exact-commit gated, and publish defaults to fa
   );
   assert.deepEqual(workflow.permissions, { contents: "read" });
   assert.equal(workflow.jobs.deploy.needs, "build");
+  const guard = workflow.jobs.build.steps.find((step: any) => step.run === "node scripts/release-guard.mjs --check");
+  assert.equal(guard.env.WORKFLOW_REF, "${{ github.ref }}");
+  const pack = workflow.jobs.build.steps.find((step: any) => step.uses?.startsWith("actions/upload-pages-artifact@"));
+  assert.equal(pack.if, workflow.jobs.deploy.if);
+  assert.match(workflow.jobs.deploy.if, /github\.ref == 'refs\/heads\/rhine-blog'/);
+  assert.match(workflow.jobs.deploy.if, /github\.ref == 'refs\/heads\/codex\/rhine-blog'/);
+  assert.ok(!workflow.jobs.deploy.if.includes("refs/heads/hugo"));
+  assert.match(workflow['run-name'], /github\.ref_name/);
   assert.match(workflow.jobs.deploy.if, /inputs.publish/);
   assert.match(
     workflow.jobs.deploy.if,

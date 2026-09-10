@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { buildSettings, siteIdentity } from "../build-settings.mjs";
-import { validateReleaseIntent } from "../scripts/release-guard.mjs";
+import { validateReleaseIntent, validateReleaseRef, allowedReleaseRefs } from "../scripts/release-guard.mjs";
 
 test("indexing and output directories require an explicit production build", () => {
   assert.equal(buildSettings("preview").robots, "noindex, nofollow");
@@ -61,4 +61,18 @@ test("release intent rejects moving refs and accidental publication", () => {
       confirmation: "blog.ayakurayuki.cc",
     }),
   );
+});
+
+
+test("publishing allows exactly the two new blog branches without relaxing SHA or hostname checks", () => {
+  assert.deepEqual(allowedReleaseRefs, ["refs/heads/rhine-blog", "refs/heads/codex/rhine-blog"]);
+  for (const ref of allowedReleaseRefs) {
+    assert.doesNotThrow(() => validateReleaseRef(ref, true));
+    assert.throws(() => validateReleaseIntent({ expected: "a".repeat(40), actual: "b".repeat(40), publish: true, confirmation: "blog.ayakurayuki.cc" }), /exact/);
+    assert.throws(() => validateReleaseIntent({ expected: "a".repeat(40), actual: "a".repeat(40), publish: true, confirmation: "" }), /confirmation/);
+  }
+  for (const ref of [undefined, "rhine-blog", "refs/heads/hugo", "refs/heads/master", "refs/tags/rhine-blog", "refs/heads/codex/other", "refs/heads/rhine-blog-old", "refs/pull/1/merge"]) {
+    assert.throws(() => validateReleaseRef(ref, true), /Publishing is allowed only/);
+    assert.doesNotThrow(() => validateReleaseRef(ref, false));
+  }
 });

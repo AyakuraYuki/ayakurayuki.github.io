@@ -2,9 +2,9 @@ name: Blog checks (no deployment)
 
 on:
   push:
-    branches: [codex/rhine-blog]
+    branches: [rhine-blog, codex/rhine-blog]
   pull_request:
-    branches: [hugo]
+    branches: [rhine-blog, codex/rhine-blog]
     paths:
       [
         "site/**",

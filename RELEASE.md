@@ -46,7 +46,7 @@ npm run preview:release
 
 ### 普通检查
 
-`.github/workflows/rhine-preview.yml` 的界面名称为 **Blog checks (no deployment)**。仅构建、校验并保存测试/正式两种产物，没有 Pages 写权限和部署步骤。
+`.github/workflows/rhine-preview.yml` 的界面名称为 **Blog checks (no deployment)**。push 和 pull_request 目标分支均为 `rhine-blog`、`codex/rhine-blog`，不再以只读历史 `hugo` 为目标。仅构建、校验并保存测试/正式两种产物，没有 Pages 写权限和部署步骤。
 
 托管机器没有本机GPU的能力：CI显式设置 `ARCHIVE_TEST_RENDERING=software`，运行独立的真实WebGL冒烟用例，并完整运行静态阅读/发布检查。冒烟用例在测试会话中显式选择减少动画、低分辨率、无阴影/AO/景深，核对模型确实渲染、真实数据切列和静态正文可达。只影响自动化浏览器；生产默认画质与手机默认值不变。
 
@@ -54,7 +54,9 @@ npm run preview:release
 
 ### 手动发布
 
-`.github/workflows/blog-release.yml` 只接受 `workflow_dispatch`，没有 push 自动发布。
+`.github/workflows/blog-release.yml` 只接受 `workflow_dispatch`，没有 push 自动发布。发布时在 **Use workflow from** 选择 `rhine-blog` 或 `codex/rhine-blog`，不要选择历史 `hugo` 或同名 tag。完整提交SHA必须属于该次工作流检出的提交。
+
+构建开始时校验实际 `github.ref`；只有以上两个完整分支ref允许发布。上传Pages产物与deploy任务复用相同分支限制，保持域名、SHA及默认不发布的保护。只生成构建包不受这项发布分支限制。
 
 输入：
 
@@ -93,3 +95,17 @@ npm run preview:release
 `migration/content-baseline.json` 是旧站历史快照，其中仍记录旧 `.gitmodules`。原始快照仍保留，已批准的主题及旧文件移除单独记录于 `migration/retired-legacy-files.json`。历史审计会核对退休项的原始校验值并要求其确实不存在，同时继续校验其他文件；不会伪造更新旧基线。常规 Astro 内容/输出校验不以旧主题为前提。
 
 备份、保留范围及旧版恢复依据见 `migration/THEME-REMOVAL.md`。所有后续删除仍须逐条审批；不要因为某个构建或测试命令“只是验证”就默认允许其清理已有产物。
+
+## 分支环境保护报错的处理（2026-09-10）
+
+本次已在Edge的失败运行 `34443973418` 核对：`rhine-blog` 的build成功，deploy在执行步骤前被 `github-pages` 拒绝，两条错误对应同一环境分支限制。增加 `pages: write`、变更checkout ref或修改工作流on分支不能覆盖这项远端规则。
+
+GitHub设置需与代码同步，但不由发布工作流自动修改：
+
+1. 进入 Settings → Environments → github-pages → Deployment branches and tags。
+2. 保持 **Selected branches and tags**，精确增加两个 **Branch** 规则：`rhine-blog`、`codex/rhine-blog`。不要用 `*`、`codex/*` 或同名Tag代替，不切换为允许所有分支。
+3. 保留现有其他规则、审核人、等待时间和环境名称；不借此删除保护。
+4. 核实两条规则已保存后，再选择对应分支手动Run workflow。若要使用本次更新，目标分支必须包含更新后的工作流和guard代码；不要为了同步而改写历史hugo分支。
+5. 本次任务只准备分支资格与工作流修复，不自动重试原来的生产部署。若仍有拒绝，检查该次运行的实际分支和其他保护项。
+
+远端规则与文件修改是两个独立动作；仅提交代码不表示环境白名单已经保存。以GitHub设置页的实际显示为准。
