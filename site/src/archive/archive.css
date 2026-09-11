@@ -189,6 +189,50 @@
 }
 
 /* Separate scroll and action regions: no text can sit underneath the buttons. */
-#stage[data-layout="portrait"] .detail-content { display:flex; flex-direction:column; overflow:hidden; padding-bottom:0; }
-#stage[data-layout="portrait"] .post-preview-body { flex:1; min-height:0; overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; padding-bottom:16px; }
-#stage[data-layout="portrait"] .post-actions { position:static; flex:none; z-index:auto; padding:10px 0 0; margin:0; background:#e8e5e1; }
+#stage[data-layout="portrait"] .detail-content {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+#stage[data-layout="portrait"] .post-preview-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding-bottom: 16px;
+}
+#stage[data-layout="portrait"] .post-actions {
+  position: static;
+  flex: none;
+  z-index: auto;
+  padding: 10px 0 0;
+  margin: 0;
+  background: #e8e5e1;
+}
+
+/* Keep blog-only controls legible with the upstream continuously changing theme. */
+[data-dark-surface="true"]
+  #stage
+  :is(.preview-toc a, .preview-toc button, .detail-footnote button) {
+  color: var(--theme-muted);
+}
+[data-dark-surface="true"] #stage .post-actions .read-post {
+  background: var(--theme-ink);
+  color: var(--theme-paper);
+}
+[data-dark-surface="true"] #stage[data-layout="portrait"] .post-actions {
+  background: var(--theme-paper);
+  border-color: var(--theme-line);
+}
+[data-dark-surface="true"] .archive-plain-link {
+  background: var(--theme-panel);
+  color: var(--theme-ink);
+  border-color: var(--theme-line);
+}
+#stage .super-performance-note {
+  font-size: 11px;
+  color: var(--theme-muted, #77756d);
+  line-height: 1.7;
+}

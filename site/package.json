@@ -21,7 +21,10 @@
     "build:release": "node scripts/release.mjs build",
     "verify:release": "node scripts/release.mjs verify",
     "preview:release": "node scripts/serve-dist.mjs --release --port 4331",
-    "verify:baseline": "npm run check:baseline && npm run verify"
+    "verify:baseline": "npm run check:baseline && npm run verify",
+    "postinstall": "node vendor/rhine/scripts/patch-rolling-number.mjs",
+    "predev": "node vendor/rhine/scripts/patch-rolling-number.mjs",
+    "prebuild": "node vendor/rhine/scripts/patch-rolling-number.mjs"
   },
   "dependencies": {
     "astro": "7.3.2",

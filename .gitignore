@@ -53,3 +53,7 @@ site/dist-release/
 !site/vendor/rhine/public/
 !site/vendor/rhine/public/audio/
 !site/vendor/rhine/public/audio/**
+
+# Font-shard provenance belongs to the pinned upstream snapshot, not public output.
+!site/vendor/rhine/public/fonts/
+!site/vendor/rhine/public/fonts/**

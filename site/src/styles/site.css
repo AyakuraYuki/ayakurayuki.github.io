@@ -1,17 +1,4 @@
-@font-face {
-  font-family: MiSans;
-  src: url("/fonts/MiSans-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: MiSans;
-  src: url("/fonts/MiSans-Bold.woff2") format("woff2");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import "../../vendor/rhine/src/fonts.css";
 :root {
   font-family: MiSans, "PingFang SC", "Microsoft YaHei", sans-serif;
   color: #23251f;
@@ -1011,4 +998,50 @@ img {
     margin: 0 0 26px 20px;
     font-size: 10px;
   }
+}
+
+/* Reader shares the archive preference without loading Three.js or its scene. */
+:root[data-reader-theme="dark"] {
+  color-scheme: dark;
+  --paper: #11181b;
+  --ink: #e0e3dc;
+  --muted: #a6b0b1;
+  --line: #536166;
+  --accent: #c5a16b;
+  background: var(--paper);
+  color: var(--ink);
+}
+[data-reader-theme="dark"]
+  :is(
+    .category-filter button[aria-pressed="true"],
+    .category-filter button:hover,
+    .copy-code,
+    .prose th
+  ) {
+  background: #2a363b;
+  color: var(--ink);
+}
+[data-reader-theme="dark"] .prose blockquote {
+  background: #202a2f;
+  color: var(--muted);
+  border-color: var(--accent);
+}
+[data-reader-theme="dark"] .prose :not(pre) > code {
+  background: #2a363b;
+}
+[data-reader-theme="dark"] .prose pre {
+  background: #202a2f !important;
+  border-color: var(--line);
+}
+[data-reader-theme="dark"] .astro-code,
+[data-reader-theme="dark"] .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+[data-reader-theme="dark"]
+  :is(.row-no, .row-tags, .article-tags, .article-summary) {
+  color: var(--muted);
+}
+[data-reader-theme="dark"] :is(.prose a, .row-body h2 a:hover, .toc a:hover) {
+  color: var(--accent);
 }

@@ -9,6 +9,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
+    <script is:inline>
+      try { document.documentElement.dataset.readerTheme = JSON.parse(localStorage.getItem('rhine-blog:settings:v1') || '{}').colorTheme === 'dark' ? 'dark' : 'light'; } catch {}
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title ? `${title} — Ayakura Yuki 的小窝` : 'Ayakura Yuki 的小窝 · 个人档案'}</title>
     <meta name="description" content={description} />

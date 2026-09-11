@@ -96,7 +96,7 @@ test("single article lane moves to adjacent occurrences rather than inventing it
     cell = next;
   }
 });
-test("visible pool stays 288 unique cells for arbitrarily large content arrays", () => {
+test("legacy lattice helpers retain 288 unique slots; content identity remains independent", () => {
   for (const center of [
     { lane: 0, row: 12 },
     { lane: -411.1, row: 6000.5 },

@@ -1,5 +1,6 @@
-import { disposeObject } from "./dispose";
 import * as THREE from "three";
+import { disposeThreeTree } from "../../vendor/rhine/src/three-resources";
+import { themeEnvironment } from "../../vendor/rhine/src/theme-material";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { createArchiveLighting } from "../../vendor/rhine/src/archive-lighting";
 import { damp } from "../../vendor/rhine/src/motion";
@@ -27,11 +28,35 @@ const PARTS = [
 
 type ModelSource = { model: THREE.Group; dispose: () => void; setClarity?: (value: number) => void };
 export class ModelViewer {
+  private themeAmount = 0;
+  setTheme(value: number) { this.themeAmount = value; }
   readonly root: HTMLElement;
   private canvasHost: HTMLElement;
   private renderer: THREE.WebGLRenderer;
   private pipeline: ReturnType<typeof createViewerPipeline>;
   private quality = normalizeQuality(undefined);
+  private superPerformance = false;
+  private disposed = false;
+  dispose() {
+    if (this.disposed) return;
+    this.disposed = true;
+    this.transitionId++;
+    this.transitions.forEach(animation => animation.cancel());
+    this.request++;
+    if (this.isOpen) this.finishClose();
+    this.controls.dispose();
+    disposeThreeTree(this.scene);
+    for (const pass of this.pipeline.composer.passes) pass.dispose();
+    this.pipeline.composer.dispose();
+    this.renderer.dispose();
+    this.renderer.forceContextLoss();
+    this.root.remove();
+  }
+  setSuperPerformance(enabled: boolean) {
+    if (this.superPerformance === enabled) return;
+    this.superPerformance = enabled;
+    this.resize();
+  }
   private appliedQuality = "";
   private scene = new THREE.Scene();
   private camera = new THREE.PerspectiveCamera(34, 16 / 9, 0.3, 120);
@@ -517,6 +542,7 @@ export class ModelViewer {
       this.pipeline.composer,
       this.canvasHost,
       this.quality,
+      this.superPerformance,
     );
     this.camera.aspect = width / height;
     this.camera.updateProjectionMatrix();
@@ -531,6 +557,8 @@ export class ModelViewer {
 
   update(time: number) {
     if (!this.isOpen) return;
+    themeEnvironment(this.scene, this.renderer, this.themeAmount);
+    this.source?.model.traverse(child => { if (child.userData.themeAmount) child.userData.themeAmount.value = this.themeAmount; });
     const dt = Math.min(this.lastTime ? time - this.lastTime : 1 / 60, 0.05);
     this.lastTime = time;
     if (this.source) {
@@ -595,16 +623,5 @@ export class ModelViewer {
         meshes: group.children.length,
       })),
     });
-  }
-  dispose() {
-    this.transitionId++;
-    this.request++;
-    this.transitions.forEach(animation => animation.cancel());
-    this.isOpen = false;
-    this.source?.dispose(); this.source = undefined;
-    this.controls.dispose();
-    this.pipeline.composer.passes.forEach(pass => pass.dispose());
-    this.pipeline.composer.dispose(); disposeObject(this.scene);
-    this.renderer.dispose(); this.renderer.forceContextLoss(); this.root.remove();
   }
 }

@@ -1,3 +1,8 @@
+import { StartupGate } from "../../vendor/rhine/src/startup";
+import "../../vendor/rhine/src/startup.css";
+import { superPerformanceQuality } from "../../vendor/rhine/src/wallpaper-quality";
+import { paintTheme, themeSettingsMarkup } from "../../vendor/rhine/src/theme-ui";
+import { createRollingClock } from "../../vendor/rhine/src/rolling-clock";
 import { InspectionOverlay } from "../../vendor/rhine/src/inspection-overlay";
 import { DocumentDecryption } from "../../vendor/rhine/src/document-decryption";
 import "../../vendor/rhine/src/document-decryption.css";
@@ -9,7 +14,7 @@ import "@kitlangton/rolling-number/styles.css";
 import "../../vendor/rhine/src/style.css";
 import "../../vendor/rhine/src/quality-settings.css";
 import "../../vendor/rhine/src/responsive.css";
-import { viewportLayout } from "../../vendor/rhine/src/viewport-layout";
+import { viewportLayout, openingLayout } from "../../vendor/rhine/src/viewport-layout";
 import { assetUrl } from "../../vendor/rhine/src/asset-url";
 import { tickWindow } from "./catalog";
 import { restoreSession, readStorage, SESSION_KEY, SAVED_KEY, SETTINGS_KEY } from "./state";
@@ -61,7 +66,7 @@ $("#stage").innerHTML = `
     <div class="scan"><svg viewBox="0 0 1920 1080" aria-hidden="true"><g fill="none" stroke="#080a08" stroke-width="2" stroke-linecap="round"><path/><path stroke="#fff"/><path/><path/><path/><path/><circle class="orbit-dot" r="8" fill="#ed821b" stroke="none"/><circle class="orbit-dot" r="8" fill="#ed821b" stroke="none"/><circle class="scan-core" cx="960" cy="540" r="5" fill="#080a08" stroke="none"/></g></svg><span>PERMISSION AUTHORIZED</span></div>
     <div class="welcome"><div class="welcome-panel"></div><div class="welcome-heading">WELCOME TO</div><div class="welcome-company"><strong>RHINE LAB.LLC.</strong><strong class="welcome-highlight" aria-hidden="true">RHINE LAB.LLC.</strong></div><div class="welcome-database">INTERNAL DATABASE</div><div class="welcome-logo">${logo}</div></div>
   </section>
-  <div id="cinema-caption" class="cinema-caption"></div>
+
   <svg id="inspection-marks" viewBox="0 0 1920 1080" aria-hidden="true"><path id="inspection-lines"/><g id="inspection-corners"></g><circle id="inspection-point" r="1.8"/></svg>
   <div id="inspection-text" aria-hidden="true">CONFIDENTIALITY:<strong>GENERAL BUSINESS USE</strong></div>
   <section id="archive-ui" class="archive-ui" aria-label="档案选择">
@@ -79,7 +84,7 @@ $("#stage").innerHTML = `
   </section>
   <div class="powered">POWERED BY <b>RHINE LAB</b><i></i></div>
   <footer class="system-footer"><span><i class="status-light"></i> SESSION AUTHORIZED</span><span>AYAKURA YUKI <i>／</i> <span id="clock">00:00:00</span></span><a class="plain-index" href="/posts/">普通文章索引 ↗</a></footer>
-  <div id="pwa-update-notice" class="pwa-update-notice" role="status" hidden><span>新版本已就绪</span><button data-pwa-action="update">更新并重启 ↻</button></div>
+
   <div id="modal-root"></div><div id="toast" class="toast" role="status"></div>
   <div id="loading" class="loading"><div class="loading-mark">${logo}</div><span>CONNECTING TO INTERNAL DATABASE</span><i></i></div>
 `;
@@ -139,7 +144,7 @@ function readLocal<T>(key: string, fallback: T): T {
 }
 const savedValue = readLocal<unknown>(SAVED_KEY, []);
 const saved = new Set<string>((Array.isArray(savedValue) ? savedValue : []).filter(id => typeof id === "string" && records.some(r => r.id === id && !r.empty)));
-const storedPrefs = readLocal<Partial<{ sound: boolean; music: boolean; soundVolume: number; musicVolume: number; reduced: boolean; quality: boolean; rendering: RenderQuality }>>(SETTINGS_KEY, {});
+const storedPrefs = readLocal<Partial<{ sound: boolean; music: boolean; soundVolume: number; musicVolume: number; reduced: boolean; quality: boolean; rendering: RenderQuality; superPerformance: boolean; colorTheme: "light" | "dark" }>>(SETTINGS_KEY, {});
 const prefs = {
   sound: false,
   music: false,
@@ -147,9 +152,13 @@ const prefs = {
   musicVolume: .5,
   reduced: matchMedia("(prefers-reduced-motion: reduce)").matches,
   quality: true,
+  superPerformance: false,
   ...storedPrefs,
   rendering: normalizeQuality(storedPrefs.rendering, storedPrefs.quality !== false),
+  colorTheme: storedPrefs.colorTheme === "dark" ? "dark" : "light",
 };
+paintTheme(prefs.colorTheme === "dark" ? 1 : 0);
+let started = false;
 const rollingMotion = {
   duration: 460,
   motionBlur: true,
@@ -200,6 +209,16 @@ const selectedCode = createRollingNumber($("#selected-code"), codeOptions);
 const hoverCode = createRollingNumber($("#hover-code"), codeOptions);
 const audio = new TerminalAudio();
 audio.configure(prefs);
+const updateFooterClock = createRollingClock($("#clock"));
+const loading = $("#loading");
+$("#viewport").append(loading);
+$("#stage").inert = true;
+$(".mobile-entry").inert = true;
+const bypassEntry = restored.restored || requestedIndex >= 0 || reviewParams.has("time") || reviewParams.has("scene") || reviewParams.get("review") === "1";
+const entry = !bypassEntry && (prefs.sound || prefs.music) ? new StartupGate({
+  root: loading, unlock: () => audio.unlock(), cancel: () => audio.cancelEntry(), start: silent => completeStartup(silent),
+}) : undefined;
+if (entry) { audio.holdForEntry(); if (prefs.music) void audio.prepareMusic().catch(() => {}); }
 let audioPreview = false, audioPreviewRequest = 0;
 let scene: ArchiveScene;
 let viewer: ModelViewer | undefined;
@@ -217,6 +236,7 @@ function saveAudioPrefs() {
   } catch {}
   audio.configure(prefs);
 }
+function effectiveRenderQuality() { return prefs.superPerformance ? superPerformanceQuality : prefs.rendering; }
 function savePrefs() {
   saveAudioPrefs();
   if (prefs.reduced) {
@@ -227,8 +247,12 @@ function savePrefs() {
     bookmarkFeedback?.cancel();
   }
   scene?.setReduced(prefs.reduced);
-  scene?.setQuality(prefs.rendering);
-  viewer?.setQuality(prefs.rendering);
+  scene?.setTheme(prefs.colorTheme === "dark", prefs.reduced || !started);
+  document.querySelectorAll<HTMLElement>("[data-color-theme]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.colorTheme === prefs.colorTheme)));
+  scene?.setSuperPerformance(prefs.superPerformance);
+  viewer?.setSuperPerformance(prefs.superPerformance);
+  scene?.setQuality(effectiveRenderQuality());
+  viewer?.setQuality(effectiveRenderQuality());
   syncQualityUI(prefs.rendering);
   updateQualitySummary();
   fileCounter.update({ animated: !prefs.reduced && mode === "archive" });
@@ -243,7 +267,10 @@ function fit() {
   const stage = $("#stage");
   const viewport = $("#viewport");
   const coarse = matchMedia("(pointer: coarse)").matches;
-  const { width, height, scale, kind } = viewportLayout(viewport.clientWidth, viewport.clientHeight, coarse, mode === "boot");
+  const reference = reviewParams.has("time") || reviewParams.get("review") === "1";
+  const { width, height, scale, kind } = mode === "boot" && !reference
+    ? openingLayout(viewport.clientWidth, viewport.clientHeight)
+    : viewportLayout(viewport.clientWidth, viewport.clientHeight, coarse, mode === "boot");
   stage.style.width = `${width}px`;
   stage.style.height = `${height}px`;
   stage.style.transform = `translate(-50%, -50%) scale(${scale})`;
@@ -251,6 +278,10 @@ function fit() {
   stage.dataset.touch = String(coarse);
   viewport.dataset.mobileBoot = String(mode === "boot" && (coarse || viewport.clientWidth < 1100));
   stage.style.setProperty("--stage-scale", String(scale));
+  stage.style.setProperty("--opening-width", `${width}px`);
+  stage.style.setProperty("--opening-height", `${height}px`);
+  stage.style.setProperty("--opening-scan-scale", String(Math.min(1, width / 1920)));
+  stage.dataset.openingPortrait = String(width < height);
   // The software keyboard resizes dialogs without recomposing the 3D scene.
   const visible = window.visualViewport;
   const stageTop = (viewport.clientHeight - height * scale) / 2;
@@ -331,7 +362,7 @@ function setMode(next: Mode) {
     bootSequence.reset();
     $(".file-title").firstChild!.textContent = "FILE NUMBER: ";
     $("#stage").dataset.boot = "done";
-    $("#cinema-caption").textContent = "";
+
   }
   if (next === "detail" && previousMode !== "detail") {
     renderDetail();
@@ -606,8 +637,11 @@ function motionSettingsMarkup() {
     ? `当前已减少动态效果。${matchMedia("(prefers-reduced-motion: reduce)").matches ? "系统也请求减少动画，可仅为本站启用完整动效。" : "关闭上方开关可恢复完整动效。"}`
     : "当前使用完整动效。"}</p>${prefs.reduced ? '<button data-action="enable-motion">启用完整动效并重播 ↻</button>' : ""}</div>`;
 }
+function performanceMarkup() {
+ return `<label><div><strong>SUPER PERFORMANCE</strong><span>超级性能模式：降低三维负载，保留动态效果</span></div><input type="checkbox" data-pref="superPerformance" ${prefs.superPerformance ? "checked" : ""}/><i class="toggle"></i></label>`;
+}
 function settingsMarkup() {
-  return `<h2>SYSTEM SETTINGS<small>终端偏好设置</small></h2><p class="settings-intro">AYAKURA YUKI <span>·</span> SESSION AUTHORIZED</p><div class="settings-list">${audioSettingsMarkup(prefs)}<label><div><strong>REDUCED MOTION</strong><span>跳过开机动画，简化选档、镜头和文字动效</span></div><input type="checkbox" data-pref="reduced" ${prefs.reduced ? "checked" : ""}/><i class="toggle"></i></label></div>${motionSettingsMarkup()}${qualityMarkup(prefs.rendering)}<div class="settings-shortcuts"><span>KEYBOARD CONTROLS</span><p><kbd>←</kbd><kbd>→</kbd> 切列 <kbd>↑</kbd><kbd>↓</kbd> 选档 <kbd>ENTER</kbd> 读取 <kbd>/</kbd> 检索 <kbd>ESC</kbd> 返回</p></div><div class="settings-bottom">${document.fullscreenEnabled ? '<button data-action="fullscreen">FULLSCREEN <span>↗</span></button>' : ''}<button data-action="restart">REINITIALIZE SYSTEM <span>↻</span></button></div><div class="modal-bottom"><span>ANALYSIS OS / 1.0 · 使用 MiSans 字体（小米） <a href="${assetUrl("fonts/MiSans-license.pdf")}" target="_blank" rel="noopener">字体许可</a></span><span>POWERED BY RHINE LAB</span></div>`;
+  return `<h2>SYSTEM SETTINGS<small>终端偏好设置</small></h2><p class="settings-intro">AYAKURA YUKI <span>·</span> SESSION AUTHORIZED</p><div class="settings-list">${audioSettingsMarkup(prefs)}${performanceMarkup()}<label><div><strong>REDUCED MOTION</strong><span>跳过开机动画，简化选档、镜头和文字动效</span></div><input type="checkbox" data-pref="reduced" ${prefs.reduced ? "checked" : ""}/><i class="toggle"></i></label></div>${motionSettingsMarkup()}${themeSettingsMarkup(prefs.colorTheme === "dark")}${qualityMarkup(prefs.rendering)}<div class="settings-shortcuts"><span>KEYBOARD CONTROLS</span><p><kbd>←</kbd><kbd>→</kbd> 切列 <kbd>↑</kbd><kbd>↓</kbd> 选档 <kbd>ENTER</kbd> 读取 <kbd>/</kbd> 检索 <kbd>ESC</kbd> 返回</p></div><div class="settings-bottom">${document.fullscreenEnabled ? '<button data-action="fullscreen">FULLSCREEN <span>↗</span></button>' : ''}<button data-action="restart">REINITIALIZE SYSTEM <span>↻</span></button></div><div class="modal-bottom"><span>ANALYSIS OS / 1.0 · 使用 MiSans 字体（小米） <a href="${assetUrl("fonts/MiSans-license.pdf")}" target="_blank" rel="noopener">字体许可</a></span><span>POWERED BY RHINE LAB</span></div>`;
 }
 
 onDocument("input", (e) => {
@@ -639,13 +673,16 @@ onDocument("change", (e) => {
   }
   if (el.dataset.pref) {
     const key = el.dataset.pref;
-    if (key === "sound" || key === "music" || key === "reduced" || key === "quality") prefs[key] = el.checked;
+    if (key === "sound" || key === "music" || key === "reduced" || key === "quality" || key === "superPerformance") prefs[key] = el.checked;
     if (key === "sound" || key === "music") saveAudioPrefs(); else savePrefs();
     if (key === "reduced") $("#motion-preference-note").outerHTML = motionSettingsMarkup();
     audio.play("confirm");
   }
 });
 onDocument("click", (e) => {
+  if (!started) return;
+  const themeButton = (e.target as Element).closest<HTMLElement>("[data-color-theme]");
+  if (themeButton) { prefs.colorTheme = themeButton.dataset.colorTheme === "dark" ? "dark" : "light"; savePrefs(); return; }
   if (modalClosing) return;
   const el = (e.target as Element).closest<HTMLElement>("button");
   if (!el) return;
@@ -699,7 +736,9 @@ onDocument("click", (e) => {
     el.focus({ preventScroll: true });
     viewer ??= new ModelViewer($("#stage"), () => { audio.setScene(mode); audio.play("page-close"); }, (sound) => audio.play(sound === "tick" ? "ui-tick" : sound));
     audio.setScene("viewer");
-    viewer.setQuality(prefs.rendering);
+    viewer.setQuality(effectiveRenderQuality());
+    viewer.setSuperPerformance(prefs.superPerformance);
+    viewer.setTheme(scene.themeAmount);
     scene.finishDecryption();
     viewer.open(
       records[selected].code,
@@ -742,6 +781,7 @@ onDocument("click", (e) => {
   }
 });
 onDocument("keydown", (e) => {
+  if (!started) return;
   if (viewer?.isOpen) return;
   if (modalClosing) {
     e.preventDefault();
@@ -824,35 +864,20 @@ function bootFrame(t: number) {
   audio.updateBoot(t, frozenTime !== null);
   const motion = bootSequence.update(t);
   let step: string = motion.step;
-  let caption =
-    motion.step === "auth"
-      ? t < 9.52
-        ? "身份信息确认：JOYCE MOORE"
-        : t < 11.84
-          ? "请求已接收"
-          : "开始处理"
-      : motion.step === "scan"
-        ? "权限验证通过"
-        : motion.step === "welcome"
-          ? "欢迎访问莱茵生命内部资料档案"
-          : "";
   if (t >= 22) {
     step = "array";
-    caption = "选择档案";
   }
   if (t >= 25.68) {
     step = "select";
-    caption = "编号：X-001";
   }
   if (t >= 28.3) {
     step = "inspect";
-    caption = t >= 29.3 ? "保密级别：商业区" : "编号：X-001";
   }
   if (step !== lastStep) {
     $("#stage").dataset.boot = step;
     lastStep = step;
   }
-  $("#cinema-caption").textContent = caption;
+
   $(".file-title").firstChild!.textContent =
     step === "array"
       ? "SELECTING FILES...".slice(0, Math.max(0, Math.floor((t - 21.94) * 18)))
@@ -874,6 +899,7 @@ function bootFrame(t: number) {
 
 const inspectionOverlay = new InspectionOverlay();
 const documentDecryption = new DocumentDecryption();
+lifetime.listen(document.fonts, "loadingdone", () => { documentDecryption.refresh(); updateSelection(); });
 
 let lastTime = 0,
   frameCount = 0,
@@ -883,6 +909,8 @@ function frame(ms: number) {
   if (paused || lifetime.disposed) return;
   if (document.hidden) { animationFrame = lifetime.frame(frame); return; }
   const time = ms / 1000;
+  paintTheme(scene?.themeAmount ?? (prefs.colorTheme === "dark" ? 1 : 0));
+  viewer?.setTheme(scene?.themeAmount ?? 0);
   const cinema =
     mode === "boot" && ready
       ? bootFrame(frozenTime ?? time - bootStart)
@@ -906,7 +934,7 @@ function frame(ms: number) {
     (x, y) => scene.projectCard(x, y), Boolean(cinema));
   if (Math.floor(time) !== lastTime) {
     lastTime = Math.floor(time);
-    $("#clock").textContent = new Date().toLocaleTimeString("en-GB");
+    updateFooterClock(new Date(), !prefs.reduced);
   }
   frameCount++;
   if (ms - frameStart > 1000) {
@@ -921,10 +949,13 @@ function frame(ms: number) {
 async function start() {
   try {
     scene = new ArchiveScene($("#three-scene"));
+    scene.setTheme(prefs.colorTheme === "dark", true);
     await Promise.all([
       scene.load(),
-      document.fonts.load("400 20px MiSans"),
-      document.fonts.load("700 20px MiSans"),
+      document.fonts.load("300 20px MiSans", "ACCESS WELCOME TO INTERNAL DATABASE"),
+      document.fonts.load("400 20px MiSans", "身份信息确认请求已接收开始处理权限验证通过欢迎访问莱茵生命内部资料档案编号保密级别商业区选择档案：0123456789 JOYCE MOORE"),
+      document.fonts.load("600 20px MiSans", "SYNTHESIZE INFORMATION ANALYSIS OS"),
+      document.fonts.load("700 20px MiSans", "RHINE LAB WELCOME TO INTERNAL DATABASE"),
     ]);
     if (lifetime.disposed) { scene.dispose(); return; }
     scene.select(0);
@@ -959,21 +990,9 @@ async function start() {
     savePrefs();
     ready = true;
     document.querySelector(".archive-plain-link")?.remove();
-    bootStart = performance.now() / 1000;
-    setMode("boot");
     scene.select(0);
     updateSelection();
-    $("#loading").classList.add("loaded");
-    lifetime.timeout(() => $("#loading").remove(), 600);
-    const params = new URLSearchParams(location.search);
-    if (restored.restored || params.get("scene") === "archive" || requestedIndex >= 0) setMode("archive");
-    if ((restored.restored && restored.mode === "detail") || requestedIndex >= 0) openFile();
-    if (params.get("scene") === "detail") openFile();
-    bootStart -= params.has("time") ? Number(params.get("time")) : 1.76;
-    // Let the loading veil finish before the first reference letter appears.
-    if (!params.has("time")) bootStart += 0.6;
-    if (prefs.reduced && !params.has("time") && mode === "boot") setMode("archive");
-    animationFrame = lifetime.frame(frame);
+    if (entry) entry.ready(); else completeStartup(false);
 
   } catch (error) {
     if (lifetime.disposed) return;
@@ -983,6 +1002,28 @@ async function start() {
       '<div class="error-state"><strong>CONNECTION INTERRUPTED</strong><p>三维档案资源未能载入。请确认浏览器已启用硬件加速，然后重新连接。</p><button onclick="location.reload()">重试 →</button><a class="archive-error-reader" href="/posts/">直接阅读全部文章 ↗</a></div>';
   }
 }
+function completeStartup(silent: boolean) {
+  if (started || !ready || lifetime.disposed) return;
+  started = true;
+  if (silent) { prefs.sound = false; prefs.music = false; saveAudioPrefs(); }
+  audio.releaseEntry(); audio.restartBoot();
+  const fade = prefs.reduced ? 0 : 600;
+  bootStart = performance.now() / 1000 - (reviewParams.has("time") ? Number(reviewParams.get("time")) : 1.76);
+  if (!reviewParams.has("time")) bootStart += fade / 1000;
+  setMode("boot");
+  if (restored.restored || reviewParams.get("scene") === "archive" || requestedIndex >= 0 || (prefs.reduced && !reviewParams.has("time"))) setMode("archive");
+  if ((restored.restored && restored.mode === "detail") || requestedIndex >= 0 || reviewParams.get("scene") === "detail") openFile();
+  $("#stage").inert = false;
+  $(".mobile-entry").inert = false;
+  loading.classList.add("loaded"); loading.inert = true;
+  lifetime.timeout(() => {
+    const restoreFocus = loading.contains(document.activeElement) || document.activeElement === document.body;
+    loading.remove();
+    if (entry && restoreFocus) (mode === "boot" ? $("#skip") : mode === "detail" ? $("#detail-content") : $(".read-file")).focus({ preventScroll: true });
+  }, fade);
+  animationFrame = lifetime.frame(frame);
+}
+
 updateSelection();
 void start();
 // Deterministic review controls: the running application, never a video surrogate.
@@ -1005,6 +1046,7 @@ Object.assign(window, {
       return true;
     },
     seek: (t: number) => {
+      if (!started) completeStartup(false);
       setMode("boot");
       bootStart = performance.now() / 1000 - t;
       lastStep = "";
@@ -1019,6 +1061,8 @@ Object.assign(window, {
       fps: Math.round(fps),
       mode,
       ready,
+      started, entry: entry?.phase ?? "bypassed",
+      colorTheme: prefs.colorTheme, superPerformance: prefs.superPerformance, savedQuality: {...prefs.rendering}, effectiveQuality: {...effectiveRenderQuality()},
       motion: { reduced: prefs.reduced, systemReduced: matchMedia("(prefers-reduced-motion: reduce)").matches },
       bootTime: mode === "boot" ? (frozenTime ?? performance.now() / 1000 - bootStart) + 5 : null,
       selected: records[selected].id,

@@ -1,5 +1,6 @@
 import { bootMotion } from "./boot-motion";
 import { bootMarkContour } from "./brand";
+import { themeAmount } from "./theme-ui";
 
 const ns = "http://www.w3.org/2000/svg";
 const arc = (r: number, start: number, sweep: number, x = 960, y = 540) => {
@@ -119,7 +120,10 @@ export class BootSequence {
     this.contour.style.strokeDasharray = `${s.logo.length} ${1 - s.logo.length}`;
     this.contour.style.strokeDashoffset = String(-s.logo.start);
     this.contour.setAttribute("stroke-width", String(s.logo.strokeWidth));
-    this.letters.textContent = s.logoLetters;
+    // Preserve the SVG text node once each revealed letter is in place. Replacing
+    // it every frame invalidates glyph rasterization under the moving HUD.
+    if (this.letters.textContent !== s.logoLetters)
+      this.letters.textContent = s.logoLetters;
     this.plus.style.opacity = this.minus.style.opacity =
       s.logo.symbolScale > 0 ? "1" : "0";
     this.plus.setAttribute(
@@ -154,7 +158,7 @@ export class BootSequence {
     this.opacity(".welcome-panel", s.welcomePanel);
     this.opacity(".welcome-heading", 1);
     this.el(".welcome-heading").style.color =
-      `rgb(${255 * (1 - s.welcomeInk)} ${255 * (1 - s.welcomeInk)} ${255 * (1 - s.welcomeInk)})`;
+      themeAmount > .0001 ? "var(--theme-ink)" : `rgb(${255 * (1 - s.welcomeInk)} ${255 * (1 - s.welcomeInk)} ${255 * (1 - s.welcomeInk)})`;
     this.opacity(".welcome-company", s.companyVisible);
     this.el(".welcome-company").style.opacity = String(
       s.companyVisible ? (s.companyMask ? 0.65 : 1) : 0,
