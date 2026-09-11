@@ -1,5 +1,6 @@
 ---
 title: Create a full deck of cards in Swift
+description: 记录学习 Swift 初期的一个练习，通过 Swift Playground 使用枚举、结构体、数组和排序等基础语法创建并整理一套 52 张扑克牌。
 date: 2018-01-22 10:00:00
 slug: 2018-01-22-poker-by-swift
 categories:

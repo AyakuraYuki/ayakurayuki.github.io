@@ -1,6 +1,6 @@
 ---
 title: 小记Apache端口转发
-description: 万网解析初步
+description: 记录一次从域名解析到 Apache 端口转发的实践，介绍 A 记录、CNAME 以及 Apache `VirtualHost` 的配置方式，并整理通过 `ProxyPass` 将不同域名的请求转发到 Tomcat 和图片服务器等不同端口服务的过程。
 date: 2017-08-17 12:00:00
 slug: 2017-08-17-apache-redirect
 categories:

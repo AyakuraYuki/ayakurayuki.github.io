@@ -1,14 +1,11 @@
----
-title: llm-inspector
-date: 2026-09-11 14:33:24
-slug: 2026-09-11-llm-inspector
-categories:
-  - project
-tags:
-  - golang
-  - llm
-  - benchmark
----
++++
+title = 'llm-inspector'
+description = '这是一个 Go 语言的 monorepo，包含多个相互独立的命令行工具，用于测试和评估 LLM（大语言模型）API 端点——涵盖基准测试、多层级可用性/能力评测、以及负载压测。'
+date = 2026-09-11T14:33:24+08:00
+slug = '2026-09-11-llm-inspector'
+categories = ['project']
+tags = ['golang', 'llm', 'benchmark']
++++
 
 # llm-inspector
 

@@ -1,5 +1,6 @@
 ---
 title: 在 Docker 部署 Apollo 的正确姿势
+description: 记录使用 Docker 部署 Apollo 配置中心的完整流程，包括 MySQL、Apollo 三个核心服务的部署与配置，以及服务端口调整和 Apollo 1.9.x 升级到 2.0.1 时的数据库迁移、服务升级和索引变更。
 date: 2022-07-08 18:07:00
 slug: 2022-07-08-apollo-in-docker
 categories:

@@ -1,5 +1,6 @@
 ---
 title: 记录一下本地搭建 Kafka 的一些命令
+description: 记录使用 Docker 在本地搭建单机版 Kafka 的相关命令，包括 Zookeeper、Kafka 的容器配置，以及 `KAFKA_ADVERTISED_LISTENERS` 和 docker-compose 的配置方式。
 date: 2023-08-30 17:10:00
 slug: 2023-08-30-setup-kafka-in-local-machine
 categories:

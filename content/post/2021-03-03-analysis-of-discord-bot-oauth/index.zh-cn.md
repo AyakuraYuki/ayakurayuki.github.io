@@ -1,5 +1,6 @@
 ---
 title: 粗分析 Discord Bot OAuth 认证过程
+description: 粗略分析 Discord Bot 的 OAuth 认证与授权流程，介绍 Application、Bot User 与 Token 的关系，以及通过 OAuth 授权 Bot 加入 Discord 服务器并调用 API 的基本机制。
 date: 2021-03-03 10:00:00
 slug: 2021-03-03-analysis-of-discord-bot-oauth
 categories:

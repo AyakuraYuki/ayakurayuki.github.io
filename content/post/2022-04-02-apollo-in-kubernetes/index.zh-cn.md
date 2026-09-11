@@ -1,5 +1,6 @@
 ---
 title: 利用 Helm 在 Kubernetes 部署无状态的 Apollo 配置中心
+description: 记录使用 Helm 在 Kubernetes 中以无状态模式部署 Apollo 配置中心的过程，包括数据库初始化、Helm 配置文件准备、不同环境的 Apollo 服务部署，以及部署完成后的 Service、路由和 DNS 配置。
 date: 2022-04-02 18:49:00
 slug: 2022-04-02-apollo-in-kubernetes
 categories:

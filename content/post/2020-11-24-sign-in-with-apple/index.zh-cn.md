@@ -1,5 +1,6 @@
 ---
 title: Sign in with Apple 服务器实现
+description: 记录 Sign in with Apple 的服务端 OAuth 授权流程，包括使用授权码换取用户信息、生成 `client_secret`，以及通过 Apple 公钥校验 `id_token` 的 JWS 签名，并结合 Java 代码说明具体实现。
 date: 2020-11-24 10:00:00
 slug: 2020-11-24-sign-in-with-apple
 image: cover.jpg
