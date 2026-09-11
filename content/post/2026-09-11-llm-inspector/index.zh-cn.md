@@ -3,11 +3,11 @@ title: llm-inspector
 date: 2026-09-11 14:33:24
 slug: 2026-09-11-llm-inspector
 categories:
-    - project
+  - project
 tags:
-    - golang
-    - llm
-    - benchmark
+  - golang
+  - llm
+  - benchmark
 ---
 
 # llm-inspector
@@ -20,12 +20,12 @@ tags:
 
 每个工具都在 `cmd/` 下以独立命令的形式存在，共享仓库统一的 Go module，详细用法见各模块自己的 README。
 
-| 模块          | 路径                                 | 说明                                                                                                                                                                                                                                       |
-|---------------|--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `benchmark`   | [`cmd/benchmark`](cmd/benchmark)     | 基于 OpenAI-Compatible API 的基准测试工具，内置 AIME 2025/2026、MMLU-Pro 题库并支持自定义问题，对模型发起测试，统计 TTFT/TPS/TPM 并从 `\boxed{}` 中提取答案进行验证。                                                                      |
-| `evaluation`  | [`cmd/evaluation`](cmd/evaluation)   | 六层（L1-L6）大语言模型可用性与能力评测工具，支持 OpenAI 兼容、Anthropic Messages API、Gemini `generateContent` API 三种协议的目标端点，输出可直接接入 CI 的 pass/fail 结论。                                                              |
-| `performance` | [`cmd/performance`](cmd/performance) | 面向 OpenAI / Anthropic / Gemini / Responses / 图片生成等端点的并发压测工具，带终端 TUI、错误率早停、缓存命中率统计，并可导出 Excel 报告。                                                                                                 |
-| `imagespec`   | [`cmd/imagespec`](cmd/imagespec)     | 按 OpenAI 官方接口口径测试 GPT image 模型（`gpt-image-2`、`gpt-image-2.5-sunburst`/`flare`）请求参数正确性的工具：合法参数必须成功生成（并校验实际分辨率/格式），非法参数必须被拒绝——用于发现供应商放宽官方限制（如 4096x4096 超分生成）。 |
+| 模块          | 路径                                                                                        | 说明                                                                                                                                                                                                                                       |
+|---------------|---------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `benchmark`   | [`cmd/benchmark`](https://github.com/AyakuraYuki/llm-inspector/tree/main/cmd/benchmark)     | 基于 OpenAI-Compatible API 的基准测试工具，内置 AIME 2025/2026、MMLU-Pro 题库并支持自定义问题，对模型发起测试，统计 TTFT/TPS/TPM 并从 `\boxed{}` 中提取答案进行验证。                                                                      |
+| `evaluation`  | [`cmd/evaluation`](https://github.com/AyakuraYuki/llm-inspector/tree/main/cmd/evaluation)   | 六层（L1-L6）大语言模型可用性与能力评测工具，支持 OpenAI 兼容、Anthropic Messages API、Gemini `generateContent` API 三种协议的目标端点，输出可直接接入 CI 的 pass/fail 结论。                                                              |
+| `performance` | [`cmd/performance`](https://github.com/AyakuraYuki/llm-inspector/tree/main/cmd/performance) | 面向 OpenAI / Anthropic / Gemini / Responses / 图片生成等端点的并发压测工具，带终端 TUI、错误率早停、缓存命中率统计，并可导出 Excel 报告。                                                                                                 |
+| `imagespec`   | [`cmd/imagespec`](https://github.com/AyakuraYuki/llm-inspector/tree/main/cmd/imagespec)     | 按 OpenAI 官方接口口径测试 GPT image 模型（`gpt-image-2`、`gpt-image-2.5-sunburst`/`flare`）请求参数正确性的工具：合法参数必须成功生成（并校验实际分辨率/格式），非法参数必须被拒绝——用于发现供应商放宽官方限制（如 4096x4096 超分生成）。 |
 
 ## 仓库结构
 
@@ -84,11 +84,11 @@ cp cmd/imagespec/configs/config.example.yaml imagespec.yaml   # 修改 base_url 
 
 配置项、评分口径、报告格式等详见各模块 README：
 
-- [`cmd/benchmark/README.md`](cmd/benchmark/README.md)
-- [`cmd/evaluation/README.md`](cmd/evaluation/README.md)
-- [`cmd/performance/README.md`](cmd/performance/README.md)
-- [`cmd/imagespec/README.md`](cmd/imagespec/README.md)
+- [`cmd/benchmark/README.md`](https://github.com/AyakuraYuki/llm-inspector/blob/main/cmd/benchmark/README.md)
+- [`cmd/evaluation/README.md`](https://github.com/AyakuraYuki/llm-inspector/blob/main/cmd/evaluation/README.md)
+- [`cmd/performance/README.md`](https://github.com/AyakuraYuki/llm-inspector/blob/main/cmd/performance/README.md)
+- [`cmd/imagespec/README.md`](https://github.com/AyakuraYuki/llm-inspector/blob/main/cmd/imagespec/README.md)
 
 ## 许可证
 
-[MIT](LICENSE) © 2026 Ayakura Yuki
+[MIT](https://github.com/AyakuraYuki/llm-inspector/blob/main/LICENSE) © 2026 Ayakura Yuki
