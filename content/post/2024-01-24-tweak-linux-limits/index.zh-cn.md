@@ -106,7 +106,7 @@ net.core.default_qdisc = fq
 net.ipv4.tcp_congestion_control = bbr
 ```
 
-`fq` 这个 qdisc（`sch_fq`）通常也是内置的，不需要额外处理，正常情况下直接 `sysctl -p` 生效就行，可以用 `tc qdisc show` 或者设置后看 `sysctl` 有没有报错来确认。
+`fq` - qdisc（`sch_fq`）通常是内置的，不需要额外处理，配置好以后用 `sysctl -p` 命令即刻生效就行；可以通过命令 `tc qdisc show` 或者设置后看 `sysctl` 有没有报错来确认。
 
 ---
 
