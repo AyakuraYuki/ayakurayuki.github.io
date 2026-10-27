@@ -27,7 +27,7 @@
     "prebuild": "node vendor/rhine/scripts/patch-rolling-number.mjs"
   },
   "dependencies": {
-    "astro": "7.3.2",
+    "astro": "7.3.3",
     "yaml": "2.9.0",
     "smol-toml": "1.8.0",
     "three": "0.183.2",
