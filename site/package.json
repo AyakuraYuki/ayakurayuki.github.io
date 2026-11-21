@@ -27,20 +27,20 @@
     "prebuild": "node vendor/rhine/scripts/patch-rolling-number.mjs"
   },
   "dependencies": {
+    "@kitlangton/rolling-number": "0.4.1",
     "astro": "7.4.7",
-    "yaml": "2.9.0",
-    "smol-toml": "1.8.0",
+    "smol-toml": "1.9.1",
     "three": "0.183.2",
-    "@kitlangton/rolling-number": "0.4.1"
+    "yaml": "2.9.0"
   },
   "devDependencies": {
     "@astrojs/check": "0.9.10",
     "@playwright/test": "1.63.0",
-    "typescript": "5.9.3",
     "@types/node": "24.13.3",
-    "parse5": "8.0.1",
+    "@types/three": "0.183.1",
     "mdast-util-from-markdown": "2.0.3",
-    "@types/three": "0.183.1"
+    "parse5": "8.0.1",
+    "typescript": "5.9.3"
   },
   "allowScripts": {
     "esbuild": true,
