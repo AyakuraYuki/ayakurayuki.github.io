@@ -8,6 +8,8 @@ tags = ['linux', 'network']
 +++
 
 > 本文内容撰文于 2024-03-12，部分内容会随着日期更新，相关内容请前往指定网站获取最新对照内容。如需对照，会有引言标注网站。
+> 
+> 2026-11-24: 更新了 Ubuntu 版本支持清单
 
 ## 利用 apk 依赖管理工具
 
@@ -20,10 +22,10 @@ Ubuntu 默认的 apk repo 提供的 nginx 是旧的 stable 版本，大多数 Ub
 2. 截至撰文日，该页面提供的 Ubuntu 版本别名和支持平台如下：
 
    ```text
-   Version        Supported Platforms
-   20.04 "focal"  x86_64, aarch64/arm64, s390x
-   22.04 "jammy"  x86_64, aarch64/arm64, s390x
-   23.10 "mantic" x86_64, aarch64/arm64
+   Version	        Supported Platforms
+   22.04 “jammy”	x86_64, aarch64/arm64
+   24.04 “noble”	x86_64, aarch64/arm64
+   26.04 “resolute”	x86_64, aarch64/arm64
    ```
 
    > 要获取更新的版本信息，请前往 [nginx: Linux packages](https://nginx.org/en/linux_packages.html)
